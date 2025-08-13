@@ -1,0 +1,23 @@
+{
+  "name": "hotel-booking-api",
+  "version": "1.0.0",
+  "description": "project portofolio booking hotel api by Rizky P. Sidiq",
+  "keywords": [
+    "booking-api"
+  ],
+  "homepage": "https://github.com/IkySidiq/hotel-booking-api#readme",
+  "bugs": {
+    "url": "https://github.com/IkySidiq/hotel-booking-api/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IkySidiq/hotel-booking-api.git"
+  },
+  "license": "ISC",
+  "author": "Rizky Purnama Sidiq",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
