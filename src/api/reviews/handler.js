@@ -39,7 +39,7 @@ export class ReviewsHandler {
     }
   }
 
-  async getReviewByIdHandler(request) {
+  async getReviewbyIdHandler(request) {
     try {
       const { id } = request.params;
       const data = await this._service.getReviewById(id);

@@ -1,6 +1,8 @@
 import pg from "pg";
+import dayjs from "dayjs";
 import { NotFoundError } from "../../exceptions/NotFoundError.js";
-import { mapDBToModel } from "../../utils/index.js";
+import { InvariantError } from "../../exceptions/InvariantError.js";
+import { nanoid } from "nanoid";
 
 const { Pool } = pg;
 
@@ -11,100 +13,100 @@ export class RoomsAvailabilityService {
 
   async lockAndCheck({ roomId, checkInDate, checkOutDate, numberOfRooms, client }) {
     const roomResult = await client.query(
-      'SELECT price_per_night FROM rooms WHERE id = $1',
+      'SELECT price_per_night as "pricePerNight" FROM rooms WHERE id = $1',
       [roomId]
     );
     if (!roomResult.rows.length) throw new NotFoundError("Room not found");
-    const pricePerNight = roomResult.rows[0].price_per_night;
+    const pricePerNight = Number(roomResult.rows[0].pricePerNight);
 
-    const query = `
-      SELECT date, available_room
+    const query = {
+      text: `
+      SELECT date, available_rooms as "availableRoom"
       FROM room_availability
       WHERE room_id = $1 AND date BETWEEN $2 AND $3
       ORDER BY date ASC
       FOR UPDATE
-    `;
-    const result = await client.query(query, [roomId, checkInDate, checkOutDate]);
-    const rooms = result.rows.map(r => ({ date: r.date, availableRoom: r.available_room }));
+    `,
+    values: [roomId, checkInDate, checkOutDate]
+    }
+    const result = await client.query(query);
 
-    if (!rooms.length) throw new NotFoundError("Room yang anda pilih tidak ada");
+    if (!result.rows.length) throw new NotFoundError("Room yang anda pilih tidak ada");
 
     const days = this._getDatesBetween(checkInDate, checkOutDate);
-    if (rooms.length < days.length || !rooms.every(r => r.availableRoom >= numberOfRooms)) {
+    if (result.rows.length < days.length || !result.rows.every(r => r.availableRoom >= numberOfRooms)) {
       throw new InvariantError("Kamar tidak tersedia");
     }
 
     const totalNights = dayjs(checkOutDate).diff(dayjs(checkInDate), 'day');
     const totalPrice = pricePerNight * totalNights * numberOfRooms;
+  
 
     return { totalPrice };
   }
 
-  async reduceAvailability({ roomId, checkInDate, checkOutDate, numberOfRooms, client }) {
+  async reduceAvailability({ roomId, userId, checkInDate, checkOutDate, numberOfRooms, client }) {
     const now = dayjs().toISOString();
     const dates = this._getDatesBetween(checkInDate, checkOutDate);
 
     for (const date of dates) {
       const result = await client.query(
         `UPDATE room_availability
-         SET available_room = available_room - $1, updated_at = $2
-         WHERE room_id = $3 AND date = $4 AND available_room >= $1
-         RETURNING *`,
+         SET available_rooms = available_rooms - $1, updated_at = $2
+         WHERE room_id = $3 AND date = $4 AND available_rooms >= $1
+         RETURNING id`,
         [numberOfRooms, now, roomId, date]
       );
 
       if (!result.rows.length) {
         throw new InvariantError(`Kamar tidak tersedia pada tanggal ${date}`);
       }
+
+    const queryLog = await client.query(
+      `INSERT INTO active_logs (id, user_id, action, target_table, target_id, performed_at)
+      VALUES ($1, $2, $3, $4, $5, $6) RETURNING id`,
+      [`log-${nanoid(16)}`, userId, "reduce availability", "room_availability", result.rows[0].id, dayjs().toISOString()]
+    );
+
+    if (!queryLog.rows.length) {
+      throw new InvariantError('Log gagal dicatat');
+    }
     }
   }
 
-  async increaseAvailability({ roomId, checkInDate, checkOutDate, numberOfRooms, client }) {
+  async increaseAvailability({ roomId, userId, checkInDate, checkOutDate, numberOfRooms, client }) {
     const now = dayjs().toISOString();
     const dates = this._getDatesBetween(checkInDate, checkOutDate);
 
     for (const date of dates) {
-      await client.query(
+      const result = await client.query(
         `UPDATE room_availability
-        SET available_room = available_room + $1, updated_at = $2
-        WHERE room_id = $3 AND date = $4`,
+        SET available_rooms = available_rooms + $1, updated_at = $2
+        WHERE room_id = $3 AND date = $4
+        RETURNING id`,
         [numberOfRooms, now, roomId, date]
       );
-    }
-  }
 
-  _getDatesBetween(start, end) {
-    const dates = [];
-    let current = dayjs(start);
-    const last = dayjs(end);
-    while (current.isBefore(last)) {
-      dates.push(current.format("YYYY-MM-DD"));
-      current = current.add(1, "day");
-    }
-    return dates;
-  }
-
-  async increaseAvailability({ roomId, checkInDate, checkOutDate, numberOfRooms = 1 }) {
-    const client = await this._pool.connect();
-    try {
-      await client.query("BEGIN");
-      const dates = this._getDatesBetween(checkInDate, checkOutDate);
-
-      for (const date of dates) {
-        await client.query(
-          `UPDATE room_availability
-           SET available_room = available_room + $1, updated_at = $2
-           WHERE room_id = $3 AND date = $4`,
-          [numberOfRooms, new Date().toISOString(), roomId, date]
-        );
+      if (!result.rows.length) {
+        throw new InvariantError(`Gagal menambah availability pada tanggal ${date}`);
       }
 
-      await client.query("COMMIT");
-    } catch (err) {
-      await client.query("ROLLBACK");
-      throw err;
-    } finally {
-      client.release();
+      const queryLog = await client.query(
+        `INSERT INTO active_logs (id, user_id, action, target_table, target_id, performed_at)
+        VALUES ($1, $2, $3, $4, $5, $6) RETURNING id`,
+        [
+          `log-${nanoid(16)}`,
+          userId,
+          "increase availability",
+          "room_availability",
+          result.rows[0].id,
+          now,
+        ]
+      );
+
+      if (!queryLog.rows.length) {
+        throw new InvariantError('Log gagal dicatat');
+      }
     }
   }
 
@@ -124,6 +126,7 @@ export class RoomsAvailabilityService {
       let currentDate = today;
 
       while (currentDate.isBefore(endDate) || currentDate.isSame(endDate, "day")) {
+        const id = `RA-${nanoid(16)}`;
         const dateStr = currentDate.format("YYYY-MM-DD");
 
         //* 1. Cek apakah data availability untuk room & date ini sudah ada
@@ -136,9 +139,9 @@ export class RoomsAvailabilityService {
         //* 2. Kalau belum ada → insert stok awal. Kalau stok sudah ada, maka skip agar tidak tertimpa
         if (check.rowCount === 0) {
           await this._pool.query(
-            `INSERT INTO room_availability (room_id, date, available_room)
-             VALUES ($1, $2, $3)`,
-            [room.id, dateStr, room.total_rooms]
+            `INSERT INTO room_availability (id, room_id, date, available_rooms)
+             VALUES ($1, $2, $3, $4)`,
+            [id, room.id, dateStr, room.total_rooms]
           );
         }
 
@@ -149,16 +152,16 @@ export class RoomsAvailabilityService {
     console.log(`Availability generated until ${endDate.format("YYYY-MM-DD")}`);
   }
 
-  _getDatesBetween(start, end) {
-    const dates = [];
-    let current = dayjs(start);
-    const stop = dayjs(end);
+_getDatesBetween(start, end) {
+  const dates = [];
+  let current = dayjs(start);
+  const stop = dayjs(end);
 
-    while (current.isBefore(stop)) {
-      dates.push(current.format("YYYY-MM-DD"));
-      current = current.add(1, "day");
-    }
-
-    return dates;
+  while (current.isBefore(stop) || current.isSame(stop, 'day')) { // include check-out
+    dates.push(current.format("YYYY-MM-DD"));
+    current = current.add(1, "day");
   }
+
+  return dates;
+}
 }

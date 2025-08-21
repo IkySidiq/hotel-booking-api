@@ -22,11 +22,11 @@ export class RoomsHandler {
       await this._userService.verifyUser({ userId }); 
       
 
-      const { roomId } = await this._service.addRoom({ roomType, pricePerNightNum, capacityNum, totalRoomsNum, description });
+      const roomId = await this._service.addRoom({ userId, roomType, pricePerNightNum, capacityNum, totalRoomsNum, description });
 
       return h.response({
         status: "success",
-        data: { roomId }
+        data: roomId
       }).code(201);
     } catch (error) {
       throw error;

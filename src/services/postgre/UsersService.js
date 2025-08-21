@@ -127,7 +127,7 @@ export class UsersService {
   async getUserbyId({ userId }) {
     try {
       const query = {
-        text: `SELECT id, fullname, email, contact_number, role, last_login, created_at, updated_at
+        text: `SELECT id, fullname, email, contact_number as "contactNumber", role, last_login, created_at, updated_at
               FROM users WHERE id = $1`,
         values: [userId],
       };

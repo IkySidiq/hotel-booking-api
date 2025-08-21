@@ -21,7 +21,7 @@ import { TokenManager } from './tokenize/TokenManager.js';
 // Rooms
 import { RoomsService } from './services/postgre/RoomsService.js';
 import { RoomsValidator } from './validators/rooms/index.js';
-import { rooms } from './api/users/index.js';
+import { rooms } from './api/rooms/index.js';
 
 // Room-Pictures
 import { RoomPicturesService } from './services/postgre/RoomPicturesService.js';
@@ -43,13 +43,21 @@ import { ReviewsService } from './services/postgre/ReviewsService.js';
 import { ReviewsValidator } from './validators/reviews/index.js';
 import { reviews } from './api/reviews/index.js';
 
+// TrransactionsService
+import { TransactionsService } from './services/postgre/TransactionsService.js';
+
+// Midtrans
+import { MidtransService } from './services/postgre/MidtransService.js';
+
 const init = async() => {
   const usersService = new UsersService();
   const authenticationsService = new AuthenticationsService();
   const roomsService = new RoomsService();
   const roomPicturesService = new RoomPicturesService();
   const roomAvailabilityService = new RoomsAvailabilityService();
-  const bookingsService = new BookingsService(roomAvailability);
+  const midtransService = new MidtransService();
+  const transactionsService = new TransactionsService();
+  const bookingsService = new BookingsService(roomAvailabilityService, usersService, roomsService, midtransService, transactionsService);
   const reviewsService = new ReviewsService();
 
   const server = Hapi.server({
@@ -118,7 +126,7 @@ const init = async() => {
       options: {
         service: roomAvailabilityService,
         validator: RoomAvailabilityValidator,
-        usersService
+        usersService,
       }
     },
     {
@@ -126,7 +134,8 @@ const init = async() => {
       options: {
         service: bookingsService,
         validator: BookingsValidator,
-        usersService
+        usersService,
+        midtransService
       }
     },
     {

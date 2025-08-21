@@ -12,17 +12,14 @@ export class BookingsHandler {
     autoBind(this)
   }
 
-
-  async addBookingHandler(request, h) {
+  async postBookingHandler(request, h) {
     try {
-      // 1. Validasi payload
       const { roomId, guestName, totalGuests, checkInDate, checkOutDate, specialRequest } = request.payload;
       this._validator.validateAddBookingPayload({ roomId, guestName, totalGuests, checkInDate, checkOutDate, specialRequest });
 
       const { id: userId } = request.auth.credentials;
 
-      // 2. Panggil service untuk menambahkan booking
-      const { booking, user, room, transaction, transactionRecord } = await this._bookingService.addBooking({
+      const { bookingId, transactionToken } = await this._service.addBooking({
         userId,
         roomId,
         guestName,
@@ -32,22 +29,46 @@ export class BookingsHandler {
         specialRequest
       });
 
-      // 3. Kirim response sukses
       return h.response({
         status: "success",
         data: {
-          booking,
-          user,
-          room,
-          transactionHistoryId: transactionRecord.id,
-          snapToken: transaction.snap_token
+          bookingId,
+          transactionToken, //* Snap midtrans
         }
       }).code(201);
-
     } catch (error) {
-      // Biarkan error diteruskan ke onPreResponse
       throw error;
     }
+  }
+
+  async getPendingBookingsHandler(request, h) {
+    const { userId } = request.auth.credentials;
+    const bookings = await this._bookingsService.getPendingBookingsByUserId({ userId });
+
+    // bikin snap token baru utk tiap booking kalau mau selalu fresh
+    const updatedBookings = await Promise.all(
+      bookings.map(async (booking) => {
+        const { transactionToken } = await this._midtransService.createTransaction({
+          orderId: booking.bookingId,
+          grossAmount: booking.totalPrice,
+          itemDetails: booking.itemDetails,
+          customerDetails: booking.customerDetails,
+        });
+
+        // update token di DB
+        await this._bookingsService.updateSnapToken(booking.bookingId, transactionToken);
+
+        return {
+          bookingId: booking.booking_id,
+          transactionToken, //* Snap midtrans
+        };
+      })
+    );
+
+    return {
+      status: 'success',
+      data: updatedBookings,
+    };
   }
 
   async getBookingsHandler(request, h) {
@@ -68,10 +89,10 @@ export class BookingsHandler {
     }
   }
 
-  async getBookingByIdHandler(request, h) {
+  async getBookingbyIdHandler(request, h) {
     try {
       const { id: userId } = request.auth.credentials;
-      await this._userService.verifyUser({ userId });
+      await this._usersService.verifyUser({ userId });
 
       const { bookingId } = request.params;
       const booking = await this._service.getBookingById({ targetId: bookingId });
@@ -88,7 +109,6 @@ export class BookingsHandler {
   async cancelBookingHandler(request, h) {
     try {
       const { id: userId } = request.auth.credentials;
-      await this._userService.verifyUser({ userId });
 
       const { bookingId } = request.params;
 

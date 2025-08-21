@@ -56,6 +56,7 @@ export class HotelProfileService {
               email = $6,
               rating = $7,
               updated_at = $8
+              RETURNING id
         `;
         values = [name, address, city, description, contactNumber, email, rating, now];
       } else {
@@ -63,15 +64,19 @@ export class HotelProfileService {
         query = `
           INSERT INTO hotel_profile
           (name, address, city, description, contact_number, email, rating, created_at, updated_at)
-          VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$8)
+          VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$8) RETURNING id
         `;
         values = [name, address, city, description, contactNumber, email, rating, now];
       }
 
       const result = await client.query(query, values);
 
+      if (!result.rows.length) {
+        throw InvariantError('Gagal menambahkan / mengupdate data');
+      }
+
       await client.query("COMMIT");
-      return { success: true };
+      return result.rows[0].id;
     } catch (error) {
       await client.query("ROLLBACK");
       console.error("Database Error (updateProfile):", error);

@@ -1,4 +1,5 @@
 import pg from "pg";
+import dayjs from "dayjs";
 import { nanoid } from "nanoid";
 import { InvariantError } from "../../exceptions/InvariantError.js";
 import { NotFoundError } from "../../exceptions/NotFoundError.js";
@@ -11,32 +12,50 @@ export class RoomsService {
     this._pool = new Pool();
   }
 
-  async addRoom({ roomType, pricePerNightNum, capacityNum, totalRoomsNum, description }) {
+  async addRoom({ userId, roomType, pricePerNightNum, capacityNum, totalRoomsNum, description }) {
     const client = await this._pool.connect();
     try {
       await client.query("BEGIN");
 
-      const id = `room-${nanoid(16)}`;
       const now = new Date().toISOString();
 
-      const query = {
+      // Cek dulu apakah room_type sudah ada
+      const checkQuery = await client.query(
+        "SELECT id FROM rooms WHERE room_type = $1",
+        [roomType]
+      );
+
+      if (checkQuery.rows.length) {
+        // Tolak jika tipe kamar sudah ada
+        throw new InvariantError(`Tipe kamar '${roomType}' sudah ada`);
+      }
+
+      // Insert baru
+      const roomId = `room-${nanoid(16)}`;
+      const insertQuery = {
         text: `INSERT INTO rooms 
-          (id, room_type, price_per_night, capacity, total_rooms, description, created_at, updated_at, is_active)
-          VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+          (id, room_type, price_per_night, capacity, total_rooms, description, created_at, updated_at, is_active, is_complete)
+          VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
           RETURNING id`,
-        values: [id, roomType, pricePerNightNum, capacityNum, totalRoomsNum, description, now, now, true],
+        values: [roomId, roomType, pricePerNightNum, capacityNum, totalRoomsNum, description, now, now, true, false],
       };
 
-      const result = await client.query(query);
+      const result = await client.query(insertQuery);
       if (!result.rows.length) throw new InvariantError("Gagal menambahkan kamar");
 
-      const roomId = result.rows[0].id
+      // Catat log
+      const queryLog = await client.query(
+        `INSERT INTO active_logs (id, user_id, action, target_table, target_id, performed_at)
+        VALUES ($1, $2, $3, $4, $5, $6) RETURNING id`,
+        [`log-${nanoid(16)}`, userId, "add room", "rooms", roomId, now]
+      );
+
+      if (!queryLog.rows.length) throw new InvariantError("Log gagal dicatat");
 
       await client.query("COMMIT");
 
-      return { 
-        id: roomId,
-       };
+      return { id: roomId };
+
     } catch (error) {
       await client.query("ROLLBACK");
       console.log("Database Error (addRoom()):", error);
@@ -124,7 +143,7 @@ export class RoomsService {
   async getRoomById({ roomId }) {
     try {
       const query = {
-        text: `SELECT id, room_type, price_per_night, capacity, total_rooms, available_rooms, description, created_at, updated_at
+        text: `SELECT id, room_type, price_per_night, capacity, total_rooms, description, created_at, updated_at
               FROM rooms
               WHERE id = $1`,
         values: [roomId],
@@ -137,18 +156,18 @@ export class RoomsService {
 
       const room = resultMap[0];
 
-      const queryPic = {
-        text: `SELECT id, room_id, path, is_available, created_at, updated_at
-              FROM room_pictures
-              WHERE room_id = $1
-              ORDER BY created_at ASC`,
-        values: [roomId],
-      };
+      // const queryPic = {
+      //   text: `SELECT id, room_id, path, is_available, created_at, updated_at
+      //         FROM room_pictures
+      //         WHERE room_id = $1
+      //         ORDER BY created_at ASC`,
+      //   values: [roomId],
+      // };
 
-      const resultPic = await this._pool.query(queryPic);
-      const resultPicMap = resultPic.rows.map(mapDBToModel.roomPicturesTable);
+      // const resultPic = await this._pool.query(queryPic);
+      // const resultPicMap = resultPic.rows.map(mapDBToModel.roomPicturesTable);
 
-      room.pictures = resultPicMap;
+      // room.pictures = resultPicMap;
 
       return room;
     } catch (error) {

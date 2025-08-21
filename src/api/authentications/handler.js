@@ -1,25 +1,29 @@
+import autoBind from "auto-bind";
+
 export class AuthenticationsHandler {
-  constructor(authenticationsService, usersService, tokenManager, validator) {
-    this._authenticationsService = authenticationsService;
+  constructor(service, usersService, tokenManager, validator) {
+    this._service = service;
     this._usersService = usersService;
     this._tokenManager = tokenManager;
     this._validator = validator;
  
-    this.postAuthenticationHandler = this.postAuthenticationHandler.bind(this);
-    this.putAuthenticationHandler = this.putAuthenticationHandler.bind(this);
-    this.deleteAuthenticationHandler = this.deleteAuthenticationHandler.bind(this);
+    autoBind(this);
+    console.log(Object.getOwnPropertyNames(Object.getPrototypeOf(this._service)));
   }
  
   async postAuthenticationHandler(request, h) {
     this._validator.validatePostAuthenticationPayload(request.payload);
  
-    const { username, password } = request.payload;
-    const id = await this._usersService.verifyUserCredential(username, password);
+    const { email, password } = request.payload;
+    console.log(email, password);
+    const id = await this._usersService.verifyUserCredential({ email, password });
+    console.log('ID', id)
  
     const accessToken = this._tokenManager.generateAccessToken({ id });
     const refreshToken = this._tokenManager.generateRefreshToken({ id });
+    console.log(refreshToken, 'tah')
  
-    await this._authenticationsService.addRefreshToken(refreshToken);
+    await this._service.addRefreshToken({ refreshToken });
  
     const response = h.response({
       status: 'success',

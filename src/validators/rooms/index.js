@@ -1,3 +1,6 @@
+import { RoomPayloadSchema } from './schema.js'
+import { InvariantError } from '../../exceptions/InvariantError.js';
+
 export const RoomsValidator = {
   validateRoomPayload: (payload) => {
     const validationResult = RoomPayloadSchema.validate(payload);

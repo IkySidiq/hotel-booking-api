@@ -31,6 +31,8 @@ export const mapDBToModel = {
     check_in_status,
     created_at,
     updated_at,
+    item_details,
+    customer_details
   }) => ({
     id,
     userId: user_id,
@@ -47,6 +49,8 @@ export const mapDBToModel = {
     checkInStatus: check_in_status,
     createdAt: created_at,
     updatedAt: updated_at,
+    itemDetails: item_details,
+    customerDetails: customer_details
   }),
 
   roomsTable: ({

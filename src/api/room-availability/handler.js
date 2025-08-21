@@ -25,4 +25,22 @@ export class RoomAvailabilityHandler {
       throw error;
     }
   }
+
+  async generateAvailabilityHandler(request, h) {
+    try {
+      await this._service.generateAvailability({ monthsAhead: 6 });
+
+      return h.response({
+        status: "success",
+        message: "Room availability generated for 6 months ahead",
+      }).code(200);
+
+    } catch (error) {
+      console.error("Error generating availability:", error);
+      return h.response({
+        status: "fail",
+        message: error.message,
+      }).code(500);
+    }
+  }
 }

@@ -1,84 +1,180 @@
 import pg from "pg";
+import dayjs from "dayjs";
 import { nanoid } from "nanoid";
 import { InvariantError } from "../../exceptions/InvariantError.js";
 import { NotFoundError } from "../../exceptions/NotFoundError.js";
 import { mapDBToModel } from "../../utils/index.js";
-
 const { Pool } = pg;
 
 export class BookingsService {
-  constructor(roomAvailabilityService) {
+  constructor(roomAvailabilityService, usersService, roomsService, midtransService, transactionsRecordService) {
     this._pool = new Pool();
     this._roomAvailabilityService = roomAvailabilityService;
+    this._usersService = usersService; 
+    this._roomsService = roomsService; 
+    this._midtransService = midtransService;
+    this._transactionsRecordService = transactionsRecordService;
   }
 
   async addBooking({ userId, roomId, guestName, totalGuests, checkInDate, checkOutDate, specialRequest }) {
     const client = await this._pool.connect();
-
     try {
       await client.query("BEGIN");
 
       // 1. Lock & cek stok
       const { totalPrice } = await this._roomAvailabilityService.lockAndCheck({
-        roomId, checkInDate, checkOutDate, numberOfRooms: totalGuests, client
+        roomId,
+        checkInDate,
+        checkOutDate,
+        numberOfRooms: 1,
+        client,
       });
 
-      // 2. Insert booking pending
-      const bookingId = "booking-" + nanoid(16);
-      const now = dayjs().toISOString();
-      await client.query(
-        `INSERT INTO bookings (
-          id, user_id, room_id, guest_name, total_guests, special_requests,
-          check_in_date, check_out_date, total_price, status, payment_status,
-          check_in_status, created_at, updated_at
-        ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14)`,
-        [bookingId, userId, roomId, guestName, totalGuests, specialRequest, checkInDate, checkOutDate, totalPrice, 'pending', 'unpaid', 'not checked in', now, now]
-      );
-
-      // 3. Reduce stok kamar
-      await this._roomAvailabilityService.reduceAvailability({ roomId, checkInDate, checkOutDate, numberOfRooms: totalGuests, client });
-
-      await client.query("COMMIT");
-
-      // 4. Buat transaksi Midtrans di luar DB
+      // 2. Ambil data user & room untuk itemDetails & customerDetails
       const user = await this._usersService.getUserbyId({ userId });
       const room = await this._roomsService.getRoomById({ roomId });
 
-      let transaction;
-      try {
-        transaction = await this._midtransService.createTransaction(
+      const customerDetails = {
+        firstName: user.fullname,
+        email: user.email,
+        phone: user.contactNumber,
+      };
+
+      // 3. Insert booking pending lengkap dengan JSON
+      const bookingId = `booking-${nanoid(16)}`;
+      const now = dayjs().toISOString();
+
+      const query = {
+        text: `INSERT INTO bookings (
+          id, user_id, room_id, guest_name, total_guests, special_request,
+          check_in_date, check_out_date, total_price, status,
+          created_at, updated_at, customer_details
+        ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING id`,
+        values: [
           bookingId,
+          userId,
+          roomId,
+          guestName,
+          totalGuests,
+          specialRequest,
+          checkInDate,
+          checkOutDate,
           totalPrice,
-          [{ id: room.id, name: `${room.roomType} (Guests: ${totalGuests})`, price: room.pricePerNight, quantity: 1 }],
-          { firstName: user.fullname, email: user.email, phone: user.contactNumber }
-        );
+          'pending_payment',
+          now,
+          now,
+          customerDetails,
+        ]
+      }
+      
+      const result = await this._pool.query(query);
+      console.log('BARU', result.rows)
+      const resultMap = result.rows.map(mapDBToModel.bookingTable);
+      console.log('BARU JUGA', resultMap)
+
+      if (!resultMap.length) {
+        throw new InvariantError('Booking gagal');
+      }
+
+      // 4. Reduce stok kamar
+      await this._roomAvailabilityService.reduceAvailability({
+        roomId,
+        userId,
+        checkInDate,
+        checkOutDate,
+        numberOfRooms: 1,
+        client,
+      });
+
+      const queryLog = await client.query(
+        `INSERT INTO active_logs (id, user_id, action, target_table, target_id, performed_at)
+        VALUES ($1, $2, $3, $4, $5, $6) RETURNING id`,
+        [`log-${nanoid(16)}`, userId, "cancel booking", "bookings", bookingId, dayjs().toISOString()]
+      );
+
+      if (!queryLog.rows.length) {
+        throw new InvariantError('Log gagal dicatat');
+      }
+
+      await client.query("COMMIT");
+
+      // 5. Buat transaksi Midtrans di luar DB
+      let transactionToken
+      try {
+        const result = await this._midtransService.createTransaction({
+          orderId: bookingId,
+          grossAmount: totalPrice,
+          customerDetails,
+        });
+
+        transactionToken = result.transactionToken;
       } catch (midtransError) {
-        // Rollback stok kamar
-        await this._roomAvailabilityService.increaseAvailability({ roomId, checkInDate, checkOutDate, numberOfRooms: totalGuests, client });
-        // Update status booking jadi failed
-        await client.query(
-          `UPDATE bookings SET status = 'failed', updated_at = $2 WHERE id = $1`,
-          [bookingId, dayjs().toISOString()]
-        );
+        console.log(midtransError, 'IYEU')
+        // Rollback stok kamar & update status booking
+        await this._roomAvailabilityService.increaseAvailability({
+          roomId,
+          userId,
+          checkInDate,
+          checkOutDate,
+          numberOfRooms: 1,
+          client,
+        });
+
+        const queryUpdate = {
+          text: `UPDATE bookings SET status = $1, updated_at = $2 WHERE id = $3`,
+          values: ["failed", dayjs().toISOString(), bookingId]
+        }
+
+        const result = await this._pool.query(queryUpdate);
+
+        if (!result.rows.length) {
+          throw new InvariantError('Booking gagal')
+        }
+
         throw midtransError;
       }
 
-      // 5. Simpan record transaksi
-      const transactionRecord = await this._transactionsRecordService.createTransactionRecord({ bookingId, amount: totalPrice });
+      // 6. Simpan record transaksi
+      const { transactionRecordId } = await this._transactionsRecordService.createTransactionRecord({
+        bookingId,
+        amount: totalPrice,
+      });
 
       return {
-        booking: { bookingId, userId, roomId, guestName, totalGuests, checkInDate, checkOutDate, totalPrice, status: 'pending', paymentStatus: 'unpaid', checkInStatus: 'not checked in', createdAt: now, updatedAt: now },
-        user,
-        room,
-        transaction,
-        transactionRecord
+        bookingId,
+        transactionToken,
       };
-
     } catch (err) {
       await client.query("ROLLBACK").catch(() => {});
       throw err;
     } finally {
       client.release();
+    }
+  }
+
+  async getPendingBookingByUserId({ userId }) {
+    const result = await this._pool.query(
+      `SELECT booking_id, total_price, item_details, customer_details FROM bookings WHERE user_id = $1 AND status = 'pending' ORDER BY created_at DESC`,
+      [userId]
+    );
+
+    const resultMap = result.rows.map(mapDBToModel.bookingTable);
+
+    if (!resultMap.length) {
+      throw NotFoundError('Tidak ada booking pending');
+    }
+
+    return resultMap[0];
+  }
+
+  async updateSnapToken(bookingId, snapToken) {
+    const query = await this._pool.query(
+      `UPDATE bookings SET snap_token = $1, updated_at = NOW() WHERE booking_id = $2 RETURNING id`,
+      [snapToken, bookingId]
+    );
+    
+    if (!query.rows.length) {
+      throw InvariantError('Pembayaran gagal diproses');
     }
   }
 
@@ -198,20 +294,54 @@ export class BookingsService {
     }
   }
 
-  async updateBookingStatus(bookingId, status) {
-    const client = await this._pool.connect();
-    try {
-      const updatedAt = dayjs().toISOString();
-      const queryText = `
-        UPDATE bookings
-        SET status = $1, updated_at = $2
-        WHERE id = $3
-      `;
-      const queryValues = [status, updatedAt, bookingId];
-      await client.query(queryText, queryValues);
-    } finally {
-      client.release();
+  async updateBookingStatus(notification) {
+    const { orderId, transactionStatus, fraudStatus } = notification;
+
+    // Simpan status asli dari Midtrans
+    let paymentStatus;
+    if (transactionStatus === "capture" && fraudStatus === "accept") {
+      paymentStatus = "capture";
+    } else if (transactionStatus === "settlement") {
+      paymentStatus = "settlement";
+    } else if (
+      transactionStatus === "cancel" ||
+      transactionStatus === "deny" ||
+      transactionStatus === "expire"
+    ) {
+      paymentStatus = transactionStatus; // cancel / deny / expire
+    } else if (transactionStatus === "pending") {
+      paymentStatus = "pending";
+    } else {
+      paymentStatus = "unknown";
     }
+
+    // Update tabel transaction_records
+    await this._pool.query(
+      "UPDATE transaction_records SET payment_status = $1, updated_at = $2 WHERE id = $3",
+      [paymentStatus, dayjs().toISOString(), orderId]
+    );
+
+    // Mapping ke tabel bookings
+    let bookingStatus;
+    if (paymentStatus === "settlement" || paymentStatus === "capture") {
+      bookingStatus = "confirmed"; // pembayaran sukses
+    } else if (paymentStatus === "pending") {
+      bookingStatus = "pending_payment"; // menunggu pembayaran
+    } else if (paymentStatus === "cancel") {
+      bookingStatus = "cancelled"; // user cancel
+    } else if (paymentStatus === "expire" || paymentStatus === "deny") {
+      bookingStatus = "failed"; // pembayaran gagal
+    } else {
+      bookingStatus = "pending_payment"; // fallback
+    }
+
+    // Update tabel bookings
+    await this._pool.query(
+      "UPDATE bookings SET status = $1, updated_at = $2 WHERE id = $3",
+      [bookingStatus, dayjs().toISOString(), orderId]
+    );
+
+    return { paymentStatus, bookingStatus };
   }
 
   async getBookingById({ targetId }) {
@@ -260,8 +390,8 @@ export class BookingsService {
       // 1. Update status booking
       const updatedAt = new Date().toISOString();
       await client.query(
-        `UPDATE bookings SET status='canceled', updated_at=$1 WHERE id=$2`,
-        [updatedAt, bookingId]
+        `UPDATE bookings SET status = $1, updated_at = $2 WHERE id = $3`,
+        ['cancelled', updatedAt, bookingId]
       );
 
       // 2. Kembalikan availability
@@ -269,15 +399,20 @@ export class BookingsService {
         roomId,
         checkInDate,
         checkOutDate,
-        numberOfRooms: 1
+        numberOfRooms: 1,
+        client
       });
 
       // 3. Log aktivitas
-      await client.query(
+      const queryLog = await client.query(
         `INSERT INTO active_logs (id, user_id, action, target_table, target_id, performed_at)
-        VALUES ($1,$2,$3,$4,$5,$6)`,
+        VALUES ($1, $2 ,$ 3, $4, $5, $6) RETURNING id`,
         [`log-${nanoid(16)}`, userId, "cancel booking", "bookings", bookingId, updatedAt]
       );
+
+      if (!queryLog.rows.length) {
+        throw new InvariantError('Log gagal dicatat');
+      }
 
       await client.query("COMMIT");
       return { bookingId };

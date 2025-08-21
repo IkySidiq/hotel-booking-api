@@ -1,8 +1,11 @@
 import dayjs from "dayjs";
+import pg from "pg";
+const { Pool } = pg;
+import { nanoid } from "nanoid";
 
 export class TransactionsService {
-  constructor(pool) {
-    this._pool = pool;
+  constructor() {
+    this._pool = new Pool();
   }
 
   async createTransactionRecord({ bookingId, amount }) {
@@ -14,23 +17,24 @@ export class TransactionsService {
     const query = {
       text: `
         INSERT INTO transactions_records
-        (id, booking_id, transaction_code, amount, status, payment_status, created_at, updated_at)
-        VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
-        RETURNING *`,
+        (id, booking_id, transaction_code, amount, payment_status, created_at, updated_at)
+        VALUES ($1, $2, $3, $4, $5, $6, $7)
+        RETURNING id`,
       values: [
         id,
         bookingId,
         transactionCode,
         amount,
-        'pending',
-        'unpaid',
+        'settlement', //! PR HARUSNYA INI DI AMBIL DARI HASIL TRANSAKSI MIDTRANS
         createdAt,
         createdAt
       ]
     };
 
     const result = await this._pool.query(query);
-    return result.rows[0];
+    return {
+      transactionRecordId: result.rows[0].id
+    }
   }
 
   async processPayment({ transactionCode, status }) {
