@@ -1,8 +1,11 @@
 import autoBind from "auto-bind";
+import path from 'path';
+import { nanoid } from "nanoid";
 
 export class RoomPicturesHandler {
-  constructor(roomPicturesService, storageService, userService) {
-    this._roomPicturesService = roomPicturesService;
+  constructor(service, validator, userService, storageService) {
+    this._service = service;
+    this._validator = validator
     this._storageService = storageService;
     this._userService = userService;
 
@@ -18,18 +21,20 @@ export class RoomPicturesHandler {
       await this._userService.verifyUser({ userId });
 
       // ambil roomId, primaryFileName, dan array files dari payload
-      const { primaryFileName } = request.payload; //* dari radio di FE
       const {id: roomId} = request.params;
+              console.log('PERCOBAAN', roomId)
 
-      const files = request.payload.files;
 
-      if (!files || !files.length) {
+      const { fotoSatu, fotoDua, fotoTiga } = request.payload;
+      const filesArray = [fotoSatu, fotoDua, fotoTiga].filter(Boolean);
+
+      if (!filesArray.length) {
         throw new Error("Tidak ada file yang diunggah");
       }
 
       const results = [];
 
-      for (const file of files) {
+      for (const file of filesArray) {
         const meta = file.hapi;
         const extension = path.extname(meta.filename);
 
@@ -40,10 +45,10 @@ export class RoomPicturesHandler {
         const filePath = await this._storageService.writeFile(file, filename, roomId);
 
         // tentukan apakah foto ini primary
-        const isPrimary = meta.filename === primaryFileName;
+        const isPrimary = file === fotoSatu;
 
         // simpan path ke DB melalui service
-        const result = await this._roomPicturesService.addPicture({
+        const result = await this._service.addPicture({
           roomId,
           path: filePath,
           isPrimary

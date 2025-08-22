@@ -1,27 +1,55 @@
 import autoBind from "auto-bind";
+import { InvariantError } from "../../exceptions/InvariantError.js";
 
 export class ReviewsHandler {
-  constructor(service, validator) {
+  constructor(service, validator, bookingsService) {
     this._service = service;
     this._validator = validator;
+    this._bookingService = bookingsService;
 
     autoBind(this);
   }
 
   async postReviewHandler(request, h) {
     try {
-      const { rating, comment, bookId } = request.payload;
-      this._validator.validateReviewPayload({ rating, comment, bookId });
+      const { comment, rating } = request.payload;
+      const { roomId } = request.params;
+      const userId = request.auth.credentials.id;
 
-      const { id: userId } = request.auth.credentials;
-      const { id, logId } = await this._service.addReview({ userId, rating, comment, bookId });
+      // Validasi payload
+      this._validator.validateReviewPayload({ rating, comment });
+
+      // Cek apakah user sudah pernah booking kamar ini yang statusnya selesai
+      const booking = await this._bookingService.getCompletedBookingForUserRoom(userId, roomId);
+      if (!booking) {
+        throw new InvariantError("Anda belum melakukan booking untuk kamar ini");
+      }
+
+      // Cek apakah user sudah review untuk room ini
+      const existingReview = await this._service.checkExistingReview(userId, roomId);
+      if (existingReview) {
+        throw new InvariantError("Anda sudah memberikan review untuk kamar ini");
+      }
+
+      // Tambah review
+      const reviewData = {
+        userId,
+        roomId,
+        bookingId: booking.id,
+        rating: Number(rating),
+        comment,
+      };
+
+      const newReview = await this._service.addReview(reviewData);
 
       return h.response({
         status: "success",
-        data: { id, logId }
+        message: "Review berhasil ditambahkan",
+        data: { id: newReview },
       }).code(201);
-    } catch (error) {
-      throw error;
+    } catch (err) {
+      console.error("Error postReviewHandler:", err);
+      throw err;
     }
   }
 

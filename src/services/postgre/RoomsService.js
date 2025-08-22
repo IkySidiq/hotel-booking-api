@@ -156,18 +156,18 @@ export class RoomsService {
 
       const room = resultMap[0];
 
-      // const queryPic = {
-      //   text: `SELECT id, room_id, path, is_available, created_at, updated_at
-      //         FROM room_pictures
-      //         WHERE room_id = $1
-      //         ORDER BY created_at ASC`,
-      //   values: [roomId],
-      // };
+      const queryPic = {
+        text: `SELECT id, room_id, path, created_at, updated_at
+              FROM room_pictures
+              WHERE room_id = $1
+              ORDER BY created_at ASC`,
+        values: [roomId],
+      };
 
-      // const resultPic = await this._pool.query(queryPic);
-      // const resultPicMap = resultPic.rows.map(mapDBToModel.roomPicturesTable);
+      const resultPic = await this._pool.query(queryPic);
+      const resultPicMap = resultPic.rows.map(mapDBToModel.roomPicturesTable);
 
-      // room.pictures = resultPicMap;
+      room.pictures = resultPicMap;
 
       return room;
     } catch (error) {

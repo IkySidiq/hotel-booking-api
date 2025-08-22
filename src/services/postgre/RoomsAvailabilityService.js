@@ -42,7 +42,7 @@ export class RoomsAvailabilityService {
     const totalPrice = pricePerNight * totalNights * numberOfRooms;
   
 
-    return { totalPrice };
+    return { totalPrice, totalNights, pricePerNight };
   }
 
   async reduceAvailability({ roomId, userId, checkInDate, checkOutDate, numberOfRooms, client }) {

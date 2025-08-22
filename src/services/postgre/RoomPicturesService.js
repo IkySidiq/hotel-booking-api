@@ -12,6 +12,7 @@ export class RoomPicturesService {
 
   // 1. Tambah foto kamar
   async addPicture({ roomId, path, isPrimary = false }) {
+    console.log('ROOMID', roomId)
     const client = await this._pool.connect();
     try {
       await client.query("BEGIN");

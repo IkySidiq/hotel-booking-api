@@ -4,8 +4,8 @@ import { routes } from './routes.js';
 export const reviews = {
   name: 'reviews',
   version: '1.0.0',
-  register: async (server, { service, validator, usersService }) => {
-    const reviewsHandler = new ReviewsHandler(service, validator, usersService);
+  register: async (server, { service, validator, bookingsService }) => {
+    const reviewsHandler = new ReviewsHandler(service, validator, bookingsService);
     server.route(routes(reviewsHandler));
   },
 };

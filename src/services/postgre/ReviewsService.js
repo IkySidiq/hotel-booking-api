@@ -2,46 +2,56 @@ import { nanoid } from "nanoid";
 import { InvariantError } from "../../exceptions/InvariantError.js";
 import { NotFoundError } from "../../exceptions/NotFoundError.js";
 import { AuthorizationError } from "../../exceptions/AuthorizationError.js";
+const { Pool } = pg;
+import pg from "pg";
 
 export class ReviewsService {
-  constructor(pool) {
-    this._pool = pool;
+  constructor(bookingsService) {
+    this._pool = new Pool();
+    this._bookingsService = bookingsService
   }
 
   // Tambah review baru
-  async addReview({ roomId, userId, rating, comment }) {
-    if (rating < 1 || rating > 5) {
-      throw new InvariantError("Rating harus antara 1 sampai 5");
-    }
-    if (!comment || comment.trim().length === 0) {
-      throw new InvariantError("Komentar tidak boleh kosong");
-    }
-
-    // Cek apakah user sudah pernah kasih review untuk room ini
-    const check = await this._pool.query(
-      `SELECT id FROM reviews WHERE room_id = $1 AND user_id = $2`,
-      [roomId, userId]
-    );
-    if (check.rowCount > 0) {
-      throw new InvariantError("Anda sudah memberikan review untuk kamar ini");
-    }
-
-    const id = `review-${nanoid(16)}`;
-    const createdAt = new Date().toISOString();
-
-    const result = await this._pool.query(
-      `INSERT INTO reviews (id, room_id, user_id, rating, comment, created_at)
-       VALUES ($1, $2, $3, $4, $5, $6)
-       RETURNING id`,
-      [id, roomId, userId, rating, comment, createdAt]
-    );
-
-    if (!result.rows.length) {
-      throw new InvariantError("Gagal menambahkan review");
-    }
-
-    return result.rows[0].id;
+async addReview({ roomId, userId, rating, comment }) {
+  if (rating < 1 || rating > 5) {
+    throw new InvariantError("Rating harus antara 1 sampai 5");
   }
+  if (!comment || comment.trim().length === 0) {
+    throw new InvariantError("Komentar tidak boleh kosong");
+  }
+
+  // Cek apakah user sudah pernah kasih review untuk room ini
+  const check = await this._pool.query(
+    `SELECT id FROM reviews WHERE room_id = $1 AND user_id = $2`,
+    [roomId, userId]
+  );
+  if (check.rowCount > 0) {
+    throw new InvariantError("Anda sudah memberikan review untuk kamar ini");
+  }
+
+  // Ambil booking completed terakhir user untuk room ini
+  const booking = await this._bookingsService.getCompletedBookingForUserRoom(userId, roomId);
+  if (!booking) {
+    throw new InvariantError("Anda belum melakukan booking untuk kamar ini");
+  }
+  const bookingId = booking.id;
+
+  const id = `review-${nanoid(16)}`;
+  const createdAt = new Date().toISOString();
+
+  const result = await this._pool.query(
+    `INSERT INTO reviews (id, room_id, user_id, booking_id, rating, comment, created_at)
+     VALUES ($1, $2, $3, $4, $5, $6, $7)
+     RETURNING id`,
+    [id, roomId, userId, bookingId, rating, comment, createdAt]
+  );
+
+  if (!result.rows.length) {
+    throw new InvariantError("Gagal menambahkan review");
+  }
+
+  return result.rows[0].id;
+}
 
   // Ambil semua review berdasarkan roomId
   async getReviewsByRoomId(roomId) {
@@ -118,4 +128,17 @@ export class ReviewsService {
 
     await this._pool.query(`DELETE FROM reviews WHERE id = $1`, [id]);
   }
+
+  // Cek apakah user sudah pernah memberi review untuk room tertentu
+async checkExistingReview({ userId, roomId }) {
+  const result = await this._pool.query(
+    `SELECT id 
+     FROM reviews 
+     WHERE user_id = $1 AND room_id = $2`,
+    [userId, roomId]
+  );
+
+  return result.rows.length > 0 ? result.rows[0] : null;
+}
+
 }

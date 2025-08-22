@@ -22,7 +22,7 @@ export class BookingsService {
       await client.query("BEGIN");
 
       // 1. Lock & cek stok
-      const { totalPrice } = await this._roomAvailabilityService.lockAndCheck({
+      const { totalPrice, totalNights, pricePerNight } = await this._roomAvailabilityService.lockAndCheck({
         roomId,
         checkInDate,
         checkOutDate,
@@ -30,7 +30,6 @@ export class BookingsService {
         client,
       });
 
-      // 2. Ambil data user & room untuk itemDetails & customerDetails
       const user = await this._usersService.getUserbyId({ userId });
       const room = await this._roomsService.getRoomById({ roomId });
 
@@ -38,6 +37,13 @@ export class BookingsService {
         firstName: user.fullname,
         email: user.email,
         phone: user.contactNumber,
+      };
+
+      const itemDetails = {
+        id: roomId,
+        price: pricePerNight,
+        quantity: totalNights,
+        name: room.roomType
       };
 
       // 3. Insert booking pending lengkap dengan JSON
@@ -48,8 +54,8 @@ export class BookingsService {
         text: `INSERT INTO bookings (
           id, user_id, room_id, guest_name, total_guests, special_request,
           check_in_date, check_out_date, total_price, status,
-          created_at, updated_at, customer_details
-        ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING id`,
+          created_at, updated_at, customer_details, item_details
+        ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) RETURNING id`,
         values: [
           bookingId,
           userId,
@@ -64,6 +70,7 @@ export class BookingsService {
           now,
           now,
           customerDetails,
+          itemDetails
         ]
       }
       
@@ -599,6 +606,31 @@ export class BookingsService {
       throw error;
     } finally {
       client.release();
+    }
+  }
+
+  async getCompletedBookingForUserRoom(userId, roomId) {
+    try {
+      const query = {
+        text: `
+          SELECT id
+          FROM bookings
+          WHERE user_id = $1
+            AND room_id = $2
+            AND status = 'check-out'
+          ORDER BY updated_at DESC
+          LIMIT 1
+        `,
+        values: [userId, roomId],
+      };
+
+      const result = await this._pool.query(query);
+
+      // Kembalikan booking pertama yang ditemukan atau null
+      return result.rows[0] || null;
+    } catch (error) {
+      console.error("Database Error (getCompletedBookingForUserRoom):", error);
+      throw error;
     }
   }
 }

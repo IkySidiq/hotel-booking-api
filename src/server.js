@@ -3,7 +3,11 @@ dotenv.config();
 import Hapi from '@hapi/hapi';
 import Jwt from '@hapi/jwt';
 import Inert from '@hapi/inert';
+import path from 'path';
 import { ClientError } from "./exceptions/ClientError.js";
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 //Users
 import { UsersService } from './services/postgre/UsersService.js';
@@ -43,6 +47,14 @@ import { ReviewsService } from './services/postgre/ReviewsService.js';
 import { ReviewsValidator } from './validators/reviews/index.js';
 import { reviews } from './api/reviews/index.js';
 
+// Hotel-profile
+import { HotelProfileService } from './services/postgre/HotelProfileService.js';
+import { HotelProfileValidator } from './validators/hotel-profile/index.js';
+import { hotelProfile } from './api/hotel-profile/index.js';
+
+// Storage
+import { StorageService } from './services/storageService/StorageService.js';
+
 // TrransactionsService
 import { TransactionsService } from './services/postgre/TransactionsService.js';
 
@@ -58,7 +70,9 @@ const init = async() => {
   const midtransService = new MidtransService();
   const transactionsService = new TransactionsService();
   const bookingsService = new BookingsService(roomAvailabilityService, usersService, roomsService, midtransService, transactionsService);
-  const reviewsService = new ReviewsService();
+  const reviewsService = new ReviewsService(bookingsService);
+  const hotelProfileService = new HotelProfileService();
+  const storageService = new StorageService(path.resolve(__dirname, 'api/room-pictures/pictures'));
 
   const server = Hapi.server({
     port: process.env.PORT,
@@ -118,7 +132,8 @@ const init = async() => {
       options: {
         service: roomPicturesService,
         validator: RoomPicturesValidator,
-        usersService
+        usersService,
+        storageService
       }
     },
     {
@@ -143,6 +158,14 @@ const init = async() => {
       options: {
         service: reviewsService,
         validator: ReviewsValidator,
+        bookingsService
+      }
+    },
+    {
+      plugin: hotelProfile,
+      options: {
+        service: hotelProfileService,
+        validator: HotelProfileValidator,
         usersService
       }
     },

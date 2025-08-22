@@ -8,6 +8,8 @@ export const routes = (handler) => [
       payload: {
         allow: 'multipart/form-data',
         multipart: true,
+        output: 'stream',
+        parse: true,
         maxBytes: 10485760, // contoh 10MB max
       },
     },
