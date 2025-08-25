@@ -1,11 +1,12 @@
 export const up = (pgm) => {
   pgm.createTable('authentications', {
     id: {
-      type: 'VARCHAR(50)',
+      type: 'varchar(50)',
       primaryKey: true,
+      notNull: true,
     },
     refresh_token: {
-      type: 'TEXT',
+      type: 'text',
       notNull: true,
     },
   });

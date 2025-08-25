@@ -1,9 +1,8 @@
-import { Pool } from 'pg';
 import { NotFoundError } from '../exceptions/InvariantError.js';
 
 export class PaymentLogsService {
-  constructor() {
-    this._pool = new Pool();
+  constructor(pool) {
+    this._pool = pool;
   }
 
   async logPaymentEvent({ transactionId, eventType, payload }) {

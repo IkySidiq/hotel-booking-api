@@ -1,12 +1,11 @@
-import pg from "pg";
 import { nanoid } from "nanoid";
 import { InvariantError } from "../../exceptions/InvariantError.js";
 
-const { Pool } = pg;
+
 
 export class AuthenticationsService{
-  constructor() {
-    this._pool = new Pool();
+  constructor(pool) {
+    this._pool = pool;
   }
 
   async addRefreshToken({ refreshToken }) {

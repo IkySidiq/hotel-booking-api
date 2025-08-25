@@ -10,10 +10,15 @@ export const AddBookingPayloadSchema = Joi.object({
 });
 
 export const GetBookingsPayloadSchema = Joi.object({
-  status: Joi.string().valid("pending", "confirmed", "cancelled", "checked_in", "checked_out").optional(),
-  startDate: Joi.date().iso().optional(),
-  endDate: Joi.date().iso().optional(),
-  page: Joi.number().integer().min(1).default(1),
+  guestName: Joi.string().optional(),   // search by nama tamu
+  checkInDate: Joi.date().iso().optional(),  // filter tunggal check-in
+  checkInDateEnd: Joi.date().iso().optional(),
+  checkOutDateEnd: Joi.date().iso().optional(),
+  checkOutDate: Joi.date().iso().optional(), // filter tunggal check-out
+  specialRequest: Joi.string().optional(),   // kalau mau filter by request khusus
+  totalGuests: Joi.number().integer().min(1).optional(), // filter jumlah tamu
+  status: Joi.string().optional(),
+  page: Joi.number().integer().min(1).default(1),        // pagination
   limit: Joi.number().integer().min(1).max(100).default(50),
 });
 

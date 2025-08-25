@@ -1,9 +1,8 @@
-import { Pool } from "pg"
 import { NotFoundError } from "../../exceptions/InvariantError";
 
 export class NotificationsService{
-  constructor() {
-    this._pool = new Pool();
+  constructor(pool) {
+    this._pool = pool;
   }
 
   async getNotifications({ userId }) {

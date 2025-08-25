@@ -1,31 +1,29 @@
 import dayjs from "dayjs";
-import pg from "pg";
-const { Pool } = pg;
 import { nanoid } from "nanoid";
 
 export class TransactionsService {
-  constructor() {
-    this._pool = new Pool();
+  constructor(pool) {
+    this._pool = pool;
   }
 
   async createTransactionRecord({ bookingId, amount }) {
     const id = `trx-${nanoid(16)}`;
-    const transactionCode = `TRX-${dayjs().format("YYYYMMDD-HHmmss")}-${Math.floor(Math.random() * 1000)}`;
+    const transactionId = `TRX-${dayjs().format("YYYYMMDD-HHmmss")}-${Math.floor(Math.random() * 1000)}`;
     const createdAt = dayjs().toISOString();
 
 
     const query = {
       text: `
         INSERT INTO transactions_records
-        (id, booking_id, transaction_code, amount, payment_status, created_at, updated_at)
+        (id, booking_id, transaction_id, amount, payment_status, created_at, updated_at)
         VALUES ($1, $2, $3, $4, $5, $6, $7)
         RETURNING id`,
       values: [
         id,
         bookingId,
-        transactionCode,
+        transactionId,
         amount,
-        'settlement', //! PR HARUSNYA INI DI AMBIL DARI HASIL TRANSAKSI MIDTRANS
+        'pending_payment', //! PR HARUSNYA INI DI AMBIL DARI HASIL TRANSAKSI MIDTRANS
         createdAt,
         createdAt
       ]

@@ -16,7 +16,7 @@ export const routes = (handler) => [
   },
   {
     method: 'GET',
-    path: '/rooms/{id}/pictures',
+    path: '/rooms/{roomId}/pictures',
     handler: handler.getRoomPicturesHandler,
     options: {
       auth: 'booking_hotel_jwt',
@@ -24,11 +24,19 @@ export const routes = (handler) => [
   },
   {
     method: 'DELETE',
-    path: '/rooms/pictures/{pictureId}',
+    path: '/rooms/{roomId}/pictures/{pictureId}',
     handler: handler.deleteRoomPictureHandler,
     options: {
       auth: 'booking_hotel_jwt',
     },
+  },
+  {
+      method: "DELETE",
+      path: "/rooms/{roomId}/pictures",
+      handler: handler.deleteAllPicturesHandler,
+      options: {
+        auth: "booking_hotel_jwt", // kalau memang pakai autentikasi
+      },
   },
   {
     method: 'PATCH',

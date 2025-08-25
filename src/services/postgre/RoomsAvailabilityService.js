@@ -1,26 +1,23 @@
-import pg from "pg";
 import dayjs from "dayjs";
 import { NotFoundError } from "../../exceptions/NotFoundError.js";
 import { InvariantError } from "../../exceptions/InvariantError.js";
 import { nanoid } from "nanoid";
 
-const { Pool } = pg;
-
 export class RoomsAvailabilityService {
-  constructor() {
-    this._pool = new Pool();
+  constructor(pool) {
+    this._pool = pool;
   }
 
-  async lockAndCheck({ roomId, checkInDate, checkOutDate, numberOfRooms, client }) {
-    const roomResult = await client.query(
-      'SELECT price_per_night as "pricePerNight" FROM rooms WHERE id = $1',
-      [roomId]
-    );
-    if (!roomResult.rows.length) throw new NotFoundError("Room not found");
-    const pricePerNight = Number(roomResult.rows[0].pricePerNight);
+async lockAndCheck({ roomId, checkInDate, checkOutDate, numberOfRooms, client }) {
+  const roomResult = await client.query(
+    'SELECT price_per_night as "pricePerNight" FROM rooms WHERE id = $1',
+    [roomId]
+  );
+  if (!roomResult.rows.length) throw new NotFoundError("Room not found");
+  const pricePerNight = Number(roomResult.rows[0].pricePerNight);
 
-    const query = {
-      text: `
+  const query = {
+    text: `
       SELECT date, available_rooms as "availableRoom"
       FROM room_availability
       WHERE room_id = $1 AND date BETWEEN $2 AND $3
@@ -28,22 +25,37 @@ export class RoomsAvailabilityService {
       FOR UPDATE
     `,
     values: [roomId, checkInDate, checkOutDate]
-    }
-    const result = await client.query(query);
+  };
+  const result = await client.query(query);
 
-    if (!result.rows.length) throw new NotFoundError("Room yang anda pilih tidak ada");
+  if (!result.rows.length) throw new NotFoundError("Room yang anda pilih tidak ada");
 
-    const days = this._getDatesBetween(checkInDate, checkOutDate);
-    if (result.rows.length < days.length || !result.rows.every(r => r.availableRoom >= numberOfRooms)) {
-      throw new InvariantError("Kamar tidak tersedia");
-    }
+  const days = this._getDatesBetween(checkInDate, checkOutDate);
+  console.log("Result rows length:", result.rows.length);
+  console.log("Days length:", days.length);
 
-    const totalNights = dayjs(checkOutDate).diff(dayjs(checkInDate), 'day');
-    const totalPrice = pricePerNight * totalNights * numberOfRooms;
-  
+  // Debug tiap row
+  console.log("numberOfRooms yang diminta:", numberOfRooms);
+  result.rows.forEach((r, i) => {
+    console.log(
+      `Row ke-${i + 1}: date=${r.date}, availableRoom=${r.availableRoom}, cukup?`,
+      r.availableRoom >= numberOfRooms
+    );
+  });
 
-    return { totalPrice, totalNights, pricePerNight };
+  const isEnough = result.rows.every(r => r.availableRoom >= numberOfRooms);
+  console.log("Hasil every():", isEnough);
+
+  if (result.rows.length < days.length || !isEnough) {
+    throw new InvariantError("Kamar tidak tersedia");
   }
+
+  const totalNights = dayjs(checkOutDate).diff(dayjs(checkInDate), 'day');
+  const totalPrice = pricePerNight * totalNights * numberOfRooms;
+
+  return { totalPrice, totalNights, pricePerNight };
+}
+
 
   async reduceAvailability({ roomId, userId, checkInDate, checkOutDate, numberOfRooms, client }) {
     const now = dayjs().toISOString();

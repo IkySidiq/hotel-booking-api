@@ -76,7 +76,8 @@ export class RoomPicturesHandler {
       await this._userService.verifyUser({ userId });
 
       const { roomId } = request.params;
-      const pictures = await this._roomPicturesService.getPictures({ roomId });
+      console.log('HEBAT', roomId)
+      const pictures = await this._service.getPictures({ roomId });
 
       return {
         status: "success",
@@ -93,16 +94,15 @@ export class RoomPicturesHandler {
       const { id: userId } = request.auth.credentials;
       await this._userService.verifyUser({ userId });
 
-      const { pictureId } = request.params;
+      const { roomId, pictureId } = request.params;
 
-      // Ambil info path file dari DB (untuk dihapus dari storage)
-      const pictures = await this._roomPicturesService.getPictures({ roomId }); // nanti ganti sesuai struktur
+      const pictures = await this._service.getPictures({ roomId });
       const picture = pictures.find(p => p.id === pictureId);
 
-      if (!picture) throw new Error("Foto tidak ditemukan");
+      if (!picture) throw new NotFoundError("Foto tidak ditemukan");
 
       await this._storageService.deleteFile(picture.path);
-      const result = await this._roomPicturesService.deletePicture({ pictureId });
+      const result = await this._service.deletePicture({ pictureId });
 
       return {
         status: "success",
@@ -110,6 +110,29 @@ export class RoomPicturesHandler {
       };
     } catch (error) {
       throw error;
+    }
+  }
+
+  async deleteAllPicturesHandler(request, h) {
+    try {
+      const { roomId } = request.params;
+
+      const { deletedPictureIds } = await this._service.deleteAllPictures({ roomId });
+
+      return h.response({
+        status: "success",
+        message: "Semua foto berhasil dihapus",
+        data: {
+          deletedPictureIds,
+        },
+      }).code(200);
+
+    } catch (error) {
+      console.error(error);
+      return h.response({
+        status: "fail",
+        message: error.message,
+      }).code(error.statusCode || 500);
     }
   }
 

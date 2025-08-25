@@ -1,5 +1,3 @@
-import dotenv from 'dotenv';
-dotenv.config();
 import Hapi from '@hapi/hapi';
 import Jwt from '@hapi/jwt';
 import Inert from '@hapi/inert';
@@ -8,6 +6,15 @@ import { ClientError } from "./exceptions/ClientError.js";
 import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+import dotenv from 'dotenv';
+dotenv.config();
+import { Pool, types } from 'pg';
+types.setTypeParser(1082, (val) => val);
+
+export const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+});
 
 //Users
 import { UsersService } from './services/postgre/UsersService.js';
@@ -62,16 +69,16 @@ import { TransactionsService } from './services/postgre/TransactionsService.js';
 import { MidtransService } from './services/postgre/MidtransService.js';
 
 const init = async() => {
-  const usersService = new UsersService();
-  const authenticationsService = new AuthenticationsService();
-  const roomsService = new RoomsService();
-  const roomPicturesService = new RoomPicturesService();
-  const roomAvailabilityService = new RoomsAvailabilityService();
-  const midtransService = new MidtransService();
-  const transactionsService = new TransactionsService();
-  const bookingsService = new BookingsService(roomAvailabilityService, usersService, roomsService, midtransService, transactionsService);
-  const reviewsService = new ReviewsService(bookingsService);
-  const hotelProfileService = new HotelProfileService();
+  const usersService = new UsersService(pool);
+  const authenticationsService = new AuthenticationsService(pool);
+  const roomsService = new RoomsService(pool);
+  const roomPicturesService = new RoomPicturesService(pool);
+  const roomAvailabilityService = new RoomsAvailabilityService(pool);
+  const midtransService = new MidtransService(pool);
+  const transactionsService = new TransactionsService(pool);
+  const bookingsService = new BookingsService(pool, roomAvailabilityService, usersService, roomsService, midtransService, transactionsService);
+  const reviewsService = new ReviewsService(pool, bookingsService);
+  const hotelProfileService = new HotelProfileService(pool);
   const storageService = new StorageService(path.resolve(__dirname, 'api/room-pictures/pictures'));
 
   const server = Hapi.server({

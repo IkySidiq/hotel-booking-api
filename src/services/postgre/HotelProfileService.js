@@ -1,13 +1,10 @@
-import pg from "pg";
 import { nanoid } from "nanoid";
 import { InvariantError } from "../../exceptions/InvariantError.js";
 import { NotFoundError } from "../../exceptions/NotFoundError.js";
 
-const { Pool } = pg;
-
 export class HotelProfileService {
-  constructor() {
-    this._pool = new Pool();
+  constructor(pool) {
+    this._pool = pool;
   }
 
   // =====================

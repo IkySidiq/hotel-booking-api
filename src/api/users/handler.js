@@ -1,4 +1,6 @@
 import autoBind from "auto-bind";
+import validator from "validator";
+import owasp from "owasp-password-strength-test";
 
 export class UsersHandler{
   constructor(service, validator) {
@@ -11,6 +13,32 @@ export class UsersHandler{
   async postUserHandler(request, h) {
     try {
       const { fullname, email, contactNumber, password } = request.payload;
+
+      //* Validasi email pakai validator
+      if (!validator.isEmail(email)) {
+        return h.response({
+          status: "fail",
+          message: "Email tidak valid"
+        }).code(400);
+      }
+
+      //* Validasi contact number pakai validator
+      if (!validator.isMobilePhone(phone, 'any')) {
+        return h.response({ 
+          status: "fail", 
+          message: "Nomor HP tidak valid" 
+        }).code(400);
+      }
+
+      //* Validasi password pakai OWASP
+      const passwordResult = owasp.test(password);
+      if (!passwordResult.strong) {
+        return h.response({
+          status: "fail",
+          message: "Password lemah: " + passwordResult.errors.join(", ")
+        }).code(400);
+      }
+
       this._validator.validateUserPayload({ fullname, email, contactNumber, password });
 
       const { id, logId } = await this._service.addUserService({ fullname, email, contactNumber, password });
@@ -48,7 +76,7 @@ export class UsersHandler{
 
       await this._service.verifyUser({ userId });
 
-      const { data } = await this._service.getUserbyId({ targetId });
+      const data = await this._service.getUserbyId({ targetId });
 
       return {
         status: 'success',

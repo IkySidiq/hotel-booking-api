@@ -1,15 +1,12 @@
-import pg from "pg";
 import dayjs from "dayjs";
 import { nanoid } from "nanoid";
 import { InvariantError } from "../../exceptions/InvariantError.js";
 import { NotFoundError } from "../../exceptions/NotFoundError.js";
 import { mapDBToModel } from "../../utils/index.js";
 
-const { Pool } = pg;
-
 export class RoomsService {
-  constructor() {
-    this._pool = new Pool();
+  constructor(pool) {
+    this._pool = pool;
   }
 
   async addRoom({ userId, roomType, pricePerNightNum, capacityNum, totalRoomsNum, description }) {
@@ -166,6 +163,10 @@ export class RoomsService {
 
       const resultPic = await this._pool.query(queryPic);
       const resultPicMap = resultPic.rows.map(mapDBToModel.roomPicturesTable);
+
+      if (!resultPicMap.length) {
+        throw new InvariantError('Foto tidak ditemukan')
+      } 
 
       room.pictures = resultPicMap;
 

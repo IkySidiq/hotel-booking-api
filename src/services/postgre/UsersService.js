@@ -1,4 +1,3 @@
-import pg from "pg";
 import bcrypt from "bcrypt";
 import { nanoid } from "nanoid";
 import { InvariantError } from "../../exceptions/InvariantError.js";
@@ -6,11 +5,9 @@ import { AuthenticationError } from "../../exceptions/AuthenticationError.js";
 import { AuthorizationError } from "../../exceptions/AuthorizationError.js";
 import { NotFoundError } from "../../exceptions/NotFoundError.js";
 
-const { Pool } = pg;
-
 export class UsersService {
-  constructor() {
-    this._pool = new Pool();
+  constructor(pool) {
+    this._pool = pool;
   }
 
   async addUserService({ fullname, email, contactNumber, password }) {
@@ -124,12 +121,13 @@ export class UsersService {
     }
   }
 
-  async getUserbyId({ userId }) {
+  async getUserbyId({ targetId }) {
+    console.log(targetId, 'WELL')
     try {
       const query = {
         text: `SELECT id, fullname, email, contact_number as "contactNumber", role, last_login, created_at, updated_at
               FROM users WHERE id = $1`,
-        values: [userId],
+        values: [targetId],
       };
 
       const result = await this._pool.query(query);

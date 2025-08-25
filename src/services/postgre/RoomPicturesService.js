@@ -1,13 +1,10 @@
-import pg from "pg";
 import { nanoid } from "nanoid";
 import { InvariantError } from "../../exceptions/InvariantError.js";
 import { NotFoundError } from "../../exceptions/NotFoundError.js";
 
-const { Pool } = pg;
-
 export class RoomPicturesService {
-  constructor() {
-    this._pool = new Pool();
+  constructor(pool) {
+    this._pool = pool;
   }
 
   // 1. Tambah foto kamar
@@ -58,6 +55,7 @@ export class RoomPicturesService {
 
   // 2. Ambil semua foto kamar
   async getPictures({ roomId }) {
+    console.log(roomId, "WOY")
     try {
       const result = await this._pool.query(
         `SELECT id, path, is_primary, created_at, updated_at
@@ -81,6 +79,20 @@ export class RoomPicturesService {
     );
     if (!result.rows.length) throw new NotFoundError("Foto tidak ditemukan atau gagal dihapus");
     return { pictureId: result.rows[0].id };
+  }
+
+  async deleteAllPictures({ roomId }) {
+    const result = await this._pool.query(
+      `DELETE FROM room_pictures WHERE room_id = $1 RETURNING id`,
+      [roomId]
+    );
+
+    if (!result.rows.length) {
+      throw new NotFoundError("Tidak ada foto ditemukan untuk kamar ini");
+    }
+
+    // bisa balikin list id yang terhapus biar jelas
+    return { deletedPictureIds: result.rows.map((row) => row.id) };
   }
 
   // 4. Set primary picture

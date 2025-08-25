@@ -11,7 +11,7 @@ export class MidtransService {
 
   const payload = {
     transaction_details: { order_id: orderId, gross_amount: grossAmount },
-    customer_details: customerDetails
+    customer_details: customerDetails,
   };
 
     try {
@@ -30,6 +30,7 @@ export class MidtransService {
       }
 
       const data = await response.json(); //* Pada dokumentasi midrans, ini isinya ada {token, redirectUrl}
+      console.log(data.redirect_url);
       return data.token
  
     } catch (error) {
