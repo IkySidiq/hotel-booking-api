@@ -415,7 +415,6 @@ export class BookingsService {
   }
 
   //* Otomatis pakai node-cron
-  //! Belum pakai postman
   async markNoShowBookings() {
     const client = await this._pool.connect();
     try {

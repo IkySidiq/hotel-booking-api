@@ -2,7 +2,6 @@ import Hapi from '@hapi/hapi';
 import Jwt from '@hapi/jwt';
 import Inert from '@hapi/inert';
 import path from 'path';
-import cron from 'node-cron';
 import { ClientError } from './exceptions/ClientError.js';
 import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
@@ -60,9 +59,6 @@ import { HotelProfileService } from './services/postgre/HotelProfileService.js';
 import { HotelProfileValidator } from './validators/hotel-profile/index.js';
 import { hotelProfile } from './api/hotel-profile/index.js';
 
-// Cache
-import { CacheService } from './services/postgre/CacheService.js';
-
 // Storage
 import { StorageService } from './services/storageService/StorageService.js';
 
@@ -73,7 +69,6 @@ import { TransactionsService } from './services/postgre/TransactionsService.js';
 import { MidtransService } from './services/postgre/MidtransService.js';
 
 const init = async() => {
-  const cacheService = new CacheService();
   const usersService = new UsersService(pool);
   const authenticationsService = new AuthenticationsService(pool);
   const roomsService = new RoomsService(pool);
@@ -208,24 +203,6 @@ const init = async() => {
     }
 
     return h.continue;
-  });
-
-  cron.schedule('0 * * * *', async () => {
-    try {
-      const result = await bookingsService.markNoShowBookings();
-      console.log(`[${new Date().toISOString()}] ✅ Marked no-show for ${result.updated} bookings`);
-    } catch (error) {
-      console.error(`[${new Date().toISOString()}] ❌ Failed to mark no-show bookings:`, error);
-    }
-  });
-
-  cron.schedule('0 0 1 1,4,7,10 *', async () => {
-    try {
-      await roomAvailabilityService.generateAvailability({ monthsAhead: 3 });
-      console.log(`[${new Date().toISOString()}] ✅ Room availability generated for next 6 months`);
-    } catch (error) {
-      console.error(`[${new Date().toISOString()}] ❌ Failed to generate room availability:`, error);
-    }
   });
 
   await server.start();

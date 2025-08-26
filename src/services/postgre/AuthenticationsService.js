@@ -1,6 +1,8 @@
 import { nanoid } from 'nanoid';
 import { InvariantError } from '../../exceptions/InvariantError.js';
 
+
+
 export class AuthenticationsService{
   constructor(pool) {
     this._pool = pool;
