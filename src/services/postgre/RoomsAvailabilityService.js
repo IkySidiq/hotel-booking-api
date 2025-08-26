@@ -119,7 +119,7 @@ async lockAndCheck({ roomId, checkInDate, checkOutDate, numberOfRooms, client })
   }
 
   //* Untuk men-generate data di table room_availability menggunakan node-cron
-  async generateAvailability({ monthsAhead = 6 }) {
+  async generateAvailability({ monthsAhead = 3 }) {
     const query = {
       text: 'SELECT id, total_rooms FROM rooms',
       values: []
