@@ -30,7 +30,6 @@ export class HotelProfileService {
     const client = await this._pool.connect();
     try {
       await client.query('BEGIN');
-      console.log(name, address, city, description, contactNumber, email, rating);
       // Cek apakah sudah ada profile
       const checkResult = await client.query('SELECT COUNT(*) FROM hotel_profile');
       const exists = parseInt(checkResult.rows[0].count, 10) > 0;

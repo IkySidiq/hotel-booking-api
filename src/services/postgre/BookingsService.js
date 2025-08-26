@@ -250,7 +250,6 @@ export class BookingsService {
 
       const result = await this._pool.query(query);
       const bookings = result.rows.map(mapDBToModel.bookingTable);
-      console.log(bookings);
 
       const countQuery = {
         text: `
@@ -303,8 +302,6 @@ export class BookingsService {
       [paymentStatus, dayjs().toISOString(), orderId]
     );
 
-    console.log(result.rows.length);
-
     if(!result.rows.length) {
       throw new InvariantError('Transactions Records Gagal Update');
     }
@@ -337,7 +334,6 @@ export class BookingsService {
   }
 
   async getBookingById({ targetId }) {
-    try {
       const query = {
         text: `
           SELECT id, user_id, room_id, guest_name, total_guests, special_request, check_in_date, check_out_date,
@@ -354,10 +350,6 @@ export class BookingsService {
         throw new NotFoundError('Detail booking tidak ditemukan');
       }
       return resultMap[0];
-    } catch (error) {
-      console.log('Database Error (getBookingById):', error);
-      throw error;
-    }
   }
 
   async cancelBookingService({ bookingId, userId }) {
@@ -493,7 +485,6 @@ export class BookingsService {
       }
 
       const booking = result.rows[0].status;
-      console.log('booking', booking);
 
       // 2. Cek aturan bisnis
       switch (booking) {
@@ -511,9 +502,6 @@ export class BookingsService {
         default:
           throw new InvariantError('Booking belum dikonfirmasi, tidak bisa check-in');
       }
-
-      console.log('MEMEK', booking);
-
 
       // 3. Update check_in_status menjadi checked in
       const updatedAt = new Date().toISOString();
@@ -545,7 +533,6 @@ export class BookingsService {
 
   async checkOutBookingService({ bookingId, userId }) {
     const client = await this._pool.connect();
-    console.log('BOOKING', bookingId);
 
     try {
       await client.query('BEGIN');

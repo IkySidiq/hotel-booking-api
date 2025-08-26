@@ -9,7 +9,6 @@ export class RoomPicturesService {
 
   // 1. Tambah foto kamar
   async addPicture({ roomId, path, isPrimary = false }) {
-    console.log('ROOMID', roomId);
     const client = await this._pool.connect();
     try {
       await client.query('BEGIN');
@@ -55,7 +54,6 @@ export class RoomPicturesService {
 
   // 2. Ambil semua foto kamar
   async getPictures({ roomId }) {
-    console.log(roomId, 'WOY');
     try {
       const result = await this._pool.query(
         `SELECT id, path, is_primary, created_at, updated_at

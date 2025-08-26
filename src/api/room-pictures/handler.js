@@ -23,9 +23,6 @@ export class RoomPicturesHandler {
 
       // ambil roomId, primaryFileName, dan array files dari payload
       const { id: roomId } = request.params;
-              console.log('PERCOBAAN', roomId);
-
-
       const { fotoSatu, fotoDua, fotoTiga } = request.payload;
       const filesArray = [fotoSatu, fotoDua, fotoTiga].filter(Boolean);
 
@@ -76,7 +73,6 @@ export class RoomPicturesHandler {
       await this._userService.verifyUser({ userId });
 
       const { roomId } = request.params;
-      console.log('HEBAT', roomId);
       const pictures = await this._service.getPictures({ roomId });
 
       return {

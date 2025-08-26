@@ -33,7 +33,6 @@ export class RoomsHandler {
       const { roomType, minPrice, maxPrice, capacity } = request.query;
 
       const { id: userId } = request.auth.credentials;
-      console.log(userId);
       await this._userService.verifyUser({ userId });
 
       const { data, page, limit, totalItems, totalPages, } = await this._service.getRooms({ roomType, minPrice, maxPrice, capacity });

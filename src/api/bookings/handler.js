@@ -77,7 +77,6 @@ export class BookingsHandler {
 
       const { id: userId } = request.auth.credentials;
       await this._usersService.verifyUser({ userId });
-      console.log(checkOutDate);
       const { bookings, page, limit, totalItems, totalPages } = await this._service.getBookingsService({ guestName, status, checkInDate, checkOutDate, checkInDateEnd, checkOutDateEnd, specialRequest, totalGuests });
 
       return {

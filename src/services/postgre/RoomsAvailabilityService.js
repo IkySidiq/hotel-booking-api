@@ -31,11 +31,8 @@ async lockAndCheck({ roomId, checkInDate, checkOutDate, numberOfRooms, client })
   if (!result.rows.length) throw new NotFoundError('Room yang anda pilih tidak ada');
 
   const days = this._getDatesBetween(checkInDate, checkOutDate);
-  console.log('Result rows length:', result.rows.length);
-  console.log('Days length:', days.length);
 
   // Debug tiap row
-  console.log('numberOfRooms yang diminta:', numberOfRooms);
   result.rows.forEach((r, i) => {
     console.log(
       `Row ke-${i + 1}: date=${r.date}, availableRoom=${r.availableRoom}, cukup?`,
@@ -44,7 +41,6 @@ async lockAndCheck({ roomId, checkInDate, checkOutDate, numberOfRooms, client })
   });
 
   const isEnough = result.rows.every(r => r.availableRoom >= numberOfRooms);
-  console.log('Hasil every():', isEnough);
 
   if (result.rows.length < days.length || !isEnough) {
     throw new InvariantError('Kamar tidak tersedia');

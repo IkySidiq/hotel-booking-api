@@ -117,7 +117,6 @@ export class UsersService {
   }
 
   async getUserbyId({ targetId }) {
-    console.log(targetId, 'WELL');
     try {
       const query = {
         text: `SELECT id, fullname, email, contact_number as "contactNumber", role, last_login, created_at, updated_at
