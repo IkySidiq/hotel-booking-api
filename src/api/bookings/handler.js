@@ -1,4 +1,5 @@
 import autoBind from 'auto-bind';
+import fs from 'fs';
 
 export class BookingsHandler {
   constructor(service, validator, userService, roomsService, midtransService, transactionRecordsService) {
@@ -164,5 +165,33 @@ export class BookingsHandler {
         status: 'success',
         data: result,
       };
+  }
+
+  async getBookingInvoiceHandler(request, h) {
+    try {
+      const { bookingId } = request.params;
+      const { id: userId } = request.auth.credentials
+
+      // Memanggil service untuk generate PDF
+      const filePath = await this._service.generateInvoice({ bookingId, userId });
+
+      // Cek apakah file berhasil dibuat
+      if (!fs.existsSync(filePath)) {
+        return h.response({
+          status: 'fail',
+          message: 'Invoice gagal dibuat'
+        }).code(500);
+      }
+
+      // Kirim file PDF sebagai download
+      return h.file(filePath, { filename: `${bookingId}.pdf` });
+
+    } catch (err) {
+      console.error(err);
+      return h.response({
+        status: 'error',
+        message: err.message
+      }).code(500);
+    }
   }
 }

@@ -1,7 +1,7 @@
 import autoBind from 'auto-bind';
 import path from 'path';
 import { nanoid } from 'nanoid';
-import { NotFoundError } from '../../exceptions/NotFoundError';
+import { NotFoundError } from '../../exceptions/NotFoundError.js';
 
 export class RoomPicturesHandler {
   constructor(service, validator, userService, storageService) {

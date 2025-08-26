@@ -59,6 +59,9 @@ import { HotelProfileService } from './services/postgre/HotelProfileService.js';
 import { HotelProfileValidator } from './validators/hotel-profile/index.js';
 import { hotelProfile } from './api/hotel-profile/index.js';
 
+// Redis
+import { CacheService } from './services/postgre/CacheService.js';
+
 // Storage
 import { StorageService } from './services/storageService/StorageService.js';
 
@@ -69,9 +72,10 @@ import { TransactionsService } from './services/postgre/TransactionsService.js';
 import { MidtransService } from './services/postgre/MidtransService.js';
 
 const init = async() => {
+  const cacheService = new CacheService();
   const usersService = new UsersService(pool);
   const authenticationsService = new AuthenticationsService(pool);
-  const roomsService = new RoomsService(pool);
+  const roomsService = new RoomsService(pool, cacheService);
   const roomPicturesService = new RoomPicturesService(pool);
   const roomAvailabilityService = new RoomsAvailabilityService(pool);
   const midtransService = new MidtransService(pool);

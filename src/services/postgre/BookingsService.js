@@ -1,8 +1,11 @@
 import dayjs from 'dayjs';
+import path from 'path';
+import fs from 'fs';
 import { nanoid } from 'nanoid';
 import { InvariantError } from '../../exceptions/InvariantError.js';
 import { NotFoundError } from '../../exceptions/NotFoundError.js';
 import { mapDBToModel } from '../../utils/index.js';
+import { generateBookingInvoice } from '../../utils/invoiceGenerator.js';
 
 export class BookingsService {
   constructor(pool, roomAvailabilityService, usersService, roomsService, midtransService, transactionsRecordService) {
@@ -631,4 +634,50 @@ export class BookingsService {
       throw error;
     }
   }
+
+async generateInvoice({ bookingId, userId }) {
+  console.log('LOGGER', userId)
+  console.log('LOGGER', bookingId)
+  const query = {
+    text: `
+      SELECT *
+      FROM bookings
+      WHERE id = $1 AND user_id = $2 AND status IN ('confirmed', 'checked-in', 'checked-out')
+    `,
+    values: [bookingId, userId],
+  };
+
+  const result = await this._pool.query(query);
+  console.log('RESULT', result.rows)
+
+  if (!result.rows.length) {
+    throw new NotFoundError('Booking tidak ditemukan atau belum dibayar');
+  }
+
+  const booking = mapDBToModel.bookingTable(result.rows[0]);
+
+  const invoicesDir = path.resolve('./invoices');
+  if (!fs.existsSync(invoicesDir)) {
+    fs.mkdirSync(invoicesDir, { recursive: true });
+  }
+
+  const filePath = path.resolve(`./invoices/${bookingId}.pdf`);
+
+  await generateBookingInvoice({
+    bookingId: booking.id,
+    guestName: booking.guestName,
+    email: booking.customerDetails.email,
+    phone: booking.customerDetails.phone,
+    roomType: booking.itemDetails.name,
+    checkInDate: booking.checkInDate,
+    checkOutDate: booking.checkOutDate,
+    totalGuests: booking.totalGuests,
+    numberOfRooms: 1,
+    pricePerNight: booking.itemDetails.price,
+    totalNights: booking.itemDetails.quantity,
+    totalPrice: booking.totalPrice
+  }, filePath);
+
+  return filePath;
+}
 }

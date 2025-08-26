@@ -29,7 +29,15 @@ export class CacheService {
     return result;
   }
 
-  delete(key) {
+  async delete(key) {
     return this._client.del(key);
+  }
+
+  // 🆕 tambahan: hapus semua key berdasarkan prefix
+  async deletePrefix(prefix) {
+    const keys = await this._client.keys(`${prefix}*`);
+    if (keys.length) {
+      await this._client.del(keys);
+    }
   }
 }

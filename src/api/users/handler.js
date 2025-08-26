@@ -30,13 +30,13 @@ export class UsersHandler{
       }
 
       //* Validasi password pakai OWASP
-      const passwordResult = owasp.test(password);
-      if (!passwordResult.strong) {
-        return h.response({
-          status: 'fail',
-          message: 'Password lemah: ' + passwordResult.errors.join(', ')
-        }).code(400);
-      }
+      // const passwordResult = owasp.test(password);
+      // if (!passwordResult.strong) {
+      //   return h.response({
+      //     status: 'fail',
+      //     message: 'Password lemah: ' + passwordResult.errors.join(', ')
+      //   }).code(400);
+      // }
 
       this._validator.validateUserPayload({ fullname, email, contactNumber, password });
 

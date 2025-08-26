@@ -70,5 +70,13 @@ export const routes = (handler) => [
     options: {
       auth: 'booking_hotel_jwt',
     },
-  }
+  },
+  {
+  method: 'GET',
+  path: '/bookings/{bookingId}/invoice',
+  handler: handler.getBookingInvoiceHandler,
+  options: {
+    auth: 'booking_hotel_jwt',
+  },
+}
 ];

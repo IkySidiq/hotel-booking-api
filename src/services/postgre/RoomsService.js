@@ -4,8 +4,9 @@ import { NotFoundError } from '../../exceptions/NotFoundError.js';
 import { mapDBToModel } from '../../utils/index.js';
 
 export class RoomsService {
-  constructor(pool) {
+  constructor(pool, cacheService) {
     this._pool = pool;
+    this._pool = cacheService;
   }
 
   async addRoom({ userId, roomType, pricePerNightNum, capacityNum, totalRoomsNum, description }) {
@@ -50,6 +51,8 @@ export class RoomsService {
 
       await client.query('COMMIT');
 
+      await this._cacheService.delete('rooms:all')
+
       return { id: roomId };
 
     } catch (error) {
@@ -89,7 +92,21 @@ export class RoomsService {
 
       const whereClause = conditions.length ? `WHERE ${conditions.join(' AND ')}` : '';
 
-      // Ambil data kamar dengan foto primary
+      // 🔑 Cache key dibuat dinamis berdasarkan parameter
+      const cacheKey = `rooms:${JSON.stringify({ roomType, minPrice, maxPrice, capacity, page, limit })}`;
+
+      // 1️⃣ Coba ambil dari cache
+      try {
+        const cacheResult = await this._cacheService.get(cacheKey);
+        return {
+          source: 'cache',
+          ...JSON.parse(cacheResult),
+        };
+      } catch {
+        // cache miss, lanjut ke DB
+      }
+
+      // 2️⃣ Query ke database
       const query = {
         text: `
           SELECT 
@@ -111,7 +128,6 @@ export class RoomsService {
         values: [...values, limit, offset],
       };
 
-
       const result = await this._pool.query(query);
       const resultMap = result.rows.map(mapDBToModel.roomsTable);
 
@@ -123,17 +139,22 @@ export class RoomsService {
       const totalItems = parseInt(countResult.rows[0].count, 10);
       const totalPages = Math.ceil(totalItems / limit);
 
-      //* Bisa juga melalaui utils. Kalo tidak pake utils, convert type nya harus ada assign balik
-      // resultMap[0].pricePerNight = Number(resultMap[0].pricePerNight);
-      
-
-      return {
+      const responseData = {
         data: resultMap,
         page,
         limit,
         totalItems,
         totalPages,
       };
+
+      // 3️⃣ Simpan hasil query ke Redis (30 menit)
+      await this._cacheService.set(cacheKey, JSON.stringify(responseData), 1800);
+
+      return {
+        source: 'db',
+        ...responseData,
+      };
+
     } catch (error) {
       console.error('Database Error (getRooms()):', error);
       throw new Error('Gagal mengambil daftar kamar');
@@ -142,6 +163,20 @@ export class RoomsService {
 
   async getRoomById({ roomId }) {
     try {
+      const cacheKey = `room:${roomId}`;
+
+      // 1️⃣ Coba ambil dari cache
+      try {
+        const cacheResult = await this._cacheService.get(cacheKey);
+        return {
+          source: "cache",
+          ...JSON.parse(cacheResult),
+        };
+      } catch {
+        // cache miss → lanjut ke DB
+      }
+
+      // 2️⃣ Query ke DB
       const query = {
         text: `SELECT id, room_type, price_per_night, capacity, total_rooms, description, created_at, updated_at
               FROM rooms
@@ -152,7 +187,7 @@ export class RoomsService {
       const result = await this._pool.query(query);
       const resultMap = result.rows.map(mapDBToModel.roomsTable);
 
-      if (!resultMap.length) throw new NotFoundError('Kamar tidak ditemukan');
+      if (!resultMap.length) throw new NotFoundError("Kamar tidak ditemukan");
 
       const room = resultMap[0];
 
@@ -168,14 +203,20 @@ export class RoomsService {
       const resultPicMap = resultPic.rows.map(mapDBToModel.roomPicturesTable);
 
       if (!resultPicMap.length) {
-        throw new InvariantError('Foto tidak ditemukan');
-      } 
+        throw new InvariantError("Foto tidak ditemukan");
+      }
 
       room.pictures = resultPicMap;
 
-      return room;
+      // 3️⃣ Simpan ke cache
+      await this._cacheService.set(cacheKey, JSON.stringify(room), 1800);
+
+      return {
+        source: "db",
+        ...room,
+      };
     } catch (error) {
-      console.error('Database Error (getRoomById):', error);
+      console.error("Database Error (getRoomById):", error);
       throw error;
     }
   }
@@ -204,6 +245,11 @@ export class RoomsService {
       if (!result.rows.length) throw new NotFoundError('Kamar tidak ditemukan atau gagal diperbarui');
 
       await client.query('COMMIT');
+
+      //* 🧹 Bersihin cache biar data fresh
+      await this._cacheService.deletePrefix("rooms:");
+      await this._cacheService.delete(`room:${targetId}`);
+
       return { roomId: result.rows[0].id };
     } catch (error) {
       await client.query('ROLLBACK');
@@ -235,6 +281,10 @@ export class RoomsService {
       if (!result.rows.length) throw new NotFoundError('Kamar tidak ditemukan atau sudah dihapus');
 
       await client.query('COMMIT');
+
+      await this._cacheService.deletePrefix("rooms:");
+      await this._cacheService.delete(`room:${roomId}`);
+
       return { roomId: result.rows[0].id };
     } catch (error) {
       await client.query('ROLLBACK');
