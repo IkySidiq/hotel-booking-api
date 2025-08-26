@@ -1,6 +1,6 @@
-import { nanoid } from "nanoid";
-import { InvariantError } from "../../exceptions/InvariantError.js";
-import { NotFoundError } from "../../exceptions/NotFoundError.js";
+import { nanoid } from 'nanoid';
+import { InvariantError } from '../../exceptions/InvariantError.js';
+import { NotFoundError } from '../../exceptions/NotFoundError.js';
 
 export class RoomPicturesService {
   constructor(pool) {
@@ -9,10 +9,10 @@ export class RoomPicturesService {
 
   // 1. Tambah foto kamar
   async addPicture({ roomId, path, isPrimary = false }) {
-    console.log('ROOMID', roomId)
+    console.log('ROOMID', roomId);
     const client = await this._pool.connect();
     try {
-      await client.query("BEGIN");
+      await client.query('BEGIN');
 
       const picId = `pic-${nanoid(16)}`;
       const now = new Date().toISOString();
@@ -20,7 +20,7 @@ export class RoomPicturesService {
       // jika is_primary = true, unset primary lama
       if (isPrimary) {
         await client.query(
-          `UPDATE room_pictures SET is_primary = FALSE WHERE room_id = $1`,
+          'UPDATE room_pictures SET is_primary = FALSE WHERE room_id = $1',
           [roomId]
         );
       }
@@ -34,19 +34,19 @@ export class RoomPicturesService {
         values: [picId, roomId, path, isPrimary, now, now],
       };
       const result = await client.query(query);
-      if (!result.rows.length) throw new InvariantError("Gagal menambahkan foto");
+      if (!result.rows.length) throw new InvariantError('Gagal menambahkan foto');
 
       // update is_complete di rooms
       await client.query(
-        `UPDATE rooms SET is_complete = TRUE, updated_at = $1 WHERE id = $2`,
+        'UPDATE rooms SET is_complete = TRUE, updated_at = $1 WHERE id = $2',
         [now, roomId]
       );
 
-      await client.query("COMMIT");
+      await client.query('COMMIT');
       return { pictureId: result.rows[0].id };
     } catch (error) {
-      await client.query("ROLLBACK");
-      console.error("Database Error (addPicture):", error);
+      await client.query('ROLLBACK');
+      console.error('Database Error (addPicture):', error);
       throw error;
     } finally {
       client.release();
@@ -55,7 +55,7 @@ export class RoomPicturesService {
 
   // 2. Ambil semua foto kamar
   async getPictures({ roomId }) {
-    console.log(roomId, "WOY")
+    console.log(roomId, 'WOY');
     try {
       const result = await this._pool.query(
         `SELECT id, path, is_primary, created_at, updated_at
@@ -66,7 +66,7 @@ export class RoomPicturesService {
       );
       return result.rows;
     } catch (error) {
-      console.error("Database Error (getPictures):", error);
+      console.error('Database Error (getPictures):', error);
       throw error;
     }
   }
@@ -74,61 +74,61 @@ export class RoomPicturesService {
   // 3. Hapus foto kamar
   async deletePicture({ pictureId }) {
     const result = await this._pool.query(
-      `DELETE FROM room_pictures WHERE id = $1 RETURNING id`,
+      'DELETE FROM room_pictures WHERE id = $1 RETURNING id',
       [pictureId]
     );
-    if (!result.rows.length) throw new NotFoundError("Foto tidak ditemukan atau gagal dihapus");
-    return { pictureId: result.rows[0].id };
+    if (!result.rows.length) throw new NotFoundError('Foto tidak ditemukan atau gagal dihapus');
+    return { id: result.rows[0].id };
   }
 
   async deleteAllPictures({ roomId }) {
     const result = await this._pool.query(
-      `DELETE FROM room_pictures WHERE room_id = $1 RETURNING id`,
+      'DELETE FROM room_pictures WHERE room_id = $1 RETURNING id',
       [roomId]
     );
 
     if (!result.rows.length) {
-      throw new NotFoundError("Tidak ada foto ditemukan untuk kamar ini");
+      throw new NotFoundError('Tidak ada foto ditemukan untuk kamar ini');
     }
 
     // bisa balikin list id yang terhapus biar jelas
-    return { deletedPictureIds: result.rows.map((row) => row.id) };
+    return { ids: result.rows.map((row) => row.id) };
   }
 
   // 4. Set primary picture
   async setPrimaryPicture({ pictureId }) {
     const client = await this._pool.connect();
     try {
-      await client.query("BEGIN");
+      await client.query('BEGIN');
 
       const picResult = await client.query(
-        `SELECT room_id FROM room_pictures WHERE id = $1`,
+        'SELECT room_id FROM room_pictures WHERE id = $1',
         [pictureId]
       );
-      if (!picResult.rows.length) throw new NotFoundError("Foto tidak ditemukan");
+      if (!picResult.rows.length) throw new NotFoundError('Foto tidak ditemukan');
 
       const roomId = picResult.rows[0].room_id;
 
       // unset primary lama
       await client.query(
-        `UPDATE room_pictures SET is_primary = FALSE WHERE room_id = $1`,
+        'UPDATE room_pictures SET is_primary = FALSE WHERE room_id = $1',
         [roomId]
       );
 
       // set foto baru
       const now = new Date().toISOString();
       const updateResult = await client.query(
-        `UPDATE room_pictures SET is_primary = $1, updated_at = $2 WHERE id = $3 RETURNING id`,
+        'UPDATE room_pictures SET is_primary = $1, updated_at = $2 WHERE id = $3 RETURNING id',
         [true, now, pictureId]
       );
 
-      if (!updateResult.rows.length) throw new InvariantError("Gagal set foto primary");
+      if (!updateResult.rows.length) throw new InvariantError('Gagal set foto primary');
 
-      await client.query("COMMIT");
+      await client.query('COMMIT');
       return { pictureId: updateResult.rows[0].id };
     } catch (error) {
-      await client.query("ROLLBACK");
-      console.error("Database Error (setPrimaryPicture):", error);
+      await client.query('ROLLBACK');
+      console.error('Database Error (setPrimaryPicture):', error);
       throw error;
     } finally {
       client.release();

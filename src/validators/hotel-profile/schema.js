@@ -1,4 +1,4 @@
-import Joi from "joi";
+import Joi from 'joi';
 
 export const HotelProfilePayloadSchema = Joi.object({
   name: Joi.string().max(100).required(),

@@ -1,7 +1,7 @@
-import dayjs from "dayjs";
-import { NotFoundError } from "../../exceptions/NotFoundError.js";
-import { InvariantError } from "../../exceptions/InvariantError.js";
-import { nanoid } from "nanoid";
+import dayjs from 'dayjs';
+import { NotFoundError } from '../../exceptions/NotFoundError.js';
+import { InvariantError } from '../../exceptions/InvariantError.js';
+import { nanoid } from 'nanoid';
 
 export class RoomsAvailabilityService {
   constructor(pool) {
@@ -13,7 +13,7 @@ async lockAndCheck({ roomId, checkInDate, checkOutDate, numberOfRooms, client })
     'SELECT price_per_night as "pricePerNight" FROM rooms WHERE id = $1',
     [roomId]
   );
-  if (!roomResult.rows.length) throw new NotFoundError("Room not found");
+  if (!roomResult.rows.length) throw new NotFoundError('Room not found');
   const pricePerNight = Number(roomResult.rows[0].pricePerNight);
 
   const query = {
@@ -28,14 +28,14 @@ async lockAndCheck({ roomId, checkInDate, checkOutDate, numberOfRooms, client })
   };
   const result = await client.query(query);
 
-  if (!result.rows.length) throw new NotFoundError("Room yang anda pilih tidak ada");
+  if (!result.rows.length) throw new NotFoundError('Room yang anda pilih tidak ada');
 
   const days = this._getDatesBetween(checkInDate, checkOutDate);
-  console.log("Result rows length:", result.rows.length);
-  console.log("Days length:", days.length);
+  console.log('Result rows length:', result.rows.length);
+  console.log('Days length:', days.length);
 
   // Debug tiap row
-  console.log("numberOfRooms yang diminta:", numberOfRooms);
+  console.log('numberOfRooms yang diminta:', numberOfRooms);
   result.rows.forEach((r, i) => {
     console.log(
       `Row ke-${i + 1}: date=${r.date}, availableRoom=${r.availableRoom}, cukup?`,
@@ -44,10 +44,10 @@ async lockAndCheck({ roomId, checkInDate, checkOutDate, numberOfRooms, client })
   });
 
   const isEnough = result.rows.every(r => r.availableRoom >= numberOfRooms);
-  console.log("Hasil every():", isEnough);
+  console.log('Hasil every():', isEnough);
 
   if (result.rows.length < days.length || !isEnough) {
-    throw new InvariantError("Kamar tidak tersedia");
+    throw new InvariantError('Kamar tidak tersedia');
   }
 
   const totalNights = dayjs(checkOutDate).diff(dayjs(checkInDate), 'day');
@@ -77,7 +77,7 @@ async lockAndCheck({ roomId, checkInDate, checkOutDate, numberOfRooms, client })
     const queryLog = await client.query(
       `INSERT INTO active_logs (id, user_id, action, target_table, target_id, performed_at)
       VALUES ($1, $2, $3, $4, $5, $6) RETURNING id`,
-      [`log-${nanoid(16)}`, userId, "reduce availability", "room_availability", result.rows[0].id, dayjs().toISOString()]
+      [`log-${nanoid(16)}`, userId, 'reduce availability', 'room_availability', result.rows[0].id, dayjs().toISOString()]
     );
 
     if (!queryLog.rows.length) {
@@ -109,8 +109,8 @@ async lockAndCheck({ roomId, checkInDate, checkOutDate, numberOfRooms, client })
         [
           `log-${nanoid(16)}`,
           userId,
-          "increase availability",
-          "room_availability",
+          'increase availability',
+          'room_availability',
           result.rows[0].id,
           now,
         ]
@@ -125,21 +125,21 @@ async lockAndCheck({ roomId, checkInDate, checkOutDate, numberOfRooms, client })
   //* Untuk men-generate data di table room_availability menggunakan node-cron
   async generateAvailability({ monthsAhead = 6 }) {
     const query = {
-      text: `SELECT id, total_rooms FROM rooms`,
+      text: 'SELECT id, total_rooms FROM rooms',
       values: []
-    }
+    };
 
     const result = await this._pool.query(query);
 
     const today = dayjs();
-    const endDate = today.add(monthsAhead, "month");
+    const endDate = today.add(monthsAhead, 'month');
 
     for (const room of result.rows) {
       let currentDate = today;
 
-      while (currentDate.isBefore(endDate) || currentDate.isSame(endDate, "day")) {
+      while (currentDate.isBefore(endDate) || currentDate.isSame(endDate, 'day')) {
         const id = `RA-${nanoid(16)}`;
-        const dateStr = currentDate.format("YYYY-MM-DD");
+        const dateStr = currentDate.format('YYYY-MM-DD');
 
         //* 1. Cek apakah data availability untuk room & date ini sudah ada
         const check = await this._pool.query(
@@ -157,11 +157,11 @@ async lockAndCheck({ roomId, checkInDate, checkOutDate, numberOfRooms, client })
           );
         }
 
-        currentDate = currentDate.add(1, "day");
+        currentDate = currentDate.add(1, 'day');
       }
     }
 
-    console.log(`Availability generated until ${endDate.format("YYYY-MM-DD")}`);
+    console.log(`Availability generated until ${endDate.format('YYYY-MM-DD')}`);
   }
 
 _getDatesBetween(start, end) {
@@ -170,8 +170,8 @@ _getDatesBetween(start, end) {
   const stop = dayjs(end);
 
   while (current.isBefore(stop) || current.isSame(stop, 'day')) { // include check-out
-    dates.push(current.format("YYYY-MM-DD"));
-    current = current.add(1, "day");
+    dates.push(current.format('YYYY-MM-DD'));
+    current = current.add(1, 'day');
   }
 
   return dates;

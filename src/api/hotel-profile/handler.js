@@ -1,4 +1,4 @@
-import autoBind from "auto-bind";
+import autoBind from 'auto-bind';
 
 export class HotelProfileHandler {
   constructor(service, validator, usersService) {
@@ -9,32 +9,21 @@ export class HotelProfileHandler {
     autoBind(this);
   }
 
-  // =====================
-  // GET /hotel-profile
-  // =====================
   async getProfileHandler(request, h) {
-    try {
       const profile = await this._service.getProfile();
 
       return h.response({
-        status: "success",
+        status: 'success',
         data: profile,
       }).code(200);
-    } catch (error) {
-      throw error;
-    }
   }
 
-  // =====================
-  // POST /hotel-profile (singleton)
-  // =====================
   async addProfileHandler(request, h) {
-    try {
-      const {id: userId} = request.auth.credentials;
-      await this._usersService.verifyUser({ userId })
+      const { id: userId } = request.auth.credentials;
+      await this._usersService.verifyUser({ userId });
 
       const { name, address, city, description, contactNumber, email, rating } = request.payload;
-      await this._validator.validateHotelProfilePayload({ name, address, city, description, contactNumber, email, rating })
+      await this._validator.validateHotelProfilePayload({ name, address, city, description, contactNumber, email, rating });
 
       this._validator?.validateAddProfilePayload?.(request.payload);
 
@@ -49,20 +38,13 @@ export class HotelProfileHandler {
       });
 
       return h.response({
-        status: "success",
-        message: "Profil hotel berhasil ditambahkan",
+        status: 'success',
+        message: 'Profil hotel berhasil ditambahkan',
         data: { id: profileId },
       }).code(201);
-    } catch (error) {
-      throw error;
-    }
   }
 
-  // =====================
-  // PUT /hotel-profile
-  // =====================
   async updateProfileHandler(request, h) {
-    try {
       // Validasi payload jika ada validator
       this._validator?.validateUpdateProfilePayload?.(request.payload);
 
@@ -79,12 +61,9 @@ export class HotelProfileHandler {
       });
 
       return h.response({
-        status: "success",
-        message: "Profil hotel berhasil diperbarui",
+        status: 'success',
+        message: 'Profil hotel berhasil diperbarui',
         data: { id: profileId },
       }).code(200);
-    } catch (error) {
-      throw error;
-    }
   }
 }

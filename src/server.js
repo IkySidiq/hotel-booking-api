@@ -2,7 +2,7 @@ import Hapi from '@hapi/hapi';
 import Jwt from '@hapi/jwt';
 import Inert from '@hapi/inert';
 import path from 'path';
-import { ClientError } from "./exceptions/ClientError.js";
+import { ClientError } from './exceptions/ClientError.js';
 import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -207,6 +207,6 @@ const init = async() => {
 
   await server.start();
   console.log(`\n✅ Server berjalan pada ${server.info.uri}`);
-}
+};
 
 init();

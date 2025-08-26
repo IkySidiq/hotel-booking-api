@@ -1,4 +1,4 @@
-import fetch from "node-fetch"; // pastikan node >= 18, kalau versi lama install node-fetch
+import fetch from 'node-fetch'; // pastikan node >= 18, kalau versi lama install node-fetch
 
 export class MidtransService {
   constructor() {
@@ -7,7 +7,7 @@ export class MidtransService {
   }
 
   async createTransaction({ orderId, grossAmount, customerDetails }) {
-    const auth = Buffer.from(`${this._serverKey}:`).toString("base64");
+    const auth = Buffer.from(`${this._serverKey}:`).toString('base64');
 
   const payload = {
     transaction_details: { order_id: orderId, gross_amount: grossAmount },
@@ -16,9 +16,9 @@ export class MidtransService {
 
     try {
       const response = await fetch(this._baseUrl, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
           Authorization: `Basic ${auth}`,
         },
         body: JSON.stringify(payload),
@@ -26,12 +26,12 @@ export class MidtransService {
 
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData?.message || "Gagal membuat transaksi Midtrans");
+        throw new Error(errorData?.message || 'Gagal membuat transaksi Midtrans');
       }
 
       const data = await response.json(); //* Pada dokumentasi midrans, ini isinya ada {token, redirectUrl}
       console.log(data.redirect_url);
-      return data.token
+      return data.token;
  
     } catch (error) {
       console.error(error);
@@ -42,7 +42,7 @@ export class MidtransService {
   verifySignature(notification) {
     const { order_id, status_code, gross_amount, signature_key } = notification;
     const payload = order_id + status_code + gross_amount + this._serverKey;
-    const hash = crypto.createHash("sha512").update(payload).digest("hex");
+    const hash = crypto.createHash('sha512').update(payload).digest('hex');
     return hash === signature_key;
   }
 }

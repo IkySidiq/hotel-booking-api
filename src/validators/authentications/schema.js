@@ -1,4 +1,4 @@
-import Joi from "joi";
+import Joi from 'joi';
 
 export const postAuthenticationPayloadSchema = Joi.object({
     email: Joi.string().required(),

@@ -1,12 +1,12 @@
-import Joi from "joi";
+import Joi from 'joi';
 
 export const AddBookingPayloadSchema = Joi.object({
   roomId: Joi.string().required(),
   guestName: Joi.string().required(),
   checkInDate: Joi.date().iso().required(),
-  checkOutDate: Joi.date().iso().greater(Joi.ref("checkInDate")).required(),
+  checkOutDate: Joi.date().iso().greater(Joi.ref('checkInDate')).required(),
   totalGuests: Joi.number().integer().positive().required(),
-  specialRequest: Joi.string().allow("").optional(),
+  specialRequest: Joi.string().allow('').optional(),
 });
 
 export const GetBookingsPayloadSchema = Joi.object({

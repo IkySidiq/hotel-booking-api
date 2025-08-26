@@ -1,36 +1,36 @@
-import { nanoid } from "nanoid";
-import { InvariantError } from "../../exceptions/InvariantError.js";
-import { NotFoundError } from "../../exceptions/NotFoundError.js";
-import { AuthorizationError } from "../../exceptions/AuthorizationError.js";
+import { nanoid } from 'nanoid';
+import { InvariantError } from '../../exceptions/InvariantError.js';
+import { NotFoundError } from '../../exceptions/NotFoundError.js';
+import { AuthorizationError } from '../../exceptions/AuthorizationError.js';
 
 export class ReviewsService {
   constructor(pool, bookingsService) {
     this._pool = pool;
-    this._bookingsService = bookingsService
+    this._bookingsService = bookingsService;
   }
 
   // Tambah review baru
   async addReview({ roomId, userId, rating, comment }) {
     if (rating < 1 || rating > 5) {
-      throw new InvariantError("Rating harus antara 1 sampai 5");
+      throw new InvariantError('Rating harus antara 1 sampai 5');
     }
     if (!comment || comment.trim().length === 0) {
-      throw new InvariantError("Komentar tidak boleh kosong");
+      throw new InvariantError('Komentar tidak boleh kosong');
     }
 
     // Cek apakah user sudah pernah kasih review untuk room ini
     const check = await this._pool.query(
-      `SELECT id FROM reviews WHERE room_id = $1 AND user_id = $2`,
+      'SELECT id FROM reviews WHERE room_id = $1 AND user_id = $2',
       [roomId, userId]
     );
     if (check.rowCount > 0) {
-      throw new InvariantError("Anda sudah memberikan review untuk kamar ini");
+      throw new InvariantError('Anda sudah memberikan review untuk kamar ini');
     }
 
     // Ambil booking completed terakhir user untuk room ini
     const booking = await this._bookingsService.getCompletedBookingForUserRoom(userId, roomId);
     if (!booking) {
-      throw new InvariantError("Anda belum melakukan booking untuk kamar ini");
+      throw new InvariantError('Anda belum melakukan booking untuk kamar ini');
     }
     const bookingId = booking.id;
 
@@ -45,7 +45,7 @@ export class ReviewsService {
     );
 
     if (!result.rows.length) {
-      throw new InvariantError("Gagal menambahkan review");
+      throw new InvariantError('Gagal menambahkan review');
     }
 
     return result.rows[0].id;
@@ -79,7 +79,7 @@ export class ReviewsService {
 
       // Hitung total review untuk pagination
       const countQuery = {
-        text: `SELECT COUNT(*) FROM reviews WHERE room_id = $1`,
+        text: 'SELECT COUNT(*) FROM reviews WHERE room_id = $1',
         values: [roomId],
       };
       const countResult = await this._pool.query(countQuery);
@@ -94,7 +94,7 @@ export class ReviewsService {
         totalPages,
       };
     } catch (err) {
-      console.error("Database Error (getReviewsByRoomId):", err);
+      console.error('Database Error (getReviewsByRoomId):', err);
       throw err;
     }
   }
@@ -109,7 +109,7 @@ export class ReviewsService {
       [id]
     );
     if (!result.rows.length) {
-      throw new NotFoundError("Review tidak ditemukan");
+      throw new NotFoundError('Review tidak ditemukan');
     }
     return result.rows[0];
   }
@@ -117,21 +117,21 @@ export class ReviewsService {
   // Edit review
   async editReview({ id, userId, rating, comment }) {
     if (rating < 1 || rating > 5) {
-      throw new InvariantError("Rating harus antara 1 sampai 5");
+      throw new InvariantError('Rating harus antara 1 sampai 5');
     }
     if (!comment || comment.trim().length === 0) {
-      throw new InvariantError("Komentar tidak boleh kosong");
+      throw new InvariantError('Komentar tidak boleh kosong');
     }
 
     const check = await this._pool.query(
-      `SELECT user_id FROM reviews WHERE id = $1`,
+      'SELECT user_id FROM reviews WHERE id = $1',
       [id]
     );
     if (!check.rows.length) {
-      throw new NotFoundError("Review tidak ditemukan");
+      throw new NotFoundError('Review tidak ditemukan');
     }
     if (check.rows[0].user_id !== userId) {
-      throw new AuthorizationError("Anda tidak berhak mengedit review ini");
+      throw new AuthorizationError('Anda tidak berhak mengedit review ini');
     }
 
     const result = await this._pool.query(
@@ -148,18 +148,18 @@ export class ReviewsService {
   // Hapus review
   async deleteReview({ id, userId, isAdmin = false }) {
     const check = await this._pool.query(
-      `SELECT user_id FROM reviews WHERE id = $1`,
+      'SELECT user_id FROM reviews WHERE id = $1',
       [id]
     );
     if (!check.rows.length) {
-      throw new NotFoundError("Review tidak ditemukan");
+      throw new NotFoundError('Review tidak ditemukan');
     }
 
     if (check.rows[0].user_id !== userId && !isAdmin) {
-      throw new AuthorizationError("Anda tidak berhak menghapus review ini");
+      throw new AuthorizationError('Anda tidak berhak menghapus review ini');
     }
 
-    const result = await this._pool.query(`DELETE FROM reviews WHERE id = $1 RETURNING id`, [id]);
+    const result = await this._pool.query('DELETE FROM reviews WHERE id = $1 RETURNING id', [id]);
     return result.rows[0].id;
   }
 
@@ -174,5 +174,4 @@ async checkExistingReview({ userId, roomId }) {
 
   return result.rows.length > 0 ? result.rows[0] : null;
 }
-
 }

@@ -1,4 +1,4 @@
-import { NotFoundError } from "../../exceptions/InvariantError";
+import { NotFoundError } from '../../exceptions/InvariantError';
 
 export class NotificationsService{
   constructor(pool) {
@@ -9,21 +9,21 @@ export class NotificationsService{
     const query = {
       text: 'SELECT id, type, message, is_read, created_at FROM notifications WHERE user_id = $1 ORDER BY created_at DESC LIMIT 50',
       values: [userId]
-    }
+    };
 
     const result = await this._pool.query(query);
 
     if (!result.rows.length) {
-      throw NotFoundError('Data tidak ditemukan')
+      throw NotFoundError('Data tidak ditemukan');
     }
 
     const unreadCountResult = await this._pool.query(
-      `SELECT COUNT(*) FROM notifications WHERE user_id = $1 AND is_read = FALSE`,
+      'SELECT COUNT(*) FROM notifications WHERE user_id = $1 AND is_read = FALSE',
       [userId]
     );
 
     if (!unreadCountResult.rows.length) {
-      throw NotFoundError('Data tidak ditemukan')
+      throw NotFoundError('Data tidak ditemukan');
     }
 
     return {

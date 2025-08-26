@@ -1,5 +1,5 @@
-import dayjs from "dayjs";
-import { nanoid } from "nanoid";
+import dayjs from 'dayjs';
+import { nanoid } from 'nanoid';
 
 export class TransactionsService {
   constructor(pool) {
@@ -8,7 +8,7 @@ export class TransactionsService {
 
   async createTransactionRecord({ bookingId, amount }) {
     const id = `trx-${nanoid(16)}`;
-    const transactionId = `TRX-${dayjs().format("YYYYMMDD-HHmmss")}-${Math.floor(Math.random() * 1000)}`;
+    const transactionId = `TRX-${dayjs().format('YYYYMMDD-HHmmss')}-${Math.floor(Math.random() * 1000)}`;
     const createdAt = dayjs().toISOString();
 
 
@@ -32,7 +32,7 @@ export class TransactionsService {
     const result = await this._pool.query(query);
     return {
       transactionRecordId: result.rows[0].id
-    }
+    };
   }
 
   async processPayment({ transactionCode, status }) {
@@ -53,7 +53,7 @@ export class TransactionsService {
 
   async getTransactionByBookingId(bookingId) {
     const result = await this._pool.query(
-      `SELECT * FROM transactions WHERE booking_id=$1 ORDER BY created_at DESC`,
+      'SELECT * FROM transactions WHERE booking_id=$1 ORDER BY created_at DESC',
       [bookingId]
     );
     return result.rows;
@@ -61,7 +61,7 @@ export class TransactionsService {
 
   async getTransactionDetail(transactionCode) {
     const result = await this._pool.query(
-      `SELECT * FROM transactions WHERE transaction_code=$1`,
+      'SELECT * FROM transactions WHERE transaction_code=$1',
       [transactionCode]
     );
     return result.rows[0];

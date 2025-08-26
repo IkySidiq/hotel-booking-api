@@ -1,8 +1,8 @@
-import dayjs from "dayjs";
-import { nanoid } from "nanoid";
-import { InvariantError } from "../../exceptions/InvariantError.js";
-import { NotFoundError } from "../../exceptions/NotFoundError.js";
-import { mapDBToModel } from "../../utils/index.js";
+import dayjs from 'dayjs';
+import { nanoid } from 'nanoid';
+import { InvariantError } from '../../exceptions/InvariantError.js';
+import { NotFoundError } from '../../exceptions/NotFoundError.js';
+import { mapDBToModel } from '../../utils/index.js';
 
 export class BookingsService {
   constructor(pool, roomAvailabilityService, usersService, roomsService, midtransService, transactionsRecordService) {
@@ -17,7 +17,7 @@ export class BookingsService {
   async addBooking({ userId, roomId, guestName, totalGuests, checkInDate, checkOutDate, specialRequest }) {
     const client = await this._pool.connect();
     try {
-      await client.query("BEGIN");
+      await client.query('BEGIN');
 
       // 1. Lock & cek stok
       const { totalPrice, totalNights, pricePerNight } = await this._roomAvailabilityService.lockAndCheck({
@@ -71,7 +71,7 @@ export class BookingsService {
           customerDetails,
           itemDetails
         ]
-      }
+      };
       
       const result = await this._pool.query(query);
       const resultMap = result.rows.map(mapDBToModel.bookingTable);
@@ -93,17 +93,17 @@ export class BookingsService {
       const queryLog = await client.query(
         `INSERT INTO active_logs (id, user_id, action, target_table, target_id, performed_at)
         VALUES ($1, $2, $3, $4, $5, $6) RETURNING id`,
-        [`log-${nanoid(16)}`, userId, "cancel booking", "bookings", bookingId, dayjs().toISOString()]
+        [`log-${nanoid(16)}`, userId, 'cancel booking', 'bookings', bookingId, dayjs().toISOString()]
       );
 
       if (!queryLog.rows.length) {
         throw new InvariantError('Log gagal dicatat');
       }
 
-      await client.query("COMMIT");
+      await client.query('COMMIT');
 
       // 5. Buat transaksi Midtrans di luar DB
-      let transactionToken
+      let transactionToken;
       try {
         const result = await this._midtransService.createTransaction({
           orderId: bookingId,
@@ -124,14 +124,14 @@ export class BookingsService {
         });
 
         const queryUpdate = {
-          text: `UPDATE bookings SET status = $1, updated_at = $2 WHERE id = $3`,
-          values: ["failed", dayjs().toISOString(), bookingId]
-        }
+          text: 'UPDATE bookings SET status = $1, updated_at = $2 WHERE id = $3',
+          values: ['failed', dayjs().toISOString(), bookingId]
+        };
 
         const result = await client.query(queryUpdate);
 
         if (!result.rows.length) {
-          throw new InvariantError('Booking gagal')
+          throw new InvariantError('Booking gagal');
         }
 
         throw midtransError;
@@ -144,21 +144,21 @@ export class BookingsService {
 
         const snapResult = await client.query(insertSnapToken);
         if (!snapResult.rows.length) {
-          throw new NotFoundError('Snap token tidak ditemukan')
+          throw new NotFoundError('Snap token tidak ditemukan');
         }
 
       // 6. Simpan record transaksi
-      const { transactionRecordId } = await this._transactionsRecordService.createTransactionRecord({
+      await this._transactionsRecordService.createTransactionRecord({
         bookingId,
         amount: totalPrice,
       });
 
       return {
-        bookingId,
+        id: bookingId,
         transactionToken,
       };
     } catch (err) {
-      await client.query("ROLLBACK").catch(() => {});
+      await client.query('ROLLBACK').catch(() => {});
       throw err;
     } finally {
       client.release();
@@ -177,7 +177,7 @@ export class BookingsService {
     return result.rows;
   }
 
-  async getBookingsService({ guestName, status, checkInDate, checkOutDate, checkInDateEnd, checkOutDateEnd, specialRequest, totalGuests, page = 1, limit = 50 }) {
+  async getBookingsService({ guestName, status, checkInDate, checkOutDate, checkInDateEnd, checkOutDateEnd, page = 1, limit = 50 }) {
     try {
       const offset = (page - 1) * limit;
       const conditions = [];
@@ -250,6 +250,7 @@ export class BookingsService {
 
       const result = await this._pool.query(query);
       const bookings = result.rows.map(mapDBToModel.bookingTable);
+      console.log(bookings);
 
       const countQuery = {
         text: `
@@ -266,70 +267,70 @@ export class BookingsService {
       const totalPages = Math.ceil(totalItems / limit);
 
       return {
-        data: bookings,
+        bookings,
         page,
         limit,
         totalItems,
         totalPages,
       };
     } catch (error) {
-      console.error("Database Error (getBookings()):", error);
-      throw error("Gagal mengambil daftar booking");
+      console.error('Database Error (getBookings()):', error);
+      throw error('Gagal mengambil daftar booking');
     }
   }
 
   //*  WEBHOOK WORKED
   async updateBookingStatus({ orderId, transactionStatus, fraudStatus }) {
     let paymentStatus;
-    if (transactionStatus === "capture" && fraudStatus === "accept") {
-      paymentStatus = "capture";
-    } else if (transactionStatus === "settlement") {
-      paymentStatus = "settlement";
+    if (transactionStatus === 'capture' && fraudStatus === 'accept') {
+      paymentStatus = 'capture';
+    } else if (transactionStatus === 'settlement') {
+      paymentStatus = 'settlement';
     } else if (
-      transactionStatus === "cancel" ||
-      transactionStatus === "deny" ||
-      transactionStatus === "expire"
+      transactionStatus === 'cancel' ||
+      transactionStatus === 'deny' ||
+      transactionStatus === 'expire'
     ) {
       paymentStatus = transactionStatus; // cancel / deny / expire
-    } else if (transactionStatus === "pending") {
-      paymentStatus = "pending";
+    } else if (transactionStatus === 'pending') {
+      paymentStatus = 'pending';
     } else {
-      paymentStatus = "unknown";
+      paymentStatus = 'unknown';
     }
     // Update tabel transaction_records
     const result = await this._pool.query(
-      "UPDATE transactions_records SET payment_status = $1, updated_at = $2 WHERE booking_id = $3 RETURNING id",
+      'UPDATE transactions_records SET payment_status = $1, updated_at = $2 WHERE booking_id = $3 RETURNING id',
       [paymentStatus, dayjs().toISOString(), orderId]
     );
 
-    console.log(result.rows.length)
+    console.log(result.rows.length);
 
     if(!result.rows.length) {
-      throw new InvariantError('Transactions Records Gagal Update')
+      throw new InvariantError('Transactions Records Gagal Update');
     }
 
     // Mapping ke tabel bookings
     let bookingStatus;
-    if (paymentStatus === "settlement" || paymentStatus === "capture") {
-      bookingStatus = "confirmed"; // pembayaran sukses
-    } else if (paymentStatus === "pending") {
-      bookingStatus = "pending"; // menunggu pembayaran
-    } else if (paymentStatus === "cancel") {
-      bookingStatus = "cancelled"; // user cancel
-    } else if (paymentStatus === "expire" || paymentStatus === "deny") {
-      bookingStatus = "failed"; // pembayaran gagal
+    if (paymentStatus === 'settlement' || paymentStatus === 'capture') {
+      bookingStatus = 'confirmed'; // pembayaran sukses
+    } else if (paymentStatus === 'pending') {
+      bookingStatus = 'pending'; // menunggu pembayaran
+    } else if (paymentStatus === 'cancel') {
+      bookingStatus = 'cancelled'; // user cancel
+    } else if (paymentStatus === 'expire' || paymentStatus === 'deny') {
+      bookingStatus = 'failed'; // pembayaran gagal
     } else {
-      bookingStatus = "pending_payment"; // fallback
+      bookingStatus = 'pending_payment'; // fallback
     }
 
     // Update tabel bookings
     const query = await this._pool.query(
-      "UPDATE bookings SET status = $1, updated_at = $2, snap_token = $1 WHERE id = $3 RETURNING id",
+      'UPDATE bookings SET status = $1, updated_at = $2, snap_token = $1 WHERE id = $3 RETURNING id',
       [bookingStatus, dayjs().toISOString(), orderId]
     );
 
     if (!query.rows.length) {
-      throw new NotFoundError('Gagal update bookings')
+      throw new NotFoundError('Gagal update bookings');
     }
 
     return { paymentStatus, bookingStatus };
@@ -350,11 +351,11 @@ export class BookingsService {
       const resultMap = result.rows.map(mapDBToModel.bookingTable);
 
       if (!resultMap.length) {
-        throw new NotFoundError("Detail booking tidak ditemukan");
+        throw new NotFoundError('Detail booking tidak ditemukan');
       }
       return resultMap[0];
     } catch (error) {
-      console.log("Database Error (getBookingById):", error);
+      console.log('Database Error (getBookingById):', error);
       throw error;
     }
   }
@@ -362,7 +363,7 @@ export class BookingsService {
   async cancelBookingService({ bookingId, userId }) {
     const client = await this._pool.connect();
     try {
-      await client.query("BEGIN");
+      await client.query('BEGIN');
 
       // Ambil booking dari DB termasuk status
       const result = await client.query(
@@ -374,20 +375,20 @@ export class BookingsService {
 
       const bookingRes = result.rows.map(mapDBToModel.bookingTable);
 
-      if (!bookingRes.length) throw new NotFoundError("Booking tidak ditemukan atau bukan milik Anda");
+      if (!bookingRes.length) throw new NotFoundError('Booking tidak ditemukan atau bukan milik Anda');
 
       const { roomId, checkInDate, checkOutDate, status } = bookingRes[0];
 
       // ✅ Cek status dulu
-      if (status !== "pending_payment") {
-        throw new InvariantError("Booking tidak bisa dibatalkan karena sudah diproses");
+      if (status !== 'pending_payment') {
+        throw new InvariantError('Booking tidak bisa dibatalkan karena sudah diproses');
       }
 
       // 1. Update status booking
       const updatedAt = new Date().toISOString();
       await client.query(
-        `UPDATE bookings SET status = $1, updated_at = $2 WHERE id = $3`,
-        ["cancelled", updatedAt, bookingId]
+        'UPDATE bookings SET status = $1, updated_at = $2 WHERE id = $3',
+        ['cancelled', updatedAt, bookingId]
       );
 
       // 2. Kembalikan availability
@@ -403,18 +404,18 @@ export class BookingsService {
       const queryLog = await client.query(
         `INSERT INTO active_logs (id, user_id, action, target_table, target_id, performed_at)
         VALUES ($1, $2, $3, $4, $5, $6) RETURNING id`,
-        [`log-${nanoid(16)}`, userId, "cancel booking", "bookings", bookingId, updatedAt]
+        [`log-${nanoid(16)}`, userId, 'cancel booking', 'bookings', bookingId, updatedAt]
       );
 
       if (!queryLog.rows.length) {
-        throw new InvariantError("Log gagal dicatat");
+        throw new InvariantError('Log gagal dicatat');
       }
 
-      await client.query("COMMIT");
-      return { bookingId };
+      await client.query('COMMIT');
+      return { id: bookingId };
     } catch (err) {
-      await client.query("ROLLBACK");
-      console.error("Database Error (cancelBookingService):", err);
+      await client.query('ROLLBACK');
+      console.error('Database Error (cancelBookingService):', err);
       throw err;
     } finally {
       client.release();
@@ -425,7 +426,7 @@ export class BookingsService {
   async markNoShowBookings() {
     const client = await this._pool.connect();
     try {
-      await client.query("BEGIN");
+      await client.query('BEGIN');
 
       const now = new Date().toISOString();
 
@@ -444,7 +445,7 @@ export class BookingsService {
         for (const booking of bookingsToUpdate) {
           // 2. Update status jadi no-show
           await client.query(
-            `UPDATE bookings SET status = $1, updated_at = $2 WHERE id = $3`,
+            'UPDATE bookings SET status = $1, updated_at = $2 WHERE id = $3',
             ['No-Show', now, booking.id]
           );
 
@@ -455,8 +456,8 @@ export class BookingsService {
             [
               `log-${nanoid(16)}`,
               booking.user_id,
-              "auto mark no-show",
-              "bookings",
+              'auto mark no-show',
+              'bookings',
               booking.id,
               now,
             ]
@@ -464,11 +465,11 @@ export class BookingsService {
         }
       }
 
-      await client.query("COMMIT");
+      await client.query('COMMIT');
       return { updated: bookingsToUpdate.length };
     } catch (error) {
-      await client.query("ROLLBACK");
-      console.error("Database Error (markNoShowBookings):", error);
+      await client.query('ROLLBACK');
+      console.error('Database Error (markNoShowBookings):', error);
       throw error;
     } finally {
       client.release();
@@ -479,63 +480,63 @@ export class BookingsService {
     const client = await this._pool.connect();
 
     try {
-      await client.query("BEGIN");
+      await client.query('BEGIN');
 
       // 1. Ambil booking dan validasi
       const result = await client.query(
-        `SELECT status FROM bookings WHERE id = $1`,
+        'SELECT status FROM bookings WHERE id = $1',
         [bookingId]
       );
 
       if (!result.rows.length) {
-        throw new NotFoundError("Booking tidak ditemukan");
+        throw new NotFoundError('Booking tidak ditemukan');
       }
 
       const booking = result.rows[0].status;
-      console.log('booking', booking)
+      console.log('booking', booking);
 
       // 2. Cek aturan bisnis
       switch (booking) {
-        case "checked out":
-          throw new InvariantError("Booking sudah selesai, tidak bisa check-in");
-        case "pending_payment":
-          throw new InvariantError("Check-in ditolak, silahkan selesaikan pembayaran");
-        case "cancelled":
-          throw new InvariantError("Booking dibatalkan, tidak bisa check-in");
-        case "no-show":
-          throw new InvariantError("Waktu check-in sudah terlewat, tidak bisa check-in");
-        case "confirmed":
+        case 'checked out':
+          throw new InvariantError('Booking sudah selesai, tidak bisa check-in');
+        case 'pending_payment':
+          throw new InvariantError('Check-in ditolak, silahkan selesaikan pembayaran');
+        case 'cancelled':
+          throw new InvariantError('Booking dibatalkan, tidak bisa check-in');
+        case 'no-show':
+          throw new InvariantError('Waktu check-in sudah terlewat, tidak bisa check-in');
+        case 'confirmed':
           // OK, boleh check-in
           break;
         default:
-          throw new InvariantError("Booking belum dikonfirmasi, tidak bisa check-in");
+          throw new InvariantError('Booking belum dikonfirmasi, tidak bisa check-in');
       }
 
-      console.log('MEMEK', booking)
+      console.log('MEMEK', booking);
 
 
       // 3. Update check_in_status menjadi checked in
       const updatedAt = new Date().toISOString();
-      const logId = `log-${nanoid(16)}`
+      const logId = `log-${nanoid(16)}`;
       await client.query(
         `UPDATE bookings
         SET status = $1, updated_at = $2
         WHERE id = $3`,
-        [`checked-in`, updatedAt, bookingId]
+        ['checked-in', updatedAt, bookingId]
       );
 
       // 4. Log aktivitas
       await client.query(
         `INSERT INTO active_logs (id, user_id, action, target_table, target_id, performed_at) 
         VALUES ($1,$2,$3,$4,$5,$6)`,
-        [logId, userId, "check-in booking", "bookings", bookingId, updatedAt]
+        [logId, userId, 'check-in booking', 'bookings', bookingId, updatedAt]
       );
 
-      await client.query("COMMIT");
+      await client.query('COMMIT');
       return { bookingId };
     } catch (error) {
-      await client.query("ROLLBACK");
-      console.error("Database Error (checkInBookingService):", error);
+      await client.query('ROLLBACK');
+      console.error('Database Error (checkInBookingService):', error);
       throw error;
     } finally {
       client.release();
@@ -544,44 +545,44 @@ export class BookingsService {
 
   async checkOutBookingService({ bookingId, userId }) {
     const client = await this._pool.connect();
-    console.log('BOOKING', bookingId)
+    console.log('BOOKING', bookingId);
 
     try {
-      await client.query("BEGIN");
+      await client.query('BEGIN');
 
       // 1. Ambil booking dan validasi
       const result = await client.query(
-        `SELECT status FROM bookings WHERE id = $1`,
+        'SELECT status FROM bookings WHERE id = $1',
         [bookingId]
       );
 
       if (!result.rows.length) {
-        throw new NotFoundError("Booking tidak ditemukan");
+        throw new NotFoundError('Booking tidak ditemukan');
       }
 
       const booking = result.rows[0].status;
 
       // 2. Cek aturan bisnis
       switch (booking) {
-        case "pending_payment":
-          throw new InvariantError("Booking belum dibayar, tidak bisa check-out");
+        case 'pending_payment':
+          throw new InvariantError('Booking belum dibayar, tidak bisa check-out');
 
-        case "confirmed":
-          throw new InvariantError("Booking belum check-in, tidak bisa check-out");
+        case 'confirmed':
+          throw new InvariantError('Booking belum check-in, tidak bisa check-out');
 
-        case "cancelled":
-          throw new InvariantError("Booking sudah dibatalkan, tidak bisa check-out");
+        case 'cancelled':
+          throw new InvariantError('Booking sudah dibatalkan, tidak bisa check-out');
 
-        case "no-show":
-          throw new InvariantError("Booking sudah no-show, tidak bisa check-out");
+        case 'no-show':
+          throw new InvariantError('Booking sudah no-show, tidak bisa check-out');
 
-        case "failed":
-          throw new InvariantError("Booking gagal, tidak bisa check-out");
+        case 'failed':
+          throw new InvariantError('Booking gagal, tidak bisa check-out');
 
-        case "checked-out":
-          throw new InvariantError("Booking sudah selesai, tidak bisa check-out lagi");
+        case 'checked-out':
+          throw new InvariantError('Booking sudah selesai, tidak bisa check-out lagi');
 
-        case "checked-in":
+        case 'checked-in':
           // ✅ ini valid, boleh lanjut check-out
           break;
 
@@ -592,27 +593,27 @@ export class BookingsService {
 
       // 3. Update check_in_status menjadi checked out
       const updatedAt = new Date().toISOString();
-      const logId = `log-${nanoid(16)}`
+      const logId = `log-${nanoid(16)}`;
       await client.query(
         `UPDATE bookings
-        SET status = $1, status = 'checked-out', updated_at = $1
-        WHERE id = $2`,
-        ['checked out', updatedAt, bookingId]
+        SET status = $1, updated_at = $2
+        WHERE id = $3`,
+        ['checked-out', updatedAt, bookingId]
       );
 
       // 4. Log aktivitas
       await client.query(
         `INSERT INTO active_logs (id, user_id, action, target_table, target_id, performed_at)
         VALUES ($1, $2, $3, $4, $5, $6)`,
-        [logId, userId, "check-out booking", "bookings", bookingId, updatedAt]
+        [logId, userId, 'check-out booking', 'bookings', bookingId, updatedAt]
       );
 
-      await client.query("COMMIT");
+      await client.query('COMMIT');
 
       return { bookingId };
     } catch (error) {
-      await client.query("ROLLBACK");
-      console.error("Database Error (checkOutBookingService):", error);
+      await client.query('ROLLBACK');
+      console.error('Database Error (checkOutBookingService):', error);
       throw error;
     } finally {
       client.release();
@@ -639,7 +640,7 @@ export class BookingsService {
       // Kembalikan booking pertama yang ditemukan atau null
       return result.rows[0] || null;
     } catch (error) {
-      console.error("Database Error (getCompletedBookingForUserRoom):", error);
+      console.error('Database Error (getCompletedBookingForUserRoom):', error);
       throw error;
     }
   }

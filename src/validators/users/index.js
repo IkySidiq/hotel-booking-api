@@ -6,7 +6,7 @@ export const UserValidator = {
     const validationResult = UserPayloadSchema.validate(payload);
  
     if (validationResult.error) {
-      console.log("Kesalahan pada validate user payload");
+      console.log('Kesalahan pada validate user payload');
       throw new InvariantError(validationResult.error.message);
     }
   },

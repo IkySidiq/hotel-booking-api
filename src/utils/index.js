@@ -67,7 +67,7 @@ export const mapDBToModel = {
   }) => ({
     id,
     roomType: room_type,
-    pricePerNight: price_per_night,
+    pricePerNight: Number(price_per_night),
     capacity,
     totalRooms: total_rooms,
     availableRooms: available_rooms,

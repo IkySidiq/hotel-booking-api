@@ -1,8 +1,7 @@
-import dayjs from "dayjs";
-import { nanoid } from "nanoid";
-import { InvariantError } from "../../exceptions/InvariantError.js";
-import { NotFoundError } from "../../exceptions/NotFoundError.js";
-import { mapDBToModel } from "../../utils/index.js";
+import { nanoid } from 'nanoid';
+import { InvariantError } from '../../exceptions/InvariantError.js';
+import { NotFoundError } from '../../exceptions/NotFoundError.js';
+import { mapDBToModel } from '../../utils/index.js';
 
 export class RoomsService {
   constructor(pool) {
@@ -12,13 +11,13 @@ export class RoomsService {
   async addRoom({ userId, roomType, pricePerNightNum, capacityNum, totalRoomsNum, description }) {
     const client = await this._pool.connect();
     try {
-      await client.query("BEGIN");
+      await client.query('BEGIN');
 
       const now = new Date().toISOString();
 
       // Cek dulu apakah room_type sudah ada
       const checkQuery = await client.query(
-        "SELECT id FROM rooms WHERE room_type = $1",
+        'SELECT id FROM rooms WHERE room_type = $1',
         [roomType]
       );
 
@@ -38,31 +37,31 @@ export class RoomsService {
       };
 
       const result = await client.query(insertQuery);
-      if (!result.rows.length) throw new InvariantError("Gagal menambahkan kamar");
+      if (!result.rows.length) throw new InvariantError('Gagal menambahkan kamar');
 
       // Catat log
       const queryLog = await client.query(
         `INSERT INTO active_logs (id, user_id, action, target_table, target_id, performed_at)
         VALUES ($1, $2, $3, $4, $5, $6) RETURNING id`,
-        [`log-${nanoid(16)}`, userId, "add room", "rooms", roomId, now]
+        [`log-${nanoid(16)}`, userId, 'add room', 'rooms', roomId, now]
       );
 
-      if (!queryLog.rows.length) throw new InvariantError("Log gagal dicatat");
+      if (!queryLog.rows.length) throw new InvariantError('Log gagal dicatat');
 
-      await client.query("COMMIT");
+      await client.query('COMMIT');
 
       return { id: roomId };
 
     } catch (error) {
-      await client.query("ROLLBACK");
-      console.log("Database Error (addRoom()):", error);
+      await client.query('ROLLBACK');
+      console.log('Database Error (addRoom()):', error);
       throw error;
     } finally {
       client.release();
     }
   }
 
-  async getRooms({ roomType, minPrice, maxPrice, capacity, page = 1, limit = 50 }) {
+  async getRooms({ roomType, minPrice, maxPrice, capacity }, page = 1, limit = 50) {
     try {
       const offset = (page - 1) * limit;
       const conditions = [];
@@ -88,7 +87,7 @@ export class RoomsService {
         values.push(capacity);
       }
 
-      const whereClause = conditions.length ? `WHERE ${conditions.join(" AND ")}` : "";
+      const whereClause = conditions.length ? `WHERE ${conditions.join(' AND ')}` : '';
 
       // Ambil data kamar dengan foto primary
       const query = {
@@ -124,6 +123,10 @@ export class RoomsService {
       const totalItems = parseInt(countResult.rows[0].count, 10);
       const totalPages = Math.ceil(totalItems / limit);
 
+      //* Bisa juga melalaui utils. Kalo tidak pake utils, convert type nya harus ada assign balik
+      // resultMap[0].pricePerNight = Number(resultMap[0].pricePerNight);
+      
+
       return {
         data: resultMap,
         page,
@@ -132,8 +135,8 @@ export class RoomsService {
         totalPages,
       };
     } catch (error) {
-      console.error("Database Error (getRooms()):", error);
-      throw new Error("Gagal mengambil daftar kamar");
+      console.error('Database Error (getRooms()):', error);
+      throw new Error('Gagal mengambil daftar kamar');
     }
   }
 
@@ -149,7 +152,7 @@ export class RoomsService {
       const result = await this._pool.query(query);
       const resultMap = result.rows.map(mapDBToModel.roomsTable);
 
-      if (!resultMap.length) throw new NotFoundError("Kamar tidak ditemukan");
+      if (!resultMap.length) throw new NotFoundError('Kamar tidak ditemukan');
 
       const room = resultMap[0];
 
@@ -165,14 +168,14 @@ export class RoomsService {
       const resultPicMap = resultPic.rows.map(mapDBToModel.roomPicturesTable);
 
       if (!resultPicMap.length) {
-        throw new InvariantError('Foto tidak ditemukan')
+        throw new InvariantError('Foto tidak ditemukan');
       } 
 
       room.pictures = resultPicMap;
 
       return room;
     } catch (error) {
-      console.error("Database Error (getRoomById):", error);
+      console.error('Database Error (getRoomById):', error);
       throw error;
     }
   }
@@ -180,7 +183,7 @@ export class RoomsService {
   async editRoom({ targetId, roomType, pricePerNightNum, capacityNum, totalRoomsNum, description }) {
     const client = await this._pool.connect();
     try {
-      await client.query("BEGIN");
+      await client.query('BEGIN');
 
       const now = new Date().toISOString();
 
@@ -198,13 +201,13 @@ export class RoomsService {
       };
 
       const result = await client.query(query);
-      if (!result.rows.length) throw new NotFoundError("Kamar tidak ditemukan atau gagal diperbarui");
+      if (!result.rows.length) throw new NotFoundError('Kamar tidak ditemukan atau gagal diperbarui');
 
-      await client.query("COMMIT");
+      await client.query('COMMIT');
       return { roomId: result.rows[0].id };
     } catch (error) {
-      await client.query("ROLLBACK");
-      console.error("Database Error (editRoom):", error);
+      await client.query('ROLLBACK');
+      console.error('Database Error (editRoom):', error);
       throw error;
     } finally {
       client.release();
@@ -214,7 +217,7 @@ export class RoomsService {
   async deleteRoom({ roomId }) {
     const client = await this._pool.connect();
     try {
-      await client.query("BEGIN");
+      await client.query('BEGIN');
       const now = new Date().toISOString();
 
       const query = {
@@ -229,13 +232,13 @@ export class RoomsService {
       };
 
       const result = await client.query(query);
-      if (!result.rows.length) throw new NotFoundError("Kamar tidak ditemukan atau sudah dihapus");
+      if (!result.rows.length) throw new NotFoundError('Kamar tidak ditemukan atau sudah dihapus');
 
-      await client.query("COMMIT");
+      await client.query('COMMIT');
       return { roomId: result.rows[0].id };
     } catch (error) {
-      await client.query("ROLLBACK");
-      console.error("Database Error (deleteRoom):", error);
+      await client.query('ROLLBACK');
+      console.error('Database Error (deleteRoom):', error);
       throw error;
     } finally {
       client.release();

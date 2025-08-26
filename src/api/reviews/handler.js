@@ -1,5 +1,5 @@
-import autoBind from "auto-bind";
-import { InvariantError } from "../../exceptions/InvariantError.js";
+import autoBind from 'auto-bind';
+import { InvariantError } from '../../exceptions/InvariantError.js';
 
 export class ReviewsHandler {
   constructor(service, validator, bookingsService) {
@@ -26,7 +26,7 @@ export class ReviewsHandler {
       );
       if (!booking) {
         throw new InvariantError(
-          "Anda belum melakukan booking untuk kamar ini"
+          'Anda belum melakukan booking untuk kamar ini'
         );
       }
 
@@ -37,7 +37,7 @@ export class ReviewsHandler {
       );
       if (existingReview) {
         throw new InvariantError(
-          "Anda sudah memberikan review untuk kamar ini"
+          'Anda sudah memberikan review untuk kamar ini'
         );
       }
 
@@ -54,19 +54,18 @@ export class ReviewsHandler {
 
       return h
         .response({
-          status: "success",
-          message: "Review berhasil ditambahkan",
+          status: 'success',
+          message: 'Review berhasil ditambahkan',
           data: { id: newReview },
         })
         .code(201);
     } catch (err) {
-      console.error("Error postReviewHandler:", err);
+      console.error('Error postReviewHandler:', err);
       throw err;
     }
   }
 
   async getReviewsHandler(request) {
-    try {
       const { roomId } = request.params;
       const { page = 1, limit = 10 } = request.query;
       const data = await this._service.getReviewsByRoomId({
@@ -76,30 +75,22 @@ export class ReviewsHandler {
       });
 
       return {
-        status: "success",
+        status: 'success',
         data,
       };
-    } catch (error) {
-      throw error;
-    }
   }
 
   async getReviewbyIdHandler(request) {
-    try {
       const { reviewId } = request.params;
       const data = await this._service.getReviewById(reviewId);
 
       return {
-        status: "success",
+        status: 'success',
         data,
       };
-    } catch (error) {
-      throw error;
-    }
   }
 
   async putReviewHandler(request) {
-    try {
       const { reviewId: id } = request.params;
       const { rating, comment } = request.payload;
       this._validator.validateReviewPayload({ rating, comment });
@@ -113,18 +104,14 @@ export class ReviewsHandler {
       });
 
       return {
-        status: "success",
+        status: 'success',
         data: {
-          reviewId,
+          id: reviewId,
         },
       };
-    } catch (error) {
-      throw error;
-    }
   }
 
   async deleteReviewHandler(request) {
-    try {
       const { reviewId: id } = request.params;
       const { id: userId } = request.auth.credentials;
       const reviewId = await this._service.deleteReview({
@@ -133,11 +120,8 @@ export class ReviewsHandler {
       });
 
       return {
-        status: "success",
+        status: 'success',
         data: { reviewId },
       };
-    } catch (error) {
-      throw error;
-    }
   }
 }

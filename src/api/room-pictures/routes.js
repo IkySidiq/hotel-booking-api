@@ -31,11 +31,11 @@ export const routes = (handler) => [
     },
   },
   {
-      method: "DELETE",
-      path: "/rooms/{roomId}/pictures",
+      method: 'DELETE',
+      path: '/rooms/{roomId}/pictures',
       handler: handler.deleteAllPicturesHandler,
       options: {
-        auth: "booking_hotel_jwt", // kalau memang pakai autentikasi
+        auth: 'booking_hotel_jwt', // kalau memang pakai autentikasi
       },
   },
   {

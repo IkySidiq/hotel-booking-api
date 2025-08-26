@@ -1,4 +1,4 @@
-import autoBind from "auto-bind";
+import autoBind from 'auto-bind';
 
 export class AuthenticationsHandler {
   constructor(service, usersService, tokenManager, validator) {
@@ -17,11 +17,11 @@ export class AuthenticationsHandler {
     const { email, password } = request.payload;
     console.log(email, password);
     const id = await this._usersService.verifyUserCredential({ email, password });
-    console.log('ID', id)
+    console.log('ID', id);
  
     const accessToken = this._tokenManager.generateAccessToken({ id });
     const refreshToken = this._tokenManager.generateRefreshToken({ id });
-    console.log(refreshToken, 'tah')
+    console.log(refreshToken, 'tah');
  
     await this._service.addRefreshToken({ refreshToken });
  

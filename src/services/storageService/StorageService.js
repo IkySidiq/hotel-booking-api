@@ -1,6 +1,6 @@
-import fs from "fs";
-import path from "path";
-import { nanoid } from "nanoid";
+import fs from 'fs';
+import path from 'path';
+import { nanoid } from 'nanoid';
 
 export class StorageService {
   constructor(baseFolder) {
@@ -18,7 +18,7 @@ export class StorageService {
    * @param {string} subFolder - folder tambahan, misal roomId
    * @returns {Promise<string>} - path relatif file yang disimpan
    */
-  async writeFile(file, originalName, subFolder = "") {
+  async writeFile(file, originalName, subFolder = '') {
     // Sanitasi nama file: hapus spasi, generate unique
     const ext = path.extname(originalName);
     const filename = `${nanoid(12)}${ext}`;
@@ -33,10 +33,10 @@ export class StorageService {
     const fileStream = fs.createWriteStream(fullPath);
 
     return new Promise((resolve, reject) => {
-      fileStream.on("error", reject);
-      fileStream.on("finish", () => {
+      fileStream.on('error', reject);
+      fileStream.on('finish', () => {
         // kembalikan path relatif untuk DB
-        const relativePath = path.join(subFolder, filename).replace(/\\/g, "/");
+        const relativePath = path.join(subFolder, filename).replace(/\\/g, '/');
         resolve(relativePath);
       });
       file.pipe(fileStream);

@@ -1,11 +1,12 @@
-import autoBind from "auto-bind";
+import autoBind from 'auto-bind';
 import path from 'path';
-import { nanoid } from "nanoid";
+import { nanoid } from 'nanoid';
+import { NotFoundError } from '../../exceptions/NotFoundError';
 
 export class RoomPicturesHandler {
   constructor(service, validator, userService, storageService) {
     this._service = service;
-    this._validator = validator
+    this._validator = validator;
     this._storageService = storageService;
     this._userService = userService;
 
@@ -21,15 +22,15 @@ export class RoomPicturesHandler {
       await this._userService.verifyUser({ userId });
 
       // ambil roomId, primaryFileName, dan array files dari payload
-      const {id: roomId} = request.params;
-              console.log('PERCOBAAN', roomId)
+      const { id: roomId } = request.params;
+              console.log('PERCOBAAN', roomId);
 
 
       const { fotoSatu, fotoDua, fotoTiga } = request.payload;
       const filesArray = [fotoSatu, fotoDua, fotoTiga].filter(Boolean);
 
       if (!filesArray.length) {
-        throw new Error("Tidak ada file yang diunggah");
+        throw new Error('Tidak ada file yang diunggah');
       }
 
       const results = [];
@@ -58,39 +59,34 @@ export class RoomPicturesHandler {
       }
 
       return h.response({
-        status: "success",
-        message: "Foto kamar berhasil diunggah",
+        status: 'success',
+        message: 'Foto kamar berhasil diunggah',
         data: results
       }).code(201);
 
     } catch (err) {
-      console.error("Error postRoomPictureHandler:", err);
+      console.error('Error postRoomPictureHandler:', err);
       throw err;
     }
   }
 
   // Ambil semua foto kamar
   async getRoomPicturesHandler(request) {
-    try {
       const { id: userId } = request.auth.credentials;
       await this._userService.verifyUser({ userId });
 
       const { roomId } = request.params;
-      console.log('HEBAT', roomId)
+      console.log('HEBAT', roomId);
       const pictures = await this._service.getPictures({ roomId });
 
       return {
-        status: "success",
+        status: 'success',
         data: pictures
       };
-    } catch (error) {
-      throw error;
-    }
   }
 
   // Hapus foto kamar
   async deleteRoomPictureHandler(request) {
-    try {
       const { id: userId } = request.auth.credentials;
       await this._userService.verifyUser({ userId });
 
@@ -99,38 +95,35 @@ export class RoomPicturesHandler {
       const pictures = await this._service.getPictures({ roomId });
       const picture = pictures.find(p => p.id === pictureId);
 
-      if (!picture) throw new NotFoundError("Foto tidak ditemukan");
+      if (!picture) throw new NotFoundError('Foto tidak ditemukan');
 
       await this._storageService.deleteFile(picture.path);
       const result = await this._service.deletePicture({ pictureId });
 
       return {
-        status: "success",
+        status: 'success',
         data: result
       };
-    } catch (error) {
-      throw error;
-    }
   }
 
   async deleteAllPicturesHandler(request, h) {
     try {
       const { roomId } = request.params;
 
-      const { deletedPictureIds } = await this._service.deleteAllPictures({ roomId });
+      const { ids } = await this._service.deleteAllPictures({ roomId });
 
       return h.response({
-        status: "success",
-        message: "Semua foto berhasil dihapus",
+        status: 'success',
+        message: 'Semua foto berhasil dihapus',
         data: {
-          deletedPictureIds,
+          ids,
         },
       }).code(200);
 
     } catch (error) {
       console.error(error);
       return h.response({
-        status: "fail",
+        status: 'fail',
         message: error.message,
       }).code(error.statusCode || 500);
     }
@@ -138,7 +131,6 @@ export class RoomPicturesHandler {
 
   // Set primary picture
   async setPrimaryPictureHandler(request) {
-    try {
       const { id: userId } = request.auth.credentials;
       await this._userService.verifyUser({ userId });
 
@@ -146,11 +138,8 @@ export class RoomPicturesHandler {
       const result = await this._roomPicturesService.setPrimaryPicture({ pictureId });
 
       return {
-        status: "success",
+        status: 'success',
         data: result
       };
-    } catch (error) {
-      throw error;
-    }
   }
 }

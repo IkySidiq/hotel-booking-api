@@ -1,16 +1,16 @@
-import { InvariantError } from "../../exceptions/InvariantError.js";
+import { InvariantError } from '../../exceptions/InvariantError.js';
 import {
   AddBookingPayloadSchema,
   GetBookingsPayloadSchema,
   BookingIdParamSchema,
-} from "./schema.js";
+} from './schema.js';
 
 const BookingsValidator = {
   validateAddBookingPayload: (payload) => {
     const validationResult = AddBookingPayloadSchema.validate(payload);
 
     if (validationResult.error) {
-      console.log("Kesalahan pada validate add booking payload");
+      console.log('Kesalahan pada validate add booking payload');
       throw new InvariantError(validationResult.error.message);
     }
   },
@@ -19,7 +19,7 @@ const BookingsValidator = {
     const validationResult = GetBookingsPayloadSchema.validate(payload);
 
     if (validationResult.error) {
-      console.log("Kesalahan pada validate get bookings payload");
+      console.log('Kesalahan pada validate get bookings payload');
       throw new InvariantError(validationResult.error.message);
     }
   },
@@ -28,7 +28,7 @@ const BookingsValidator = {
     const validationResult = BookingIdParamSchema.validate(params);
 
     if (validationResult.error) {
-      console.log("Kesalahan pada validate bookingId param");
+      console.log('Kesalahan pada validate bookingId param');
       throw new InvariantError(validationResult.error.message);
     }
   },

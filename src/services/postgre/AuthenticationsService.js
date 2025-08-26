@@ -1,5 +1,5 @@
-import { nanoid } from "nanoid";
-import { InvariantError } from "../../exceptions/InvariantError.js";
+import { nanoid } from 'nanoid';
+import { InvariantError } from '../../exceptions/InvariantError.js';
 
 
 
@@ -12,9 +12,9 @@ export class AuthenticationsService{
     const id = `auth-${nanoid(16)}`;
 
     const query = {
-      text: `INSERT INTO authentications (id, refresh_token) VALUES ($1, $2) RETURNING id`,
+      text: 'INSERT INTO authentications (id, refresh_token) VALUES ($1, $2) RETURNING id',
       values: [id, refreshToken]
-    }
+    };
 
     const result = await this._pool.query(query);
     if (!result.rows[0]?.id) {

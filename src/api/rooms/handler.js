@@ -1,16 +1,15 @@
-import autoBind from "auto-bind";
+import autoBind from 'auto-bind';
 
 export class RoomsHandler {
   constructor(service, validator, userService) {
     this._service = service;
     this._validator = validator;
-    this._userService = userService
+    this._userService = userService;
 
     autoBind(this);
   }
 
   async postRoomHandler(request, h) {
-    try {
       const { roomType, pricePerNight, capacity, totalRooms, description } = request.payload;
       const pricePerNightNum = Number(pricePerNight);
       const capacityNum = Number(capacity);
@@ -25,34 +24,31 @@ export class RoomsHandler {
       const roomId = await this._service.addRoom({ userId, roomType, pricePerNightNum, capacityNum, totalRoomsNum, description });
 
       return h.response({
-        status: "success",
+        status: 'success',
         data: roomId
       }).code(201);
-    } catch (error) {
-      throw error;
-    }
   }
 
   async getRoomsHandler(request) {
-    try {
-      const { roomType, minPrice, maxPrice, capacity, page = 1, limit = 50 } = request.query;
+      const { roomType, minPrice, maxPrice, capacity } = request.query;
 
       const { id: userId } = request.auth.credentials;
+      console.log(userId);
       await this._userService.verifyUser({ userId });
 
-      const data = await this._service.getRooms({ roomType, minPrice, maxPrice, capacity, page, limit });
+      const { data, page, limit, totalItems, totalPages, } = await this._service.getRooms({ roomType, minPrice, maxPrice, capacity });
 
       return {
-        status: "success",
-        data
+        status: 'success',
+        data,
+        page,
+        limit,
+        totalItems,
+        totalPages
       };
-    } catch (error) {
-      throw error;
-    }
   }
 
   async getRoomByIdHandler(request) {
-    try {
       const { id: roomId } = request.params;
 
       const { id: userId } = request.auth.credentials;
@@ -61,16 +57,12 @@ export class RoomsHandler {
       const room = await this._service.getRoomById({ roomId });
 
       return {
-        status: "success",
+        status: 'success',
         data: room
       };
-    } catch (error) {
-      throw error;
-    }
   }
 
   async putRoomHandler(request) {
-    try {
       const { roomType, pricePerNight, capacity, totalRooms, description } = request.payload;
       const pricePerNightNum = Number(pricePerNight);
       const capacityNum = Number(capacity);
@@ -86,16 +78,12 @@ export class RoomsHandler {
       const { roomId } = await this._service.editRoom({ targetId, roomType, pricePerNightNum, capacityNum, totalRoomsNum, description });
 
       return {
-        status: "success",
+        status: 'success',
         data: { roomId }
       };
-    } catch (error) {
-      throw error;
-    }
   }
 
   async deleteRoomHandler(request) {
-    try {
       const { id: roomId } = request.params;
 
       const { id: userId } = request.auth.credentials;
@@ -104,11 +92,8 @@ export class RoomsHandler {
       const { roomId: deletedRoomId } = await this._service.deleteRoom({ roomId });
 
       return {
-        status: "success",
-        data: { roomId: deletedRoomId }
+        status: 'success',
+        data: { id: deletedRoomId }
       };
-    } catch (error) {
-      throw error;
-    }
   }
 }

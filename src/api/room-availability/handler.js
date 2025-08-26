@@ -1,4 +1,4 @@
-import autoBind from "auto-bind";
+import autoBind from 'auto-bind';
 
 export class RoomAvailabilityHandler {
   constructor(service, validator, userService) {
@@ -9,8 +9,7 @@ export class RoomAvailabilityHandler {
     autoBind(this);
   }
 
-  async checkAvailabilityHandler(request, h) {
-    try {
+  async checkAvailabilityHandler(request) {
       const { roomId, checkInDate, checkOutDate, numberOfRooms } = request.payload;
 
       this._validator.validateCheckAvailabilityPayload({ roomId, checkInDate, checkOutDate, numberOfRooms });
@@ -18,12 +17,9 @@ export class RoomAvailabilityHandler {
       const result = await this._service.checkAvailability({ roomId, checkInDate, checkOutDate, numberOfRooms });
 
       return {
-        status: "success",
+        status: 'success',
         data: result,
       };
-    } catch (error) {
-      throw error;
-    }
   }
 
   async generateAvailabilityHandler(request, h) {
@@ -31,14 +27,14 @@ export class RoomAvailabilityHandler {
       await this._service.generateAvailability({ monthsAhead: 6 });
 
       return h.response({
-        status: "success",
-        message: "Room availability generated for 6 months ahead",
+        status: 'success',
+        message: 'Room availability generated for 6 months ahead',
       }).code(200);
 
     } catch (error) {
-      console.error("Error generating availability:", error);
+      console.error('Error generating availability:', error);
       return h.response({
-        status: "fail",
+        status: 'fail',
         message: error.message,
       }).code(500);
     }

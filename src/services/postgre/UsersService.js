@@ -1,9 +1,9 @@
-import bcrypt from "bcrypt";
-import { nanoid } from "nanoid";
-import { InvariantError } from "../../exceptions/InvariantError.js";
-import { AuthenticationError } from "../../exceptions/AuthenticationError.js";
-import { AuthorizationError } from "../../exceptions/AuthorizationError.js";
-import { NotFoundError } from "../../exceptions/NotFoundError.js";
+import bcrypt from 'bcrypt';
+import { nanoid } from 'nanoid';
+import { InvariantError } from '../../exceptions/InvariantError.js';
+import { AuthenticationError } from '../../exceptions/AuthenticationError.js';
+import { AuthorizationError } from '../../exceptions/AuthorizationError.js';
+import { NotFoundError } from '../../exceptions/NotFoundError.js';
 
 export class UsersService {
   constructor(pool) {
@@ -33,7 +33,7 @@ export class UsersService {
 
       const result = await client.query(query);
       if (!result.rows.length) {
-        throw new InvariantError("Gagal menambahkan data pengguna");
+        throw new InvariantError('Gagal menambahkan data pengguna');
       }
 
       const targetId = result.rows[0].id;
@@ -44,12 +44,12 @@ export class UsersService {
           VALUES ($1, $2, $3, $4, $5, $6)
           RETURNING id
         `,
-        values: [activeLogId, targetId, "create", "users", targetId, createdAt],
+        values: [activeLogId, targetId, 'create', 'users', targetId, createdAt],
       };
 
       const resultOfActiveLogQuery = await client.query(activeLogsQuery);
       if (!resultOfActiveLogQuery.rows.length) {
-        throw new InvariantError("Gagal mencatat log aktivitas");
+        throw new InvariantError('Gagal mencatat log aktivitas');
       }
 
       await client.query('COMMIT');
@@ -66,16 +66,11 @@ export class UsersService {
     }
   }
 
-  async getAllUsers({ page = 1, limit = 10, role }) {
+  async getAllUsers(page = 1, limit = 10) {
     try {
       const offset = (page - 1) * limit;
       const conditions = ['is_active = true'];
       const values = [];
-
-      if (role) {
-        conditions.push(`role = $${values.length + 1}`);
-        values.push(role);
-      }
 
       const paramCount = values.length;
 
@@ -97,7 +92,7 @@ export class UsersService {
       };
 
       const result = await this._pool.query(query);
-      const users = result.rows;
+      const data = result.rows;
 
       const countQuery = {
         text: `SELECT COUNT(*) FROM users ${whereClause}`,
@@ -109,20 +104,20 @@ export class UsersService {
       const totalPages = Math.ceil(totalItems / limit);
 
       return {
-        data: users,
+        data,
         page,
         limit,
         totalItems,
         totalPages,
       };
     } catch (error) {
-      console.error("Database Error (getAllUsers):", error);
-      throw new Error("Gagal mengambil data pengguna");
+      console.error('Database Error (getAllUsers):', error);
+      throw new Error('Gagal mengambil data pengguna');
     }
   }
 
   async getUserbyId({ targetId }) {
-    console.log(targetId, 'WELL')
+    console.log(targetId, 'WELL');
     try {
       const query = {
         text: `SELECT id, fullname, email, contact_number as "contactNumber", role, last_login, created_at, updated_at
@@ -133,13 +128,13 @@ export class UsersService {
       const result = await this._pool.query(query);
 
       if (!result.rows.length) {
-        throw new NotFoundError("User tidak ditemukan");
+        throw new NotFoundError('User tidak ditemukan');
       }
 
       return result.rows[0]; 
     } catch (error) {
-      console.error("Database Error (getUserbyId()):", error);
-      throw new Error("Gagal mengambil data pengguna");
+      console.error('Database Error (getUserbyId()):', error);
+      throw new Error('Gagal mengambil data pengguna');
     }
   }
 
@@ -151,19 +146,19 @@ export class UsersService {
 
     const client = await this._pool.connect();
     try{
-      const passwordHash = await bcrypt.hash(password, 10)
+      const passwordHash = await bcrypt.hash(password, 10);
 
       await client.query('BEGIN');
       
       const query = {
-        text: `UPDATE users SET fullname = $1, email = $2, contact_number = $3, password_hash = $4, updated_at = $5 WHERE id = $6 RETURNING id`,
+        text: 'UPDATE users SET fullname = $1, email = $2, contact_number = $3, password_hash = $4, updated_at = $5 WHERE id = $6 RETURNING id',
         values: [ fullname, email, contactNumber, passwordHash, updatedAt, targetId]
-      }
+      };
 
       const result = await client.query(query);
 
       if (!result.rows.length) {
-        throw new InvariantError("Data tidak ditemukan. Gagal untuk mengedit");
+        throw new InvariantError('Data tidak ditemukan. Gagal untuk mengedit');
       }
 
       const resultTargetId = result.rows[0].id;
@@ -174,13 +169,13 @@ export class UsersService {
           VALUES ($1, $2, $3, $4, $5, $6)
           RETURNING id
         `,
-        values: [activeLogId, userId, "edit", "users", resultTargetId, createdAt],
+        values: [activeLogId, userId, 'edit', 'users', resultTargetId, createdAt],
       };
 
       const resultOfLogQuery = await client.query(activeLogsQuery);
 
       if (!resultOfLogQuery.rows.length) {
-        throw new InvariantError("Gagal mencatat log aktivitas");
+        throw new InvariantError('Gagal mencatat log aktivitas');
       }
 
       await client.query('COMMIT');
@@ -188,11 +183,11 @@ export class UsersService {
       return {
         id: resultTargetId,
         logId: resultOfLogQuery.rows[0].id
-      }
+      };
     } catch(error) {
       await client.query('ROLLBACK');
-      console.error("Database Error(editUser):", error);
-      throw new Error("Gagal mengedit data pengguna");
+      console.error('Database Error(editUser):', error);
+      throw new Error('Gagal mengedit data pengguna');
     } finally {
       client.release();
     }
@@ -217,7 +212,7 @@ export class UsersService {
       const result = await client.query(query);
 
       if (!result.rows.length) {
-        throw new InvariantError("Data tidak ditemukan atau sudah dihapus");
+        throw new InvariantError('Data tidak ditemukan atau sudah dihapus');
       }
 
       const resultTargetId = result.rows[0].id;
@@ -228,25 +223,24 @@ export class UsersService {
           VALUES ($1, $2, $3, $4, $5, $6)
           RETURNING id
         `,
-        values: [activeLogId, userId, "soft-delete", "users", resultTargetId, now],
+        values: [activeLogId, userId, 'soft-delete', 'users', resultTargetId, now],
       };
 
       const resultOfLogQuery = await client.query(activeLogsQuery);
 
       if (!resultOfLogQuery.rows.length) {
-        throw new InvariantError("Gagal mencatat log aktivitas");
+        throw new InvariantError('Gagal mencatat log aktivitas');
       }
 
       await client.query('COMMIT');
 
       return {
         id: resultTargetId,
-        logId: resultOfLogQuery.rows[0].id,
       };
     } catch (error) {
       await client.query('ROLLBACK');
-      console.error("Database Error(deleteUser):", error);
-      throw new Error("Gagal menghapus data pengguna");
+      console.error('Database Error(deleteUser):', error);
+      throw new Error('Gagal menghapus data pengguna');
     } finally {
       client.release();
     }
@@ -254,20 +248,20 @@ export class UsersService {
 
   async verifyUserCredential({ email, password }) {
     const query = {
-      text: `SELECT id, password_hash FROM users WHERE email = $1`,
+      text: 'SELECT id, password_hash FROM users WHERE email = $1',
       values: [email]
-    }
+    };
 
     const result = await this._pool.query(query);
     if (!result.rows.length) {
-      throw new AuthenticationError("Kredensial yang anda berikan salah");
+      throw new AuthenticationError('Kredensial yang anda berikan salah');
     }
 
     const { id, password_hash: hashedPassword  } = result.rows[0];
     const match = await bcrypt.compare(password, hashedPassword);
 
     if (!match) {
-      throw new AuthenticationError("Kredensial yang anda berikan salah");
+      throw new AuthenticationError('Kredensial yang anda berikan salah');
     }
 
     //* Update last_login
@@ -288,18 +282,18 @@ export class UsersService {
 
   async verifyUser({ userId }) {
     const query = {
-      text: `SELECT role FROM users WHERE id = $1`,
+      text: 'SELECT role FROM users WHERE id = $1',
       values: [userId]
-    }
+    };
 
     const result = await this._pool.query(query);
 
     if (!result.rows.length) {
-      throw new NotFoundError("Data tidak ditemukan");
+      throw new NotFoundError('Data tidak ditemukan');
     }
 
-    if (result.rows[0].role !== "admin") {
-      throw new AuthorizationError("Anda tidak berhak mengakses resource ini");
+    if (result.rows[0].role !== 'admin') {
+      throw new AuthorizationError('Anda tidak berhak mengakses resource ini');
     }
   }
 }
