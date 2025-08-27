@@ -1,6 +1,7 @@
 import { nanoid } from 'nanoid';
 import { InvariantError } from '../../exceptions/InvariantError.js';
 import { NotFoundError } from '../../exceptions/NotFoundError.js';
+import logger from '../../utils/logger.js';
 
 export class HotelProfileService {
   constructor(pool) {
@@ -16,12 +17,14 @@ export class HotelProfileService {
       );
 
       if (!result.rows.length) {
+        logger.warn('[getProfile] Profil hotel belum tersedia');
         throw new NotFoundError('Data profil hotel belum tersedia');
       }
 
+      logger.info('[getProfile] Profil hotel berhasil diambil');
       return result.rows[0];
     } catch (error) {
-      console.error('Database Error (getProfile):', error);
+      logger.error(`[getProfile] Gagal mengambil profil hotel: ${error.message}`);
       throw error;
     }
   }
@@ -30,11 +33,13 @@ export class HotelProfileService {
     const client = await this._pool.connect();
     try {
       await client.query('BEGIN');
+
       // Cek apakah sudah ada profile
       const checkResult = await client.query('SELECT COUNT(*) FROM hotel_profile');
       const exists = parseInt(checkResult.rows[0].count, 10) > 0;
 
       if (exists) {
+        logger.warn('[addProfile] Profil hotel sudah ada, tidak bisa menambahkan lagi');
         throw new InvariantError('Profil hotel sudah ada, tidak bisa menambahkan lagi');
       }
 
@@ -52,14 +57,16 @@ export class HotelProfileService {
       const result = await client.query(query, values);
 
       if (!result.rows.length) {
+        logger.error('[addProfile] Gagal menambahkan profil hotel');
         throw new InvariantError('Gagal menambahkan profil hotel');
       }
 
       await client.query('COMMIT');
+      logger.info(`[addProfile] Profil hotel berhasil ditambahkan dengan id ${result.rows[0].id}`);
       return result.rows[0].id;
     } catch (error) {
       await client.query('ROLLBACK');
-      console.error('Database Error (addProfile):', error);
+      logger.error(`[addProfile] Database error: ${error.message}`);
       throw error;
     } finally {
       client.release();
@@ -76,6 +83,7 @@ export class HotelProfileService {
       // Ambil id profile
       const checkResult = await client.query('SELECT id FROM hotel_profile LIMIT 1');
       if (!checkResult.rows.length) {
+        logger.warn('[updateProfile] Profil hotel belum tersedia');
         throw new NotFoundError('Profil hotel belum tersedia, gunakan POST untuk menambahkan');
       }
       const id = checkResult.rows[0].id;
@@ -98,14 +106,16 @@ export class HotelProfileService {
       const result = await client.query(query, values);
 
       if (!result.rows.length) {
+        logger.error(`[updateProfile] Gagal memperbarui profil hotel dengan id ${id}`);
         throw new InvariantError('Gagal memperbarui profil hotel');
       }
 
       await client.query('COMMIT');
+      logger.info(`[updateProfile] Profil hotel berhasil diperbarui dengan id ${result.rows[0].id}`);
       return result.rows[0].id;
     } catch (error) {
       await client.query('ROLLBACK');
-      console.error('Database Error (updateProfile):', error);
+      logger.error(`[updateProfile] Database error: ${error.message}`);
       throw error;
     } finally {
       client.release();

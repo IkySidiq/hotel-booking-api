@@ -1,6 +1,7 @@
 import { nanoid } from 'nanoid';
 import { InvariantError } from '../../exceptions/InvariantError.js';
 import { NotFoundError } from '../../exceptions/NotFoundError.js';
+import logger from '../../utils/logger.js';
 
 export class RoomPicturesService {
   constructor(pool) {
@@ -33,7 +34,10 @@ export class RoomPicturesService {
         values: [picId, roomId, path, isPrimary, now, now],
       };
       const result = await client.query(query);
-      if (!result.rows.length) throw new InvariantError('Gagal menambahkan foto');
+      if (!result.rows.length) {
+        logger.warn(`[addPicture] Gagal menambahkan foto roomId=${roomId}`);
+        throw new InvariantError('Gagal menambahkan foto');
+      }
 
       // update is_complete di rooms
       await client.query(
@@ -42,10 +46,11 @@ export class RoomPicturesService {
       );
 
       await client.query('COMMIT');
+      logger.info(`[addPicture] Foto berhasil ditambahkan roomId=${roomId}, pictureId=${result.rows[0].id}`);
       return { pictureId: result.rows[0].id };
     } catch (error) {
       await client.query('ROLLBACK');
-      console.error('Database Error (addPicture):', error);
+      logger.error(`[addPicture] Error menambahkan foto roomId=${roomId}: ${error.message}`);
       throw error;
     } finally {
       client.release();
@@ -62,35 +67,54 @@ export class RoomPicturesService {
          ORDER BY created_at ASC`,
         [roomId]
       );
+
+      logger.info(`[getPictures] Mengambil ${result.rows.length} foto untuk roomId=${roomId}`);
       return result.rows;
     } catch (error) {
-      console.error('Database Error (getPictures):', error);
+      logger.error(`[getPictures] Error mengambil foto roomId=${roomId}: ${error.message}`);
       throw error;
     }
   }
 
   // 3. Hapus foto kamar
   async deletePicture({ pictureId }) {
-    const result = await this._pool.query(
-      'DELETE FROM room_pictures WHERE id = $1 RETURNING id',
-      [pictureId]
-    );
-    if (!result.rows.length) throw new NotFoundError('Foto tidak ditemukan atau gagal dihapus');
-    return { id: result.rows[0].id };
+    try {
+      const result = await this._pool.query(
+        'DELETE FROM room_pictures WHERE id = $1 RETURNING id',
+        [pictureId]
+      );
+
+      if (!result.rows.length) {
+        logger.warn(`[deletePicture] Foto tidak ditemukan pictureId=${pictureId}`);
+        throw new NotFoundError('Foto tidak ditemukan atau gagal dihapus');
+      }
+
+      logger.info(`[deletePicture] Foto berhasil dihapus pictureId=${pictureId}`);
+      return { id: result.rows[0].id };
+    } catch (error) {
+      logger.error(`[deletePicture] Error menghapus foto pictureId=${pictureId}: ${error.message}`);
+      throw error;
+    }
   }
 
   async deleteAllPictures({ roomId }) {
-    const result = await this._pool.query(
-      'DELETE FROM room_pictures WHERE room_id = $1 RETURNING id',
-      [roomId]
-    );
+    try {
+      const result = await this._pool.query(
+        'DELETE FROM room_pictures WHERE room_id = $1 RETURNING id',
+        [roomId]
+      );
 
-    if (!result.rows.length) {
-      throw new NotFoundError('Tidak ada foto ditemukan untuk kamar ini');
+      if (!result.rows.length) {
+        logger.warn(`[deleteAllPictures] Tidak ada foto ditemukan untuk roomId=${roomId}`);
+        throw new NotFoundError('Tidak ada foto ditemukan untuk kamar ini');
+      }
+
+      logger.info(`[deleteAllPictures] Menghapus semua foto roomId=${roomId}, total=${result.rows.length}`);
+      return { ids: result.rows.map((row) => row.id) };
+    } catch (error) {
+      logger.error(`[deleteAllPictures] Error menghapus foto roomId=${roomId}: ${error.message}`);
+      throw error;
     }
-
-    // bisa balikin list id yang terhapus biar jelas
-    return { ids: result.rows.map((row) => row.id) };
   }
 
   // 4. Set primary picture
@@ -103,7 +127,10 @@ export class RoomPicturesService {
         'SELECT room_id FROM room_pictures WHERE id = $1',
         [pictureId]
       );
-      if (!picResult.rows.length) throw new NotFoundError('Foto tidak ditemukan');
+      if (!picResult.rows.length) {
+        logger.warn(`[setPrimaryPicture] Foto tidak ditemukan pictureId=${pictureId}`);
+        throw new NotFoundError('Foto tidak ditemukan');
+      }
 
       const roomId = picResult.rows[0].room_id;
 
@@ -120,13 +147,17 @@ export class RoomPicturesService {
         [true, now, pictureId]
       );
 
-      if (!updateResult.rows.length) throw new InvariantError('Gagal set foto primary');
+      if (!updateResult.rows.length) {
+        logger.warn(`[setPrimaryPicture] Gagal set foto primary pictureId=${pictureId}`);
+        throw new InvariantError('Gagal set foto primary');
+      }
 
       await client.query('COMMIT');
+      logger.info(`[setPrimaryPicture] Foto berhasil dijadikan primary pictureId=${pictureId}, roomId=${roomId}`);
       return { pictureId: updateResult.rows[0].id };
     } catch (error) {
       await client.query('ROLLBACK');
-      console.error('Database Error (setPrimaryPicture):', error);
+      logger.error(`[setPrimaryPicture] Error set primary pictureId=${pictureId}: ${error.message}`);
       throw error;
     } finally {
       client.release();

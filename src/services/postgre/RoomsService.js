@@ -2,6 +2,7 @@ import { nanoid } from 'nanoid';
 import { InvariantError } from '../../exceptions/InvariantError.js';
 import { NotFoundError } from '../../exceptions/NotFoundError.js';
 import { mapDBToModel } from '../../utils/index.js';
+import logger from '../../utils/logger.js';
 
 export class RoomsService {
   constructor(pool, cacheService) {
@@ -13,21 +14,18 @@ export class RoomsService {
     const client = await this._pool.connect();
     try {
       await client.query('BEGIN');
-
       const now = new Date().toISOString();
 
-      // Cek dulu apakah room_type sudah ada
       const checkQuery = await client.query(
         'SELECT id FROM rooms WHERE room_type = $1',
         [roomType]
       );
 
       if (checkQuery.rows.length) {
-        // Tolak jika tipe kamar sudah ada
+        logger.warn(`[addRoom] Room type already exists: ${roomType}`);
         throw new InvariantError(`Tipe kamar '${roomType}' sudah ada`);
       }
 
-      // Insert baru
       const roomId = `room-${nanoid(16)}`;
       const insertQuery = {
         text: `INSERT INTO rooms 
@@ -38,26 +36,30 @@ export class RoomsService {
       };
 
       const result = await client.query(insertQuery);
-      if (!result.rows.length) throw new InvariantError('Gagal menambahkan kamar');
+      if (!result.rows.length) {
+        logger.error('[addRoom] Failed to insert room');
+        throw new InvariantError('Gagal menambahkan kamar');
+      }
 
-      // Catat log
       const queryLog = await client.query(
         `INSERT INTO active_logs (id, user_id, action, target_table, target_id, performed_at)
-        VALUES ($1, $2, $3, $4, $5, $6) RETURNING id`,
+         VALUES ($1, $2, $3, $4, $5, $6) RETURNING id`,
         [`log-${nanoid(16)}`, userId, 'add room', 'rooms', roomId, now]
       );
 
-      if (!queryLog.rows.length) throw new InvariantError('Log gagal dicatat');
+      if (!queryLog.rows.length) {
+        logger.warn('[addRoom] Failed to insert log');
+        throw new InvariantError('Log gagal dicatat');
+      }
 
       await client.query('COMMIT');
+      await this._cacheService.delete('rooms:all');
 
-      await this._cacheService.delete('rooms:all')
-
+      logger.info(`[addRoom] Room added successfully: ${roomId}`);
       return { id: roomId };
-
     } catch (error) {
       await client.query('ROLLBACK');
-      console.log('Database Error (addRoom()):', error);
+      logger.error(`[addRoom] Error: ${error.message}`);
       throw error;
     } finally {
       client.release();
@@ -74,39 +76,30 @@ export class RoomsService {
         conditions.push(`room_type ILIKE $${values.length + 1}`);
         values.push(`%${roomType}%`);
       }
-
       if (minPrice !== undefined) {
         conditions.push(`price_per_night >= $${values.length + 1}`);
         values.push(minPrice);
       }
-
       if (maxPrice !== undefined) {
         conditions.push(`price_per_night <= $${values.length + 1}`);
         values.push(maxPrice);
       }
-
       if (capacity !== undefined) {
         conditions.push(`capacity >= $${values.length + 1}`);
         values.push(capacity);
       }
 
       const whereClause = conditions.length ? `WHERE ${conditions.join(' AND ')}` : '';
-
-      // 🔑 Cache key dibuat dinamis berdasarkan parameter
       const cacheKey = `rooms:${JSON.stringify({ roomType, minPrice, maxPrice, capacity, page, limit })}`;
 
-      // 1️⃣ Coba ambil dari cache
       try {
         const cacheResult = await this._cacheService.get(cacheKey);
-        return {
-          source: 'cache',
-          ...JSON.parse(cacheResult),
-        };
+        logger.info('[getRooms] Cache hit');
+        return { source: 'cache', ...JSON.parse(cacheResult) };
       } catch {
-        // cache miss, lanjut ke DB
+        logger.info('[getRooms] Cache miss, querying DB');
       }
 
-      // 2️⃣ Query ke database
       const query = {
         text: `
           SELECT 
@@ -131,32 +124,18 @@ export class RoomsService {
       const result = await this._pool.query(query);
       const resultMap = result.rows.map(mapDBToModel.roomsTable);
 
-      const countQuery = {
-        text: `SELECT COUNT(*) FROM rooms ${whereClause}`,
-        values,
-      };
+      const countQuery = { text: `SELECT COUNT(*) FROM rooms ${whereClause}`, values };
       const countResult = await this._pool.query(countQuery);
       const totalItems = parseInt(countResult.rows[0].count, 10);
       const totalPages = Math.ceil(totalItems / limit);
 
-      const responseData = {
-        data: resultMap,
-        page,
-        limit,
-        totalItems,
-        totalPages,
-      };
-
-      // 3️⃣ Simpan hasil query ke Redis (30 menit)
+      const responseData = { data: resultMap, page, limit, totalItems, totalPages };
       await this._cacheService.set(cacheKey, JSON.stringify(responseData), 1800);
 
-      return {
-        source: 'db',
-        ...responseData,
-      };
-
+      logger.info('[getRooms] Data fetched from DB');
+      return { source: 'db', ...responseData };
     } catch (error) {
-      console.error('Database Error (getRooms()):', error);
+      logger.error(`[getRooms] Error: ${error.message}`);
       throw new Error('Gagal mengambil daftar kamar');
     }
   }
@@ -165,58 +144,40 @@ export class RoomsService {
     try {
       const cacheKey = `room:${roomId}`;
 
-      // 1️⃣ Coba ambil dari cache
       try {
         const cacheResult = await this._cacheService.get(cacheKey);
-        return {
-          source: "cache",
-          ...JSON.parse(cacheResult),
-        };
+        logger.info(`[getRoomById] Cache hit roomId=${roomId}`);
+        return { source: "cache", ...JSON.parse(cacheResult) };
       } catch {
-        // cache miss → lanjut ke DB
+        logger.info(`[getRoomById] Cache miss roomId=${roomId}`);
       }
 
-      // 2️⃣ Query ke DB
-      const query = {
-        text: `SELECT id, room_type, price_per_night, capacity, total_rooms, description, created_at, updated_at
-              FROM rooms
-              WHERE id = $1`,
-        values: [roomId],
-      };
-
+      const query = { text: `SELECT id, room_type, price_per_night, capacity, total_rooms, description, created_at, updated_at FROM rooms WHERE id = $1`, values: [roomId] };
       const result = await this._pool.query(query);
       const resultMap = result.rows.map(mapDBToModel.roomsTable);
 
-      if (!resultMap.length) throw new NotFoundError("Kamar tidak ditemukan");
+      if (!resultMap.length) {
+        logger.warn(`[getRoomById] Room not found roomId=${roomId}`);
+        throw new NotFoundError("Kamar tidak ditemukan");
+      }
 
       const room = resultMap[0];
-
-      const queryPic = {
-        text: `SELECT id, room_id, path, created_at, updated_at
-              FROM room_pictures
-              WHERE room_id = $1
-              ORDER BY created_at ASC`,
-        values: [roomId],
-      };
-
+      const queryPic = { text: `SELECT id, room_id, path, created_at, updated_at FROM room_pictures WHERE room_id = $1 ORDER BY created_at ASC`, values: [roomId] };
       const resultPic = await this._pool.query(queryPic);
       const resultPicMap = resultPic.rows.map(mapDBToModel.roomPicturesTable);
 
       if (!resultPicMap.length) {
+        logger.warn(`[getRoomById] Pictures not found roomId=${roomId}`);
         throw new InvariantError("Foto tidak ditemukan");
       }
 
       room.pictures = resultPicMap;
-
-      // 3️⃣ Simpan ke cache
       await this._cacheService.set(cacheKey, JSON.stringify(room), 1800);
 
-      return {
-        source: "db",
-        ...room,
-      };
+      logger.info(`[getRoomById] Room fetched successfully roomId=${roomId}`);
+      return { source: "db", ...room };
     } catch (error) {
-      console.error("Database Error (getRoomById):", error);
+      logger.error(`[getRoomById] Error roomId=${roomId}: ${error.message}`);
       throw error;
     }
   }
@@ -225,7 +186,6 @@ export class RoomsService {
     const client = await this._pool.connect();
     try {
       await client.query('BEGIN');
-
       const now = new Date().toISOString();
 
       const query = {
@@ -238,22 +198,24 @@ export class RoomsService {
                   updated_at = $6
               WHERE id = $7
               RETURNING id`,
-        values: [roomType, pricePerNightNum, capacityNum, totalRoomsNum, description, now, targetId], // <-- ganti roomId -> targetId
+        values: [roomType, pricePerNightNum, capacityNum, totalRoomsNum, description, now, targetId],
       };
 
       const result = await client.query(query);
-      if (!result.rows.length) throw new NotFoundError('Kamar tidak ditemukan atau gagal diperbarui');
+      if (!result.rows.length) {
+        logger.warn(`[editRoom] Room not found or update failed roomId=${targetId}`);
+        throw new NotFoundError('Kamar tidak ditemukan atau gagal diperbarui');
+      }
 
       await client.query('COMMIT');
-
-      //* 🧹 Bersihin cache biar data fresh
       await this._cacheService.deletePrefix("rooms:");
       await this._cacheService.delete(`room:${targetId}`);
 
+      logger.info(`[editRoom] Room updated successfully roomId=${targetId}`);
       return { roomId: result.rows[0].id };
     } catch (error) {
       await client.query('ROLLBACK');
-      console.error('Database Error (editRoom):', error);
+      logger.error(`[editRoom] Error roomId=${targetId}: ${error.message}`);
       throw error;
     } finally {
       client.release();
@@ -267,28 +229,25 @@ export class RoomsService {
       const now = new Date().toISOString();
 
       const query = {
-        text: `
-          UPDATE rooms
-          SET is_active = FALSE,
-              updated_at = $1
-          WHERE id = $2 AND is_active = TRUE
-          RETURNING id
-        `,
+        text: `UPDATE rooms SET is_active = FALSE, updated_at = $1 WHERE id = $2 AND is_active = TRUE RETURNING id`,
         values: [now, roomId],
       };
 
       const result = await client.query(query);
-      if (!result.rows.length) throw new NotFoundError('Kamar tidak ditemukan atau sudah dihapus');
+      if (!result.rows.length) {
+        logger.warn(`[deleteRoom] Room not found or already inactive roomId=${roomId}`);
+        throw new NotFoundError('Kamar tidak ditemukan atau sudah dihapus');
+      }
 
       await client.query('COMMIT');
-
       await this._cacheService.deletePrefix("rooms:");
       await this._cacheService.delete(`room:${roomId}`);
 
+      logger.info(`[deleteRoom] Room deleted successfully roomId=${roomId}`);
       return { roomId: result.rows[0].id };
     } catch (error) {
       await client.query('ROLLBACK');
-      console.error('Database Error (deleteRoom):', error);
+      logger.error(`[deleteRoom] Error roomId=${roomId}: ${error.message}`);
       throw error;
     } finally {
       client.release();

@@ -4,6 +4,7 @@ import { InvariantError } from '../../exceptions/InvariantError.js';
 import { AuthenticationError } from '../../exceptions/AuthenticationError.js';
 import { AuthorizationError } from '../../exceptions/AuthorizationError.js';
 import { NotFoundError } from '../../exceptions/NotFoundError.js';
+import logger from '../../utils/logger.js';
 
 export class UsersService {
   constructor(pool) {
@@ -19,7 +20,6 @@ export class UsersService {
     const client = await this._pool.connect();
     try {
       const passwordHash = await bcrypt.hash(password, 10);
-
       await client.query('BEGIN');
 
       const query = {
@@ -33,6 +33,7 @@ export class UsersService {
 
       const result = await client.query(query);
       if (!result.rows.length) {
+        logger.error(`[addUserService] Failed to insert user ${email}`);
         throw new InvariantError('Gagal menambahkan data pengguna');
       }
 
@@ -49,17 +50,19 @@ export class UsersService {
 
       const resultOfActiveLogQuery = await client.query(activeLogsQuery);
       if (!resultOfActiveLogQuery.rows.length) {
+        logger.error(`[addUserService] Failed to insert active log for user ${email}`);
         throw new InvariantError('Gagal mencatat log aktivitas');
       }
 
       await client.query('COMMIT');
-
+      logger.info(`[addUserService] User created successfully: ${email} id=${targetId}`);
       return {
         id: targetId,
         logId: resultOfActiveLogQuery.rows[0].id,
       };
     } catch (error) {
       await client.query('ROLLBACK');
+      logger.error(`[addUserService] Error adding user ${email}: ${error.message}`);
       throw error;
     } finally {
       client.release();
@@ -71,10 +74,9 @@ export class UsersService {
       const offset = (page - 1) * limit;
       const conditions = ['is_active = true'];
       const values = [];
-
       const paramCount = values.length;
 
-      values.push(limit); 
+      values.push(limit);
       values.push(offset);
 
       const whereClause = conditions.length ? `WHERE ${conditions.join(' AND ')}` : '';
@@ -98,20 +100,14 @@ export class UsersService {
         text: `SELECT COUNT(*) FROM users ${whereClause}`,
         values: values.slice(0, paramCount),
       };
-
       const countResult = await this._pool.query(countQuery);
       const totalItems = parseInt(countResult.rows[0].count, 10);
       const totalPages = Math.ceil(totalItems / limit);
 
-      return {
-        data,
-        page,
-        limit,
-        totalItems,
-        totalPages,
-      };
+      logger.info(`[getAllUsers] Fetched users page=${page} limit=${limit} totalItems=${totalItems}`);
+      return { data, page, limit, totalItems, totalPages };
     } catch (error) {
-      console.error('Database Error (getAllUsers):', error);
+      logger.error(`[getAllUsers] Error fetching users: ${error.message}`);
       throw new Error('Gagal mengambil data pengguna');
     }
   }
@@ -125,14 +121,15 @@ export class UsersService {
       };
 
       const result = await this._pool.query(query);
-
       if (!result.rows.length) {
+        logger.warn(`[getUserbyId] User not found id=${targetId}`);
         throw new NotFoundError('User tidak ditemukan');
       }
 
-      return result.rows[0]; 
+      logger.info(`[getUserbyId] User fetched id=${targetId}`);
+      return result.rows[0];
     } catch (error) {
-      console.error('Database Error (getUserbyId()):', error);
+      logger.error(`[getUserbyId] Error fetching user id=${targetId}: ${error.message}`);
       throw new Error('Gagal mengambil data pengguna');
     }
   }
@@ -142,26 +139,23 @@ export class UsersService {
     const createdAt = new Date().toISOString();
     const updatedAt = createdAt;
 
-
     const client = await this._pool.connect();
-    try{
+    try {
       const passwordHash = await bcrypt.hash(password, 10);
-
       await client.query('BEGIN');
-      
+
       const query = {
         text: 'UPDATE users SET fullname = $1, email = $2, contact_number = $3, password_hash = $4, updated_at = $5 WHERE id = $6 RETURNING id',
-        values: [ fullname, email, contactNumber, passwordHash, updatedAt, targetId]
+        values: [fullname, email, contactNumber, passwordHash, updatedAt, targetId],
       };
 
       const result = await client.query(query);
-
       if (!result.rows.length) {
+        logger.warn(`[editUser] User not found id=${targetId}`);
         throw new InvariantError('Data tidak ditemukan. Gagal untuk mengedit');
       }
 
       const resultTargetId = result.rows[0].id;
-
       const activeLogsQuery = {
         text: `
           INSERT INTO active_logs (id, user_id, action, target_table, target_id, performed_at)
@@ -172,20 +166,17 @@ export class UsersService {
       };
 
       const resultOfLogQuery = await client.query(activeLogsQuery);
-
       if (!resultOfLogQuery.rows.length) {
+        logger.error(`[editUser] Failed to insert active log for user id=${targetId}`);
         throw new InvariantError('Gagal mencatat log aktivitas');
       }
 
       await client.query('COMMIT');
-
-      return {
-        id: resultTargetId,
-        logId: resultOfLogQuery.rows[0].id
-      };
-    } catch(error) {
+      logger.info(`[editUser] User edited successfully id=${targetId} by userId=${userId}`);
+      return { id: resultTargetId, logId: resultOfLogQuery.rows[0].id };
+    } catch (error) {
       await client.query('ROLLBACK');
-      console.error('Database Error(editUser):', error);
+      logger.error(`[editUser] Error editing user id=${targetId}: ${error.message}`);
       throw new Error('Gagal mengedit data pengguna');
     } finally {
       client.release();
@@ -195,7 +186,6 @@ export class UsersService {
   async deleteUser({ userId, targetId }) {
     const activeLogId = `log-${nanoid(16)}`;
     const now = new Date().toISOString();
-
     const client = await this._pool.connect();
     try {
       await client.query('BEGIN');
@@ -209,13 +199,12 @@ export class UsersService {
       };
 
       const result = await client.query(query);
-
       if (!result.rows.length) {
+        logger.warn(`[deleteUser] User not found or already deleted id=${targetId}`);
         throw new InvariantError('Data tidak ditemukan atau sudah dihapus');
       }
 
       const resultTargetId = result.rows[0].id;
-
       const activeLogsQuery = {
         text: `
           INSERT INTO active_logs (id, user_id, action, target_table, target_id, performed_at)
@@ -226,19 +215,17 @@ export class UsersService {
       };
 
       const resultOfLogQuery = await client.query(activeLogsQuery);
-
       if (!resultOfLogQuery.rows.length) {
+        logger.error(`[deleteUser] Failed to insert active log for user id=${targetId}`);
         throw new InvariantError('Gagal mencatat log aktivitas');
       }
 
       await client.query('COMMIT');
-
-      return {
-        id: resultTargetId,
-      };
+      logger.info(`[deleteUser] User soft-deleted successfully id=${targetId} by userId=${userId}`);
+      return { id: resultTargetId };
     } catch (error) {
       await client.query('ROLLBACK');
-      console.error('Database Error(deleteUser):', error);
+      logger.error(`[deleteUser] Error deleting user id=${targetId}: ${error.message}`);
       throw new Error('Gagal menghapus data pengguna');
     } finally {
       client.release();
@@ -246,53 +233,64 @@ export class UsersService {
   }
 
   async verifyUserCredential({ email, password }) {
-    const query = {
-      text: 'SELECT id, password_hash FROM users WHERE email = $1',
-      values: [email]
-    };
+    try {
+      const query = {
+        text: 'SELECT id, password_hash FROM users WHERE email = $1',
+        values: [email],
+      };
 
-    const result = await this._pool.query(query);
-    if (!result.rows.length) {
-      throw new AuthenticationError('Kredensial yang anda berikan salah');
+      const result = await this._pool.query(query);
+      if (!result.rows.length) {
+        logger.warn(`[verifyUserCredential] Invalid credentials email=${email}`);
+        throw new AuthenticationError('Kredensial yang anda berikan salah');
+      }
+
+      const { id, password_hash: hashedPassword } = result.rows[0];
+      const match = await bcrypt.compare(password, hashedPassword);
+      if (!match) {
+        logger.warn(`[verifyUserCredential] Invalid credentials email=${email}`);
+        throw new AuthenticationError('Kredensial yang anda berikan salah');
+      }
+
+      await this.updateLastLogin(id);
+      logger.info(`[verifyUserCredential] User logged in successfully id=${id} email=${email}`);
+      return id;
+    } catch (error) {
+      logger.error(`[verifyUserCredential] Error verifying credentials email=${email}: ${error.message}`);
+      throw error;
     }
-
-    const { id, password_hash: hashedPassword  } = result.rows[0];
-    const match = await bcrypt.compare(password, hashedPassword);
-
-    if (!match) {
-      throw new AuthenticationError('Kredensial yang anda berikan salah');
-    }
-
-    //* Update last_login
-    await this.updateLastLogin(id);
-
-    return id;
   }
 
   async updateLastLogin(userId) {
-    const now = new Date().toISOString();
-
-    const query = {
-      text: 'UPDATE users SET last_login = $1 WHERE id = $2',
-      values: [now, userId],
-    };
-    await this._pool.query(query);
+    try {
+      const now = new Date().toISOString();
+      const query = { text: 'UPDATE users SET last_login = $1 WHERE id = $2', values: [now, userId] };
+      await this._pool.query(query);
+      logger.info(`[updateLastLogin] Updated last login for userId=${userId}`);
+    } catch (error) {
+      logger.error(`[updateLastLogin] Error updating last login userId=${userId}: ${error.message}`);
+    }
   }
 
   async verifyUser({ userId }) {
-    const query = {
-      text: 'SELECT role FROM users WHERE id = $1',
-      values: [userId]
-    };
+    try {
+      const query = { text: 'SELECT role FROM users WHERE id = $1', values: [userId] };
+      const result = await this._pool.query(query);
 
-    const result = await this._pool.query(query);
+      if (!result.rows.length) {
+        logger.warn(`[verifyUser] User not found id=${userId}`);
+        throw new NotFoundError('Data tidak ditemukan');
+      }
 
-    if (!result.rows.length) {
-      throw new NotFoundError('Data tidak ditemukan');
-    }
+      if (result.rows[0].role !== 'admin') {
+        logger.warn(`[verifyUser] Unauthorized access attempt userId=${userId}`);
+        throw new AuthorizationError('Anda tidak berhak mengakses resource ini');
+      }
 
-    if (result.rows[0].role !== 'admin') {
-      throw new AuthorizationError('Anda tidak berhak mengakses resource ini');
+      logger.info(`[verifyUser] User authorized id=${userId}`);
+    } catch (error) {
+      logger.error(`[verifyUser] Error verifying userId=${userId}: ${error.message}`);
+      throw error;
     }
   }
 }
