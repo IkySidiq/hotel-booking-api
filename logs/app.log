@@ -1,0 +1,1544 @@
+2025-08-27 13:28:17 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 13:28:18 [INFO]: [CacheService] Redis client connected
+2025-08-27 13:34:01 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 13:34:01 [INFO]: [CacheService] Redis client connected
+2025-08-27 13:34:41 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 13:34:41 [INFO]: [CacheService] Redis client connected
+2025-08-27 14:11:52 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 14:11:53 [INFO]: [CacheService] Redis client connected
+2025-08-27 14:15:27 [INFO]: [addUserService] User created successfully: user5159@mail.com id=user-d4dT1o13q57v5O5o
+2025-08-27 14:16:37 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 14:16:37 [INFO]: [CacheService] Redis client connected
+2025-08-27 14:17:54 [WARN]: [verifyUserCredential] Invalid credentials email=user_1756021732@example.com
+2025-08-27 14:17:54 [ERROR]: [verifyUserCredential] Error verifying credentials email=user_1756021732@example.com: Kredensial yang anda berikan salah
+2025-08-27 14:18:49 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 14:18:50 [INFO]: [CacheService] Redis client connected
+2025-08-27 14:18:54 [INFO]: [addUserService] User created successfully: user3336@mail.com id=user-dVkVzIhC8p7w6iEO
+2025-08-27 14:19:09 [WARN]: [verifyUserCredential] Invalid credentials email=user_1756021732@example.com
+2025-08-27 14:19:10 [ERROR]: [verifyUserCredential] Error verifying credentials email=user_1756021732@example.com: Kredensial yang anda berikan salah
+2025-08-27 14:19:55 [WARN]: [verifyUserCredential] Invalid credentials email=user3336@mail.com
+2025-08-27 14:19:55 [ERROR]: [verifyUserCredential] Error verifying credentials email=user3336@mail.com: Kredensial yang anda berikan salah
+2025-08-27 14:20:26 [WARN]: [verifyUserCredential] Invalid credentials email=user3336@mail.com
+2025-08-27 14:20:26 [ERROR]: [verifyUserCredential] Error verifying credentials email=user3336@mail.com: Kredensial yang anda berikan salah
+2025-08-27 14:20:54 [WARN]: [verifyUserCredential] Invalid credentials email=user3336@mail.com
+2025-08-27 14:20:54 [ERROR]: [verifyUserCredential] Error verifying credentials email=user3336@mail.com: Kredensial yang anda berikan salah
+2025-08-27 14:42:20 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 14:42:21 [INFO]: [CacheService] Redis client connected
+2025-08-27 14:42:26 [WARN]: [verifyUserCredential] Invalid credentials email=user3336@mail.com
+2025-08-27 14:42:26 [ERROR]: [verifyUserCredential] Error verifying credentials email=user3336@mail.com: Kredensial yang anda berikan salah
+2025-08-27 14:43:54 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 14:43:55 [INFO]: [CacheService] Redis client connected
+2025-08-27 14:44:00 [WARN]: [verifyUserCredential] Invalid credentials email=user3336@mail.com
+2025-08-27 14:44:00 [ERROR]: [verifyUserCredential] Error verifying credentials email=user3336@mail.com: Kredensial yang anda berikan salah
+2025-08-27 14:44:22 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 14:44:22 [INFO]: [CacheService] Redis client connected
+2025-08-27 14:45:07 [WARN]: [verifyUserCredential] Invalid credentials email=user3336@mail.com
+2025-08-27 14:45:07 [ERROR]: [verifyUserCredential] Error verifying credentials email=user3336@mail.com: Kredensial yang anda berikan salah
+2025-08-27 14:48:12 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 14:48:13 [INFO]: [CacheService] Redis client connected
+2025-08-27 14:48:20 [WARN]: [verifyUserCredential] Invalid credentials email=user3336@mail.com
+2025-08-27 14:48:20 [ERROR]: [verifyUserCredential] Error verifying credentials email=user3336@mail.com: Kredensial yang anda berikan salah
+2025-08-27 14:48:53 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 14:48:54 [INFO]: [CacheService] Redis client connected
+2025-08-27 14:49:15 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 14:49:15 [INFO]: [CacheService] Redis client connected
+2025-08-27 14:49:20 [WARN]: [verifyUserCredential] Invalid credentials email=user3336@mail.com
+2025-08-27 14:49:20 [ERROR]: [verifyUserCredential] Error verifying credentials email=user3336@mail.com: Kredensial yang anda berikan salah
+2025-08-27 14:50:32 [INFO]: [addUserService] User created successfully: user_1756281032@example.com id=user-c9H87n1l3leMbNVP
+2025-08-27 14:50:37 [WARN]: [verifyUserCredential] Invalid credentials email=user3336@mail.com
+2025-08-27 14:50:37 [ERROR]: [verifyUserCredential] Error verifying credentials email=user3336@mail.com: Kredensial yang anda berikan salah
+2025-08-27 14:51:32 [WARN]: [verifyUserCredential] Invalid credentials email=user3336@mail.com
+2025-08-27 14:51:32 [ERROR]: [verifyUserCredential] Error verifying credentials email=user3336@mail.com: Kredensial yang anda berikan salah
+2025-08-27 14:52:58 [INFO]: [updateLastLogin] Updated last login for userId=user-c9H87n1l3leMbNVP
+2025-08-27 14:52:58 [INFO]: [verifyUserCredential] User logged in successfully id=user-c9H87n1l3leMbNVP email=user_1756281032@example.com
+2025-08-27 14:52:58 [INFO]: [AuthenticationsService] Refresh token added with id auth-MeqO01D_aWKMGWC2
+2025-08-27 14:53:13 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 14:53:14 [INFO]: [CacheService] Redis client connected
+2025-08-27 14:53:17 [WARN]: [verifyUser] Unauthorized access attempt userId=user-c9H87n1l3leMbNVP
+2025-08-27 14:53:17 [ERROR]: [verifyUser] Error verifying userId=user-c9H87n1l3leMbNVP: Anda tidak berhak mengakses resource ini
+2025-08-27 14:53:53 [INFO]: [verifyUser] User authorized id=user-c9H87n1l3leMbNVP
+2025-08-27 14:53:53 [INFO]: [getAllUsers] Fetched users page=1 limit=10 totalItems=1
+2025-08-27 14:54:02 [INFO]: [verifyUser] User authorized id=user-c9H87n1l3leMbNVP
+2025-08-27 14:54:02 [INFO]: [getUserbyId] User fetched id=user-c9H87n1l3leMbNVP
+2025-08-27 14:54:10 [INFO]: [verifyUser] User authorized id=user-c9H87n1l3leMbNVP
+2025-08-27 14:54:11 [INFO]: [editUser] User edited successfully id=user-c9H87n1l3leMbNVP by userId=user-c9H87n1l3leMbNVP
+2025-08-27 14:54:22 [INFO]: [verifyUser] User authorized id=user-c9H87n1l3leMbNVP
+2025-08-27 14:54:22 [INFO]: [addProfile] Profil hotel berhasil ditambahkan dengan id hotel-69jy313CM9ew
+2025-08-27 14:54:33 [INFO]: [getProfile] Profil hotel berhasil diambil
+2025-08-27 17:42:38 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 17:42:39 [INFO]: [CacheService] Redis client connected
+2025-08-27 17:45:03 [INFO]: [CacheService] No cache keys found with prefix: users:all
+2025-08-27 17:45:04 [WARN]: [verifyUserCredential] Invalid credentials email=user_1756281032@example.com
+2025-08-27 17:45:04 [ERROR]: [verifyUserCredential] Error verifying credentials email=user_1756281032@example.com: Kredensial yang anda berikan salah
+2025-08-27 17:45:38 [WARN]: [verifyUserCredential] Invalid credentials email=user_1756281032@example.com
+2025-08-27 17:45:38 [ERROR]: [verifyUserCredential] Error verifying credentials email=user_1756281032@example.com: Kredensial yang anda berikan salah
+2025-08-27 17:47:34 [WARN]: [verifyUserCredential] Invalid credentials email=pgri@gmail.com
+2025-08-27 17:47:34 [ERROR]: [verifyUserCredential] Error verifying credentials email=pgri@gmail.com: Kredensial yang anda berikan salah
+2025-08-27 17:47:53 [WARN]: [verifyUserCredential] Invalid credentials email=pgri@gmail.com
+2025-08-27 17:47:53 [ERROR]: [verifyUserCredential] Error verifying credentials email=pgri@gmail.com: Kredensial yang anda berikan salah
+2025-08-27 17:47:59 [INFO]: [updateLastLogin] Updated last login for userId=user-c9H87n1l3leMbNVP
+2025-08-27 17:47:59 [INFO]: [verifyUserCredential] User logged in successfully id=user-c9H87n1l3leMbNVP email=pgri@gmail.com
+2025-08-27 17:47:59 [INFO]: [AuthenticationsService] Refresh token added with id auth-dwQLg-9jHEh3KX4t
+2025-08-27 17:48:24 [INFO]: [CacheService] No cache keys found with prefix: users:all
+2025-08-27 17:48:25 [INFO]: [updateLastLogin] Updated last login for userId=user-c9H87n1l3leMbNVP
+2025-08-27 17:48:25 [INFO]: [verifyUserCredential] User logged in successfully id=user-c9H87n1l3leMbNVP email=pgri@gmail.com
+2025-08-27 17:48:25 [INFO]: [AuthenticationsService] Refresh token added with id auth-WmTz7d1SLJEdfSZK
+2025-08-27 17:48:25 [INFO]: [verifyUser] User authorized id=user-c9H87n1l3leMbNVP
+2025-08-27 17:48:25 [WARN]: [CacheService] Cache miss for key: users:all:page=1&limit=10
+2025-08-27 17:48:25 [ERROR]: [CacheService] Failed to get cache for key users:all:page=1&limit=10: Cache tidak ditemukan
+2025-08-27 17:48:25 [INFO]: [getAllUsers] Cache miss for key: users:all:page=1&limit=10
+2025-08-27 17:48:25 [INFO]: [CacheService] Cache set: users:all:page=1&limit=10
+2025-08-27 17:48:25 [INFO]: [getAllUsers] Cache set for key: users:all:page=1&limit=10
+2025-08-27 17:48:25 [INFO]: [verifyUser] User authorized id=user-c9H87n1l3leMbNVP
+2025-08-27 17:48:25 [WARN]: [CacheService] Cache miss for key: users:id:user-8dN9PF5Ol7YgBQFu
+2025-08-27 17:48:25 [ERROR]: [CacheService] Failed to get cache for key users:id:user-8dN9PF5Ol7YgBQFu: Cache tidak ditemukan
+2025-08-27 17:48:25 [INFO]: [getUserbyId] Cache miss for key: users:id:user-8dN9PF5Ol7YgBQFu
+2025-08-27 17:48:25 [INFO]: [CacheService] Cache set: users:id:user-8dN9PF5Ol7YgBQFu
+2025-08-27 17:48:25 [INFO]: [verifyUser] User authorized id=user-c9H87n1l3leMbNVP
+2025-08-27 17:48:25 [INFO]: [verifyUser] User authorized id=user-c9H87n1l3leMbNVP
+2025-08-27 17:48:25 [WARN]: [addProfile] Profil hotel sudah ada, tidak bisa menambahkan lagi
+2025-08-27 17:48:25 [ERROR]: [addProfile] Database error: Profil hotel sudah ada, tidak bisa menambahkan lagi
+2025-08-27 17:48:26 [INFO]: [getProfile] Profil hotel berhasil diambil
+2025-08-27 17:48:26 [INFO]: [updateProfile] Profil hotel berhasil diperbarui dengan id hotel-69jy313CM9ew
+2025-08-27 17:48:26 [INFO]: [verifyUser] User authorized id=user-c9H87n1l3leMbNVP
+2025-08-27 17:48:26 [INFO]: [addRoom] Room added successfully: room-nZ96KuHFAGlFc-BM
+2025-08-27 17:48:26 [INFO]: [verifyUser] User authorized id=user-c9H87n1l3leMbNVP
+2025-08-27 17:48:26 [INFO]: [StorageService] Created subfolder at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures\room-nZ96KuHFAGlFc-BM
+2025-08-27 17:48:26 [INFO]: [StorageService] File written successfully: room-nZ96KuHFAGlFc-BM/vaOoQIPIVtRC.jpg
+2025-08-27 17:48:26 [INFO]: [addPicture] Foto berhasil ditambahkan roomId=room-nZ96KuHFAGlFc-BM, pictureId=pic-qDlmgG_HWn85CBGW
+2025-08-27 17:48:26 [INFO]: [StorageService] File written successfully: room-nZ96KuHFAGlFc-BM/Feq-bNn_2k5j.jpg
+2025-08-27 17:48:26 [INFO]: [addPicture] Foto berhasil ditambahkan roomId=room-nZ96KuHFAGlFc-BM, pictureId=pic-gec3RPWYHapLBNc6
+2025-08-27 17:48:26 [INFO]: [StorageService] File written successfully: room-nZ96KuHFAGlFc-BM/PRZVQBQEffxv.jpg
+2025-08-27 17:48:26 [INFO]: [addPicture] Foto berhasil ditambahkan roomId=room-nZ96KuHFAGlFc-BM, pictureId=pic-vXuL0NgIRrRSV0eQ
+2025-08-27 17:48:26 [INFO]: [verifyUser] User authorized id=user-c9H87n1l3leMbNVP
+2025-08-27 17:48:27 [INFO]: [getRooms] Data fetched from DB
+2025-08-27 17:48:27 [INFO]: [verifyUser] User authorized id=user-c9H87n1l3leMbNVP
+2025-08-27 17:48:27 [INFO]: [getRoomById] Room fetched successfully roomId=room-nZ96KuHFAGlFc-BM
+2025-08-27 17:48:27 [INFO]: [verifyUser] User authorized id=user-c9H87n1l3leMbNVP
+2025-08-27 17:48:27 [INFO]: [editRoom] Room updated successfully roomId=room-nZ96KuHFAGlFc-BM
+2025-08-27 17:48:27 [INFO]: [verifyUser] User authorized id=user-c9H87n1l3leMbNVP
+2025-08-27 17:48:27 [INFO]: [getPictures] Mengambil 3 foto untuk roomId=room-nZ96KuHFAGlFc-BM
+2025-08-27 17:48:28 [INFO]: Availability generated until 2026-02-27
+2025-08-27 17:48:28 [INFO]: [addBooking] Start booking process for user user-c9H87n1l3leMbNVP and room room-nZ96KuHFAGlFc-BM
+2025-08-27 17:48:28 [INFO]: [lockAndCheck] Rooms available roomId=room-nZ96KuHFAGlFc-BM, totalNights=1, totalPrice=9000000
+2025-08-27 17:48:28 [INFO]: [addBooking] Room room-nZ96KuHFAGlFc-BM locked and checked, totalPrice: 9000000
+2025-08-27 17:48:28 [WARN]: [CacheService] Cache miss for key: users:id:user-c9H87n1l3leMbNVP
+2025-08-27 17:48:28 [ERROR]: [CacheService] Failed to get cache for key users:id:user-c9H87n1l3leMbNVP: Cache tidak ditemukan
+2025-08-27 17:48:28 [INFO]: [getUserbyId] Cache miss for key: users:id:user-c9H87n1l3leMbNVP
+2025-08-27 17:48:28 [INFO]: [CacheService] Cache set: users:id:user-c9H87n1l3leMbNVP
+2025-08-27 17:48:28 [INFO]: [getRoomById] Room fetched successfully roomId=room-nZ96KuHFAGlFc-BM
+2025-08-27 17:48:28 [INFO]: [addBooking] Booking inserted with ID booking-hxxulWhmMX7gpRae
+2025-08-27 17:48:28 [INFO]: [reduceAvailability] Reduced availability roomId=room-nZ96KuHFAGlFc-BM date=2025-10-12 by=1
+2025-08-27 17:48:28 [INFO]: [reduceAvailability] Reduced availability roomId=room-nZ96KuHFAGlFc-BM date=2025-10-13 by=1
+2025-08-27 17:48:28 [INFO]: [addBooking] Reduced availability for room room-nZ96KuHFAGlFc-BM
+2025-08-27 17:48:28 [INFO]: [addBooking] Active log created for booking booking-hxxulWhmMX7gpRae
+2025-08-27 17:48:29 [INFO]: [createTransaction] Transaksi berhasil dibuat: orderId=booking-hxxulWhmMX7gpRae, redirectUrl=https://app.sandbox.midtrans.com/snap/v4/redirection/cf8361af-a4ef-4e62-a510-bc796bcd299d
+2025-08-27 17:48:29 [INFO]: [addBooking] Midtrans transaction created for booking booking-hxxulWhmMX7gpRae
+2025-08-27 17:48:29 [INFO]: [addBooking] Snap token updated for booking booking-hxxulWhmMX7gpRae
+2025-08-27 17:48:29 [INFO]: [createTransactionRecord] Transaction record created successfully bookingId=booking-hxxulWhmMX7gpRae trxId=trx-8iWMAHln6yX1ofSJ
+2025-08-27 17:48:29 [INFO]: [addBooking] Transaction record created for booking booking-hxxulWhmMX7gpRae
+2025-08-27 17:48:29 [ERROR]: [addBooking] Booking process failed: Cannot read properties of undefined (reading 'deletePrefix')
+2025-08-27 17:48:29 [INFO]: [verifyUser] User authorized id=user-c9H87n1l3leMbNVP
+2025-08-27 17:48:29 [INFO]: [getBookingsService] Cache miss for key: bookings:service:{"page":1,"limit":50}
+2025-08-27 17:48:29 [INFO]: [getBookingsService] Fetched bookings, count=1
+2025-08-27 17:48:29 [ERROR]: [getBookingsService] Failed: Cannot read properties of undefined (reading 'set')
+2025-08-27 17:48:29 [INFO]: [verifyUser] User authorized id=user-c9H87n1l3leMbNVP
+2025-08-27 17:48:29 [ERROR]: [getBookingById] Failed for targetId=booking-X4QEgjEnfRhNrRXl: Detail booking tidak ditemukan
+2025-08-27 17:48:29 [INFO]: [verifyUser] User authorized id=user-c9H87n1l3leMbNVP
+2025-08-27 17:48:29 [INFO]: [getBookingsService] Cache miss for key: bookings:service:{"status":"pending_payment","page":1,"limit":50}
+2025-08-27 17:48:29 [INFO]: [getBookingsService] Fetched bookings, count=1
+2025-08-27 17:48:30 [ERROR]: [getBookingsService] Failed: Cannot read properties of undefined (reading 'set')
+2025-08-27 17:48:30 [INFO]: [verifyUser] User authorized id=user-c9H87n1l3leMbNVP
+2025-08-27 17:48:30 [INFO]: [getBookingsService] Cache miss for key: bookings:service:{"guestName":"Dita","page":1,"limit":50}
+2025-08-27 17:48:30 [INFO]: [getBookingsService] Fetched bookings, count=1
+2025-08-27 17:48:30 [ERROR]: [getBookingsService] Failed: Cannot read properties of undefined (reading 'set')
+2025-08-27 17:48:30 [INFO]: [verifyUser] User authorized id=user-c9H87n1l3leMbNVP
+2025-08-27 17:48:30 [INFO]: [getBookingsService] Cache miss for key: bookings:service:{"checkInDate":"2025-10-12","page":1,"limit":50}
+2025-08-27 17:48:30 [INFO]: [getBookingsService] Fetched bookings, count=1
+2025-08-27 17:48:30 [ERROR]: [getBookingsService] Failed: Cannot read properties of undefined (reading 'set')
+2025-08-27 17:48:30 [INFO]: [verifyUser] User authorized id=user-c9H87n1l3leMbNVP
+2025-08-27 17:48:30 [INFO]: [getBookingsService] Cache miss for key: bookings:service:{"checkOutDate":"2025-10-13","page":1,"limit":50}
+2025-08-27 17:48:30 [INFO]: [getBookingsService] Fetched bookings, count=1
+2025-08-27 17:48:30 [ERROR]: [getBookingsService] Failed: Cannot read properties of undefined (reading 'set')
+2025-08-27 17:48:30 [INFO]: [verifyUser] User authorized id=user-c9H87n1l3leMbNVP
+2025-08-27 17:48:30 [INFO]: [getBookingsService] Cache miss for key: bookings:service:{"checkInDate":"2025-10-12","checkInDateEnd":"2025-10-13","page":1,"limit":50}
+2025-08-27 17:48:30 [INFO]: [getBookingsService] Fetched bookings, count=1
+2025-08-27 17:48:30 [ERROR]: [getBookingsService] Failed: Cannot read properties of undefined (reading 'set')
+2025-08-27 17:48:30 [INFO]: [getPendingBookingsByUser] Fetched pending bookings for user user-c9H87n1l3leMbNVP, count=1
+2025-08-27 17:48:30 [ERROR]: [getBookingById] Failed for targetId=booking-X4QEgjEnfRhNrRXl: Detail booking tidak ditemukan
+2025-08-27 17:48:31 [INFO]: [verifyUser] User authorized id=user-c9H87n1l3leMbNVP
+2025-08-27 17:48:31 [ERROR]: [checkInBookingService] Failed for bookingId=booking-X4QEgjEnfRhNrRXl, userId=user-c9H87n1l3leMbNVP: Booking tidak ditemukan
+2025-08-27 17:48:31 [INFO]: [verifyUser] User authorized id=user-c9H87n1l3leMbNVP
+2025-08-27 17:48:31 [ERROR]: [checkOutBookingService] Failed for bookingId=booking-X4QEgjEnfRhNrRXl, userId=user-c9H87n1l3leMbNVP: Booking tidak ditemukan
+2025-08-27 17:48:31 [ERROR]: [generateInvoice] Failed for bookingId=booking-X4QEgjEnfRhNrRXl, userId=user-c9H87n1l3leMbNVP: Booking tidak ditemukan atau belum dibayar
+2025-08-27 17:48:31 [INFO]: [getCompletedBookingForUserRoom] Fetched completed booking: userId=user-c9H87n1l3leMbNVP, roomId=room-nZ96KuHFAGlFc-BM, bookingId=none
+2025-08-27 17:48:31 [WARN]: [getReviewById] Review dengan id review-bj6r3FzECf83C_HG tidak ditemukan
+2025-08-27 17:48:31 [ERROR]: [getReviewById] Gagal mengambil review review-bj6r3FzECf83C_HG: Review tidak ditemukan
+2025-08-27 17:48:31 [INFO]: Ambil 0 review untuk room room-nZ96KuHFAGlFc-BM halaman 1
+2025-08-27 17:48:31 [WARN]: [editReview] Review review-bj6r3FzECf83C_HG tidak ditemukan
+2025-08-27 17:48:31 [ERROR]: [editReview] Gagal mengedit review review-bj6r3FzECf83C_HG: Review tidak ditemukan
+2025-08-27 17:48:31 [WARN]: [deleteReview] Review review-bj6r3FzECf83C_HG tidak ditemukan
+2025-08-27 17:48:31 [ERROR]: [deleteReview] Gagal menghapus review review-bj6r3FzECf83C_HG: Review tidak ditemukan
+2025-08-27 17:48:31 [ERROR]: [cancelBookingService] Failed for bookingId=booking-0TSLZ6KLwEj2elWB, userId=user-c9H87n1l3leMbNVP: Booking tidak ditemukan atau bukan milik Anda
+2025-08-27 17:48:31 [INFO]: [verifyUser] User authorized id=user-c9H87n1l3leMbNVP
+2025-08-27 17:48:31 [INFO]: [getPictures] Mengambil 3 foto untuk roomId=room-nZ96KuHFAGlFc-BM
+2025-08-27 17:48:32 [INFO]: [deleteAllPictures] Menghapus semua foto roomId=room-nZ96KuHFAGlFc-BM, total=3
+2025-08-27 17:48:32 [INFO]: [verifyUser] User authorized id=user-c9H87n1l3leMbNVP
+2025-08-27 17:48:32 [INFO]: [deleteRoom] Room deleted successfully roomId=room-nZ96KuHFAGlFc-BM
+2025-08-27 17:48:32 [INFO]: [verifyUser] User authorized id=user-c9H87n1l3leMbNVP
+2025-08-27 17:53:41 [INFO]: [CacheService] Cache keys deleted with prefix: users:all, count=1
+2025-08-27 17:54:23 [WARN]: [verifyUserCredential] Invalid credentials email=user_1756292064@example.com
+2025-08-27 17:54:23 [ERROR]: [verifyUserCredential] Error verifying credentials email=user_1756292064@example.com: Kredensial yang anda berikan salah
+2025-08-27 17:55:18 [INFO]: [CacheService] No cache keys found with prefix: users:all
+2025-08-27 17:55:22 [WARN]: [verifyUserCredential] Invalid credentials email=user_1756292122@example.com
+2025-08-27 17:55:22 [ERROR]: [verifyUserCredential] Error verifying credentials email=user_1756292122@example.com: Kredensial yang anda berikan salah
+2025-08-27 17:58:33 [INFO]: [CacheService] No cache keys found with prefix: users:all
+2025-08-27 17:58:42 [INFO]: [updateLastLogin] Updated last login for userId=user-vDVc7_RTMVyVyL2Z
+2025-08-27 17:58:42 [INFO]: [verifyUserCredential] User logged in successfully id=user-vDVc7_RTMVyVyL2Z email=user1771@mail.com
+2025-08-27 17:58:42 [INFO]: [AuthenticationsService] Refresh token added with id auth-5f84_NbJ8jvjsNOk
+2025-08-27 17:58:51 [WARN]: [verifyUser] Unauthorized access attempt userId=user-vDVc7_RTMVyVyL2Z
+2025-08-27 17:58:51 [ERROR]: [verifyUser] Error verifying userId=user-vDVc7_RTMVyVyL2Z: Anda tidak berhak mengakses resource ini
+2025-08-27 18:00:07 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 18:00:07 [INFO]: [CacheService] Redis client connected
+2025-08-27 18:00:23 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 18:00:23 [INFO]: [CacheService] Redis client connected
+2025-08-27 18:00:28 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 18:00:28 [INFO]: [CacheService] Redis client connected
+2025-08-27 18:01:08 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 18:01:08 [INFO]: [CacheService] Redis client connected
+2025-08-27 18:02:54 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 18:02:55 [INFO]: [CacheService] Redis client connected
+2025-08-27 18:04:45 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 18:04:46 [INFO]: [CacheService] Redis client connected
+2025-08-27 18:05:50 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 18:05:50 [INFO]: [CacheService] Redis client connected
+2025-08-27 18:06:56 [INFO]: [CacheService] No cache keys found with prefix: users:all
+2025-08-27 18:07:02 [INFO]: [updateLastLogin] Updated last login for userId=user-3K-APVYWhKkluAIw
+2025-08-27 18:07:02 [INFO]: [verifyUserCredential] User logged in successfully id=user-3K-APVYWhKkluAIw email=user1847@mail.com
+2025-08-27 18:07:02 [INFO]: [AuthenticationsService] Refresh token added with id auth-Bv4ClnD9Xn5mp4o_
+2025-08-27 18:07:41 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 18:07:41 [INFO]: [CacheService] Redis client connected
+2025-08-27 18:07:51 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 18:07:51 [INFO]: [CacheService] Redis client connected
+2025-08-27 18:08:03 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 18:08:03 [INFO]: [CacheService] Redis client connected
+2025-08-27 18:08:16 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 18:08:17 [INFO]: [CacheService] Redis client connected
+2025-08-27 18:08:48 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 18:08:49 [INFO]: [CacheService] Redis client connected
+2025-08-27 18:11:35 [INFO]: [updateLastLogin] Updated last login for userId=user-3K-APVYWhKkluAIw
+2025-08-27 18:11:35 [INFO]: [verifyUserCredential] User logged in successfully id=user-3K-APVYWhKkluAIw email=user1847@mail.com
+2025-08-27 18:11:35 [INFO]: [AuthenticationsService] Refresh token added with id auth-r5-o54oSXmxaAwyb
+2025-08-27 18:12:27 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 18:12:28 [INFO]: [CacheService] Redis client connected
+2025-08-27 18:12:48 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 18:12:49 [INFO]: [CacheService] Redis client connected
+2025-08-27 18:13:49 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 18:13:50 [INFO]: [CacheService] Redis client connected
+2025-08-27 18:14:14 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 18:14:15 [INFO]: [CacheService] Redis client connected
+2025-08-27 18:14:31 [INFO]: [verifyUser] User authorized id=user-3K-APVYWhKkluAIw
+2025-08-27 18:14:31 [WARN]: [CacheService] Cache miss for key: users:all:page=1&limit=10
+2025-08-27 18:14:31 [ERROR]: [CacheService] Failed to get cache for key users:all:page=1&limit=10: Cache tidak ditemukan
+2025-08-27 18:14:31 [INFO]: [getAllUsers] Cache miss for key: users:all:page=1&limit=10
+2025-08-27 18:14:31 [INFO]: [CacheService] Cache set: users:all:page=1&limit=10
+2025-08-27 18:14:31 [INFO]: [getAllUsers] Cache set for key: users:all:page=1&limit=10
+2025-08-27 18:14:40 [INFO]: [verifyUser] User authorized id=user-3K-APVYWhKkluAIw
+2025-08-27 18:14:40 [WARN]: [CacheService] Cache miss for key: users:id:user-3K-APVYWhKkluAIw
+2025-08-27 18:14:40 [ERROR]: [CacheService] Failed to get cache for key users:id:user-3K-APVYWhKkluAIw: Cache tidak ditemukan
+2025-08-27 18:14:40 [INFO]: [getUserbyId] Cache miss for key: users:id:user-3K-APVYWhKkluAIw
+2025-08-27 18:14:40 [INFO]: [CacheService] Cache set: users:id:user-3K-APVYWhKkluAIw
+2025-08-27 18:17:23 [INFO]: [verifyUser] User authorized id=user-3K-APVYWhKkluAIw
+2025-08-27 18:17:23 [INFO]: [CacheService] Cache deleted: users:id:user-3K-APVYWhKkluAIw, deletedCount=1
+2025-08-27 18:17:23 [INFO]: [CacheService] Cache keys deleted with prefix: users:all, count=1
+2025-08-27 18:25:33 [INFO]: [verifyUser] User authorized id=user-3K-APVYWhKkluAIw
+2025-08-27 18:25:33 [WARN]: [addProfile] Profil hotel sudah ada, tidak bisa menambahkan lagi
+2025-08-27 18:25:33 [ERROR]: [addProfile] Database error: Profil hotel sudah ada, tidak bisa menambahkan lagi
+2025-08-27 18:25:52 [INFO]: [verifyUser] User authorized id=user-3K-APVYWhKkluAIw
+2025-08-27 18:25:52 [INFO]: [addProfile] Profil hotel berhasil ditambahkan dengan id hotel-D8_xWl4YiIxs
+2025-08-27 18:25:58 [INFO]: [getProfile] Profil hotel berhasil diambil
+2025-08-27 18:26:09 [INFO]: [updateProfile] Profil hotel berhasil diperbarui dengan id hotel-D8_xWl4YiIxs
+2025-08-27 18:27:46 [INFO]: [verifyUser] User authorized id=user-3K-APVYWhKkluAIw
+2025-08-27 18:27:46 [INFO]: [addRoom] Room added successfully: room-k86N3PBQXvGjOuEA
+2025-08-27 18:28:16 [INFO]: [verifyUser] User authorized id=user-3K-APVYWhKkluAIw
+2025-08-27 18:28:16 [INFO]: [StorageService] Created subfolder at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures\room-k86N3PBQXvGjOuEA
+2025-08-27 18:28:16 [INFO]: [StorageService] File written successfully: room-k86N3PBQXvGjOuEA/0k-E7qVBPlGJ.jpg
+2025-08-27 18:28:16 [INFO]: [addPicture] Foto berhasil ditambahkan roomId=room-k86N3PBQXvGjOuEA, pictureId=pic-pX_gjrbxr6QCvl57
+2025-08-27 18:28:16 [INFO]: [StorageService] File written successfully: room-k86N3PBQXvGjOuEA/fhVZIyYTR7CD.jpg
+2025-08-27 18:28:16 [INFO]: [addPicture] Foto berhasil ditambahkan roomId=room-k86N3PBQXvGjOuEA, pictureId=pic-mCWUZ6kibIbQf_ne
+2025-08-27 18:28:16 [INFO]: [StorageService] File written successfully: room-k86N3PBQXvGjOuEA/qWGtXIdK6cn3.jpg
+2025-08-27 18:28:16 [INFO]: [addPicture] Foto berhasil ditambahkan roomId=room-k86N3PBQXvGjOuEA, pictureId=pic-F5kPu-2GeNpRL5sG
+2025-08-27 18:29:42 [INFO]: [CacheService] No cache keys found with prefix: users:all
+2025-08-27 18:29:42 [INFO]: [updateLastLogin] Updated last login for userId=user-0pX9mJ0qdX32QcUm
+2025-08-27 18:29:42 [INFO]: [verifyUserCredential] User logged in successfully id=user-0pX9mJ0qdX32QcUm email=user9519@mail.com
+2025-08-27 18:29:42 [INFO]: [AuthenticationsService] Refresh token added with id auth-sDWhgK-FRSiUK_BE
+2025-08-27 18:29:42 [INFO]: [verifyUser] User authorized id=user-0pX9mJ0qdX32QcUm
+2025-08-27 18:29:42 [WARN]: [CacheService] Cache miss for key: users:all:page=1&limit=10
+2025-08-27 18:29:42 [ERROR]: [CacheService] Failed to get cache for key users:all:page=1&limit=10: Cache tidak ditemukan
+2025-08-27 18:29:42 [INFO]: [getAllUsers] Cache miss for key: users:all:page=1&limit=10
+2025-08-27 18:29:42 [INFO]: [CacheService] Cache set: users:all:page=1&limit=10
+2025-08-27 18:29:42 [INFO]: [getAllUsers] Cache set for key: users:all:page=1&limit=10
+2025-08-27 18:29:42 [INFO]: [verifyUser] User authorized id=user-0pX9mJ0qdX32QcUm
+2025-08-27 18:29:42 [WARN]: [CacheService] Cache miss for key: users:id:user-0pX9mJ0qdX32QcUm
+2025-08-27 18:29:42 [ERROR]: [CacheService] Failed to get cache for key users:id:user-0pX9mJ0qdX32QcUm: Cache tidak ditemukan
+2025-08-27 18:29:42 [INFO]: [getUserbyId] Cache miss for key: users:id:user-0pX9mJ0qdX32QcUm
+2025-08-27 18:29:43 [INFO]: [CacheService] Cache set: users:id:user-0pX9mJ0qdX32QcUm
+2025-08-27 18:29:43 [INFO]: [verifyUser] User authorized id=user-0pX9mJ0qdX32QcUm
+2025-08-27 18:29:43 [INFO]: [CacheService] Cache deleted: users:id:user-0pX9mJ0qdX32QcUm, deletedCount=1
+2025-08-27 18:29:43 [INFO]: [CacheService] Cache keys deleted with prefix: users:all, count=1
+2025-08-27 18:29:43 [INFO]: [verifyUser] User authorized id=user-0pX9mJ0qdX32QcUm
+2025-08-27 18:29:43 [INFO]: [addProfile] Profil hotel berhasil ditambahkan dengan id hotel-XGYbNez4N3Kn
+2025-08-27 18:29:43 [INFO]: [getProfile] Profil hotel berhasil diambil
+2025-08-27 18:29:43 [INFO]: [updateProfile] Profil hotel berhasil diperbarui dengan id hotel-XGYbNez4N3Kn
+2025-08-27 18:29:43 [INFO]: [verifyUser] User authorized id=user-0pX9mJ0qdX32QcUm
+2025-08-27 18:29:43 [INFO]: [addRoom] Room added successfully: room-5dIZYzor354bQInC
+2025-08-27 18:29:44 [INFO]: [verifyUser] User authorized id=user-0pX9mJ0qdX32QcUm
+2025-08-27 18:29:44 [INFO]: [StorageService] Created subfolder at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures\room-5dIZYzor354bQInC
+2025-08-27 18:29:44 [INFO]: [StorageService] File written successfully: room-5dIZYzor354bQInC/v-VZLipWQfoX.jpg
+2025-08-27 18:29:44 [INFO]: [addPicture] Foto berhasil ditambahkan roomId=room-5dIZYzor354bQInC, pictureId=pic-lQgRBz9KleLuOSvF
+2025-08-27 18:29:44 [INFO]: [StorageService] File written successfully: room-5dIZYzor354bQInC/e4sp4rFqwSIy.jpg
+2025-08-27 18:29:44 [INFO]: [addPicture] Foto berhasil ditambahkan roomId=room-5dIZYzor354bQInC, pictureId=pic-aPNg_TsHhBjWg1QB
+2025-08-27 18:29:44 [INFO]: [StorageService] File written successfully: room-5dIZYzor354bQInC/4UUiw7AhJfb0.jpg
+2025-08-27 18:29:44 [INFO]: [addPicture] Foto berhasil ditambahkan roomId=room-5dIZYzor354bQInC, pictureId=pic-gqAe2akzTMKr6S7V
+2025-08-27 18:29:44 [INFO]: [verifyUser] User authorized id=user-0pX9mJ0qdX32QcUm
+2025-08-27 18:29:44 [INFO]: [getRooms] Data fetched from DB
+2025-08-27 18:29:44 [INFO]: [verifyUser] User authorized id=user-0pX9mJ0qdX32QcUm
+2025-08-27 18:29:44 [INFO]: [getRoomById] Room fetched successfully roomId=room-5dIZYzor354bQInC
+2025-08-27 18:29:44 [INFO]: [verifyUser] User authorized id=user-0pX9mJ0qdX32QcUm
+2025-08-27 18:29:44 [INFO]: [editRoom] Room updated successfully roomId=room-5dIZYzor354bQInC
+2025-08-27 18:29:44 [INFO]: [verifyUser] User authorized id=user-0pX9mJ0qdX32QcUm
+2025-08-27 18:29:44 [INFO]: [getPictures] Mengambil 3 foto untuk roomId=room-5dIZYzor354bQInC
+2025-08-27 18:29:45 [INFO]: Availability generated until 2026-02-27
+2025-08-27 18:29:45 [INFO]: [addBooking] Start booking process for user user-0pX9mJ0qdX32QcUm and room room-5dIZYzor354bQInC
+2025-08-27 18:29:45 [INFO]: [lockAndCheck] Rooms available roomId=room-5dIZYzor354bQInC, totalNights=1, totalPrice=9000000
+2025-08-27 18:29:45 [INFO]: [addBooking] Room room-5dIZYzor354bQInC locked and checked, totalPrice: 9000000
+2025-08-27 18:29:45 [WARN]: [CacheService] Cache miss for key: users:id:user-0pX9mJ0qdX32QcUm
+2025-08-27 18:29:45 [ERROR]: [CacheService] Failed to get cache for key users:id:user-0pX9mJ0qdX32QcUm: Cache tidak ditemukan
+2025-08-27 18:29:45 [INFO]: [getUserbyId] Cache miss for key: users:id:user-0pX9mJ0qdX32QcUm
+2025-08-27 18:29:45 [INFO]: [CacheService] Cache set: users:id:user-0pX9mJ0qdX32QcUm
+2025-08-27 18:29:45 [INFO]: [getRoomById] Room fetched successfully roomId=room-5dIZYzor354bQInC
+2025-08-27 18:29:46 [INFO]: [addBooking] Booking inserted with ID booking-wYy7PvR6rfenQQio
+2025-08-27 18:29:46 [INFO]: [reduceAvailability] Reduced availability roomId=room-5dIZYzor354bQInC date=2025-10-12 by=1
+2025-08-27 18:29:46 [INFO]: [reduceAvailability] Reduced availability roomId=room-5dIZYzor354bQInC date=2025-10-13 by=1
+2025-08-27 18:29:46 [INFO]: [addBooking] Reduced availability for room room-5dIZYzor354bQInC
+2025-08-27 18:29:46 [INFO]: [addBooking] Active log created for booking booking-wYy7PvR6rfenQQio
+2025-08-27 18:29:46 [INFO]: [createTransaction] Transaksi berhasil dibuat: orderId=booking-wYy7PvR6rfenQQio, redirectUrl=https://app.sandbox.midtrans.com/snap/v4/redirection/08b734a3-4c9c-4e5a-b33d-8aff58578f9d
+2025-08-27 18:29:46 [INFO]: [addBooking] Midtrans transaction created for booking booking-wYy7PvR6rfenQQio
+2025-08-27 18:29:46 [INFO]: [addBooking] Snap token updated for booking booking-wYy7PvR6rfenQQio
+2025-08-27 18:29:46 [INFO]: [createTransactionRecord] Transaction record created successfully bookingId=booking-wYy7PvR6rfenQQio trxId=trx-tyhpmcVuHglDt0et
+2025-08-27 18:29:46 [INFO]: [addBooking] Transaction record created for booking booking-wYy7PvR6rfenQQio
+2025-08-27 18:29:46 [ERROR]: [addBooking] Booking process failed: Cannot read properties of undefined (reading 'deletePrefix')
+2025-08-27 18:29:46 [INFO]: [verifyUser] User authorized id=user-0pX9mJ0qdX32QcUm
+2025-08-27 18:29:46 [INFO]: [getBookingsService] Cache miss for key: bookings:service:{"page":1,"limit":50}
+2025-08-27 18:29:46 [INFO]: [getBookingsService] Fetched bookings, count=1
+2025-08-27 18:29:46 [ERROR]: [getBookingsService] Failed: Cannot read properties of undefined (reading 'set')
+2025-08-27 18:29:47 [INFO]: [verifyUser] User authorized id=user-0pX9mJ0qdX32QcUm
+2025-08-27 18:29:47 [ERROR]: [getBookingById] Failed for targetId=booking-X4QEgjEnfRhNrRXl: Detail booking tidak ditemukan
+2025-08-27 18:29:47 [INFO]: [verifyUser] User authorized id=user-0pX9mJ0qdX32QcUm
+2025-08-27 18:29:47 [INFO]: [getBookingsService] Cache miss for key: bookings:service:{"status":"pending_payment","page":1,"limit":50}
+2025-08-27 18:29:47 [INFO]: [getBookingsService] Fetched bookings, count=1
+2025-08-27 18:29:47 [ERROR]: [getBookingsService] Failed: Cannot read properties of undefined (reading 'set')
+2025-08-27 18:29:47 [INFO]: [verifyUser] User authorized id=user-0pX9mJ0qdX32QcUm
+2025-08-27 18:29:47 [INFO]: [getBookingsService] Cache miss for key: bookings:service:{"guestName":"Dita","page":1,"limit":50}
+2025-08-27 18:29:47 [INFO]: [getBookingsService] Fetched bookings, count=1
+2025-08-27 18:29:47 [ERROR]: [getBookingsService] Failed: Cannot read properties of undefined (reading 'set')
+2025-08-27 18:29:47 [INFO]: [verifyUser] User authorized id=user-0pX9mJ0qdX32QcUm
+2025-08-27 18:29:47 [INFO]: [getBookingsService] Cache miss for key: bookings:service:{"checkInDate":"2025-10-12","page":1,"limit":50}
+2025-08-27 18:29:47 [INFO]: [getBookingsService] Fetched bookings, count=1
+2025-08-27 18:29:47 [ERROR]: [getBookingsService] Failed: Cannot read properties of undefined (reading 'set')
+2025-08-27 18:29:47 [INFO]: [verifyUser] User authorized id=user-0pX9mJ0qdX32QcUm
+2025-08-27 18:29:47 [INFO]: [getBookingsService] Cache miss for key: bookings:service:{"checkOutDate":"2025-10-13","page":1,"limit":50}
+2025-08-27 18:29:47 [INFO]: [getBookingsService] Fetched bookings, count=1
+2025-08-27 18:29:47 [ERROR]: [getBookingsService] Failed: Cannot read properties of undefined (reading 'set')
+2025-08-27 18:29:47 [INFO]: [verifyUser] User authorized id=user-0pX9mJ0qdX32QcUm
+2025-08-27 18:29:47 [INFO]: [getBookingsService] Cache miss for key: bookings:service:{"checkInDate":"2025-10-12","checkInDateEnd":"2025-10-13","page":1,"limit":50}
+2025-08-27 18:29:47 [INFO]: [getBookingsService] Fetched bookings, count=1
+2025-08-27 18:29:47 [ERROR]: [getBookingsService] Failed: Cannot read properties of undefined (reading 'set')
+2025-08-27 18:29:47 [INFO]: [getPendingBookingsByUser] Fetched pending bookings for user user-0pX9mJ0qdX32QcUm, count=1
+2025-08-27 18:29:47 [ERROR]: [getBookingById] Failed for targetId=booking-X4QEgjEnfRhNrRXl: Detail booking tidak ditemukan
+2025-08-27 18:29:48 [INFO]: [verifyUser] User authorized id=user-0pX9mJ0qdX32QcUm
+2025-08-27 18:29:48 [ERROR]: [checkInBookingService] Failed for bookingId=booking-X4QEgjEnfRhNrRXl, userId=user-0pX9mJ0qdX32QcUm: Booking tidak ditemukan
+2025-08-27 18:29:48 [INFO]: [verifyUser] User authorized id=user-0pX9mJ0qdX32QcUm
+2025-08-27 18:29:48 [ERROR]: [checkOutBookingService] Failed for bookingId=booking-X4QEgjEnfRhNrRXl, userId=user-0pX9mJ0qdX32QcUm: Booking tidak ditemukan
+2025-08-27 18:29:48 [ERROR]: [generateInvoice] Failed for bookingId=booking-X4QEgjEnfRhNrRXl, userId=user-0pX9mJ0qdX32QcUm: Booking tidak ditemukan atau belum dibayar
+2025-08-27 18:29:48 [INFO]: [getCompletedBookingForUserRoom] Fetched completed booking: userId=user-0pX9mJ0qdX32QcUm, roomId=room-5dIZYzor354bQInC, bookingId=none
+2025-08-27 18:29:48 [WARN]: [getReviewById] Review dengan id review-bj6r3FzECf83C_HG tidak ditemukan
+2025-08-27 18:29:48 [ERROR]: [getReviewById] Gagal mengambil review review-bj6r3FzECf83C_HG: Review tidak ditemukan
+2025-08-27 18:29:48 [INFO]: Ambil 0 review untuk room room-5dIZYzor354bQInC halaman 1
+2025-08-27 18:29:48 [WARN]: [editReview] Review review-bj6r3FzECf83C_HG tidak ditemukan
+2025-08-27 18:29:48 [ERROR]: [editReview] Gagal mengedit review review-bj6r3FzECf83C_HG: Review tidak ditemukan
+2025-08-27 18:29:48 [WARN]: [deleteReview] Review review-bj6r3FzECf83C_HG tidak ditemukan
+2025-08-27 18:29:48 [ERROR]: [deleteReview] Gagal menghapus review review-bj6r3FzECf83C_HG: Review tidak ditemukan
+2025-08-27 18:29:48 [ERROR]: [cancelBookingService] Failed for bookingId=booking-0TSLZ6KLwEj2elWB, userId=user-0pX9mJ0qdX32QcUm: Booking tidak ditemukan atau bukan milik Anda
+2025-08-27 18:29:48 [INFO]: [verifyUser] User authorized id=user-0pX9mJ0qdX32QcUm
+2025-08-27 18:29:48 [INFO]: [getPictures] Mengambil 3 foto untuk roomId=room-5dIZYzor354bQInC
+2025-08-27 18:29:49 [INFO]: [deleteAllPictures] Menghapus semua foto roomId=room-5dIZYzor354bQInC, total=3
+2025-08-27 18:29:49 [INFO]: [verifyUser] User authorized id=user-0pX9mJ0qdX32QcUm
+2025-08-27 18:29:49 [INFO]: [deleteRoom] Room deleted successfully roomId=room-5dIZYzor354bQInC
+2025-08-27 18:29:49 [INFO]: [verifyUser] User authorized id=user-0pX9mJ0qdX32QcUm
+2025-08-27 18:32:59 [INFO]: [addBooking] Start booking process for user user-0pX9mJ0qdX32QcUm and room room-5dIZYzor354bQInC
+2025-08-27 18:32:59 [INFO]: [lockAndCheck] Rooms available roomId=room-5dIZYzor354bQInC, totalNights=1, totalPrice=9000000
+2025-08-27 18:32:59 [INFO]: [addBooking] Room room-5dIZYzor354bQInC locked and checked, totalPrice: 9000000
+2025-08-27 18:32:59 [INFO]: [CacheService] Cache hit for key: users:id:user-0pX9mJ0qdX32QcUm
+2025-08-27 18:32:59 [INFO]: [getUserbyId] Cache hit for key: users:id:user-0pX9mJ0qdX32QcUm
+2025-08-27 18:32:59 [WARN]: [getRoomById] Pictures not found roomId=room-5dIZYzor354bQInC
+2025-08-27 18:32:59 [ERROR]: [getRoomById] Error roomId=room-5dIZYzor354bQInC: Foto tidak ditemukan
+2025-08-27 18:32:59 [ERROR]: [addBooking] Booking process failed: Foto tidak ditemukan
+2025-08-27 18:33:36 [INFO]: [verifyUser] User authorized id=user-0pX9mJ0qdX32QcUm
+2025-08-27 18:33:36 [INFO]: [StorageService] File written successfully: room-5dIZYzor354bQInC/qNkzMxQrhk-d.jpg
+2025-08-27 18:33:36 [INFO]: [addPicture] Foto berhasil ditambahkan roomId=room-5dIZYzor354bQInC, pictureId=pic-cgBo7OYcszu3ouSB
+2025-08-27 18:33:36 [INFO]: [StorageService] File written successfully: room-5dIZYzor354bQInC/lAnyktRjL_Ih.jpg
+2025-08-27 18:33:36 [INFO]: [addPicture] Foto berhasil ditambahkan roomId=room-5dIZYzor354bQInC, pictureId=pic-blsCxmbNw-h4MRnJ
+2025-08-27 18:33:36 [INFO]: [StorageService] File written successfully: room-5dIZYzor354bQInC/oyrNmSs1Yl-n.jpg
+2025-08-27 18:33:36 [INFO]: [addPicture] Foto berhasil ditambahkan roomId=room-5dIZYzor354bQInC, pictureId=pic-N-eA-l08aWkgocUr
+2025-08-27 18:34:02 [INFO]: [addBooking] Start booking process for user user-0pX9mJ0qdX32QcUm and room room-5dIZYzor354bQInC
+2025-08-27 18:34:02 [INFO]: [lockAndCheck] Rooms available roomId=room-5dIZYzor354bQInC, totalNights=1, totalPrice=9000000
+2025-08-27 18:34:02 [INFO]: [addBooking] Room room-5dIZYzor354bQInC locked and checked, totalPrice: 9000000
+2025-08-27 18:34:02 [INFO]: [CacheService] Cache hit for key: users:id:user-0pX9mJ0qdX32QcUm
+2025-08-27 18:34:02 [INFO]: [getUserbyId] Cache hit for key: users:id:user-0pX9mJ0qdX32QcUm
+2025-08-27 18:34:02 [INFO]: [getRoomById] Room fetched successfully roomId=room-5dIZYzor354bQInC
+2025-08-27 18:34:02 [INFO]: [addBooking] Booking inserted with ID booking-iyZwk123t9zHF0hl
+2025-08-27 18:34:02 [INFO]: [reduceAvailability] Reduced availability roomId=room-5dIZYzor354bQInC date=2025-10-12 by=1
+2025-08-27 18:34:02 [INFO]: [reduceAvailability] Reduced availability roomId=room-5dIZYzor354bQInC date=2025-10-13 by=1
+2025-08-27 18:34:02 [INFO]: [addBooking] Reduced availability for room room-5dIZYzor354bQInC
+2025-08-27 18:34:02 [INFO]: [addBooking] Active log created for booking booking-iyZwk123t9zHF0hl
+2025-08-27 18:34:02 [INFO]: [createTransaction] Transaksi berhasil dibuat: orderId=booking-iyZwk123t9zHF0hl, redirectUrl=https://app.sandbox.midtrans.com/snap/v4/redirection/e3ee632f-ad1a-4a29-a9e8-7b2f1a5c3f90
+2025-08-27 18:34:02 [INFO]: [addBooking] Midtrans transaction created for booking booking-iyZwk123t9zHF0hl
+2025-08-27 18:34:02 [INFO]: [addBooking] Snap token updated for booking booking-iyZwk123t9zHF0hl
+2025-08-27 18:34:02 [INFO]: [createTransactionRecord] Transaction record created successfully bookingId=booking-iyZwk123t9zHF0hl trxId=trx-WtyeZDtg0Yq4M9yG
+2025-08-27 18:34:02 [INFO]: [addBooking] Transaction record created for booking booking-iyZwk123t9zHF0hl
+2025-08-27 18:34:02 [ERROR]: [addBooking] Booking process failed: Cannot read properties of undefined (reading 'deletePrefix')
+2025-08-27 18:51:37 [INFO]: [addBooking] Start booking process for user user-0pX9mJ0qdX32QcUm and room room-5dIZYzor354bQInC
+2025-08-27 18:51:37 [INFO]: [lockAndCheck] Rooms available roomId=room-5dIZYzor354bQInC, totalNights=1, totalPrice=9000000
+2025-08-27 18:51:37 [INFO]: [addBooking] Room room-5dIZYzor354bQInC locked and checked, totalPrice: 9000000
+2025-08-27 18:51:37 [INFO]: [CacheService] Cache hit for key: users:id:user-0pX9mJ0qdX32QcUm
+2025-08-27 18:51:37 [INFO]: [getUserbyId] Cache hit for key: users:id:user-0pX9mJ0qdX32QcUm
+2025-08-27 18:51:37 [INFO]: [getRoomById] Room fetched successfully roomId=room-5dIZYzor354bQInC
+2025-08-27 18:51:37 [INFO]: [addBooking] Booking inserted with ID booking-wpT7x0seOZl3qA1n
+2025-08-27 18:51:37 [INFO]: [reduceAvailability] Reduced availability roomId=room-5dIZYzor354bQInC date=2025-10-12 by=1
+2025-08-27 18:51:37 [INFO]: [reduceAvailability] Reduced availability roomId=room-5dIZYzor354bQInC date=2025-10-13 by=1
+2025-08-27 18:51:37 [INFO]: [addBooking] Reduced availability for room room-5dIZYzor354bQInC
+2025-08-27 18:51:37 [INFO]: [addBooking] Active log created for booking booking-wpT7x0seOZl3qA1n
+2025-08-27 18:51:37 [INFO]: [createTransaction] Transaksi berhasil dibuat: orderId=booking-wpT7x0seOZl3qA1n, redirectUrl=https://app.sandbox.midtrans.com/snap/v4/redirection/3aabbd4b-db86-4af9-bea6-9644f286d571
+2025-08-27 18:51:37 [INFO]: [addBooking] Midtrans transaction created for booking booking-wpT7x0seOZl3qA1n
+2025-08-27 18:51:37 [INFO]: [addBooking] Snap token updated for booking booking-wpT7x0seOZl3qA1n
+2025-08-27 18:51:37 [INFO]: [createTransactionRecord] Transaction record created successfully bookingId=booking-wpT7x0seOZl3qA1n trxId=trx-OB8ZZCCF40CKv8rg
+2025-08-27 18:51:37 [INFO]: [addBooking] Transaction record created for booking booking-wpT7x0seOZl3qA1n
+2025-08-27 18:51:37 [ERROR]: [addBooking] Booking process failed: Cannot read properties of undefined (reading 'deletePrefix')
+2025-08-27 18:52:56 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 18:52:58 [INFO]: [CacheService] Redis client connected
+2025-08-27 18:54:07 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 18:54:07 [INFO]: [CacheService] Redis client connected
+2025-08-27 18:54:23 [INFO]: [addBooking] Start booking process for user user-0pX9mJ0qdX32QcUm and room room-5dIZYzor354bQInC
+2025-08-27 18:54:23 [INFO]: [lockAndCheck] Rooms available roomId=room-5dIZYzor354bQInC, totalNights=1, totalPrice=9000000
+2025-08-27 18:54:23 [INFO]: [addBooking] Room room-5dIZYzor354bQInC locked and checked, totalPrice: 9000000
+2025-08-27 18:54:23 [INFO]: [CacheService] Cache hit for key: users:id:user-0pX9mJ0qdX32QcUm
+2025-08-27 18:54:23 [INFO]: [getUserbyId] Cache hit for key: users:id:user-0pX9mJ0qdX32QcUm
+2025-08-27 18:54:23 [INFO]: [getRoomById] Room fetched successfully roomId=room-5dIZYzor354bQInC
+2025-08-27 18:54:23 [INFO]: [addBooking] Booking inserted with ID booking-4-AuKbIiVaGyyixf
+2025-08-27 18:54:23 [INFO]: [reduceAvailability] Reduced availability roomId=room-5dIZYzor354bQInC date=2025-10-12 by=1
+2025-08-27 18:54:23 [INFO]: [reduceAvailability] Reduced availability roomId=room-5dIZYzor354bQInC date=2025-10-13 by=1
+2025-08-27 18:54:23 [INFO]: [addBooking] Reduced availability for room room-5dIZYzor354bQInC
+2025-08-27 18:54:23 [INFO]: [addBooking] Active log created for booking booking-4-AuKbIiVaGyyixf
+2025-08-27 18:54:23 [INFO]: [createTransaction] Transaksi berhasil dibuat: orderId=booking-4-AuKbIiVaGyyixf, redirectUrl=https://app.sandbox.midtrans.com/snap/v4/redirection/11cbf0b6-b8f6-4435-b8f5-56483f81371e
+2025-08-27 18:54:23 [INFO]: [addBooking] Midtrans transaction created for booking booking-4-AuKbIiVaGyyixf
+2025-08-27 18:54:23 [INFO]: [addBooking] Snap token updated for booking booking-4-AuKbIiVaGyyixf
+2025-08-27 18:54:23 [INFO]: [createTransactionRecord] Transaction record created successfully bookingId=booking-4-AuKbIiVaGyyixf trxId=trx-2H3gdj0QdJROJs45
+2025-08-27 18:54:23 [INFO]: [addBooking] Transaction record created for booking booking-4-AuKbIiVaGyyixf
+2025-08-27 18:54:23 [INFO]: [CacheService] No cache keys found with prefix: bookings:user:user-0pX9mJ0qdX32QcUm:
+2025-08-27 18:55:37 [INFO]: [addBooking] Start booking process for user user-0pX9mJ0qdX32QcUm and room room-5dIZYzor354bQInC
+2025-08-27 18:55:37 [INFO]: [lockAndCheck] Rooms available roomId=room-5dIZYzor354bQInC, totalNights=1, totalPrice=9000000
+2025-08-27 18:55:37 [INFO]: [addBooking] Room room-5dIZYzor354bQInC locked and checked, totalPrice: 9000000
+2025-08-27 18:55:37 [INFO]: [CacheService] Cache hit for key: users:id:user-0pX9mJ0qdX32QcUm
+2025-08-27 18:55:37 [INFO]: [getUserbyId] Cache hit for key: users:id:user-0pX9mJ0qdX32QcUm
+2025-08-27 18:55:37 [INFO]: [getRoomById] Room fetched successfully roomId=room-5dIZYzor354bQInC
+2025-08-27 18:55:37 [INFO]: [addBooking] Booking inserted with ID booking-34ewzZlmJD3NpPZM
+2025-08-27 18:55:37 [INFO]: [reduceAvailability] Reduced availability roomId=room-5dIZYzor354bQInC date=2025-10-12 by=1
+2025-08-27 18:55:37 [INFO]: [reduceAvailability] Reduced availability roomId=room-5dIZYzor354bQInC date=2025-10-13 by=1
+2025-08-27 18:55:37 [INFO]: [addBooking] Reduced availability for room room-5dIZYzor354bQInC
+2025-08-27 18:55:37 [INFO]: [addBooking] Active log created for booking booking-34ewzZlmJD3NpPZM
+2025-08-27 18:55:37 [INFO]: [createTransaction] Transaksi berhasil dibuat: orderId=booking-34ewzZlmJD3NpPZM, redirectUrl=https://app.sandbox.midtrans.com/snap/v4/redirection/92cf7122-d2c8-4827-a41d-afdd09977360
+2025-08-27 18:55:37 [INFO]: [addBooking] Midtrans transaction created for booking booking-34ewzZlmJD3NpPZM
+2025-08-27 18:55:37 [INFO]: [addBooking] Snap token updated for booking booking-34ewzZlmJD3NpPZM
+2025-08-27 18:55:37 [INFO]: [createTransactionRecord] Transaction record created successfully bookingId=booking-34ewzZlmJD3NpPZM trxId=trx-_mdTeKW99ArwU0ei
+2025-08-27 18:55:37 [INFO]: [addBooking] Transaction record created for booking booking-34ewzZlmJD3NpPZM
+2025-08-27 18:55:37 [INFO]: [CacheService] No cache keys found with prefix: bookings:user:user-0pX9mJ0qdX32QcUm:
+2025-08-27 18:55:37 [INFO]: [verifyUser] User authorized id=user-0pX9mJ0qdX32QcUm
+2025-08-27 18:55:37 [WARN]: [CacheService] Cache miss for key: bookings:service:{"page":1,"limit":50}
+2025-08-27 18:55:37 [ERROR]: [CacheService] Failed to get cache for key bookings:service:{"page":1,"limit":50}: Cache tidak ditemukan
+2025-08-27 18:55:37 [INFO]: [getBookingsService] Cache miss for key: bookings:service:{"page":1,"limit":50}
+2025-08-27 18:55:37 [INFO]: [getBookingsService] Fetched bookings, count=5
+2025-08-27 18:55:37 [INFO]: [CacheService] Cache set: bookings:service:{"page":1,"limit":50}
+2025-08-27 18:55:37 [INFO]: [getBookingsService] Cache set for key: bookings:service:{"page":1,"limit":50}
+2025-08-27 18:55:37 [INFO]: [verifyUser] User authorized id=user-0pX9mJ0qdX32QcUm
+2025-08-27 18:55:37 [WARN]: [CacheService] Cache miss for key: booking:booking-34ewzZlmJD3NpPZM
+2025-08-27 18:55:37 [ERROR]: [CacheService] Failed to get cache for key booking:booking-34ewzZlmJD3NpPZM: Cache tidak ditemukan
+2025-08-27 18:55:38 [INFO]: [CacheService] Cache set: booking:booking-34ewzZlmJD3NpPZM
+2025-08-27 18:55:38 [INFO]: [getBookingById] Booking fetched: targetId=booking-34ewzZlmJD3NpPZM
+2025-08-27 18:55:38 [INFO]: [verifyUser] User authorized id=user-0pX9mJ0qdX32QcUm
+2025-08-27 18:55:38 [WARN]: [CacheService] Cache miss for key: bookings:service:{"status":"pending_payment","page":1,"limit":50}
+2025-08-27 18:55:38 [ERROR]: [CacheService] Failed to get cache for key bookings:service:{"status":"pending_payment","page":1,"limit":50}: Cache tidak ditemukan
+2025-08-27 18:55:38 [INFO]: [getBookingsService] Cache miss for key: bookings:service:{"status":"pending_payment","page":1,"limit":50}
+2025-08-27 18:55:38 [INFO]: [getBookingsService] Fetched bookings, count=5
+2025-08-27 18:55:38 [INFO]: [CacheService] Cache set: bookings:service:{"status":"pending_payment","page":1,"limit":50}
+2025-08-27 18:55:38 [INFO]: [getBookingsService] Cache set for key: bookings:service:{"status":"pending_payment","page":1,"limit":50}
+2025-08-27 18:55:38 [INFO]: [verifyUser] User authorized id=user-0pX9mJ0qdX32QcUm
+2025-08-27 18:55:38 [WARN]: [CacheService] Cache miss for key: bookings:service:{"guestName":"Dita","page":1,"limit":50}
+2025-08-27 18:55:38 [ERROR]: [CacheService] Failed to get cache for key bookings:service:{"guestName":"Dita","page":1,"limit":50}: Cache tidak ditemukan
+2025-08-27 18:55:38 [INFO]: [getBookingsService] Cache miss for key: bookings:service:{"guestName":"Dita","page":1,"limit":50}
+2025-08-27 18:55:38 [INFO]: [getBookingsService] Fetched bookings, count=5
+2025-08-27 18:55:38 [INFO]: [CacheService] Cache set: bookings:service:{"guestName":"Dita","page":1,"limit":50}
+2025-08-27 18:55:38 [INFO]: [getBookingsService] Cache set for key: bookings:service:{"guestName":"Dita","page":1,"limit":50}
+2025-08-27 18:55:38 [INFO]: [verifyUser] User authorized id=user-0pX9mJ0qdX32QcUm
+2025-08-27 18:55:38 [WARN]: [CacheService] Cache miss for key: bookings:service:{"checkInDate":"2025-10-12","page":1,"limit":50}
+2025-08-27 18:55:38 [ERROR]: [CacheService] Failed to get cache for key bookings:service:{"checkInDate":"2025-10-12","page":1,"limit":50}: Cache tidak ditemukan
+2025-08-27 18:55:38 [INFO]: [getBookingsService] Cache miss for key: bookings:service:{"checkInDate":"2025-10-12","page":1,"limit":50}
+2025-08-27 18:55:38 [INFO]: [getBookingsService] Fetched bookings, count=5
+2025-08-27 18:55:38 [INFO]: [CacheService] Cache set: bookings:service:{"checkInDate":"2025-10-12","page":1,"limit":50}
+2025-08-27 18:55:38 [INFO]: [getBookingsService] Cache set for key: bookings:service:{"checkInDate":"2025-10-12","page":1,"limit":50}
+2025-08-27 18:55:38 [INFO]: [verifyUser] User authorized id=user-0pX9mJ0qdX32QcUm
+2025-08-27 18:55:38 [WARN]: [CacheService] Cache miss for key: bookings:service:{"checkOutDate":"2025-10-13","page":1,"limit":50}
+2025-08-27 18:55:38 [ERROR]: [CacheService] Failed to get cache for key bookings:service:{"checkOutDate":"2025-10-13","page":1,"limit":50}: Cache tidak ditemukan
+2025-08-27 18:55:38 [INFO]: [getBookingsService] Cache miss for key: bookings:service:{"checkOutDate":"2025-10-13","page":1,"limit":50}
+2025-08-27 18:55:38 [INFO]: [getBookingsService] Fetched bookings, count=5
+2025-08-27 18:55:38 [INFO]: [CacheService] Cache set: bookings:service:{"checkOutDate":"2025-10-13","page":1,"limit":50}
+2025-08-27 18:55:38 [INFO]: [getBookingsService] Cache set for key: bookings:service:{"checkOutDate":"2025-10-13","page":1,"limit":50}
+2025-08-27 18:55:38 [INFO]: [verifyUser] User authorized id=user-0pX9mJ0qdX32QcUm
+2025-08-27 18:55:38 [WARN]: [CacheService] Cache miss for key: bookings:service:{"checkInDate":"2025-10-12","checkInDateEnd":"2025-10-13","page":1,"limit":50}
+2025-08-27 18:55:38 [ERROR]: [CacheService] Failed to get cache for key bookings:service:{"checkInDate":"2025-10-12","checkInDateEnd":"2025-10-13","page":1,"limit":50}: Cache tidak ditemukan
+2025-08-27 18:55:38 [INFO]: [getBookingsService] Cache miss for key: bookings:service:{"checkInDate":"2025-10-12","checkInDateEnd":"2025-10-13","page":1,"limit":50}
+2025-08-27 18:55:38 [INFO]: [getBookingsService] Fetched bookings, count=5
+2025-08-27 18:55:38 [INFO]: [CacheService] Cache set: bookings:service:{"checkInDate":"2025-10-12","checkInDateEnd":"2025-10-13","page":1,"limit":50}
+2025-08-27 18:55:38 [INFO]: [getBookingsService] Cache set for key: bookings:service:{"checkInDate":"2025-10-12","checkInDateEnd":"2025-10-13","page":1,"limit":50}
+2025-08-27 18:55:38 [INFO]: [getPendingBookingsByUser] Fetched pending bookings for user user-0pX9mJ0qdX32QcUm, count=5
+2025-08-27 18:55:39 [INFO]: [CacheService] Cache hit for key: booking:booking-34ewzZlmJD3NpPZM
+2025-08-27 18:55:39 [INFO]: [verifyUser] User authorized id=user-0pX9mJ0qdX32QcUm
+2025-08-27 18:55:39 [ERROR]: [checkInBookingService] Failed for bookingId=booking-34ewzZlmJD3NpPZM, userId=user-0pX9mJ0qdX32QcUm: Check-in ditolak, silahkan selesaikan pembayaran
+2025-08-27 18:55:39 [INFO]: [verifyUser] User authorized id=user-0pX9mJ0qdX32QcUm
+2025-08-27 18:55:39 [ERROR]: [checkOutBookingService] Failed for bookingId=booking-34ewzZlmJD3NpPZM, userId=user-0pX9mJ0qdX32QcUm: Booking belum dibayar, tidak bisa check-out
+2025-08-27 18:55:39 [ERROR]: [generateInvoice] Failed for bookingId=booking-X4QEgjEnfRhNrRXl, userId=user-0pX9mJ0qdX32QcUm: Booking tidak ditemukan atau belum dibayar
+2025-08-27 18:57:43 [INFO]: [getCompletedBookingForUserRoom] Fetched completed booking: userId=user-0pX9mJ0qdX32QcUm, roomId=room-5dIZYzor354bQInC, bookingId=none
+2025-08-27 18:57:43 [WARN]: [getReviewById] Review dengan id review-bj6r3FzECf83C_HG tidak ditemukan
+2025-08-27 18:57:43 [ERROR]: [getReviewById] Gagal mengambil review review-bj6r3FzECf83C_HG: Review tidak ditemukan
+2025-08-27 18:57:43 [INFO]: Ambil 0 review untuk room room-5dIZYzor354bQInC halaman 1
+2025-08-27 18:57:43 [WARN]: [editReview] Review review-bj6r3FzECf83C_HG tidak ditemukan
+2025-08-27 18:57:43 [ERROR]: [editReview] Gagal mengedit review review-bj6r3FzECf83C_HG: Review tidak ditemukan
+2025-08-27 18:58:00 [INFO]: [getCompletedBookingForUserRoom] Fetched completed booking: userId=user-0pX9mJ0qdX32QcUm, roomId=room-5dIZYzor354bQInC, bookingId=none
+2025-08-27 18:58:31 [INFO]: [getCompletedBookingForUserRoom] Fetched completed booking: userId=user-0pX9mJ0qdX32QcUm, roomId=room-5dIZYzor354bQInC, bookingId=none
+2025-08-27 19:10:26 [INFO]: [updateLastLogin] Updated last login for userId=user-0pX9mJ0qdX32QcUm
+2025-08-27 19:10:26 [INFO]: [verifyUserCredential] User logged in successfully id=user-0pX9mJ0qdX32QcUm email=user8668@mail.com
+2025-08-27 19:10:26 [INFO]: [AuthenticationsService] Refresh token added with id auth-nEd5Z5nnFuKTNli3
+2025-08-27 19:10:31 [INFO]: [addBooking] Start booking process for user user-0pX9mJ0qdX32QcUm and room room-5dIZYzor354bQInC
+2025-08-27 19:10:31 [INFO]: [lockAndCheck] Rooms available roomId=room-5dIZYzor354bQInC, totalNights=1, totalPrice=9000000
+2025-08-27 19:10:31 [INFO]: [addBooking] Room room-5dIZYzor354bQInC locked and checked, totalPrice: 9000000
+2025-08-27 19:10:31 [WARN]: [CacheService] Cache miss for key: users:id:user-0pX9mJ0qdX32QcUm
+2025-08-27 19:10:31 [ERROR]: [CacheService] Failed to get cache for key users:id:user-0pX9mJ0qdX32QcUm: Cache tidak ditemukan
+2025-08-27 19:10:31 [INFO]: [getUserbyId] Cache miss for key: users:id:user-0pX9mJ0qdX32QcUm
+2025-08-27 19:10:31 [INFO]: [CacheService] Cache set: users:id:user-0pX9mJ0qdX32QcUm
+2025-08-27 19:10:31 [INFO]: [getRoomById] Room fetched successfully roomId=room-5dIZYzor354bQInC
+2025-08-27 19:10:31 [INFO]: [addBooking] Booking inserted with ID booking-P-lqNkt5wL4LiDe3
+2025-08-27 19:10:31 [INFO]: [reduceAvailability] Reduced availability roomId=room-5dIZYzor354bQInC date=2025-10-12 by=1
+2025-08-27 19:10:31 [INFO]: [reduceAvailability] Reduced availability roomId=room-5dIZYzor354bQInC date=2025-10-13 by=1
+2025-08-27 19:10:31 [INFO]: [addBooking] Reduced availability for room room-5dIZYzor354bQInC
+2025-08-27 19:10:31 [INFO]: [addBooking] Active log created for booking booking-P-lqNkt5wL4LiDe3
+2025-08-27 19:10:31 [INFO]: [createTransaction] Transaksi berhasil dibuat: orderId=booking-P-lqNkt5wL4LiDe3, redirectUrl=https://app.sandbox.midtrans.com/snap/v4/redirection/d3e3fdc1-4362-4454-bf57-ced9e0e3fb6f
+2025-08-27 19:10:31 [INFO]: [addBooking] Midtrans transaction created for booking booking-P-lqNkt5wL4LiDe3
+2025-08-27 19:10:31 [INFO]: [addBooking] Snap token updated for booking booking-P-lqNkt5wL4LiDe3
+2025-08-27 19:10:31 [INFO]: [createTransactionRecord] Transaction record created successfully bookingId=booking-P-lqNkt5wL4LiDe3 trxId=trx-pdKBBDacDCF3J3RO
+2025-08-27 19:10:31 [INFO]: [addBooking] Transaction record created for booking booking-P-lqNkt5wL4LiDe3
+2025-08-27 19:10:31 [INFO]: [CacheService] No cache keys found with prefix: bookings:user:user-0pX9mJ0qdX32QcUm:
+2025-08-27 19:10:37 [ERROR]: [updateBookingStatus] Failed for orderId=undefined: Transactions Records Gagal Update
+2025-08-27 19:11:33 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 19:11:33 [INFO]: [CacheService] Redis client connected
+2025-08-27 19:11:59 [INFO]: [addBooking] Start booking process for user user-0pX9mJ0qdX32QcUm and room room-5dIZYzor354bQInC
+2025-08-27 19:11:59 [INFO]: [lockAndCheck] Rooms available roomId=room-5dIZYzor354bQInC, totalNights=1, totalPrice=9000000
+2025-08-27 19:11:59 [INFO]: [addBooking] Room room-5dIZYzor354bQInC locked and checked, totalPrice: 9000000
+2025-08-27 19:11:59 [INFO]: [CacheService] Cache hit for key: users:id:user-0pX9mJ0qdX32QcUm
+2025-08-27 19:11:59 [INFO]: [getUserbyId] Cache hit for key: users:id:user-0pX9mJ0qdX32QcUm
+2025-08-27 19:11:59 [INFO]: [getRoomById] Room fetched successfully roomId=room-5dIZYzor354bQInC
+2025-08-27 19:11:59 [INFO]: [addBooking] Booking inserted with ID booking-_pTPTZ6y3XWrzqpO
+2025-08-27 19:11:59 [INFO]: [reduceAvailability] Reduced availability roomId=room-5dIZYzor354bQInC date=2025-10-12 by=1
+2025-08-27 19:11:59 [INFO]: [reduceAvailability] Reduced availability roomId=room-5dIZYzor354bQInC date=2025-10-13 by=1
+2025-08-27 19:11:59 [INFO]: [addBooking] Reduced availability for room room-5dIZYzor354bQInC
+2025-08-27 19:11:59 [INFO]: [addBooking] Active log created for booking booking-_pTPTZ6y3XWrzqpO
+2025-08-27 19:12:00 [INFO]: [createTransaction] Transaksi berhasil dibuat: orderId=booking-_pTPTZ6y3XWrzqpO, redirectUrl=https://app.sandbox.midtrans.com/snap/v4/redirection/5ca72137-9431-4b41-b11d-caa1cd72b9ff
+2025-08-27 19:12:00 [INFO]: [addBooking] Midtrans transaction created for booking booking-_pTPTZ6y3XWrzqpO
+2025-08-27 19:12:00 [INFO]: [addBooking] Snap token updated for booking booking-_pTPTZ6y3XWrzqpO
+2025-08-27 19:12:00 [INFO]: [createTransactionRecord] Transaction record created successfully bookingId=booking-_pTPTZ6y3XWrzqpO trxId=trx-4LBaTrsEJI93_QK0
+2025-08-27 19:12:00 [INFO]: [addBooking] Transaction record created for booking booking-_pTPTZ6y3XWrzqpO
+2025-08-27 19:12:00 [INFO]: [CacheService] No cache keys found with prefix: bookings:user:user-0pX9mJ0qdX32QcUm:
+2025-08-27 19:12:48 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 19:12:49 [INFO]: [CacheService] Redis client connected
+2025-08-27 19:12:52 [ERROR]: [updateBookingStatus] Failed for orderId=booking-_pTPTZ6y3XWrzqpO: inconsistent types deduced for parameter $1
+2025-08-27 19:15:00 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 19:15:00 [INFO]: [CacheService] Redis client connected
+2025-08-27 19:15:22 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 19:15:23 [INFO]: [CacheService] Redis client connected
+2025-08-27 19:15:27 [INFO]: [updateBookingStatus] Booking updated: orderId=booking-_pTPTZ6y3XWrzqpO, paymentStatus=settlement, bookingStatus=confirmed
+2025-08-27 19:16:13 [INFO]: [addBooking] Start booking process for user user-0pX9mJ0qdX32QcUm and room room-5dIZYzor354bQInC
+2025-08-27 19:16:13 [INFO]: [lockAndCheck] Rooms available roomId=room-5dIZYzor354bQInC, totalNights=1, totalPrice=9000000
+2025-08-27 19:16:13 [INFO]: [addBooking] Room room-5dIZYzor354bQInC locked and checked, totalPrice: 9000000
+2025-08-27 19:16:13 [INFO]: [CacheService] Cache hit for key: users:id:user-0pX9mJ0qdX32QcUm
+2025-08-27 19:16:13 [INFO]: [getUserbyId] Cache hit for key: users:id:user-0pX9mJ0qdX32QcUm
+2025-08-27 19:16:14 [INFO]: [getRoomById] Room fetched successfully roomId=room-5dIZYzor354bQInC
+2025-08-27 19:16:14 [INFO]: [addBooking] Booking inserted with ID booking-y6IRW3s9PjvrfOxX
+2025-08-27 19:16:14 [INFO]: [reduceAvailability] Reduced availability roomId=room-5dIZYzor354bQInC date=2025-10-12 by=1
+2025-08-27 19:16:14 [INFO]: [reduceAvailability] Reduced availability roomId=room-5dIZYzor354bQInC date=2025-10-13 by=1
+2025-08-27 19:16:14 [INFO]: [addBooking] Reduced availability for room room-5dIZYzor354bQInC
+2025-08-27 19:16:14 [INFO]: [addBooking] Active log created for booking booking-y6IRW3s9PjvrfOxX
+2025-08-27 19:16:14 [INFO]: [createTransaction] Transaksi berhasil dibuat: orderId=booking-y6IRW3s9PjvrfOxX, redirectUrl=https://app.sandbox.midtrans.com/snap/v4/redirection/1a5975ad-96ed-488c-b7c6-006e483dd042
+2025-08-27 19:16:14 [INFO]: [addBooking] Midtrans transaction created for booking booking-y6IRW3s9PjvrfOxX
+2025-08-27 19:16:14 [INFO]: [addBooking] Snap token updated for booking booking-y6IRW3s9PjvrfOxX
+2025-08-27 19:16:14 [INFO]: [createTransactionRecord] Transaction record created successfully bookingId=booking-y6IRW3s9PjvrfOxX trxId=trx-16Zr79aq0MvkKyYZ
+2025-08-27 19:16:14 [INFO]: [addBooking] Transaction record created for booking booking-y6IRW3s9PjvrfOxX
+2025-08-27 19:16:14 [INFO]: [CacheService] No cache keys found with prefix: bookings:user:user-0pX9mJ0qdX32QcUm:
+2025-08-27 19:16:14 [INFO]: [updateBookingStatus] Booking updated: orderId=booking-y6IRW3s9PjvrfOxX, paymentStatus=settlement, bookingStatus=confirmed
+2025-08-27 19:16:14 [INFO]: [verifyUser] User authorized id=user-0pX9mJ0qdX32QcUm
+2025-08-27 19:16:14 [INFO]: [CacheService] Cache hit for key: bookings:service:{"page":1,"limit":50}
+2025-08-27 19:16:14 [INFO]: [getBookingsService] Cache hit for key: bookings:service:{"page":1,"limit":50}
+2025-08-27 19:16:14 [INFO]: [verifyUser] User authorized id=user-0pX9mJ0qdX32QcUm
+2025-08-27 19:16:14 [WARN]: [CacheService] Cache miss for key: booking:booking-y6IRW3s9PjvrfOxX
+2025-08-27 19:16:14 [ERROR]: [CacheService] Failed to get cache for key booking:booking-y6IRW3s9PjvrfOxX: Cache tidak ditemukan
+2025-08-27 19:16:14 [INFO]: [CacheService] Cache set: booking:booking-y6IRW3s9PjvrfOxX
+2025-08-27 19:16:14 [INFO]: [getBookingById] Booking fetched: targetId=booking-y6IRW3s9PjvrfOxX
+2025-08-27 19:16:15 [INFO]: [verifyUser] User authorized id=user-0pX9mJ0qdX32QcUm
+2025-08-27 19:16:15 [INFO]: [CacheService] Cache hit for key: bookings:service:{"status":"pending_payment","page":1,"limit":50}
+2025-08-27 19:16:15 [INFO]: [getBookingsService] Cache hit for key: bookings:service:{"status":"pending_payment","page":1,"limit":50}
+2025-08-27 19:16:15 [INFO]: [verifyUser] User authorized id=user-0pX9mJ0qdX32QcUm
+2025-08-27 19:16:15 [INFO]: [CacheService] Cache hit for key: bookings:service:{"guestName":"Dita","page":1,"limit":50}
+2025-08-27 19:16:15 [INFO]: [getBookingsService] Cache hit for key: bookings:service:{"guestName":"Dita","page":1,"limit":50}
+2025-08-27 19:16:15 [INFO]: [verifyUser] User authorized id=user-0pX9mJ0qdX32QcUm
+2025-08-27 19:16:15 [INFO]: [CacheService] Cache hit for key: bookings:service:{"checkInDate":"2025-10-12","page":1,"limit":50}
+2025-08-27 19:16:15 [INFO]: [getBookingsService] Cache hit for key: bookings:service:{"checkInDate":"2025-10-12","page":1,"limit":50}
+2025-08-27 19:16:15 [INFO]: [verifyUser] User authorized id=user-0pX9mJ0qdX32QcUm
+2025-08-27 19:16:15 [INFO]: [CacheService] Cache hit for key: bookings:service:{"checkOutDate":"2025-10-13","page":1,"limit":50}
+2025-08-27 19:16:15 [INFO]: [getBookingsService] Cache hit for key: bookings:service:{"checkOutDate":"2025-10-13","page":1,"limit":50}
+2025-08-27 19:16:15 [INFO]: [verifyUser] User authorized id=user-0pX9mJ0qdX32QcUm
+2025-08-27 19:16:15 [INFO]: [CacheService] Cache hit for key: bookings:service:{"checkInDate":"2025-10-12","checkInDateEnd":"2025-10-13","page":1,"limit":50}
+2025-08-27 19:16:15 [INFO]: [getBookingsService] Cache hit for key: bookings:service:{"checkInDate":"2025-10-12","checkInDateEnd":"2025-10-13","page":1,"limit":50}
+2025-08-27 19:16:15 [INFO]: [getPendingBookingsByUser] Fetched pending bookings for user user-0pX9mJ0qdX32QcUm, count=6
+2025-08-27 19:16:15 [INFO]: [CacheService] Cache hit for key: booking:booking-y6IRW3s9PjvrfOxX
+2025-08-27 19:16:15 [INFO]: [verifyUser] User authorized id=user-0pX9mJ0qdX32QcUm
+2025-08-27 19:16:15 [INFO]: [checkInBookingService] Booking checked-in: bookingId=booking-y6IRW3s9PjvrfOxX, userId=user-0pX9mJ0qdX32QcUm
+2025-08-27 19:16:15 [INFO]: [verifyUser] User authorized id=user-0pX9mJ0qdX32QcUm
+2025-08-27 19:16:15 [INFO]: [checkOutBookingService] Booking checked-out: bookingId=booking-y6IRW3s9PjvrfOxX, userId=user-0pX9mJ0qdX32QcUm
+2025-08-27 19:16:16 [ERROR]: [generateInvoice] Failed for bookingId=booking-X4QEgjEnfRhNrRXl, userId=user-0pX9mJ0qdX32QcUm: Booking tidak ditemukan atau belum dibayar
+2025-08-27 19:17:54 [INFO]: [getPendingBookingsByUser] Fetched pending bookings for user user-0pX9mJ0qdX32QcUm, count=6
+2025-08-27 19:18:49 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 19:18:49 [INFO]: [CacheService] Redis client connected
+2025-08-27 19:18:52 [INFO]: [getPendingBookingsByUser] Fetched pending bookings for user user-0pX9mJ0qdX32QcUm, count=6
+2025-08-27 19:20:46 [INFO]: [getPendingBookingsByUser] Fetched pending bookings for user user-0pX9mJ0qdX32QcUm, count=6
+2025-08-27 19:22:28 [INFO]: [getPendingBookingsByUser] Fetched pending bookings for user user-0pX9mJ0qdX32QcUm, count=6
+2025-08-27 19:28:48 [INFO]: [CacheService] No cache keys found with prefix: users:all
+2025-08-27 19:28:49 [INFO]: [updateLastLogin] Updated last login for userId=user-1EwTCMzteX9utciS
+2025-08-27 19:28:49 [INFO]: [verifyUserCredential] User logged in successfully id=user-1EwTCMzteX9utciS email=user4548@mail.com
+2025-08-27 19:28:49 [INFO]: [AuthenticationsService] Refresh token added with id auth-ANlx0PW2qycmX9bK
+2025-08-27 19:28:49 [INFO]: [verifyUser] User authorized id=user-1EwTCMzteX9utciS
+2025-08-27 19:28:49 [WARN]: [CacheService] Cache miss for key: users:all:page=1&limit=10
+2025-08-27 19:28:49 [ERROR]: [CacheService] Failed to get cache for key users:all:page=1&limit=10: Cache tidak ditemukan
+2025-08-27 19:28:49 [INFO]: [getAllUsers] Cache miss for key: users:all:page=1&limit=10
+2025-08-27 19:28:49 [INFO]: [CacheService] Cache set: users:all:page=1&limit=10
+2025-08-27 19:28:49 [INFO]: [getAllUsers] Cache set for key: users:all:page=1&limit=10
+2025-08-27 19:28:49 [INFO]: [verifyUser] User authorized id=user-1EwTCMzteX9utciS
+2025-08-27 19:28:49 [WARN]: [CacheService] Cache miss for key: users:id:user-1EwTCMzteX9utciS
+2025-08-27 19:28:49 [ERROR]: [CacheService] Failed to get cache for key users:id:user-1EwTCMzteX9utciS: Cache tidak ditemukan
+2025-08-27 19:28:49 [INFO]: [getUserbyId] Cache miss for key: users:id:user-1EwTCMzteX9utciS
+2025-08-27 19:28:49 [INFO]: [CacheService] Cache set: users:id:user-1EwTCMzteX9utciS
+2025-08-27 19:28:49 [INFO]: [verifyUser] User authorized id=user-1EwTCMzteX9utciS
+2025-08-27 19:28:49 [INFO]: [CacheService] Cache deleted: users:id:user-1EwTCMzteX9utciS, deletedCount=1
+2025-08-27 19:28:49 [INFO]: [CacheService] Cache keys deleted with prefix: users:all, count=1
+2025-08-27 19:28:49 [INFO]: [verifyUser] User authorized id=user-1EwTCMzteX9utciS
+2025-08-27 19:28:49 [WARN]: [addProfile] Profil hotel sudah ada, tidak bisa menambahkan lagi
+2025-08-27 19:28:49 [ERROR]: [addProfile] Database error: Profil hotel sudah ada, tidak bisa menambahkan lagi
+2025-08-27 19:28:50 [INFO]: [getProfile] Profil hotel berhasil diambil
+2025-08-27 19:28:50 [INFO]: [updateProfile] Profil hotel berhasil diperbarui dengan id hotel-XGYbNez4N3Kn
+2025-08-27 19:28:50 [INFO]: [verifyUser] User authorized id=user-1EwTCMzteX9utciS
+2025-08-27 19:28:50 [INFO]: [addRoom] Room added successfully: room-r7wNDuugrRqw1Qcm
+2025-08-27 19:28:50 [INFO]: [verifyUser] User authorized id=user-1EwTCMzteX9utciS
+2025-08-27 19:28:50 [INFO]: [StorageService] Created subfolder at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures\room-r7wNDuugrRqw1Qcm
+2025-08-27 19:28:50 [INFO]: [StorageService] File written successfully: room-r7wNDuugrRqw1Qcm/BboJNMUABAQQ.jpg
+2025-08-27 19:28:50 [INFO]: [addPicture] Foto berhasil ditambahkan roomId=room-r7wNDuugrRqw1Qcm, pictureId=pic-rdH5-OjbZjkvMb8H
+2025-08-27 19:28:50 [INFO]: [StorageService] File written successfully: room-r7wNDuugrRqw1Qcm/2Ul1HU1WXnQW.jpg
+2025-08-27 19:28:50 [INFO]: [addPicture] Foto berhasil ditambahkan roomId=room-r7wNDuugrRqw1Qcm, pictureId=pic-0Ld7G5Av1rS4nEez
+2025-08-27 19:28:50 [INFO]: [StorageService] File written successfully: room-r7wNDuugrRqw1Qcm/i-iAw5bJ4Nr-.jpg
+2025-08-27 19:28:50 [INFO]: [addPicture] Foto berhasil ditambahkan roomId=room-r7wNDuugrRqw1Qcm, pictureId=pic-khIWJ2bQ3JlJYdXL
+2025-08-27 19:28:50 [INFO]: [verifyUser] User authorized id=user-1EwTCMzteX9utciS
+2025-08-27 19:28:50 [INFO]: [getRooms] Data fetched from DB
+2025-08-27 19:28:50 [INFO]: [verifyUser] User authorized id=user-1EwTCMzteX9utciS
+2025-08-27 19:28:50 [INFO]: [getRoomById] Room fetched successfully roomId=room-r7wNDuugrRqw1Qcm
+2025-08-27 19:28:51 [INFO]: [verifyUser] User authorized id=user-1EwTCMzteX9utciS
+2025-08-27 19:28:51 [INFO]: [editRoom] Room updated successfully roomId=room-r7wNDuugrRqw1Qcm
+2025-08-27 19:28:51 [INFO]: [verifyUser] User authorized id=user-1EwTCMzteX9utciS
+2025-08-27 19:28:51 [INFO]: [getPictures] Mengambil 3 foto untuk roomId=room-r7wNDuugrRqw1Qcm
+2025-08-27 19:28:52 [INFO]: Availability generated until 2026-02-27
+2025-08-27 19:28:52 [INFO]: [addBooking] Start booking process for user user-1EwTCMzteX9utciS and room room-r7wNDuugrRqw1Qcm
+2025-08-27 19:28:52 [INFO]: [lockAndCheck] Rooms available roomId=room-r7wNDuugrRqw1Qcm, totalNights=1, totalPrice=9000000
+2025-08-27 19:28:52 [INFO]: [addBooking] Room room-r7wNDuugrRqw1Qcm locked and checked, totalPrice: 9000000
+2025-08-27 19:28:52 [WARN]: [CacheService] Cache miss for key: users:id:user-1EwTCMzteX9utciS
+2025-08-27 19:28:52 [ERROR]: [CacheService] Failed to get cache for key users:id:user-1EwTCMzteX9utciS: Cache tidak ditemukan
+2025-08-27 19:28:52 [INFO]: [getUserbyId] Cache miss for key: users:id:user-1EwTCMzteX9utciS
+2025-08-27 19:28:52 [INFO]: [CacheService] Cache set: users:id:user-1EwTCMzteX9utciS
+2025-08-27 19:28:52 [INFO]: [getRoomById] Room fetched successfully roomId=room-r7wNDuugrRqw1Qcm
+2025-08-27 19:28:52 [INFO]: [addBooking] Booking inserted with ID booking-9rsbLrEPz0VtIuni
+2025-08-27 19:28:52 [INFO]: [reduceAvailability] Reduced availability roomId=room-r7wNDuugrRqw1Qcm date=2025-10-12 by=1
+2025-08-27 19:28:52 [INFO]: [reduceAvailability] Reduced availability roomId=room-r7wNDuugrRqw1Qcm date=2025-10-13 by=1
+2025-08-27 19:28:52 [INFO]: [addBooking] Reduced availability for room room-r7wNDuugrRqw1Qcm
+2025-08-27 19:28:52 [INFO]: [addBooking] Active log created for booking booking-9rsbLrEPz0VtIuni
+2025-08-27 19:28:53 [INFO]: [createTransaction] Transaksi berhasil dibuat: orderId=booking-9rsbLrEPz0VtIuni, redirectUrl=https://app.sandbox.midtrans.com/snap/v4/redirection/e4012db6-2968-4689-a240-de6d3c020172
+2025-08-27 19:28:53 [INFO]: [addBooking] Midtrans transaction created for booking booking-9rsbLrEPz0VtIuni
+2025-08-27 19:28:53 [INFO]: [addBooking] Snap token updated for booking booking-9rsbLrEPz0VtIuni
+2025-08-27 19:28:53 [INFO]: [createTransactionRecord] Transaction record created successfully bookingId=booking-9rsbLrEPz0VtIuni trxId=trx-QtRrT5zIArWUKozn
+2025-08-27 19:28:53 [INFO]: [addBooking] Transaction record created for booking booking-9rsbLrEPz0VtIuni
+2025-08-27 19:28:53 [INFO]: [CacheService] No cache keys found with prefix: bookings:user:user-1EwTCMzteX9utciS:
+2025-08-27 19:28:53 [INFO]: [updateBookingStatus] Booking updated: orderId=booking-9rsbLrEPz0VtIuni, paymentStatus=settlement, bookingStatus=confirmed
+2025-08-27 19:28:53 [INFO]: [verifyUser] User authorized id=user-1EwTCMzteX9utciS
+2025-08-27 19:28:53 [WARN]: [CacheService] Cache miss for key: bookings:service:{"page":1,"limit":50}
+2025-08-27 19:28:53 [ERROR]: [CacheService] Failed to get cache for key bookings:service:{"page":1,"limit":50}: Cache tidak ditemukan
+2025-08-27 19:28:53 [INFO]: [getBookingsService] Cache miss for key: bookings:service:{"page":1,"limit":50}
+2025-08-27 19:28:53 [INFO]: [getBookingsService] Fetched bookings, count=9
+2025-08-27 19:28:53 [INFO]: [CacheService] Cache set: bookings:service:{"page":1,"limit":50}
+2025-08-27 19:28:53 [INFO]: [getBookingsService] Cache set for key: bookings:service:{"page":1,"limit":50}
+2025-08-27 19:28:53 [INFO]: [verifyUser] User authorized id=user-1EwTCMzteX9utciS
+2025-08-27 19:28:53 [WARN]: [CacheService] Cache miss for key: booking:booking-9rsbLrEPz0VtIuni
+2025-08-27 19:28:53 [ERROR]: [CacheService] Failed to get cache for key booking:booking-9rsbLrEPz0VtIuni: Cache tidak ditemukan
+2025-08-27 19:28:53 [INFO]: [CacheService] Cache set: booking:booking-9rsbLrEPz0VtIuni
+2025-08-27 19:28:53 [INFO]: [getBookingById] Booking fetched: targetId=booking-9rsbLrEPz0VtIuni
+2025-08-27 19:28:53 [INFO]: [verifyUser] User authorized id=user-1EwTCMzteX9utciS
+2025-08-27 19:28:53 [WARN]: [CacheService] Cache miss for key: bookings:service:{"status":"pending_payment","page":1,"limit":50}
+2025-08-27 19:28:53 [ERROR]: [CacheService] Failed to get cache for key bookings:service:{"status":"pending_payment","page":1,"limit":50}: Cache tidak ditemukan
+2025-08-27 19:28:53 [INFO]: [getBookingsService] Cache miss for key: bookings:service:{"status":"pending_payment","page":1,"limit":50}
+2025-08-27 19:28:53 [INFO]: [getBookingsService] Fetched bookings, count=6
+2025-08-27 19:28:53 [INFO]: [CacheService] Cache set: bookings:service:{"status":"pending_payment","page":1,"limit":50}
+2025-08-27 19:28:53 [INFO]: [getBookingsService] Cache set for key: bookings:service:{"status":"pending_payment","page":1,"limit":50}
+2025-08-27 19:28:53 [INFO]: [verifyUser] User authorized id=user-1EwTCMzteX9utciS
+2025-08-27 19:28:53 [WARN]: [CacheService] Cache miss for key: bookings:service:{"guestName":"Dita","page":1,"limit":50}
+2025-08-27 19:28:53 [ERROR]: [CacheService] Failed to get cache for key bookings:service:{"guestName":"Dita","page":1,"limit":50}: Cache tidak ditemukan
+2025-08-27 19:28:53 [INFO]: [getBookingsService] Cache miss for key: bookings:service:{"guestName":"Dita","page":1,"limit":50}
+2025-08-27 19:28:53 [INFO]: [getBookingsService] Fetched bookings, count=9
+2025-08-27 19:28:53 [INFO]: [CacheService] Cache set: bookings:service:{"guestName":"Dita","page":1,"limit":50}
+2025-08-27 19:28:53 [INFO]: [getBookingsService] Cache set for key: bookings:service:{"guestName":"Dita","page":1,"limit":50}
+2025-08-27 19:28:54 [INFO]: [verifyUser] User authorized id=user-1EwTCMzteX9utciS
+2025-08-27 19:28:54 [WARN]: [CacheService] Cache miss for key: bookings:service:{"checkInDate":"2025-10-12","page":1,"limit":50}
+2025-08-27 19:28:54 [ERROR]: [CacheService] Failed to get cache for key bookings:service:{"checkInDate":"2025-10-12","page":1,"limit":50}: Cache tidak ditemukan
+2025-08-27 19:28:54 [INFO]: [getBookingsService] Cache miss for key: bookings:service:{"checkInDate":"2025-10-12","page":1,"limit":50}
+2025-08-27 19:28:54 [INFO]: [getBookingsService] Fetched bookings, count=9
+2025-08-27 19:28:54 [INFO]: [CacheService] Cache set: bookings:service:{"checkInDate":"2025-10-12","page":1,"limit":50}
+2025-08-27 19:28:54 [INFO]: [getBookingsService] Cache set for key: bookings:service:{"checkInDate":"2025-10-12","page":1,"limit":50}
+2025-08-27 19:28:54 [INFO]: [verifyUser] User authorized id=user-1EwTCMzteX9utciS
+2025-08-27 19:28:54 [WARN]: [CacheService] Cache miss for key: bookings:service:{"checkOutDate":"2025-10-13","page":1,"limit":50}
+2025-08-27 19:28:54 [ERROR]: [CacheService] Failed to get cache for key bookings:service:{"checkOutDate":"2025-10-13","page":1,"limit":50}: Cache tidak ditemukan
+2025-08-27 19:28:54 [INFO]: [getBookingsService] Cache miss for key: bookings:service:{"checkOutDate":"2025-10-13","page":1,"limit":50}
+2025-08-27 19:28:54 [INFO]: [getBookingsService] Fetched bookings, count=9
+2025-08-27 19:28:54 [INFO]: [CacheService] Cache set: bookings:service:{"checkOutDate":"2025-10-13","page":1,"limit":50}
+2025-08-27 19:28:54 [INFO]: [getBookingsService] Cache set for key: bookings:service:{"checkOutDate":"2025-10-13","page":1,"limit":50}
+2025-08-27 19:28:54 [INFO]: [verifyUser] User authorized id=user-1EwTCMzteX9utciS
+2025-08-27 19:28:54 [WARN]: [CacheService] Cache miss for key: bookings:service:{"checkInDate":"2025-10-12","checkInDateEnd":"2025-10-13","page":1,"limit":50}
+2025-08-27 19:28:54 [ERROR]: [CacheService] Failed to get cache for key bookings:service:{"checkInDate":"2025-10-12","checkInDateEnd":"2025-10-13","page":1,"limit":50}: Cache tidak ditemukan
+2025-08-27 19:28:54 [INFO]: [getBookingsService] Cache miss for key: bookings:service:{"checkInDate":"2025-10-12","checkInDateEnd":"2025-10-13","page":1,"limit":50}
+2025-08-27 19:28:54 [INFO]: [getBookingsService] Fetched bookings, count=9
+2025-08-27 19:28:54 [INFO]: [CacheService] Cache set: bookings:service:{"checkInDate":"2025-10-12","checkInDateEnd":"2025-10-13","page":1,"limit":50}
+2025-08-27 19:28:54 [INFO]: [getBookingsService] Cache set for key: bookings:service:{"checkInDate":"2025-10-12","checkInDateEnd":"2025-10-13","page":1,"limit":50}
+2025-08-27 19:28:54 [INFO]: [getPendingBookingsByUser] Fetched pending bookings for user user-1EwTCMzteX9utciS, count=0
+2025-08-27 19:28:54 [INFO]: [CacheService] Cache hit for key: booking:booking-9rsbLrEPz0VtIuni
+2025-08-27 19:28:54 [INFO]: [verifyUser] User authorized id=user-1EwTCMzteX9utciS
+2025-08-27 19:28:54 [INFO]: [checkInBookingService] Booking checked-in: bookingId=booking-9rsbLrEPz0VtIuni, userId=user-1EwTCMzteX9utciS
+2025-08-27 19:28:54 [INFO]: [verifyUser] User authorized id=user-1EwTCMzteX9utciS
+2025-08-27 19:28:54 [INFO]: [checkOutBookingService] Booking checked-out: bookingId=booking-9rsbLrEPz0VtIuni, userId=user-1EwTCMzteX9utciS
+2025-08-27 19:28:54 [ERROR]: [generateInvoice] Failed for bookingId=booking-X4QEgjEnfRhNrRXl, userId=user-1EwTCMzteX9utciS: Booking tidak ditemukan atau belum dibayar
+2025-08-27 19:28:54 [INFO]: [getCompletedBookingForUserRoom] Fetched completed booking: userId=user-1EwTCMzteX9utciS, roomId=room-r7wNDuugrRqw1Qcm, bookingId=booking-9rsbLrEPz0VtIuni
+2025-08-27 19:28:54 [INFO]: [getCompletedBookingForUserRoom] Fetched completed booking: userId=user-1EwTCMzteX9utciS, roomId=room-r7wNDuugrRqw1Qcm, bookingId=booking-9rsbLrEPz0VtIuni
+2025-08-27 19:28:54 [INFO]: User user-1EwTCMzteX9utciS berhasil menambahkan review review-EbuBw5b8iaEdqquq untuk room room-r7wNDuugrRqw1Qcm
+2025-08-27 19:28:54 [INFO]: [getReviewById] Review review-EbuBw5b8iaEdqquq berhasil diambil
+2025-08-27 19:28:55 [INFO]: Ambil 1 review untuk room room-r7wNDuugrRqw1Qcm halaman 1
+2025-08-27 19:28:55 [INFO]: [editReview] Review review-EbuBw5b8iaEdqquq berhasil diubah oleh user user-1EwTCMzteX9utciS
+2025-08-27 19:28:55 [WARN]: [deleteReview] Review null tidak ditemukan
+2025-08-27 19:28:55 [ERROR]: [deleteReview] Gagal menghapus review null: Review tidak ditemukan
+2025-08-27 19:28:55 [ERROR]: [cancelBookingService] Failed for bookingId=booking-0TSLZ6KLwEj2elWB, userId=user-1EwTCMzteX9utciS: Booking tidak ditemukan atau bukan milik Anda
+2025-08-27 19:28:55 [INFO]: [verifyUser] User authorized id=user-1EwTCMzteX9utciS
+2025-08-27 19:28:55 [INFO]: [getPictures] Mengambil 3 foto untuk roomId=room-r7wNDuugrRqw1Qcm
+2025-08-27 19:28:55 [INFO]: [deleteAllPictures] Menghapus semua foto roomId=room-r7wNDuugrRqw1Qcm, total=3
+2025-08-27 19:28:55 [INFO]: [verifyUser] User authorized id=user-1EwTCMzteX9utciS
+2025-08-27 19:28:55 [INFO]: [deleteRoom] Room deleted successfully roomId=room-r7wNDuugrRqw1Qcm
+2025-08-27 19:28:55 [INFO]: [verifyUser] User authorized id=user-1EwTCMzteX9utciS
+2025-08-27 19:31:32 [INFO]: [verifyUser] User authorized id=user-1EwTCMzteX9utciS
+2025-08-27 19:31:32 [INFO]: [getPictures] Mengambil 0 foto untuk roomId=room-r7wNDuugrRqw1Qcm
+2025-08-27 19:31:37 [INFO]: [verifyUser] User authorized id=user-1EwTCMzteX9utciS
+2025-08-27 19:31:37 [INFO]: [getPictures] Mengambil 0 foto untuk roomId=room-r7wNDuugrRqw1Qcm
+2025-08-27 19:31:58 [INFO]: [verifyUser] User authorized id=user-1EwTCMzteX9utciS
+2025-08-27 19:31:58 [INFO]: [StorageService] File written successfully: room-r7wNDuugrRqw1Qcm/nMWFXhNpXzE6.jpg
+2025-08-27 19:31:58 [INFO]: [addPicture] Foto berhasil ditambahkan roomId=room-r7wNDuugrRqw1Qcm, pictureId=pic-ngA8_fRAEM1CpXZ9
+2025-08-27 19:31:59 [INFO]: [StorageService] File written successfully: room-r7wNDuugrRqw1Qcm/MFBjX_oZXF6u.jpg
+2025-08-27 19:31:59 [INFO]: [addPicture] Foto berhasil ditambahkan roomId=room-r7wNDuugrRqw1Qcm, pictureId=pic-N0mXdmNSQT512Izr
+2025-08-27 19:31:59 [INFO]: [StorageService] File written successfully: room-r7wNDuugrRqw1Qcm/SrXxcNfleVVG.jpg
+2025-08-27 19:31:59 [INFO]: [addPicture] Foto berhasil ditambahkan roomId=room-r7wNDuugrRqw1Qcm, pictureId=pic-g-UyJk-9dqAKf3dT
+2025-08-27 19:32:05 [INFO]: [verifyUser] User authorized id=user-1EwTCMzteX9utciS
+2025-08-27 19:32:05 [INFO]: [StorageService] File written successfully: room-r7wNDuugrRqw1Qcm/w-pZwYmjp9fz.jpg
+2025-08-27 19:32:05 [INFO]: [addPicture] Foto berhasil ditambahkan roomId=room-r7wNDuugrRqw1Qcm, pictureId=pic-z8DdmyfAjHmLTfrC
+2025-08-27 19:32:05 [INFO]: [StorageService] File written successfully: room-r7wNDuugrRqw1Qcm/ZIEgkzYgBUpr.jpg
+2025-08-27 19:32:05 [INFO]: [addPicture] Foto berhasil ditambahkan roomId=room-r7wNDuugrRqw1Qcm, pictureId=pic-3wQQHxPm96qRTwCF
+2025-08-27 19:32:05 [INFO]: [StorageService] File written successfully: room-r7wNDuugrRqw1Qcm/TK2ZGBbEWbDW.jpg
+2025-08-27 19:32:05 [INFO]: [addPicture] Foto berhasil ditambahkan roomId=room-r7wNDuugrRqw1Qcm, pictureId=pic-qEETmZiFuKJPmLOj
+2025-08-27 19:32:22 [INFO]: [verifyUser] User authorized id=user-1EwTCMzteX9utciS
+2025-08-27 19:32:22 [INFO]: [StorageService] File written successfully: room-r7wNDuugrRqw1Qcm/GFsonRBqD1MM.jpg
+2025-08-27 19:32:22 [INFO]: [addPicture] Foto berhasil ditambahkan roomId=room-r7wNDuugrRqw1Qcm, pictureId=pic-84f9oK-fYSTKQXMc
+2025-08-27 19:32:22 [INFO]: [StorageService] File written successfully: room-r7wNDuugrRqw1Qcm/FXDo3TguMrGf.jpg
+2025-08-27 19:32:22 [INFO]: [addPicture] Foto berhasil ditambahkan roomId=room-r7wNDuugrRqw1Qcm, pictureId=pic-mTFix_HxpZBYxVt2
+2025-08-27 19:32:22 [INFO]: [StorageService] File written successfully: room-r7wNDuugrRqw1Qcm/ADXJ52th-TtH.jpg
+2025-08-27 19:32:22 [INFO]: [addPicture] Foto berhasil ditambahkan roomId=room-r7wNDuugrRqw1Qcm, pictureId=pic-4dw5e_kE04NIcbBB
+2025-08-27 19:32:35 [INFO]: [verifyUser] User authorized id=user-1EwTCMzteX9utciS
+2025-08-27 19:32:35 [INFO]: [getPictures] Mengambil 9 foto untuk roomId=room-r7wNDuugrRqw1Qcm
+2025-08-27 19:32:35 [INFO]: [StorageService] File deleted successfully: room-r7wNDuugrRqw1Qcm/GFsonRBqD1MM.jpg
+2025-08-27 19:32:35 [INFO]: [deletePicture] Foto berhasil dihapus pictureId=pic-84f9oK-fYSTKQXMc
+2025-08-27 19:32:40 [INFO]: [verifyUser] User authorized id=user-1EwTCMzteX9utciS
+2025-08-27 19:32:40 [INFO]: [getPictures] Mengambil 8 foto untuk roomId=room-r7wNDuugrRqw1Qcm
+2025-08-27 19:32:53 [INFO]: [deleteAllPictures] Menghapus semua foto roomId=room-r7wNDuugrRqw1Qcm, total=8
+2025-08-27 19:33:02 [WARN]: [deleteAllPictures] Tidak ada foto ditemukan untuk roomId=room-r7wNDuugrRqw1Qcm
+2025-08-27 19:33:02 [ERROR]: [deleteAllPictures] Error menghapus foto roomId=room-r7wNDuugrRqw1Qcm: Tidak ada foto ditemukan untuk kamar ini
+2025-08-27 19:34:12 [INFO]: [verifyUser] User authorized id=user-1EwTCMzteX9utciS
+2025-08-27 19:34:12 [INFO]: [StorageService] File written successfully: room-r7wNDuugrRqw1Qcm/4aeuvVg5cADh.jpg
+2025-08-27 19:34:12 [INFO]: [addPicture] Foto berhasil ditambahkan roomId=room-r7wNDuugrRqw1Qcm, pictureId=pic-in99DzvAq_u3Cxwm
+2025-08-27 19:34:12 [INFO]: [StorageService] File written successfully: room-r7wNDuugrRqw1Qcm/X6Hy1NMFgKIr.jpg
+2025-08-27 19:34:12 [INFO]: [addPicture] Foto berhasil ditambahkan roomId=room-r7wNDuugrRqw1Qcm, pictureId=pic-IJwTS_nbK2Ncowwo
+2025-08-27 19:34:12 [INFO]: [StorageService] File written successfully: room-r7wNDuugrRqw1Qcm/_GoevUvJhIDk.jpg
+2025-08-27 19:34:12 [INFO]: [addPicture] Foto berhasil ditambahkan roomId=room-r7wNDuugrRqw1Qcm, pictureId=pic-Pk2a-PWGxhZfrXDq
+2025-08-27 19:34:24 [INFO]: [verifyUser] User authorized id=user-1EwTCMzteX9utciS
+2025-08-27 19:34:24 [INFO]: [getPictures] Mengambil 3 foto untuk roomId=room-r7wNDuugrRqw1Qcm
+2025-08-27 19:34:24 [INFO]: [StorageService] File deleted successfully: room-r7wNDuugrRqw1Qcm/4aeuvVg5cADh.jpg
+2025-08-27 19:34:24 [INFO]: [deletePicture] Foto berhasil dihapus pictureId=pic-in99DzvAq_u3Cxwm
+2025-08-27 19:34:33 [INFO]: [verifyUser] User authorized id=user-1EwTCMzteX9utciS
+2025-08-27 19:34:33 [WARN]: [deleteRoom] Room not found or already inactive roomId=room-r7wNDuugrRqw1Qcm
+2025-08-27 19:34:33 [ERROR]: [deleteRoom] Error roomId=room-r7wNDuugrRqw1Qcm: Kamar tidak ditemukan atau sudah dihapus
+2025-08-27 19:35:42 [INFO]: [verifyUser] User authorized id=user-1EwTCMzteX9utciS
+2025-08-27 19:35:42 [INFO]: [addRoom] Room added successfully: room-C-yqCZtqvcxa9Zc_
+2025-08-27 19:35:50 [INFO]: [verifyUser] User authorized id=user-1EwTCMzteX9utciS
+2025-08-27 19:35:50 [INFO]: [addRoom] Room added successfully: room-xc7bfv0aZun3-Knu
+2025-08-27 19:36:08 [INFO]: [verifyUser] User authorized id=user-1EwTCMzteX9utciS
+2025-08-27 19:36:08 [INFO]: [deleteRoom] Room deleted successfully roomId=room-xc7bfv0aZun3-Knu
+2025-08-27 19:36:33 [INFO]: [verifyUser] User authorized id=user-1EwTCMzteX9utciS
+2025-08-27 19:36:33 [WARN]: [deleteRoom] Room not found or already inactive roomId=room-xc7bfv0aZun3-Knu
+2025-08-27 19:36:33 [ERROR]: [deleteRoom] Error roomId=room-xc7bfv0aZun3-Knu: Kamar tidak ditemukan atau sudah dihapus
+2025-08-27 19:36:54 [INFO]: [verifyUser] User authorized id=user-1EwTCMzteX9utciS
+2025-08-27 19:37:09 [INFO]: [verifyUser] User authorized id=user-1EwTCMzteX9utciS
+2025-08-27 19:37:09 [INFO]: [CacheService] Cache deleted: users:id:user-1EwTCMzteX9utciS, deletedCount=1
+2025-08-27 19:37:09 [INFO]: [CacheService] No cache keys found with prefix: users:all
+2025-08-27 19:37:38 [INFO]: [CacheService] No cache keys found with prefix: users:all
+2025-08-27 19:37:39 [INFO]: [updateLastLogin] Updated last login for userId=user-6Gpe_nvHejeaKAXi
+2025-08-27 19:37:39 [INFO]: [verifyUserCredential] User logged in successfully id=user-6Gpe_nvHejeaKAXi email=user8146@mail.com
+2025-08-27 19:37:39 [INFO]: [AuthenticationsService] Refresh token added with id auth-rGTve48ejg2m3zpi
+2025-08-27 19:37:39 [INFO]: [verifyUser] User authorized id=user-6Gpe_nvHejeaKAXi
+2025-08-27 19:37:39 [WARN]: [CacheService] Cache miss for key: users:all:page=1&limit=10
+2025-08-27 19:37:39 [ERROR]: [CacheService] Failed to get cache for key users:all:page=1&limit=10: Cache tidak ditemukan
+2025-08-27 19:37:39 [INFO]: [getAllUsers] Cache miss for key: users:all:page=1&limit=10
+2025-08-27 19:37:39 [INFO]: [CacheService] Cache set: users:all:page=1&limit=10
+2025-08-27 19:37:39 [INFO]: [getAllUsers] Cache set for key: users:all:page=1&limit=10
+2025-08-27 19:37:39 [INFO]: [verifyUser] User authorized id=user-6Gpe_nvHejeaKAXi
+2025-08-27 19:37:39 [WARN]: [CacheService] Cache miss for key: users:id:user-6Gpe_nvHejeaKAXi
+2025-08-27 19:37:39 [ERROR]: [CacheService] Failed to get cache for key users:id:user-6Gpe_nvHejeaKAXi: Cache tidak ditemukan
+2025-08-27 19:37:39 [INFO]: [getUserbyId] Cache miss for key: users:id:user-6Gpe_nvHejeaKAXi
+2025-08-27 19:37:39 [INFO]: [CacheService] Cache set: users:id:user-6Gpe_nvHejeaKAXi
+2025-08-27 19:37:39 [INFO]: [verifyUser] User authorized id=user-6Gpe_nvHejeaKAXi
+2025-08-27 19:37:40 [INFO]: [CacheService] Cache deleted: users:id:user-6Gpe_nvHejeaKAXi, deletedCount=1
+2025-08-27 19:37:40 [INFO]: [CacheService] Cache keys deleted with prefix: users:all, count=1
+2025-08-27 19:37:40 [INFO]: [verifyUser] User authorized id=user-6Gpe_nvHejeaKAXi
+2025-08-27 19:37:40 [WARN]: [addProfile] Profil hotel sudah ada, tidak bisa menambahkan lagi
+2025-08-27 19:37:40 [ERROR]: [addProfile] Database error: Profil hotel sudah ada, tidak bisa menambahkan lagi
+2025-08-27 19:37:40 [INFO]: [getProfile] Profil hotel berhasil diambil
+2025-08-27 19:37:40 [INFO]: [updateProfile] Profil hotel berhasil diperbarui dengan id hotel-XGYbNez4N3Kn
+2025-08-27 19:37:40 [INFO]: [verifyUser] User authorized id=user-6Gpe_nvHejeaKAXi
+2025-08-27 19:37:40 [WARN]: [addRoom] Room type already exists: x
+2025-08-27 19:37:40 [ERROR]: [addRoom] Error: Tipe kamar 'x' sudah ada
+2025-08-27 19:37:40 [INFO]: [verifyUser] User authorized id=user-6Gpe_nvHejeaKAXi
+2025-08-27 19:37:40 [INFO]: [StorageService] Created subfolder at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures\room-xc7bfv0aZun3-Knu
+2025-08-27 19:37:40 [INFO]: [StorageService] File written successfully: room-xc7bfv0aZun3-Knu/ISzANQEQO33G.jpg
+2025-08-27 19:37:40 [INFO]: [addPicture] Foto berhasil ditambahkan roomId=room-xc7bfv0aZun3-Knu, pictureId=pic-JKQgRYzrvJU_gJUj
+2025-08-27 19:37:40 [INFO]: [StorageService] File written successfully: room-xc7bfv0aZun3-Knu/78a4YrqUUOU9.jpg
+2025-08-27 19:37:40 [INFO]: [addPicture] Foto berhasil ditambahkan roomId=room-xc7bfv0aZun3-Knu, pictureId=pic-xvGd9KBPJGNS-lqu
+2025-08-27 19:37:40 [INFO]: [StorageService] File written successfully: room-xc7bfv0aZun3-Knu/_m-loCCU2KyM.jpg
+2025-08-27 19:37:40 [INFO]: [addPicture] Foto berhasil ditambahkan roomId=room-xc7bfv0aZun3-Knu, pictureId=pic-ea5vFrxB2yd-af7z
+2025-08-27 19:37:41 [INFO]: [verifyUser] User authorized id=user-6Gpe_nvHejeaKAXi
+2025-08-27 19:37:41 [INFO]: [getRooms] Data fetched from DB
+2025-08-27 19:37:41 [INFO]: [verifyUser] User authorized id=user-6Gpe_nvHejeaKAXi
+2025-08-27 19:37:41 [INFO]: [getRoomById] Room fetched successfully roomId=room-xc7bfv0aZun3-Knu
+2025-08-27 19:37:41 [INFO]: [verifyUser] User authorized id=user-6Gpe_nvHejeaKAXi
+2025-08-27 19:37:41 [INFO]: [editRoom] Room updated successfully roomId=room-xc7bfv0aZun3-Knu
+2025-08-27 19:37:41 [INFO]: [verifyUser] User authorized id=user-6Gpe_nvHejeaKAXi
+2025-08-27 19:37:41 [INFO]: [getPictures] Mengambil 3 foto untuk roomId=room-xc7bfv0aZun3-Knu
+2025-08-27 19:37:42 [INFO]: Availability generated until 2026-02-27
+2025-08-27 19:37:43 [INFO]: [addBooking] Start booking process for user user-6Gpe_nvHejeaKAXi and room room-xc7bfv0aZun3-Knu
+2025-08-27 19:37:43 [INFO]: [lockAndCheck] Rooms available roomId=room-xc7bfv0aZun3-Knu, totalNights=1, totalPrice=9000000
+2025-08-27 19:37:43 [INFO]: [addBooking] Room room-xc7bfv0aZun3-Knu locked and checked, totalPrice: 9000000
+2025-08-27 19:37:43 [WARN]: [CacheService] Cache miss for key: users:id:user-6Gpe_nvHejeaKAXi
+2025-08-27 19:37:43 [ERROR]: [CacheService] Failed to get cache for key users:id:user-6Gpe_nvHejeaKAXi: Cache tidak ditemukan
+2025-08-27 19:37:43 [INFO]: [getUserbyId] Cache miss for key: users:id:user-6Gpe_nvHejeaKAXi
+2025-08-27 19:37:43 [INFO]: [CacheService] Cache set: users:id:user-6Gpe_nvHejeaKAXi
+2025-08-27 19:37:43 [INFO]: [getRoomById] Room fetched successfully roomId=room-xc7bfv0aZun3-Knu
+2025-08-27 19:37:43 [INFO]: [addBooking] Booking inserted with ID booking-fFcVVKoUKFyZkeGc
+2025-08-27 19:37:43 [INFO]: [reduceAvailability] Reduced availability roomId=room-xc7bfv0aZun3-Knu date=2025-10-12 by=1
+2025-08-27 19:37:43 [INFO]: [reduceAvailability] Reduced availability roomId=room-xc7bfv0aZun3-Knu date=2025-10-13 by=1
+2025-08-27 19:37:43 [INFO]: [addBooking] Reduced availability for room room-xc7bfv0aZun3-Knu
+2025-08-27 19:37:43 [INFO]: [addBooking] Active log created for booking booking-fFcVVKoUKFyZkeGc
+2025-08-27 19:37:43 [INFO]: [createTransaction] Transaksi berhasil dibuat: orderId=booking-fFcVVKoUKFyZkeGc, redirectUrl=https://app.sandbox.midtrans.com/snap/v4/redirection/a47b8103-d8fa-47b5-ad92-32990fea4cfa
+2025-08-27 19:37:43 [INFO]: [addBooking] Midtrans transaction created for booking booking-fFcVVKoUKFyZkeGc
+2025-08-27 19:37:43 [INFO]: [addBooking] Snap token updated for booking booking-fFcVVKoUKFyZkeGc
+2025-08-27 19:37:43 [INFO]: [createTransactionRecord] Transaction record created successfully bookingId=booking-fFcVVKoUKFyZkeGc trxId=trx-q6bRwAPkhcrRiZI2
+2025-08-27 19:37:43 [INFO]: [addBooking] Transaction record created for booking booking-fFcVVKoUKFyZkeGc
+2025-08-27 19:37:43 [INFO]: [CacheService] No cache keys found with prefix: bookings:user:user-6Gpe_nvHejeaKAXi:
+2025-08-27 19:37:43 [INFO]: [updateBookingStatus] Booking updated: orderId=booking-fFcVVKoUKFyZkeGc, paymentStatus=settlement, bookingStatus=confirmed
+2025-08-27 19:37:43 [INFO]: [verifyUser] User authorized id=user-6Gpe_nvHejeaKAXi
+2025-08-27 19:37:43 [INFO]: [CacheService] Cache hit for key: bookings:service:{"page":1,"limit":50}
+2025-08-27 19:37:43 [INFO]: [getBookingsService] Cache hit for key: bookings:service:{"page":1,"limit":50}
+2025-08-27 19:37:43 [INFO]: [verifyUser] User authorized id=user-6Gpe_nvHejeaKAXi
+2025-08-27 19:37:43 [WARN]: [CacheService] Cache miss for key: booking:booking-fFcVVKoUKFyZkeGc
+2025-08-27 19:37:43 [ERROR]: [CacheService] Failed to get cache for key booking:booking-fFcVVKoUKFyZkeGc: Cache tidak ditemukan
+2025-08-27 19:37:43 [INFO]: [CacheService] Cache set: booking:booking-fFcVVKoUKFyZkeGc
+2025-08-27 19:37:43 [INFO]: [getBookingById] Booking fetched: targetId=booking-fFcVVKoUKFyZkeGc
+2025-08-27 19:37:43 [INFO]: [verifyUser] User authorized id=user-6Gpe_nvHejeaKAXi
+2025-08-27 19:37:43 [INFO]: [CacheService] Cache hit for key: bookings:service:{"status":"pending_payment","page":1,"limit":50}
+2025-08-27 19:37:43 [INFO]: [getBookingsService] Cache hit for key: bookings:service:{"status":"pending_payment","page":1,"limit":50}
+2025-08-27 19:37:43 [INFO]: [verifyUser] User authorized id=user-6Gpe_nvHejeaKAXi
+2025-08-27 19:37:43 [INFO]: [CacheService] Cache hit for key: bookings:service:{"guestName":"Dita","page":1,"limit":50}
+2025-08-27 19:37:43 [INFO]: [getBookingsService] Cache hit for key: bookings:service:{"guestName":"Dita","page":1,"limit":50}
+2025-08-27 19:37:44 [INFO]: [verifyUser] User authorized id=user-6Gpe_nvHejeaKAXi
+2025-08-27 19:37:44 [INFO]: [CacheService] Cache hit for key: bookings:service:{"checkInDate":"2025-10-12","page":1,"limit":50}
+2025-08-27 19:37:44 [INFO]: [getBookingsService] Cache hit for key: bookings:service:{"checkInDate":"2025-10-12","page":1,"limit":50}
+2025-08-27 19:37:44 [INFO]: [verifyUser] User authorized id=user-6Gpe_nvHejeaKAXi
+2025-08-27 19:37:44 [INFO]: [CacheService] Cache hit for key: bookings:service:{"checkOutDate":"2025-10-13","page":1,"limit":50}
+2025-08-27 19:37:44 [INFO]: [getBookingsService] Cache hit for key: bookings:service:{"checkOutDate":"2025-10-13","page":1,"limit":50}
+2025-08-27 19:37:44 [INFO]: [verifyUser] User authorized id=user-6Gpe_nvHejeaKAXi
+2025-08-27 19:37:44 [INFO]: [CacheService] Cache hit for key: bookings:service:{"checkInDate":"2025-10-12","checkInDateEnd":"2025-10-13","page":1,"limit":50}
+2025-08-27 19:37:44 [INFO]: [getBookingsService] Cache hit for key: bookings:service:{"checkInDate":"2025-10-12","checkInDateEnd":"2025-10-13","page":1,"limit":50}
+2025-08-27 19:37:44 [INFO]: [getPendingBookingsByUser] Fetched pending bookings for user user-6Gpe_nvHejeaKAXi, count=0
+2025-08-27 19:37:44 [INFO]: [CacheService] Cache hit for key: booking:booking-fFcVVKoUKFyZkeGc
+2025-08-27 19:37:44 [INFO]: [verifyUser] User authorized id=user-6Gpe_nvHejeaKAXi
+2025-08-27 19:37:44 [INFO]: [checkInBookingService] Booking checked-in: bookingId=booking-fFcVVKoUKFyZkeGc, userId=user-6Gpe_nvHejeaKAXi
+2025-08-27 19:37:44 [INFO]: [verifyUser] User authorized id=user-6Gpe_nvHejeaKAXi
+2025-08-27 19:37:44 [INFO]: [checkOutBookingService] Booking checked-out: bookingId=booking-fFcVVKoUKFyZkeGc, userId=user-6Gpe_nvHejeaKAXi
+2025-08-27 19:37:44 [ERROR]: [generateInvoice] Failed for bookingId=booking-X4QEgjEnfRhNrRXl, userId=user-6Gpe_nvHejeaKAXi: Booking tidak ditemukan atau belum dibayar
+2025-08-27 19:37:44 [INFO]: [getCompletedBookingForUserRoom] Fetched completed booking: userId=user-6Gpe_nvHejeaKAXi, roomId=room-xc7bfv0aZun3-Knu, bookingId=booking-fFcVVKoUKFyZkeGc
+2025-08-27 19:37:45 [INFO]: [getCompletedBookingForUserRoom] Fetched completed booking: userId=user-6Gpe_nvHejeaKAXi, roomId=room-xc7bfv0aZun3-Knu, bookingId=booking-fFcVVKoUKFyZkeGc
+2025-08-27 19:37:45 [INFO]: User user-6Gpe_nvHejeaKAXi berhasil menambahkan review review-Das6I8KxN8evBTl9 untuk room room-xc7bfv0aZun3-Knu
+2025-08-27 19:37:45 [INFO]: [getReviewById] Review review-Das6I8KxN8evBTl9 berhasil diambil
+2025-08-27 19:37:45 [INFO]: Ambil 1 review untuk room room-xc7bfv0aZun3-Knu halaman 1
+2025-08-27 19:37:45 [INFO]: [editReview] Review review-Das6I8KxN8evBTl9 berhasil diubah oleh user user-6Gpe_nvHejeaKAXi
+2025-08-27 19:37:45 [WARN]: [deleteReview] Review null tidak ditemukan
+2025-08-27 19:37:45 [ERROR]: [deleteReview] Gagal menghapus review null: Review tidak ditemukan
+2025-08-27 19:37:45 [ERROR]: [cancelBookingService] Failed for bookingId=booking-0TSLZ6KLwEj2elWB, userId=user-6Gpe_nvHejeaKAXi: Booking tidak ditemukan atau bukan milik Anda
+2025-08-27 19:37:45 [INFO]: [verifyUser] User authorized id=user-6Gpe_nvHejeaKAXi
+2025-08-27 19:37:45 [INFO]: [getPictures] Mengambil 3 foto untuk roomId=room-xc7bfv0aZun3-Knu
+2025-08-27 19:37:45 [INFO]: [StorageService] File deleted successfully: room-xc7bfv0aZun3-Knu/ISzANQEQO33G.jpg
+2025-08-27 19:37:45 [INFO]: [deletePicture] Foto berhasil dihapus pictureId=pic-JKQgRYzrvJU_gJUj
+2025-08-27 19:37:45 [INFO]: [deleteAllPictures] Menghapus semua foto roomId=room-xc7bfv0aZun3-Knu, total=2
+2025-08-27 19:37:45 [INFO]: [verifyUser] User authorized id=user-6Gpe_nvHejeaKAXi
+2025-08-27 19:37:45 [WARN]: [deleteRoom] Room not found or already inactive roomId=room-xc7bfv0aZun3-Knu
+2025-08-27 19:37:45 [ERROR]: [deleteRoom] Error roomId=room-xc7bfv0aZun3-Knu: Kamar tidak ditemukan atau sudah dihapus
+2025-08-27 19:37:45 [INFO]: [verifyUser] User authorized id=user-6Gpe_nvHejeaKAXi
+2025-08-27 19:37:45 [INFO]: [CacheService] Cache deleted: users:id:user-6Gpe_nvHejeaKAXi, deletedCount=1
+2025-08-27 19:37:45 [INFO]: [CacheService] No cache keys found with prefix: users:all
+2025-08-27 19:38:51 [INFO]: [CacheService] No cache keys found with prefix: users:all
+2025-08-27 19:38:51 [INFO]: [CacheService] No cache keys found with prefix: users:all
+2025-08-27 19:38:52 [INFO]: [updateLastLogin] Updated last login for userId=user-AEYT4KPQ2yVGxHxR
+2025-08-27 19:38:52 [INFO]: [verifyUserCredential] User logged in successfully id=user-AEYT4KPQ2yVGxHxR email=user9869@mail.com
+2025-08-27 19:38:52 [INFO]: [AuthenticationsService] Refresh token added with id auth-03KY5MhGPgzn-rFm
+2025-08-27 19:38:52 [INFO]: [verifyUser] User authorized id=user-AEYT4KPQ2yVGxHxR
+2025-08-27 19:38:52 [WARN]: [CacheService] Cache miss for key: users:all:page=1&limit=10
+2025-08-27 19:38:52 [ERROR]: [CacheService] Failed to get cache for key users:all:page=1&limit=10: Cache tidak ditemukan
+2025-08-27 19:38:52 [INFO]: [getAllUsers] Cache miss for key: users:all:page=1&limit=10
+2025-08-27 19:38:52 [INFO]: [CacheService] Cache set: users:all:page=1&limit=10
+2025-08-27 19:38:52 [INFO]: [getAllUsers] Cache set for key: users:all:page=1&limit=10
+2025-08-27 19:38:52 [INFO]: [verifyUser] User authorized id=user-AEYT4KPQ2yVGxHxR
+2025-08-27 19:38:52 [WARN]: [CacheService] Cache miss for key: users:id:user-AEYT4KPQ2yVGxHxR
+2025-08-27 19:38:52 [ERROR]: [CacheService] Failed to get cache for key users:id:user-AEYT4KPQ2yVGxHxR: Cache tidak ditemukan
+2025-08-27 19:38:52 [INFO]: [getUserbyId] Cache miss for key: users:id:user-AEYT4KPQ2yVGxHxR
+2025-08-27 19:38:52 [INFO]: [CacheService] Cache set: users:id:user-AEYT4KPQ2yVGxHxR
+2025-08-27 19:38:52 [INFO]: [verifyUser] User authorized id=user-AEYT4KPQ2yVGxHxR
+2025-08-27 19:38:52 [INFO]: [CacheService] Cache deleted: users:id:user-AEYT4KPQ2yVGxHxR, deletedCount=1
+2025-08-27 19:38:52 [INFO]: [CacheService] Cache keys deleted with prefix: users:all, count=1
+2025-08-27 19:38:53 [INFO]: [verifyUser] User authorized id=user-AEYT4KPQ2yVGxHxR
+2025-08-27 19:38:53 [INFO]: [addProfile] Profil hotel berhasil ditambahkan dengan id hotel-i77ehmy-z4Nr
+2025-08-27 19:38:53 [INFO]: [getProfile] Profil hotel berhasil diambil
+2025-08-27 19:38:53 [INFO]: [updateProfile] Profil hotel berhasil diperbarui dengan id hotel-i77ehmy-z4Nr
+2025-08-27 19:38:53 [INFO]: [verifyUser] User authorized id=user-AEYT4KPQ2yVGxHxR
+2025-08-27 19:38:53 [INFO]: [addRoom] Room added successfully: room-u6Th_igR_sYLlrPm
+2025-08-27 19:38:53 [INFO]: [verifyUser] User authorized id=user-AEYT4KPQ2yVGxHxR
+2025-08-27 19:38:53 [INFO]: [StorageService] Created subfolder at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures\room-u6Th_igR_sYLlrPm
+2025-08-27 19:38:53 [INFO]: [StorageService] File written successfully: room-u6Th_igR_sYLlrPm/CdbwmEtLWP-y.jpg
+2025-08-27 19:38:53 [INFO]: [addPicture] Foto berhasil ditambahkan roomId=room-u6Th_igR_sYLlrPm, pictureId=pic-WMvUjoxiBkDflwU6
+2025-08-27 19:38:53 [INFO]: [StorageService] File written successfully: room-u6Th_igR_sYLlrPm/_xUVtojmxOMq.jpg
+2025-08-27 19:38:53 [INFO]: [addPicture] Foto berhasil ditambahkan roomId=room-u6Th_igR_sYLlrPm, pictureId=pic-OAFls8ZR94E_SxNO
+2025-08-27 19:38:53 [INFO]: [StorageService] File written successfully: room-u6Th_igR_sYLlrPm/aRTu1QgjHQE3.jpg
+2025-08-27 19:38:53 [INFO]: [addPicture] Foto berhasil ditambahkan roomId=room-u6Th_igR_sYLlrPm, pictureId=pic-Ut1Hm9srql0U39Z6
+2025-08-27 19:38:53 [INFO]: [verifyUser] User authorized id=user-AEYT4KPQ2yVGxHxR
+2025-08-27 19:38:53 [INFO]: [getRooms] Data fetched from DB
+2025-08-27 19:38:53 [INFO]: [verifyUser] User authorized id=user-AEYT4KPQ2yVGxHxR
+2025-08-27 19:38:53 [INFO]: [getRoomById] Room fetched successfully roomId=room-u6Th_igR_sYLlrPm
+2025-08-27 19:38:53 [INFO]: [verifyUser] User authorized id=user-AEYT4KPQ2yVGxHxR
+2025-08-27 19:38:53 [INFO]: [editRoom] Room updated successfully roomId=room-u6Th_igR_sYLlrPm
+2025-08-27 19:38:53 [INFO]: [verifyUser] User authorized id=user-AEYT4KPQ2yVGxHxR
+2025-08-27 19:38:53 [INFO]: [getPictures] Mengambil 3 foto untuk roomId=room-u6Th_igR_sYLlrPm
+2025-08-27 19:38:54 [INFO]: Availability generated until 2026-02-27
+2025-08-27 19:38:54 [INFO]: [addBooking] Start booking process for user user-AEYT4KPQ2yVGxHxR and room room-u6Th_igR_sYLlrPm
+2025-08-27 19:38:54 [INFO]: [lockAndCheck] Rooms available roomId=room-u6Th_igR_sYLlrPm, totalNights=1, totalPrice=9000000
+2025-08-27 19:38:54 [INFO]: [addBooking] Room room-u6Th_igR_sYLlrPm locked and checked, totalPrice: 9000000
+2025-08-27 19:38:54 [WARN]: [CacheService] Cache miss for key: users:id:user-AEYT4KPQ2yVGxHxR
+2025-08-27 19:38:54 [ERROR]: [CacheService] Failed to get cache for key users:id:user-AEYT4KPQ2yVGxHxR: Cache tidak ditemukan
+2025-08-27 19:38:54 [INFO]: [getUserbyId] Cache miss for key: users:id:user-AEYT4KPQ2yVGxHxR
+2025-08-27 19:38:54 [INFO]: [CacheService] Cache set: users:id:user-AEYT4KPQ2yVGxHxR
+2025-08-27 19:38:54 [INFO]: [getRoomById] Room fetched successfully roomId=room-u6Th_igR_sYLlrPm
+2025-08-27 19:38:54 [INFO]: [addBooking] Booking inserted with ID booking-GaO1ceFjFlIoOkov
+2025-08-27 19:38:54 [INFO]: [reduceAvailability] Reduced availability roomId=room-u6Th_igR_sYLlrPm date=2025-10-12 by=1
+2025-08-27 19:38:54 [INFO]: [reduceAvailability] Reduced availability roomId=room-u6Th_igR_sYLlrPm date=2025-10-13 by=1
+2025-08-27 19:38:54 [INFO]: [addBooking] Reduced availability for room room-u6Th_igR_sYLlrPm
+2025-08-27 19:38:54 [INFO]: [addBooking] Active log created for booking booking-GaO1ceFjFlIoOkov
+2025-08-27 19:38:54 [INFO]: [createTransaction] Transaksi berhasil dibuat: orderId=booking-GaO1ceFjFlIoOkov, redirectUrl=https://app.sandbox.midtrans.com/snap/v4/redirection/8a8f3e85-f01d-47bc-b55f-45d4267a09f0
+2025-08-27 19:38:54 [INFO]: [addBooking] Midtrans transaction created for booking booking-GaO1ceFjFlIoOkov
+2025-08-27 19:38:54 [INFO]: [addBooking] Snap token updated for booking booking-GaO1ceFjFlIoOkov
+2025-08-27 19:38:54 [INFO]: [createTransactionRecord] Transaction record created successfully bookingId=booking-GaO1ceFjFlIoOkov trxId=trx-0dQRIo73LPTJBA42
+2025-08-27 19:38:54 [INFO]: [addBooking] Transaction record created for booking booking-GaO1ceFjFlIoOkov
+2025-08-27 19:38:54 [INFO]: [CacheService] No cache keys found with prefix: bookings:user:user-AEYT4KPQ2yVGxHxR:
+2025-08-27 19:38:54 [INFO]: [updateBookingStatus] Booking updated: orderId=booking-GaO1ceFjFlIoOkov, paymentStatus=settlement, bookingStatus=confirmed
+2025-08-27 19:38:54 [INFO]: [verifyUser] User authorized id=user-AEYT4KPQ2yVGxHxR
+2025-08-27 19:38:54 [INFO]: [CacheService] Cache hit for key: bookings:service:{"page":1,"limit":50}
+2025-08-27 19:38:54 [INFO]: [getBookingsService] Cache hit for key: bookings:service:{"page":1,"limit":50}
+2025-08-27 19:38:54 [INFO]: [verifyUser] User authorized id=user-AEYT4KPQ2yVGxHxR
+2025-08-27 19:38:54 [WARN]: [CacheService] Cache miss for key: booking:booking-GaO1ceFjFlIoOkov
+2025-08-27 19:38:54 [ERROR]: [CacheService] Failed to get cache for key booking:booking-GaO1ceFjFlIoOkov: Cache tidak ditemukan
+2025-08-27 19:38:54 [INFO]: [CacheService] Cache set: booking:booking-GaO1ceFjFlIoOkov
+2025-08-27 19:38:54 [INFO]: [getBookingById] Booking fetched: targetId=booking-GaO1ceFjFlIoOkov
+2025-08-27 19:38:54 [INFO]: [verifyUser] User authorized id=user-AEYT4KPQ2yVGxHxR
+2025-08-27 19:38:54 [INFO]: [CacheService] Cache hit for key: bookings:service:{"status":"pending_payment","page":1,"limit":50}
+2025-08-27 19:38:54 [INFO]: [getBookingsService] Cache hit for key: bookings:service:{"status":"pending_payment","page":1,"limit":50}
+2025-08-27 19:38:54 [INFO]: [verifyUser] User authorized id=user-AEYT4KPQ2yVGxHxR
+2025-08-27 19:38:54 [INFO]: [CacheService] Cache hit for key: bookings:service:{"guestName":"Dita","page":1,"limit":50}
+2025-08-27 19:38:54 [INFO]: [getBookingsService] Cache hit for key: bookings:service:{"guestName":"Dita","page":1,"limit":50}
+2025-08-27 19:38:54 [INFO]: [verifyUser] User authorized id=user-AEYT4KPQ2yVGxHxR
+2025-08-27 19:38:54 [INFO]: [CacheService] Cache hit for key: bookings:service:{"checkInDate":"2025-10-12","page":1,"limit":50}
+2025-08-27 19:38:54 [INFO]: [getBookingsService] Cache hit for key: bookings:service:{"checkInDate":"2025-10-12","page":1,"limit":50}
+2025-08-27 19:38:54 [INFO]: [verifyUser] User authorized id=user-AEYT4KPQ2yVGxHxR
+2025-08-27 19:38:54 [INFO]: [CacheService] Cache hit for key: bookings:service:{"checkOutDate":"2025-10-13","page":1,"limit":50}
+2025-08-27 19:38:54 [INFO]: [getBookingsService] Cache hit for key: bookings:service:{"checkOutDate":"2025-10-13","page":1,"limit":50}
+2025-08-27 19:38:54 [INFO]: [verifyUser] User authorized id=user-AEYT4KPQ2yVGxHxR
+2025-08-27 19:38:54 [INFO]: [CacheService] Cache hit for key: bookings:service:{"checkInDate":"2025-10-12","checkInDateEnd":"2025-10-13","page":1,"limit":50}
+2025-08-27 19:38:54 [INFO]: [getBookingsService] Cache hit for key: bookings:service:{"checkInDate":"2025-10-12","checkInDateEnd":"2025-10-13","page":1,"limit":50}
+2025-08-27 19:38:54 [INFO]: [getPendingBookingsByUser] Fetched pending bookings for user user-AEYT4KPQ2yVGxHxR, count=0
+2025-08-27 19:38:54 [INFO]: [CacheService] Cache hit for key: booking:booking-GaO1ceFjFlIoOkov
+2025-08-27 19:38:54 [INFO]: [verifyUser] User authorized id=user-AEYT4KPQ2yVGxHxR
+2025-08-27 19:38:54 [INFO]: [checkInBookingService] Booking checked-in: bookingId=booking-GaO1ceFjFlIoOkov, userId=user-AEYT4KPQ2yVGxHxR
+2025-08-27 19:38:55 [INFO]: [verifyUser] User authorized id=user-AEYT4KPQ2yVGxHxR
+2025-08-27 19:38:55 [INFO]: [checkOutBookingService] Booking checked-out: bookingId=booking-GaO1ceFjFlIoOkov, userId=user-AEYT4KPQ2yVGxHxR
+2025-08-27 19:38:55 [ERROR]: [generateInvoice] Failed for bookingId=booking-X4QEgjEnfRhNrRXl, userId=user-AEYT4KPQ2yVGxHxR: Booking tidak ditemukan atau belum dibayar
+2025-08-27 19:38:55 [INFO]: [getCompletedBookingForUserRoom] Fetched completed booking: userId=user-AEYT4KPQ2yVGxHxR, roomId=room-u6Th_igR_sYLlrPm, bookingId=booking-GaO1ceFjFlIoOkov
+2025-08-27 19:38:55 [INFO]: [getCompletedBookingForUserRoom] Fetched completed booking: userId=user-AEYT4KPQ2yVGxHxR, roomId=room-u6Th_igR_sYLlrPm, bookingId=booking-GaO1ceFjFlIoOkov
+2025-08-27 19:38:55 [INFO]: User user-AEYT4KPQ2yVGxHxR berhasil menambahkan review review-Wh5HxNoQJynaq-ky untuk room room-u6Th_igR_sYLlrPm
+2025-08-27 19:38:55 [INFO]: [getReviewById] Review review-Wh5HxNoQJynaq-ky berhasil diambil
+2025-08-27 19:38:55 [INFO]: Ambil 1 review untuk room room-u6Th_igR_sYLlrPm halaman 1
+2025-08-27 19:38:55 [INFO]: [editReview] Review review-Wh5HxNoQJynaq-ky berhasil diubah oleh user user-AEYT4KPQ2yVGxHxR
+2025-08-27 19:38:55 [WARN]: [deleteReview] Review null tidak ditemukan
+2025-08-27 19:38:55 [ERROR]: [deleteReview] Gagal menghapus review null: Review tidak ditemukan
+2025-08-27 19:38:55 [ERROR]: [cancelBookingService] Failed for bookingId=booking-0TSLZ6KLwEj2elWB, userId=user-AEYT4KPQ2yVGxHxR: Booking tidak ditemukan atau bukan milik Anda
+2025-08-27 19:38:55 [INFO]: [verifyUser] User authorized id=user-AEYT4KPQ2yVGxHxR
+2025-08-27 19:38:55 [INFO]: [getPictures] Mengambil 3 foto untuk roomId=room-u6Th_igR_sYLlrPm
+2025-08-27 19:38:55 [INFO]: [StorageService] File deleted successfully: room-u6Th_igR_sYLlrPm/CdbwmEtLWP-y.jpg
+2025-08-27 19:38:55 [INFO]: [deletePicture] Foto berhasil dihapus pictureId=pic-WMvUjoxiBkDflwU6
+2025-08-27 19:38:55 [INFO]: [deleteAllPictures] Menghapus semua foto roomId=room-u6Th_igR_sYLlrPm, total=2
+2025-08-27 19:38:55 [INFO]: [verifyUser] User authorized id=user-AEYT4KPQ2yVGxHxR
+2025-08-27 19:38:55 [INFO]: [deleteRoom] Room deleted successfully roomId=room-u6Th_igR_sYLlrPm
+2025-08-27 19:38:55 [INFO]: [verifyUser] User authorized id=user-AEYT4KPQ2yVGxHxR
+2025-08-27 19:38:55 [INFO]: [CacheService] Cache deleted: users:id:user-AEYT4KPQ2yVGxHxR, deletedCount=1
+2025-08-27 19:38:55 [INFO]: [CacheService] No cache keys found with prefix: users:all
+2025-08-27 19:39:29 [WARN]: [deleteReview] Review null tidak ditemukan
+2025-08-27 19:39:29 [ERROR]: [deleteReview] Gagal menghapus review null: Review tidak ditemukan
+2025-08-27 19:39:45 [INFO]: [getCompletedBookingForUserRoom] Fetched completed booking: userId=user-AEYT4KPQ2yVGxHxR, roomId=room-u6Th_igR_sYLlrPm, bookingId=booking-GaO1ceFjFlIoOkov
+2025-08-27 19:39:45 [WARN]: User user-AEYT4KPQ2yVGxHxR sudah memberikan review untuk room room-u6Th_igR_sYLlrPm
+2025-08-27 19:39:45 [ERROR]: Error addReview user user-AEYT4KPQ2yVGxHxR: Anda sudah memberikan review untuk kamar ini
+2025-08-27 19:40:57 [INFO]: [getCompletedBookingForUserRoom] Fetched completed booking: userId=user-AEYT4KPQ2yVGxHxR, roomId=room-u6Th_igR_sYLlrPm, bookingId=booking-GaO1ceFjFlIoOkov
+2025-08-27 19:40:57 [WARN]: User user-AEYT4KPQ2yVGxHxR sudah memberikan review untuk room room-u6Th_igR_sYLlrPm
+2025-08-27 19:40:57 [ERROR]: Error addReview user user-AEYT4KPQ2yVGxHxR: Anda sudah memberikan review untuk kamar ini
+2025-08-27 19:42:05 [INFO]: [CacheService] No cache keys found with prefix: users:all
+2025-08-27 19:42:06 [INFO]: [updateLastLogin] Updated last login for userId=user-a0B9A_KVHTu7hyBe
+2025-08-27 19:42:06 [INFO]: [verifyUserCredential] User logged in successfully id=user-a0B9A_KVHTu7hyBe email=user3178@mail.com
+2025-08-27 19:42:06 [INFO]: [AuthenticationsService] Refresh token added with id auth-zzNYb5v60zN7PQpe
+2025-08-27 19:42:06 [INFO]: [verifyUser] User authorized id=user-a0B9A_KVHTu7hyBe
+2025-08-27 19:42:06 [WARN]: [CacheService] Cache miss for key: users:all:page=1&limit=10
+2025-08-27 19:42:06 [ERROR]: [CacheService] Failed to get cache for key users:all:page=1&limit=10: Cache tidak ditemukan
+2025-08-27 19:42:06 [INFO]: [getAllUsers] Cache miss for key: users:all:page=1&limit=10
+2025-08-27 19:42:06 [INFO]: [CacheService] Cache set: users:all:page=1&limit=10
+2025-08-27 19:42:06 [INFO]: [getAllUsers] Cache set for key: users:all:page=1&limit=10
+2025-08-27 19:42:06 [INFO]: [verifyUser] User authorized id=user-a0B9A_KVHTu7hyBe
+2025-08-27 19:42:06 [WARN]: [CacheService] Cache miss for key: users:id:user-a0B9A_KVHTu7hyBe
+2025-08-27 19:42:06 [ERROR]: [CacheService] Failed to get cache for key users:id:user-a0B9A_KVHTu7hyBe: Cache tidak ditemukan
+2025-08-27 19:42:06 [INFO]: [getUserbyId] Cache miss for key: users:id:user-a0B9A_KVHTu7hyBe
+2025-08-27 19:42:06 [INFO]: [CacheService] Cache set: users:id:user-a0B9A_KVHTu7hyBe
+2025-08-27 19:42:07 [INFO]: [verifyUser] User authorized id=user-a0B9A_KVHTu7hyBe
+2025-08-27 19:42:07 [INFO]: [CacheService] Cache deleted: users:id:user-a0B9A_KVHTu7hyBe, deletedCount=1
+2025-08-27 19:42:07 [INFO]: [CacheService] Cache keys deleted with prefix: users:all, count=1
+2025-08-27 19:42:07 [INFO]: [verifyUser] User authorized id=user-a0B9A_KVHTu7hyBe
+2025-08-27 19:42:07 [WARN]: [addProfile] Profil hotel sudah ada, tidak bisa menambahkan lagi
+2025-08-27 19:42:07 [ERROR]: [addProfile] Database error: Profil hotel sudah ada, tidak bisa menambahkan lagi
+2025-08-27 19:42:07 [INFO]: [getProfile] Profil hotel berhasil diambil
+2025-08-27 19:42:07 [INFO]: [updateProfile] Profil hotel berhasil diperbarui dengan id hotel-i77ehmy-z4Nr
+2025-08-27 19:42:07 [INFO]: [verifyUser] User authorized id=user-a0B9A_KVHTu7hyBe
+2025-08-27 19:42:07 [INFO]: [addRoom] Room added successfully: room-ZgMNFNDH4yyX-CPG
+2025-08-27 19:42:07 [INFO]: [verifyUser] User authorized id=user-a0B9A_KVHTu7hyBe
+2025-08-27 19:42:07 [INFO]: [StorageService] Created subfolder at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures\room-ZgMNFNDH4yyX-CPG
+2025-08-27 19:42:07 [INFO]: [StorageService] File written successfully: room-ZgMNFNDH4yyX-CPG/sclHtxhZMXIm.jpg
+2025-08-27 19:42:07 [INFO]: [addPicture] Foto berhasil ditambahkan roomId=room-ZgMNFNDH4yyX-CPG, pictureId=pic-rmXM2Wrvt-NEOgVu
+2025-08-27 19:42:07 [INFO]: [StorageService] File written successfully: room-ZgMNFNDH4yyX-CPG/POgM7CcCXSZF.jpg
+2025-08-27 19:42:07 [INFO]: [addPicture] Foto berhasil ditambahkan roomId=room-ZgMNFNDH4yyX-CPG, pictureId=pic-9FT8cTJgpgptKYJg
+2025-08-27 19:42:08 [INFO]: [StorageService] File written successfully: room-ZgMNFNDH4yyX-CPG/R44bBF8Ci-5X.jpg
+2025-08-27 19:42:08 [INFO]: [addPicture] Foto berhasil ditambahkan roomId=room-ZgMNFNDH4yyX-CPG, pictureId=pic-jA7j_9vRpl5elqcH
+2025-08-27 19:42:08 [INFO]: [verifyUser] User authorized id=user-a0B9A_KVHTu7hyBe
+2025-08-27 19:42:08 [INFO]: [getRooms] Data fetched from DB
+2025-08-27 19:42:08 [INFO]: [verifyUser] User authorized id=user-a0B9A_KVHTu7hyBe
+2025-08-27 19:42:08 [INFO]: [getRoomById] Room fetched successfully roomId=room-ZgMNFNDH4yyX-CPG
+2025-08-27 19:42:08 [INFO]: [verifyUser] User authorized id=user-a0B9A_KVHTu7hyBe
+2025-08-27 19:42:08 [INFO]: [editRoom] Room updated successfully roomId=room-ZgMNFNDH4yyX-CPG
+2025-08-27 19:42:08 [INFO]: [verifyUser] User authorized id=user-a0B9A_KVHTu7hyBe
+2025-08-27 19:42:08 [INFO]: [getPictures] Mengambil 3 foto untuk roomId=room-ZgMNFNDH4yyX-CPG
+2025-08-27 19:42:09 [INFO]: Availability generated until 2026-02-27
+2025-08-27 19:42:09 [INFO]: [addBooking] Start booking process for user user-a0B9A_KVHTu7hyBe and room room-ZgMNFNDH4yyX-CPG
+2025-08-27 19:42:09 [INFO]: [lockAndCheck] Rooms available roomId=room-ZgMNFNDH4yyX-CPG, totalNights=1, totalPrice=9000000
+2025-08-27 19:42:09 [INFO]: [addBooking] Room room-ZgMNFNDH4yyX-CPG locked and checked, totalPrice: 9000000
+2025-08-27 19:42:09 [WARN]: [CacheService] Cache miss for key: users:id:user-a0B9A_KVHTu7hyBe
+2025-08-27 19:42:09 [ERROR]: [CacheService] Failed to get cache for key users:id:user-a0B9A_KVHTu7hyBe: Cache tidak ditemukan
+2025-08-27 19:42:09 [INFO]: [getUserbyId] Cache miss for key: users:id:user-a0B9A_KVHTu7hyBe
+2025-08-27 19:42:10 [INFO]: [CacheService] Cache set: users:id:user-a0B9A_KVHTu7hyBe
+2025-08-27 19:42:10 [INFO]: [getRoomById] Room fetched successfully roomId=room-ZgMNFNDH4yyX-CPG
+2025-08-27 19:42:10 [INFO]: [addBooking] Booking inserted with ID booking-KtqJPuU0UC-kFJGy
+2025-08-27 19:42:10 [INFO]: [reduceAvailability] Reduced availability roomId=room-ZgMNFNDH4yyX-CPG date=2025-10-12 by=1
+2025-08-27 19:42:10 [INFO]: [reduceAvailability] Reduced availability roomId=room-ZgMNFNDH4yyX-CPG date=2025-10-13 by=1
+2025-08-27 19:42:10 [INFO]: [addBooking] Reduced availability for room room-ZgMNFNDH4yyX-CPG
+2025-08-27 19:42:10 [INFO]: [addBooking] Active log created for booking booking-KtqJPuU0UC-kFJGy
+2025-08-27 19:42:10 [INFO]: [createTransaction] Transaksi berhasil dibuat: orderId=booking-KtqJPuU0UC-kFJGy, redirectUrl=https://app.sandbox.midtrans.com/snap/v4/redirection/45df469a-e51c-4b20-b67a-f72a5ffb110a
+2025-08-27 19:42:10 [INFO]: [addBooking] Midtrans transaction created for booking booking-KtqJPuU0UC-kFJGy
+2025-08-27 19:42:10 [INFO]: [addBooking] Snap token updated for booking booking-KtqJPuU0UC-kFJGy
+2025-08-27 19:42:10 [INFO]: [createTransactionRecord] Transaction record created successfully bookingId=booking-KtqJPuU0UC-kFJGy trxId=trx-ScnSTKhadrOfjOKa
+2025-08-27 19:42:10 [INFO]: [addBooking] Transaction record created for booking booking-KtqJPuU0UC-kFJGy
+2025-08-27 19:42:10 [INFO]: [CacheService] No cache keys found with prefix: bookings:user:user-a0B9A_KVHTu7hyBe:
+2025-08-27 19:42:10 [INFO]: [updateBookingStatus] Booking updated: orderId=booking-KtqJPuU0UC-kFJGy, paymentStatus=settlement, bookingStatus=confirmed
+2025-08-27 19:42:10 [INFO]: [verifyUser] User authorized id=user-a0B9A_KVHTu7hyBe
+2025-08-27 19:42:10 [INFO]: [CacheService] Cache hit for key: bookings:service:{"page":1,"limit":50}
+2025-08-27 19:42:10 [INFO]: [getBookingsService] Cache hit for key: bookings:service:{"page":1,"limit":50}
+2025-08-27 19:42:10 [INFO]: [verifyUser] User authorized id=user-a0B9A_KVHTu7hyBe
+2025-08-27 19:42:10 [WARN]: [CacheService] Cache miss for key: booking:booking-KtqJPuU0UC-kFJGy
+2025-08-27 19:42:10 [ERROR]: [CacheService] Failed to get cache for key booking:booking-KtqJPuU0UC-kFJGy: Cache tidak ditemukan
+2025-08-27 19:42:10 [INFO]: [CacheService] Cache set: booking:booking-KtqJPuU0UC-kFJGy
+2025-08-27 19:42:10 [INFO]: [getBookingById] Booking fetched: targetId=booking-KtqJPuU0UC-kFJGy
+2025-08-27 19:42:10 [INFO]: [verifyUser] User authorized id=user-a0B9A_KVHTu7hyBe
+2025-08-27 19:42:10 [INFO]: [CacheService] Cache hit for key: bookings:service:{"status":"pending_payment","page":1,"limit":50}
+2025-08-27 19:42:10 [INFO]: [getBookingsService] Cache hit for key: bookings:service:{"status":"pending_payment","page":1,"limit":50}
+2025-08-27 19:42:10 [INFO]: [verifyUser] User authorized id=user-a0B9A_KVHTu7hyBe
+2025-08-27 19:42:10 [INFO]: [CacheService] Cache hit for key: bookings:service:{"guestName":"Dita","page":1,"limit":50}
+2025-08-27 19:42:10 [INFO]: [getBookingsService] Cache hit for key: bookings:service:{"guestName":"Dita","page":1,"limit":50}
+2025-08-27 19:42:10 [INFO]: [verifyUser] User authorized id=user-a0B9A_KVHTu7hyBe
+2025-08-27 19:42:10 [INFO]: [CacheService] Cache hit for key: bookings:service:{"checkInDate":"2025-10-12","page":1,"limit":50}
+2025-08-27 19:42:10 [INFO]: [getBookingsService] Cache hit for key: bookings:service:{"checkInDate":"2025-10-12","page":1,"limit":50}
+2025-08-27 19:42:10 [INFO]: [verifyUser] User authorized id=user-a0B9A_KVHTu7hyBe
+2025-08-27 19:42:10 [INFO]: [CacheService] Cache hit for key: bookings:service:{"checkOutDate":"2025-10-13","page":1,"limit":50}
+2025-08-27 19:42:10 [INFO]: [getBookingsService] Cache hit for key: bookings:service:{"checkOutDate":"2025-10-13","page":1,"limit":50}
+2025-08-27 19:42:11 [INFO]: [verifyUser] User authorized id=user-a0B9A_KVHTu7hyBe
+2025-08-27 19:42:11 [INFO]: [CacheService] Cache hit for key: bookings:service:{"checkInDate":"2025-10-12","checkInDateEnd":"2025-10-13","page":1,"limit":50}
+2025-08-27 19:42:11 [INFO]: [getBookingsService] Cache hit for key: bookings:service:{"checkInDate":"2025-10-12","checkInDateEnd":"2025-10-13","page":1,"limit":50}
+2025-08-27 19:42:11 [INFO]: [getPendingBookingsByUser] Fetched pending bookings for user user-a0B9A_KVHTu7hyBe, count=0
+2025-08-27 19:42:11 [INFO]: [CacheService] Cache hit for key: booking:booking-KtqJPuU0UC-kFJGy
+2025-08-27 19:42:11 [INFO]: [verifyUser] User authorized id=user-a0B9A_KVHTu7hyBe
+2025-08-27 19:42:11 [INFO]: [checkInBookingService] Booking checked-in: bookingId=booking-KtqJPuU0UC-kFJGy, userId=user-a0B9A_KVHTu7hyBe
+2025-08-27 19:42:11 [INFO]: [verifyUser] User authorized id=user-a0B9A_KVHTu7hyBe
+2025-08-27 19:42:11 [INFO]: [checkOutBookingService] Booking checked-out: bookingId=booking-KtqJPuU0UC-kFJGy, userId=user-a0B9A_KVHTu7hyBe
+2025-08-27 19:42:11 [ERROR]: [generateInvoice] Failed for bookingId=booking-X4QEgjEnfRhNrRXl, userId=user-a0B9A_KVHTu7hyBe: Booking tidak ditemukan atau belum dibayar
+2025-08-27 19:42:11 [INFO]: [getCompletedBookingForUserRoom] Fetched completed booking: userId=user-a0B9A_KVHTu7hyBe, roomId=room-ZgMNFNDH4yyX-CPG, bookingId=booking-KtqJPuU0UC-kFJGy
+2025-08-27 19:42:11 [INFO]: [getCompletedBookingForUserRoom] Fetched completed booking: userId=user-a0B9A_KVHTu7hyBe, roomId=room-ZgMNFNDH4yyX-CPG, bookingId=booking-KtqJPuU0UC-kFJGy
+2025-08-27 19:42:11 [INFO]: User user-a0B9A_KVHTu7hyBe berhasil menambahkan review review-Cq19VeGgSQh99EOs untuk room room-ZgMNFNDH4yyX-CPG
+2025-08-27 19:42:11 [INFO]: [getReviewById] Review review-Cq19VeGgSQh99EOs berhasil diambil
+2025-08-27 19:42:11 [INFO]: Ambil 1 review untuk room room-ZgMNFNDH4yyX-CPG halaman 1
+2025-08-27 19:42:11 [INFO]: [editReview] Review review-Cq19VeGgSQh99EOs berhasil diubah oleh user user-a0B9A_KVHTu7hyBe
+2025-08-27 19:42:12 [WARN]: [deleteReview] Review null tidak ditemukan
+2025-08-27 19:42:12 [ERROR]: [deleteReview] Gagal menghapus review null: Review tidak ditemukan
+2025-08-27 19:42:12 [ERROR]: [cancelBookingService] Failed for bookingId=booking-0TSLZ6KLwEj2elWB, userId=user-a0B9A_KVHTu7hyBe: Booking tidak ditemukan atau bukan milik Anda
+2025-08-27 19:42:12 [INFO]: [verifyUser] User authorized id=user-a0B9A_KVHTu7hyBe
+2025-08-27 19:42:12 [INFO]: [getPictures] Mengambil 3 foto untuk roomId=room-ZgMNFNDH4yyX-CPG
+2025-08-27 19:42:12 [INFO]: [StorageService] File deleted successfully: room-ZgMNFNDH4yyX-CPG/sclHtxhZMXIm.jpg
+2025-08-27 19:42:12 [INFO]: [deletePicture] Foto berhasil dihapus pictureId=pic-rmXM2Wrvt-NEOgVu
+2025-08-27 19:42:12 [INFO]: [deleteAllPictures] Menghapus semua foto roomId=room-ZgMNFNDH4yyX-CPG, total=2
+2025-08-27 19:42:12 [INFO]: [verifyUser] User authorized id=user-a0B9A_KVHTu7hyBe
+2025-08-27 19:42:12 [INFO]: [deleteRoom] Room deleted successfully roomId=room-ZgMNFNDH4yyX-CPG
+2025-08-27 19:42:12 [INFO]: [verifyUser] User authorized id=user-a0B9A_KVHTu7hyBe
+2025-08-27 19:42:12 [INFO]: [CacheService] Cache deleted: users:id:user-a0B9A_KVHTu7hyBe, deletedCount=1
+2025-08-27 19:42:12 [INFO]: [CacheService] No cache keys found with prefix: users:all
+2025-08-27 19:42:45 [INFO]: [getCompletedBookingForUserRoom] Fetched completed booking: userId=user-a0B9A_KVHTu7hyBe, roomId=room-ZgMNFNDH4yyX-CPG, bookingId=booking-KtqJPuU0UC-kFJGy
+2025-08-27 19:42:45 [INFO]: [getCompletedBookingForUserRoom] Fetched completed booking: userId=user-a0B9A_KVHTu7hyBe, roomId=room-ZgMNFNDH4yyX-CPG, bookingId=booking-KtqJPuU0UC-kFJGy
+2025-08-27 19:42:45 [INFO]: User user-a0B9A_KVHTu7hyBe berhasil menambahkan review review-e6kfSrFfxqI69pqZ untuk room room-ZgMNFNDH4yyX-CPG
+2025-08-27 19:44:01 [INFO]: [CacheService] No cache keys found with prefix: users:all
+2025-08-27 19:44:01 [INFO]: [updateLastLogin] Updated last login for userId=user--vKC-2syAJwBstMM
+2025-08-27 19:44:01 [INFO]: [verifyUserCredential] User logged in successfully id=user--vKC-2syAJwBstMM email=user2660@mail.com
+2025-08-27 19:44:01 [INFO]: [AuthenticationsService] Refresh token added with id auth-E_LondrzUxeaMYXx
+2025-08-27 19:44:01 [INFO]: [verifyUser] User authorized id=user--vKC-2syAJwBstMM
+2025-08-27 19:44:01 [WARN]: [CacheService] Cache miss for key: users:all:page=1&limit=10
+2025-08-27 19:44:01 [ERROR]: [CacheService] Failed to get cache for key users:all:page=1&limit=10: Cache tidak ditemukan
+2025-08-27 19:44:01 [INFO]: [getAllUsers] Cache miss for key: users:all:page=1&limit=10
+2025-08-27 19:44:01 [INFO]: [CacheService] Cache set: users:all:page=1&limit=10
+2025-08-27 19:44:01 [INFO]: [getAllUsers] Cache set for key: users:all:page=1&limit=10
+2025-08-27 19:44:01 [INFO]: [verifyUser] User authorized id=user--vKC-2syAJwBstMM
+2025-08-27 19:44:01 [WARN]: [CacheService] Cache miss for key: users:id:user--vKC-2syAJwBstMM
+2025-08-27 19:44:01 [ERROR]: [CacheService] Failed to get cache for key users:id:user--vKC-2syAJwBstMM: Cache tidak ditemukan
+2025-08-27 19:44:01 [INFO]: [getUserbyId] Cache miss for key: users:id:user--vKC-2syAJwBstMM
+2025-08-27 19:44:01 [INFO]: [CacheService] Cache set: users:id:user--vKC-2syAJwBstMM
+2025-08-27 19:44:01 [INFO]: [verifyUser] User authorized id=user--vKC-2syAJwBstMM
+2025-08-27 19:44:01 [INFO]: [CacheService] Cache deleted: users:id:user--vKC-2syAJwBstMM, deletedCount=1
+2025-08-27 19:44:01 [INFO]: [CacheService] Cache keys deleted with prefix: users:all, count=1
+2025-08-27 19:44:01 [INFO]: [verifyUser] User authorized id=user--vKC-2syAJwBstMM
+2025-08-27 19:44:01 [INFO]: [addProfile] Profil hotel berhasil ditambahkan dengan id hotel-kGm-4tHiVPkR
+2025-08-27 19:44:01 [INFO]: [getProfile] Profil hotel berhasil diambil
+2025-08-27 19:44:01 [INFO]: [updateProfile] Profil hotel berhasil diperbarui dengan id hotel-kGm-4tHiVPkR
+2025-08-27 19:44:01 [INFO]: [verifyUser] User authorized id=user--vKC-2syAJwBstMM
+2025-08-27 19:44:01 [INFO]: [addRoom] Room added successfully: room-VygNfPgIHJHbxEvr
+2025-08-27 19:44:01 [INFO]: [verifyUser] User authorized id=user--vKC-2syAJwBstMM
+2025-08-27 19:44:01 [INFO]: [StorageService] Created subfolder at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures\room-VygNfPgIHJHbxEvr
+2025-08-27 19:44:01 [INFO]: [StorageService] File written successfully: room-VygNfPgIHJHbxEvr/cneLB_iCl0U6.jpg
+2025-08-27 19:44:01 [INFO]: [addPicture] Foto berhasil ditambahkan roomId=room-VygNfPgIHJHbxEvr, pictureId=pic-MnxF5PRCgJy-ia61
+2025-08-27 19:44:01 [INFO]: [StorageService] File written successfully: room-VygNfPgIHJHbxEvr/JBiAI8Ri7a6b.jpg
+2025-08-27 19:44:01 [INFO]: [addPicture] Foto berhasil ditambahkan roomId=room-VygNfPgIHJHbxEvr, pictureId=pic-sOTJMMPw3LcBs0Sl
+2025-08-27 19:44:01 [INFO]: [StorageService] File written successfully: room-VygNfPgIHJHbxEvr/pwlC6z709x7o.jpg
+2025-08-27 19:44:01 [INFO]: [addPicture] Foto berhasil ditambahkan roomId=room-VygNfPgIHJHbxEvr, pictureId=pic-O6m5AVjPfroh9oxR
+2025-08-27 19:44:01 [INFO]: [verifyUser] User authorized id=user--vKC-2syAJwBstMM
+2025-08-27 19:44:01 [INFO]: [getRooms] Data fetched from DB
+2025-08-27 19:44:02 [INFO]: [verifyUser] User authorized id=user--vKC-2syAJwBstMM
+2025-08-27 19:44:02 [INFO]: [getRoomById] Room fetched successfully roomId=room-VygNfPgIHJHbxEvr
+2025-08-27 19:44:02 [INFO]: [verifyUser] User authorized id=user--vKC-2syAJwBstMM
+2025-08-27 19:44:02 [INFO]: [editRoom] Room updated successfully roomId=room-VygNfPgIHJHbxEvr
+2025-08-27 19:44:02 [INFO]: [verifyUser] User authorized id=user--vKC-2syAJwBstMM
+2025-08-27 19:44:02 [INFO]: [getPictures] Mengambil 3 foto untuk roomId=room-VygNfPgIHJHbxEvr
+2025-08-27 19:44:02 [INFO]: Availability generated until 2026-02-27
+2025-08-27 19:44:02 [INFO]: [addBooking] Start booking process for user user--vKC-2syAJwBstMM and room room-VygNfPgIHJHbxEvr
+2025-08-27 19:44:02 [INFO]: [lockAndCheck] Rooms available roomId=room-VygNfPgIHJHbxEvr, totalNights=1, totalPrice=9000000
+2025-08-27 19:44:02 [INFO]: [addBooking] Room room-VygNfPgIHJHbxEvr locked and checked, totalPrice: 9000000
+2025-08-27 19:44:02 [WARN]: [CacheService] Cache miss for key: users:id:user--vKC-2syAJwBstMM
+2025-08-27 19:44:02 [ERROR]: [CacheService] Failed to get cache for key users:id:user--vKC-2syAJwBstMM: Cache tidak ditemukan
+2025-08-27 19:44:02 [INFO]: [getUserbyId] Cache miss for key: users:id:user--vKC-2syAJwBstMM
+2025-08-27 19:44:02 [INFO]: [CacheService] Cache set: users:id:user--vKC-2syAJwBstMM
+2025-08-27 19:44:02 [INFO]: [getRoomById] Room fetched successfully roomId=room-VygNfPgIHJHbxEvr
+2025-08-27 19:44:02 [INFO]: [addBooking] Booking inserted with ID booking-zsVdmCybIMZJKdCQ
+2025-08-27 19:44:02 [INFO]: [reduceAvailability] Reduced availability roomId=room-VygNfPgIHJHbxEvr date=2025-10-12 by=1
+2025-08-27 19:44:02 [INFO]: [reduceAvailability] Reduced availability roomId=room-VygNfPgIHJHbxEvr date=2025-10-13 by=1
+2025-08-27 19:44:02 [INFO]: [addBooking] Reduced availability for room room-VygNfPgIHJHbxEvr
+2025-08-27 19:44:02 [INFO]: [addBooking] Active log created for booking booking-zsVdmCybIMZJKdCQ
+2025-08-27 19:44:03 [INFO]: [createTransaction] Transaksi berhasil dibuat: orderId=booking-zsVdmCybIMZJKdCQ, redirectUrl=https://app.sandbox.midtrans.com/snap/v4/redirection/e7f1f11c-e8d7-4c4a-884c-823462888b80
+2025-08-27 19:44:03 [INFO]: [addBooking] Midtrans transaction created for booking booking-zsVdmCybIMZJKdCQ
+2025-08-27 19:44:03 [INFO]: [addBooking] Snap token updated for booking booking-zsVdmCybIMZJKdCQ
+2025-08-27 19:44:03 [INFO]: [createTransactionRecord] Transaction record created successfully bookingId=booking-zsVdmCybIMZJKdCQ trxId=trx-wfqiGjKv4Y4oDKA5
+2025-08-27 19:44:03 [INFO]: [addBooking] Transaction record created for booking booking-zsVdmCybIMZJKdCQ
+2025-08-27 19:44:03 [INFO]: [CacheService] No cache keys found with prefix: bookings:user:user--vKC-2syAJwBstMM:
+2025-08-27 19:44:03 [INFO]: [updateBookingStatus] Booking updated: orderId=booking-zsVdmCybIMZJKdCQ, paymentStatus=settlement, bookingStatus=confirmed
+2025-08-27 19:44:03 [INFO]: [verifyUser] User authorized id=user--vKC-2syAJwBstMM
+2025-08-27 19:44:03 [INFO]: [CacheService] Cache hit for key: bookings:service:{"page":1,"limit":50}
+2025-08-27 19:44:03 [INFO]: [getBookingsService] Cache hit for key: bookings:service:{"page":1,"limit":50}
+2025-08-27 19:44:03 [INFO]: [verifyUser] User authorized id=user--vKC-2syAJwBstMM
+2025-08-27 19:44:03 [WARN]: [CacheService] Cache miss for key: booking:booking-zsVdmCybIMZJKdCQ
+2025-08-27 19:44:03 [ERROR]: [CacheService] Failed to get cache for key booking:booking-zsVdmCybIMZJKdCQ: Cache tidak ditemukan
+2025-08-27 19:44:03 [INFO]: [CacheService] Cache set: booking:booking-zsVdmCybIMZJKdCQ
+2025-08-27 19:44:03 [INFO]: [getBookingById] Booking fetched: targetId=booking-zsVdmCybIMZJKdCQ
+2025-08-27 19:44:03 [INFO]: [verifyUser] User authorized id=user--vKC-2syAJwBstMM
+2025-08-27 19:44:04 [INFO]: [CacheService] Cache hit for key: bookings:service:{"status":"pending_payment","page":1,"limit":50}
+2025-08-27 19:44:04 [INFO]: [getBookingsService] Cache hit for key: bookings:service:{"status":"pending_payment","page":1,"limit":50}
+2025-08-27 19:44:04 [INFO]: [verifyUser] User authorized id=user--vKC-2syAJwBstMM
+2025-08-27 19:44:04 [INFO]: [CacheService] Cache hit for key: bookings:service:{"guestName":"Dita","page":1,"limit":50}
+2025-08-27 19:44:04 [INFO]: [getBookingsService] Cache hit for key: bookings:service:{"guestName":"Dita","page":1,"limit":50}
+2025-08-27 19:44:04 [INFO]: [verifyUser] User authorized id=user--vKC-2syAJwBstMM
+2025-08-27 19:44:04 [INFO]: [CacheService] Cache hit for key: bookings:service:{"checkInDate":"2025-10-12","page":1,"limit":50}
+2025-08-27 19:44:04 [INFO]: [getBookingsService] Cache hit for key: bookings:service:{"checkInDate":"2025-10-12","page":1,"limit":50}
+2025-08-27 19:44:04 [INFO]: [verifyUser] User authorized id=user--vKC-2syAJwBstMM
+2025-08-27 19:44:04 [INFO]: [CacheService] Cache hit for key: bookings:service:{"checkOutDate":"2025-10-13","page":1,"limit":50}
+2025-08-27 19:44:04 [INFO]: [getBookingsService] Cache hit for key: bookings:service:{"checkOutDate":"2025-10-13","page":1,"limit":50}
+2025-08-27 19:44:04 [INFO]: [verifyUser] User authorized id=user--vKC-2syAJwBstMM
+2025-08-27 19:44:04 [INFO]: [CacheService] Cache hit for key: bookings:service:{"checkInDate":"2025-10-12","checkInDateEnd":"2025-10-13","page":1,"limit":50}
+2025-08-27 19:44:04 [INFO]: [getBookingsService] Cache hit for key: bookings:service:{"checkInDate":"2025-10-12","checkInDateEnd":"2025-10-13","page":1,"limit":50}
+2025-08-27 19:44:04 [INFO]: [getPendingBookingsByUser] Fetched pending bookings for user user--vKC-2syAJwBstMM, count=0
+2025-08-27 19:44:04 [INFO]: [CacheService] Cache hit for key: booking:booking-zsVdmCybIMZJKdCQ
+2025-08-27 19:44:04 [INFO]: [verifyUser] User authorized id=user--vKC-2syAJwBstMM
+2025-08-27 19:44:04 [INFO]: [checkInBookingService] Booking checked-in: bookingId=booking-zsVdmCybIMZJKdCQ, userId=user--vKC-2syAJwBstMM
+2025-08-27 19:44:04 [INFO]: [verifyUser] User authorized id=user--vKC-2syAJwBstMM
+2025-08-27 19:44:04 [INFO]: [checkOutBookingService] Booking checked-out: bookingId=booking-zsVdmCybIMZJKdCQ, userId=user--vKC-2syAJwBstMM
+2025-08-27 19:44:04 [ERROR]: [generateInvoice] Failed for bookingId=booking-X4QEgjEnfRhNrRXl, userId=user--vKC-2syAJwBstMM: Booking tidak ditemukan atau belum dibayar
+2025-08-27 19:44:04 [INFO]: [getCompletedBookingForUserRoom] Fetched completed booking: userId=user--vKC-2syAJwBstMM, roomId=room-VygNfPgIHJHbxEvr, bookingId=booking-zsVdmCybIMZJKdCQ
+2025-08-27 19:44:04 [INFO]: [getCompletedBookingForUserRoom] Fetched completed booking: userId=user--vKC-2syAJwBstMM, roomId=room-VygNfPgIHJHbxEvr, bookingId=booking-zsVdmCybIMZJKdCQ
+2025-08-27 19:44:04 [INFO]: User user--vKC-2syAJwBstMM berhasil menambahkan review review-k6fSEqMzLBiUELGN untuk room room-VygNfPgIHJHbxEvr
+2025-08-27 19:44:04 [INFO]: [getReviewById] Review review-k6fSEqMzLBiUELGN berhasil diambil
+2025-08-27 19:44:04 [INFO]: Ambil 1 review untuk room room-VygNfPgIHJHbxEvr halaman 1
+2025-08-27 19:44:04 [INFO]: [editReview] Review review-k6fSEqMzLBiUELGN berhasil diubah oleh user user--vKC-2syAJwBstMM
+2025-08-27 19:44:04 [WARN]: [deleteReview] Review null tidak ditemukan
+2025-08-27 19:44:04 [ERROR]: [deleteReview] Gagal menghapus review null: Review tidak ditemukan
+2025-08-27 19:44:04 [ERROR]: [cancelBookingService] Failed for bookingId=booking-0TSLZ6KLwEj2elWB, userId=user--vKC-2syAJwBstMM: Booking tidak ditemukan atau bukan milik Anda
+2025-08-27 19:44:04 [INFO]: [verifyUser] User authorized id=user--vKC-2syAJwBstMM
+2025-08-27 19:44:04 [INFO]: [getPictures] Mengambil 3 foto untuk roomId=room-VygNfPgIHJHbxEvr
+2025-08-27 19:44:04 [INFO]: [StorageService] File deleted successfully: room-VygNfPgIHJHbxEvr/cneLB_iCl0U6.jpg
+2025-08-27 19:44:04 [INFO]: [deletePicture] Foto berhasil dihapus pictureId=pic-MnxF5PRCgJy-ia61
+2025-08-27 19:44:05 [INFO]: [deleteAllPictures] Menghapus semua foto roomId=room-VygNfPgIHJHbxEvr, total=2
+2025-08-27 19:44:05 [INFO]: [verifyUser] User authorized id=user--vKC-2syAJwBstMM
+2025-08-27 19:44:05 [INFO]: [deleteRoom] Room deleted successfully roomId=room-VygNfPgIHJHbxEvr
+2025-08-27 19:44:05 [INFO]: [verifyUser] User authorized id=user--vKC-2syAJwBstMM
+2025-08-27 19:44:05 [INFO]: [CacheService] Cache deleted: users:id:user--vKC-2syAJwBstMM, deletedCount=1
+2025-08-27 19:44:05 [INFO]: [CacheService] No cache keys found with prefix: users:all
+2025-08-27 19:44:35 [WARN]: [deleteReview] Review null tidak ditemukan
+2025-08-27 19:44:35 [ERROR]: [deleteReview] Gagal menghapus review null: Review tidak ditemukan
+2025-08-27 19:45:21 [INFO]: [CacheService] No cache keys found with prefix: users:all
+2025-08-27 19:45:22 [INFO]: [updateLastLogin] Updated last login for userId=user-hC_5_g8gJcQvntIJ
+2025-08-27 19:45:22 [INFO]: [verifyUserCredential] User logged in successfully id=user-hC_5_g8gJcQvntIJ email=user9963@mail.com
+2025-08-27 19:45:22 [INFO]: [AuthenticationsService] Refresh token added with id auth-OnehFViTBcp1G9IO
+2025-08-27 19:45:22 [INFO]: [verifyUser] User authorized id=user-hC_5_g8gJcQvntIJ
+2025-08-27 19:45:22 [WARN]: [CacheService] Cache miss for key: users:all:page=1&limit=10
+2025-08-27 19:45:22 [ERROR]: [CacheService] Failed to get cache for key users:all:page=1&limit=10: Cache tidak ditemukan
+2025-08-27 19:45:22 [INFO]: [getAllUsers] Cache miss for key: users:all:page=1&limit=10
+2025-08-27 19:45:22 [INFO]: [CacheService] Cache set: users:all:page=1&limit=10
+2025-08-27 19:45:22 [INFO]: [getAllUsers] Cache set for key: users:all:page=1&limit=10
+2025-08-27 19:45:22 [INFO]: [verifyUser] User authorized id=user-hC_5_g8gJcQvntIJ
+2025-08-27 19:45:22 [WARN]: [CacheService] Cache miss for key: users:id:user-hC_5_g8gJcQvntIJ
+2025-08-27 19:45:22 [ERROR]: [CacheService] Failed to get cache for key users:id:user-hC_5_g8gJcQvntIJ: Cache tidak ditemukan
+2025-08-27 19:45:22 [INFO]: [getUserbyId] Cache miss for key: users:id:user-hC_5_g8gJcQvntIJ
+2025-08-27 19:45:22 [INFO]: [CacheService] Cache set: users:id:user-hC_5_g8gJcQvntIJ
+2025-08-27 19:45:22 [INFO]: [verifyUser] User authorized id=user-hC_5_g8gJcQvntIJ
+2025-08-27 19:45:22 [INFO]: [CacheService] Cache deleted: users:id:user-hC_5_g8gJcQvntIJ, deletedCount=1
+2025-08-27 19:45:22 [INFO]: [CacheService] Cache keys deleted with prefix: users:all, count=1
+2025-08-27 19:45:22 [INFO]: [verifyUser] User authorized id=user-hC_5_g8gJcQvntIJ
+2025-08-27 19:45:22 [WARN]: [addProfile] Profil hotel sudah ada, tidak bisa menambahkan lagi
+2025-08-27 19:45:22 [ERROR]: [addProfile] Database error: Profil hotel sudah ada, tidak bisa menambahkan lagi
+2025-08-27 19:45:23 [INFO]: [getProfile] Profil hotel berhasil diambil
+2025-08-27 19:45:23 [INFO]: [updateProfile] Profil hotel berhasil diperbarui dengan id hotel-kGm-4tHiVPkR
+2025-08-27 19:45:23 [INFO]: [verifyUser] User authorized id=user-hC_5_g8gJcQvntIJ
+2025-08-27 19:45:23 [INFO]: [addRoom] Room added successfully: room-PPFjrg5gwRJwwDX9
+2025-08-27 19:45:23 [INFO]: [verifyUser] User authorized id=user-hC_5_g8gJcQvntIJ
+2025-08-27 19:45:23 [INFO]: [StorageService] Created subfolder at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures\room-PPFjrg5gwRJwwDX9
+2025-08-27 19:45:23 [INFO]: [StorageService] File written successfully: room-PPFjrg5gwRJwwDX9/KetX136ymTj3.jpg
+2025-08-27 19:45:23 [INFO]: [addPicture] Foto berhasil ditambahkan roomId=room-PPFjrg5gwRJwwDX9, pictureId=pic-W3gMjRKbnghhGCho
+2025-08-27 19:45:23 [INFO]: [StorageService] File written successfully: room-PPFjrg5gwRJwwDX9/13L4ZSgiqFoq.jpg
+2025-08-27 19:45:23 [INFO]: [addPicture] Foto berhasil ditambahkan roomId=room-PPFjrg5gwRJwwDX9, pictureId=pic-sxe4miJYBKREqQzL
+2025-08-27 19:45:23 [INFO]: [StorageService] File written successfully: room-PPFjrg5gwRJwwDX9/2yBs7yZlJWhX.jpg
+2025-08-27 19:45:23 [INFO]: [addPicture] Foto berhasil ditambahkan roomId=room-PPFjrg5gwRJwwDX9, pictureId=pic-lZSNiFY6IXG2YZ4q
+2025-08-27 19:45:23 [INFO]: [verifyUser] User authorized id=user-hC_5_g8gJcQvntIJ
+2025-08-27 19:45:23 [INFO]: [getRooms] Data fetched from DB
+2025-08-27 19:45:23 [INFO]: [verifyUser] User authorized id=user-hC_5_g8gJcQvntIJ
+2025-08-27 19:45:23 [INFO]: [getRoomById] Room fetched successfully roomId=room-PPFjrg5gwRJwwDX9
+2025-08-27 19:45:23 [INFO]: [verifyUser] User authorized id=user-hC_5_g8gJcQvntIJ
+2025-08-27 19:45:24 [INFO]: [editRoom] Room updated successfully roomId=room-PPFjrg5gwRJwwDX9
+2025-08-27 19:45:24 [INFO]: [verifyUser] User authorized id=user-hC_5_g8gJcQvntIJ
+2025-08-27 19:45:24 [INFO]: [getPictures] Mengambil 3 foto untuk roomId=room-PPFjrg5gwRJwwDX9
+2025-08-27 19:45:25 [INFO]: Availability generated until 2026-02-27
+2025-08-27 19:45:25 [INFO]: [addBooking] Start booking process for user user-hC_5_g8gJcQvntIJ and room room-PPFjrg5gwRJwwDX9
+2025-08-27 19:45:25 [INFO]: [lockAndCheck] Rooms available roomId=room-PPFjrg5gwRJwwDX9, totalNights=1, totalPrice=9000000
+2025-08-27 19:45:25 [INFO]: [addBooking] Room room-PPFjrg5gwRJwwDX9 locked and checked, totalPrice: 9000000
+2025-08-27 19:45:25 [WARN]: [CacheService] Cache miss for key: users:id:user-hC_5_g8gJcQvntIJ
+2025-08-27 19:45:25 [ERROR]: [CacheService] Failed to get cache for key users:id:user-hC_5_g8gJcQvntIJ: Cache tidak ditemukan
+2025-08-27 19:45:25 [INFO]: [getUserbyId] Cache miss for key: users:id:user-hC_5_g8gJcQvntIJ
+2025-08-27 19:45:25 [INFO]: [CacheService] Cache set: users:id:user-hC_5_g8gJcQvntIJ
+2025-08-27 19:45:25 [INFO]: [getRoomById] Room fetched successfully roomId=room-PPFjrg5gwRJwwDX9
+2025-08-27 19:45:25 [INFO]: [addBooking] Booking inserted with ID booking-VvFsy5B-dlhRjgJi
+2025-08-27 19:45:25 [INFO]: [reduceAvailability] Reduced availability roomId=room-PPFjrg5gwRJwwDX9 date=2025-10-12 by=1
+2025-08-27 19:45:25 [INFO]: [reduceAvailability] Reduced availability roomId=room-PPFjrg5gwRJwwDX9 date=2025-10-13 by=1
+2025-08-27 19:45:25 [INFO]: [addBooking] Reduced availability for room room-PPFjrg5gwRJwwDX9
+2025-08-27 19:45:25 [INFO]: [addBooking] Active log created for booking booking-VvFsy5B-dlhRjgJi
+2025-08-27 19:45:25 [INFO]: [createTransaction] Transaksi berhasil dibuat: orderId=booking-VvFsy5B-dlhRjgJi, redirectUrl=https://app.sandbox.midtrans.com/snap/v4/redirection/c7fadc38-a693-40bd-8dfc-b5114d16c8b5
+2025-08-27 19:45:25 [INFO]: [addBooking] Midtrans transaction created for booking booking-VvFsy5B-dlhRjgJi
+2025-08-27 19:45:25 [INFO]: [addBooking] Snap token updated for booking booking-VvFsy5B-dlhRjgJi
+2025-08-27 19:45:25 [INFO]: [createTransactionRecord] Transaction record created successfully bookingId=booking-VvFsy5B-dlhRjgJi trxId=trx-HH76g9QhXH4TaR1w
+2025-08-27 19:45:25 [INFO]: [addBooking] Transaction record created for booking booking-VvFsy5B-dlhRjgJi
+2025-08-27 19:45:25 [INFO]: [CacheService] No cache keys found with prefix: bookings:user:user-hC_5_g8gJcQvntIJ:
+2025-08-27 19:45:25 [INFO]: [updateBookingStatus] Booking updated: orderId=booking-VvFsy5B-dlhRjgJi, paymentStatus=settlement, bookingStatus=confirmed
+2025-08-27 19:45:25 [INFO]: [verifyUser] User authorized id=user-hC_5_g8gJcQvntIJ
+2025-08-27 19:45:25 [INFO]: [CacheService] Cache hit for key: bookings:service:{"page":1,"limit":50}
+2025-08-27 19:45:25 [INFO]: [getBookingsService] Cache hit for key: bookings:service:{"page":1,"limit":50}
+2025-08-27 19:45:25 [INFO]: [verifyUser] User authorized id=user-hC_5_g8gJcQvntIJ
+2025-08-27 19:45:25 [WARN]: [CacheService] Cache miss for key: booking:booking-VvFsy5B-dlhRjgJi
+2025-08-27 19:45:25 [ERROR]: [CacheService] Failed to get cache for key booking:booking-VvFsy5B-dlhRjgJi: Cache tidak ditemukan
+2025-08-27 19:45:25 [INFO]: [CacheService] Cache set: booking:booking-VvFsy5B-dlhRjgJi
+2025-08-27 19:45:25 [INFO]: [getBookingById] Booking fetched: targetId=booking-VvFsy5B-dlhRjgJi
+2025-08-27 19:45:25 [INFO]: [verifyUser] User authorized id=user-hC_5_g8gJcQvntIJ
+2025-08-27 19:45:25 [INFO]: [CacheService] Cache hit for key: bookings:service:{"status":"pending_payment","page":1,"limit":50}
+2025-08-27 19:45:25 [INFO]: [getBookingsService] Cache hit for key: bookings:service:{"status":"pending_payment","page":1,"limit":50}
+2025-08-27 19:45:26 [INFO]: [verifyUser] User authorized id=user-hC_5_g8gJcQvntIJ
+2025-08-27 19:45:26 [INFO]: [CacheService] Cache hit for key: bookings:service:{"guestName":"Dita","page":1,"limit":50}
+2025-08-27 19:45:26 [INFO]: [getBookingsService] Cache hit for key: bookings:service:{"guestName":"Dita","page":1,"limit":50}
+2025-08-27 19:45:26 [INFO]: [verifyUser] User authorized id=user-hC_5_g8gJcQvntIJ
+2025-08-27 19:45:26 [INFO]: [CacheService] Cache hit for key: bookings:service:{"checkInDate":"2025-10-12","page":1,"limit":50}
+2025-08-27 19:45:26 [INFO]: [getBookingsService] Cache hit for key: bookings:service:{"checkInDate":"2025-10-12","page":1,"limit":50}
+2025-08-27 19:45:26 [INFO]: [verifyUser] User authorized id=user-hC_5_g8gJcQvntIJ
+2025-08-27 19:45:26 [INFO]: [CacheService] Cache hit for key: bookings:service:{"checkOutDate":"2025-10-13","page":1,"limit":50}
+2025-08-27 19:45:26 [INFO]: [getBookingsService] Cache hit for key: bookings:service:{"checkOutDate":"2025-10-13","page":1,"limit":50}
+2025-08-27 19:45:26 [INFO]: [verifyUser] User authorized id=user-hC_5_g8gJcQvntIJ
+2025-08-27 19:45:26 [INFO]: [CacheService] Cache hit for key: bookings:service:{"checkInDate":"2025-10-12","checkInDateEnd":"2025-10-13","page":1,"limit":50}
+2025-08-27 19:45:26 [INFO]: [getBookingsService] Cache hit for key: bookings:service:{"checkInDate":"2025-10-12","checkInDateEnd":"2025-10-13","page":1,"limit":50}
+2025-08-27 19:45:26 [INFO]: [getPendingBookingsByUser] Fetched pending bookings for user user-hC_5_g8gJcQvntIJ, count=0
+2025-08-27 19:45:26 [INFO]: [CacheService] Cache hit for key: booking:booking-VvFsy5B-dlhRjgJi
+2025-08-27 19:45:26 [INFO]: [verifyUser] User authorized id=user-hC_5_g8gJcQvntIJ
+2025-08-27 19:45:26 [INFO]: [checkInBookingService] Booking checked-in: bookingId=booking-VvFsy5B-dlhRjgJi, userId=user-hC_5_g8gJcQvntIJ
+2025-08-27 19:45:26 [INFO]: [verifyUser] User authorized id=user-hC_5_g8gJcQvntIJ
+2025-08-27 19:45:26 [INFO]: [checkOutBookingService] Booking checked-out: bookingId=booking-VvFsy5B-dlhRjgJi, userId=user-hC_5_g8gJcQvntIJ
+2025-08-27 19:45:26 [ERROR]: [generateInvoice] Failed for bookingId=booking-X4QEgjEnfRhNrRXl, userId=user-hC_5_g8gJcQvntIJ: Booking tidak ditemukan atau belum dibayar
+2025-08-27 19:45:26 [INFO]: [getCompletedBookingForUserRoom] Fetched completed booking: userId=user-hC_5_g8gJcQvntIJ, roomId=room-PPFjrg5gwRJwwDX9, bookingId=booking-VvFsy5B-dlhRjgJi
+2025-08-27 19:45:26 [INFO]: [getCompletedBookingForUserRoom] Fetched completed booking: userId=user-hC_5_g8gJcQvntIJ, roomId=room-PPFjrg5gwRJwwDX9, bookingId=booking-VvFsy5B-dlhRjgJi
+2025-08-27 19:45:27 [INFO]: User user-hC_5_g8gJcQvntIJ berhasil menambahkan review review-E1UD4CVQdh8_XO1H untuk room room-PPFjrg5gwRJwwDX9
+2025-08-27 19:45:27 [INFO]: [getReviewById] Review review-E1UD4CVQdh8_XO1H berhasil diambil
+2025-08-27 19:45:27 [INFO]: Ambil 1 review untuk room room-PPFjrg5gwRJwwDX9 halaman 1
+2025-08-27 19:45:27 [INFO]: [editReview] Review review-E1UD4CVQdh8_XO1H berhasil diubah oleh user user-hC_5_g8gJcQvntIJ
+2025-08-27 19:45:27 [INFO]: [deleteReview] Review review-E1UD4CVQdh8_XO1H berhasil dihapus oleh user user-hC_5_g8gJcQvntIJ
+2025-08-27 19:45:27 [ERROR]: [cancelBookingService] Failed for bookingId=booking-0TSLZ6KLwEj2elWB, userId=user-hC_5_g8gJcQvntIJ: Booking tidak ditemukan atau bukan milik Anda
+2025-08-27 19:45:27 [INFO]: [verifyUser] User authorized id=user-hC_5_g8gJcQvntIJ
+2025-08-27 19:45:27 [INFO]: [getPictures] Mengambil 3 foto untuk roomId=room-PPFjrg5gwRJwwDX9
+2025-08-27 19:45:27 [INFO]: [StorageService] File deleted successfully: room-PPFjrg5gwRJwwDX9/KetX136ymTj3.jpg
+2025-08-27 19:45:27 [INFO]: [deletePicture] Foto berhasil dihapus pictureId=pic-W3gMjRKbnghhGCho
+2025-08-27 19:45:27 [INFO]: [deleteAllPictures] Menghapus semua foto roomId=room-PPFjrg5gwRJwwDX9, total=2
+2025-08-27 19:45:27 [INFO]: [verifyUser] User authorized id=user-hC_5_g8gJcQvntIJ
+2025-08-27 19:45:27 [INFO]: [deleteRoom] Room deleted successfully roomId=room-PPFjrg5gwRJwwDX9
+2025-08-27 19:45:27 [INFO]: [verifyUser] User authorized id=user-hC_5_g8gJcQvntIJ
+2025-08-27 19:45:27 [INFO]: [CacheService] Cache deleted: users:id:user-hC_5_g8gJcQvntIJ, deletedCount=1
+2025-08-27 19:45:27 [INFO]: [CacheService] No cache keys found with prefix: users:all
+2025-08-27 19:45:50 [INFO]: [CacheService] No cache keys found with prefix: users:all
+2025-08-27 19:45:51 [INFO]: [updateLastLogin] Updated last login for userId=user-Hp5ntoL5t0MjY0Qh
+2025-08-27 19:45:51 [INFO]: [verifyUserCredential] User logged in successfully id=user-Hp5ntoL5t0MjY0Qh email=user2596@mail.com
+2025-08-27 19:45:51 [INFO]: [AuthenticationsService] Refresh token added with id auth-0VW1bFYJ-LzzgLC_
+2025-08-27 19:45:51 [INFO]: [verifyUser] User authorized id=user-Hp5ntoL5t0MjY0Qh
+2025-08-27 19:45:51 [WARN]: [CacheService] Cache miss for key: users:all:page=1&limit=10
+2025-08-27 19:45:51 [ERROR]: [CacheService] Failed to get cache for key users:all:page=1&limit=10: Cache tidak ditemukan
+2025-08-27 19:45:51 [INFO]: [getAllUsers] Cache miss for key: users:all:page=1&limit=10
+2025-08-27 19:45:51 [INFO]: [CacheService] Cache set: users:all:page=1&limit=10
+2025-08-27 19:45:51 [INFO]: [getAllUsers] Cache set for key: users:all:page=1&limit=10
+2025-08-27 19:45:51 [INFO]: [verifyUser] User authorized id=user-Hp5ntoL5t0MjY0Qh
+2025-08-27 19:45:51 [WARN]: [CacheService] Cache miss for key: users:id:user-Hp5ntoL5t0MjY0Qh
+2025-08-27 19:45:51 [ERROR]: [CacheService] Failed to get cache for key users:id:user-Hp5ntoL5t0MjY0Qh: Cache tidak ditemukan
+2025-08-27 19:45:51 [INFO]: [getUserbyId] Cache miss for key: users:id:user-Hp5ntoL5t0MjY0Qh
+2025-08-27 19:45:51 [INFO]: [CacheService] Cache set: users:id:user-Hp5ntoL5t0MjY0Qh
+2025-08-27 19:45:51 [INFO]: [verifyUser] User authorized id=user-Hp5ntoL5t0MjY0Qh
+2025-08-27 19:45:51 [INFO]: [CacheService] Cache deleted: users:id:user-Hp5ntoL5t0MjY0Qh, deletedCount=1
+2025-08-27 19:45:51 [INFO]: [CacheService] Cache keys deleted with prefix: users:all, count=1
+2025-08-27 19:45:51 [INFO]: [verifyUser] User authorized id=user-Hp5ntoL5t0MjY0Qh
+2025-08-27 19:45:51 [INFO]: [addProfile] Profil hotel berhasil ditambahkan dengan id hotel-CuN00c15zpT3
+2025-08-27 19:45:51 [INFO]: [getProfile] Profil hotel berhasil diambil
+2025-08-27 19:45:52 [INFO]: [updateProfile] Profil hotel berhasil diperbarui dengan id hotel-CuN00c15zpT3
+2025-08-27 19:45:52 [INFO]: [verifyUser] User authorized id=user-Hp5ntoL5t0MjY0Qh
+2025-08-27 19:45:52 [INFO]: [addRoom] Room added successfully: room-FEswvmg5IIFPGRe7
+2025-08-27 19:45:52 [INFO]: [verifyUser] User authorized id=user-Hp5ntoL5t0MjY0Qh
+2025-08-27 19:45:52 [INFO]: [StorageService] Created subfolder at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures\room-FEswvmg5IIFPGRe7
+2025-08-27 19:45:52 [INFO]: [StorageService] File written successfully: room-FEswvmg5IIFPGRe7/hqnB6i0s301c.jpg
+2025-08-27 19:45:52 [INFO]: [addPicture] Foto berhasil ditambahkan roomId=room-FEswvmg5IIFPGRe7, pictureId=pic-6b2xgs0NxfhJ57ob
+2025-08-27 19:45:52 [INFO]: [StorageService] File written successfully: room-FEswvmg5IIFPGRe7/8n3-C2_xy5Hn.jpg
+2025-08-27 19:45:52 [INFO]: [addPicture] Foto berhasil ditambahkan roomId=room-FEswvmg5IIFPGRe7, pictureId=pic-pNCtxGlFuQ5u5BHR
+2025-08-27 19:45:52 [INFO]: [StorageService] File written successfully: room-FEswvmg5IIFPGRe7/ClqQfHIdPoOy.jpg
+2025-08-27 19:45:52 [INFO]: [addPicture] Foto berhasil ditambahkan roomId=room-FEswvmg5IIFPGRe7, pictureId=pic-XRXAvxGqFGez_3-0
+2025-08-27 19:45:52 [INFO]: [verifyUser] User authorized id=user-Hp5ntoL5t0MjY0Qh
+2025-08-27 19:45:52 [INFO]: [getRooms] Data fetched from DB
+2025-08-27 19:45:52 [INFO]: [verifyUser] User authorized id=user-Hp5ntoL5t0MjY0Qh
+2025-08-27 19:45:52 [INFO]: [getRoomById] Room fetched successfully roomId=room-FEswvmg5IIFPGRe7
+2025-08-27 19:45:52 [INFO]: [verifyUser] User authorized id=user-Hp5ntoL5t0MjY0Qh
+2025-08-27 19:45:52 [INFO]: [editRoom] Room updated successfully roomId=room-FEswvmg5IIFPGRe7
+2025-08-27 19:45:52 [INFO]: [verifyUser] User authorized id=user-Hp5ntoL5t0MjY0Qh
+2025-08-27 19:45:52 [INFO]: [getPictures] Mengambil 3 foto untuk roomId=room-FEswvmg5IIFPGRe7
+2025-08-27 19:45:53 [INFO]: Availability generated until 2026-02-27
+2025-08-27 19:45:53 [INFO]: [addBooking] Start booking process for user user-Hp5ntoL5t0MjY0Qh and room room-FEswvmg5IIFPGRe7
+2025-08-27 19:45:53 [INFO]: [lockAndCheck] Rooms available roomId=room-FEswvmg5IIFPGRe7, totalNights=1, totalPrice=9000000
+2025-08-27 19:45:53 [INFO]: [addBooking] Room room-FEswvmg5IIFPGRe7 locked and checked, totalPrice: 9000000
+2025-08-27 19:45:53 [WARN]: [CacheService] Cache miss for key: users:id:user-Hp5ntoL5t0MjY0Qh
+2025-08-27 19:45:53 [ERROR]: [CacheService] Failed to get cache for key users:id:user-Hp5ntoL5t0MjY0Qh: Cache tidak ditemukan
+2025-08-27 19:45:53 [INFO]: [getUserbyId] Cache miss for key: users:id:user-Hp5ntoL5t0MjY0Qh
+2025-08-27 19:45:54 [INFO]: [CacheService] Cache set: users:id:user-Hp5ntoL5t0MjY0Qh
+2025-08-27 19:45:54 [INFO]: [getRoomById] Room fetched successfully roomId=room-FEswvmg5IIFPGRe7
+2025-08-27 19:45:54 [INFO]: [addBooking] Booking inserted with ID booking-ZUjzLAQd5giTbZVI
+2025-08-27 19:45:54 [INFO]: [reduceAvailability] Reduced availability roomId=room-FEswvmg5IIFPGRe7 date=2025-10-12 by=1
+2025-08-27 19:45:54 [INFO]: [reduceAvailability] Reduced availability roomId=room-FEswvmg5IIFPGRe7 date=2025-10-13 by=1
+2025-08-27 19:45:54 [INFO]: [addBooking] Reduced availability for room room-FEswvmg5IIFPGRe7
+2025-08-27 19:45:54 [INFO]: [addBooking] Active log created for booking booking-ZUjzLAQd5giTbZVI
+2025-08-27 19:45:54 [INFO]: [createTransaction] Transaksi berhasil dibuat: orderId=booking-ZUjzLAQd5giTbZVI, redirectUrl=https://app.sandbox.midtrans.com/snap/v4/redirection/19d5417d-491b-4d47-9c4f-0968a2a29c67
+2025-08-27 19:45:54 [INFO]: [addBooking] Midtrans transaction created for booking booking-ZUjzLAQd5giTbZVI
+2025-08-27 19:45:54 [INFO]: [addBooking] Snap token updated for booking booking-ZUjzLAQd5giTbZVI
+2025-08-27 19:45:54 [INFO]: [createTransactionRecord] Transaction record created successfully bookingId=booking-ZUjzLAQd5giTbZVI trxId=trx-ZaRIObb0dVTTed9m
+2025-08-27 19:45:54 [INFO]: [addBooking] Transaction record created for booking booking-ZUjzLAQd5giTbZVI
+2025-08-27 19:45:54 [INFO]: [CacheService] No cache keys found with prefix: bookings:user:user-Hp5ntoL5t0MjY0Qh:
+2025-08-27 19:45:54 [INFO]: [updateBookingStatus] Booking updated: orderId=booking-ZUjzLAQd5giTbZVI, paymentStatus=settlement, bookingStatus=confirmed
+2025-08-27 19:45:54 [INFO]: [verifyUser] User authorized id=user-Hp5ntoL5t0MjY0Qh
+2025-08-27 19:45:54 [INFO]: [CacheService] Cache hit for key: bookings:service:{"page":1,"limit":50}
+2025-08-27 19:45:54 [INFO]: [getBookingsService] Cache hit for key: bookings:service:{"page":1,"limit":50}
+2025-08-27 19:45:54 [INFO]: [verifyUser] User authorized id=user-Hp5ntoL5t0MjY0Qh
+2025-08-27 19:45:54 [WARN]: [CacheService] Cache miss for key: booking:booking-ZUjzLAQd5giTbZVI
+2025-08-27 19:45:54 [ERROR]: [CacheService] Failed to get cache for key booking:booking-ZUjzLAQd5giTbZVI: Cache tidak ditemukan
+2025-08-27 19:45:54 [INFO]: [CacheService] Cache set: booking:booking-ZUjzLAQd5giTbZVI
+2025-08-27 19:45:54 [INFO]: [getBookingById] Booking fetched: targetId=booking-ZUjzLAQd5giTbZVI
+2025-08-27 19:45:54 [INFO]: [verifyUser] User authorized id=user-Hp5ntoL5t0MjY0Qh
+2025-08-27 19:45:54 [INFO]: [CacheService] Cache hit for key: bookings:service:{"status":"pending_payment","page":1,"limit":50}
+2025-08-27 19:45:54 [INFO]: [getBookingsService] Cache hit for key: bookings:service:{"status":"pending_payment","page":1,"limit":50}
+2025-08-27 19:45:54 [INFO]: [verifyUser] User authorized id=user-Hp5ntoL5t0MjY0Qh
+2025-08-27 19:45:54 [INFO]: [CacheService] Cache hit for key: bookings:service:{"guestName":"Dita","page":1,"limit":50}
+2025-08-27 19:45:54 [INFO]: [getBookingsService] Cache hit for key: bookings:service:{"guestName":"Dita","page":1,"limit":50}
+2025-08-27 19:45:54 [INFO]: [verifyUser] User authorized id=user-Hp5ntoL5t0MjY0Qh
+2025-08-27 19:45:54 [INFO]: [CacheService] Cache hit for key: bookings:service:{"checkInDate":"2025-10-12","page":1,"limit":50}
+2025-08-27 19:45:54 [INFO]: [getBookingsService] Cache hit for key: bookings:service:{"checkInDate":"2025-10-12","page":1,"limit":50}
+2025-08-27 19:45:54 [INFO]: [verifyUser] User authorized id=user-Hp5ntoL5t0MjY0Qh
+2025-08-27 19:45:54 [INFO]: [CacheService] Cache hit for key: bookings:service:{"checkOutDate":"2025-10-13","page":1,"limit":50}
+2025-08-27 19:45:54 [INFO]: [getBookingsService] Cache hit for key: bookings:service:{"checkOutDate":"2025-10-13","page":1,"limit":50}
+2025-08-27 19:45:54 [INFO]: [verifyUser] User authorized id=user-Hp5ntoL5t0MjY0Qh
+2025-08-27 19:45:54 [INFO]: [CacheService] Cache hit for key: bookings:service:{"checkInDate":"2025-10-12","checkInDateEnd":"2025-10-13","page":1,"limit":50}
+2025-08-27 19:45:54 [INFO]: [getBookingsService] Cache hit for key: bookings:service:{"checkInDate":"2025-10-12","checkInDateEnd":"2025-10-13","page":1,"limit":50}
+2025-08-27 19:45:55 [INFO]: [getPendingBookingsByUser] Fetched pending bookings for user user-Hp5ntoL5t0MjY0Qh, count=0
+2025-08-27 19:45:55 [INFO]: [CacheService] Cache hit for key: booking:booking-ZUjzLAQd5giTbZVI
+2025-08-27 19:45:55 [INFO]: [verifyUser] User authorized id=user-Hp5ntoL5t0MjY0Qh
+2025-08-27 19:45:55 [INFO]: [checkInBookingService] Booking checked-in: bookingId=booking-ZUjzLAQd5giTbZVI, userId=user-Hp5ntoL5t0MjY0Qh
+2025-08-27 19:45:55 [INFO]: [verifyUser] User authorized id=user-Hp5ntoL5t0MjY0Qh
+2025-08-27 19:45:55 [INFO]: [checkOutBookingService] Booking checked-out: bookingId=booking-ZUjzLAQd5giTbZVI, userId=user-Hp5ntoL5t0MjY0Qh
+2025-08-27 19:45:55 [ERROR]: [generateInvoice] Failed for bookingId=booking-X4QEgjEnfRhNrRXl, userId=user-Hp5ntoL5t0MjY0Qh: Booking tidak ditemukan atau belum dibayar
+2025-08-27 19:45:55 [INFO]: [getCompletedBookingForUserRoom] Fetched completed booking: userId=user-Hp5ntoL5t0MjY0Qh, roomId=room-FEswvmg5IIFPGRe7, bookingId=booking-ZUjzLAQd5giTbZVI
+2025-08-27 19:45:55 [INFO]: [getCompletedBookingForUserRoom] Fetched completed booking: userId=user-Hp5ntoL5t0MjY0Qh, roomId=room-FEswvmg5IIFPGRe7, bookingId=booking-ZUjzLAQd5giTbZVI
+2025-08-27 19:45:55 [INFO]: User user-Hp5ntoL5t0MjY0Qh berhasil menambahkan review review-ARoD1pRLk0yudK1t untuk room room-FEswvmg5IIFPGRe7
+2025-08-27 19:45:55 [INFO]: [getReviewById] Review review-ARoD1pRLk0yudK1t berhasil diambil
+2025-08-27 19:45:55 [INFO]: Ambil 1 review untuk room room-FEswvmg5IIFPGRe7 halaman 1
+2025-08-27 19:45:55 [INFO]: [editReview] Review review-ARoD1pRLk0yudK1t berhasil diubah oleh user user-Hp5ntoL5t0MjY0Qh
+2025-08-27 19:45:55 [INFO]: [deleteReview] Review review-ARoD1pRLk0yudK1t berhasil dihapus oleh user user-Hp5ntoL5t0MjY0Qh
+2025-08-27 19:45:55 [ERROR]: [cancelBookingService] Failed for bookingId=booking-0TSLZ6KLwEj2elWB, userId=user-Hp5ntoL5t0MjY0Qh: Booking tidak ditemukan atau bukan milik Anda
+2025-08-27 19:45:56 [INFO]: [verifyUser] User authorized id=user-Hp5ntoL5t0MjY0Qh
+2025-08-27 19:45:56 [INFO]: [getPictures] Mengambil 3 foto untuk roomId=room-FEswvmg5IIFPGRe7
+2025-08-27 19:45:56 [INFO]: [StorageService] File deleted successfully: room-FEswvmg5IIFPGRe7/hqnB6i0s301c.jpg
+2025-08-27 19:45:56 [INFO]: [deletePicture] Foto berhasil dihapus pictureId=pic-6b2xgs0NxfhJ57ob
+2025-08-27 19:45:56 [INFO]: [deleteAllPictures] Menghapus semua foto roomId=room-FEswvmg5IIFPGRe7, total=2
+2025-08-27 19:45:56 [INFO]: [verifyUser] User authorized id=user-Hp5ntoL5t0MjY0Qh
+2025-08-27 19:45:56 [INFO]: [deleteRoom] Room deleted successfully roomId=room-FEswvmg5IIFPGRe7
+2025-08-27 19:45:56 [INFO]: [verifyUser] User authorized id=user-Hp5ntoL5t0MjY0Qh
+2025-08-27 19:45:56 [INFO]: [CacheService] Cache deleted: users:id:user-Hp5ntoL5t0MjY0Qh, deletedCount=1
+2025-08-27 19:45:56 [INFO]: [CacheService] No cache keys found with prefix: users:all
+2025-08-27 19:48:05 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 19:48:05 [INFO]: [CacheService] Redis client connected
+2025-08-27 19:48:24 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 19:48:24 [INFO]: [CacheService] Redis client connected
+2025-08-27 19:49:45 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 19:49:46 [INFO]: [CacheService] Redis client connected
+2025-08-27 19:50:09 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 19:50:10 [INFO]: [CacheService] Redis client connected
+2025-08-27 19:50:31 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 19:50:31 [INFO]: [CacheService] Redis client connected
+2025-08-27 19:50:53 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 19:50:54 [INFO]: [CacheService] Redis client connected
+2025-08-27 19:50:58 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 19:50:59 [INFO]: [CacheService] Redis client connected
+2025-08-27 19:51:02 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 19:51:02 [INFO]: [CacheService] Redis client connected
+2025-08-27 19:51:23 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 19:51:23 [INFO]: [CacheService] Redis client connected
+2025-08-27 19:51:38 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 19:51:38 [INFO]: [CacheService] Redis client connected
+2025-08-27 19:52:58 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 19:52:59 [INFO]: [CacheService] Redis client connected
+2025-08-27 19:53:38 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 19:53:38 [INFO]: [CacheService] Redis client connected
+2025-08-27 19:54:25 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 19:54:25 [INFO]: [CacheService] Redis client connected
+2025-08-27 19:54:31 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 19:54:31 [INFO]: [CacheService] Redis client connected
+2025-08-27 19:54:45 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 19:54:45 [INFO]: [CacheService] Redis client connected
+2025-08-27 19:54:59 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 19:54:59 [INFO]: [CacheService] Redis client connected
+2025-08-27 19:55:10 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 19:55:11 [INFO]: [CacheService] Redis client connected
+2025-08-27 19:56:46 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 19:56:46 [INFO]: [CacheService] Redis client connected
+2025-08-27 19:57:12 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 19:57:12 [INFO]: [CacheService] Redis client connected
+2025-08-27 19:57:33 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 19:57:34 [INFO]: [CacheService] Redis client connected
+2025-08-27 19:58:34 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 19:58:34 [INFO]: [CacheService] Redis client connected
+2025-08-27 19:59:08 [INFO]: [StorageService] Base folder exists at E:\Project\hotel-boolong-api\src\api\room-pictures\pictures
+2025-08-27 19:59:09 [INFO]: [CacheService] Redis client connected

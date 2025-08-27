@@ -78,5 +78,13 @@ export const routes = (handler) => [
   options: {
     auth: 'booking_hotel_jwt',
   },
-}
+  },
+  {
+    method: 'PATCH',
+    path: '/bookings/{bookingId}/cancel',
+    handler: handler.patchCancel,
+    options: {
+      auth: 'booking_hotel_jwt',
+    },
+  }
 ];

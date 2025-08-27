@@ -111,4 +111,17 @@ export class UsersHandler{
         }
       };
   }
+
+  async changeRole(request) {
+    const { id: userId } = request.auth.credentials;
+    console.log('ROK', userId)
+    const id = await this._service.putRole(userId)
+
+    return{
+      status: 'success',
+      data: {
+        id
+      }
+    }
+  }
 }

@@ -1,5 +1,5 @@
 import fetch from 'node-fetch'; // pastikan node >= 18, kalau versi lama install node-fetch
-import logger from '../../utils/logger.js';
+import { logger } from '../../utils/logger.js';
 
 export class MidtransService {
   constructor() {

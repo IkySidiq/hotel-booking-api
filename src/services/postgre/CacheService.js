@@ -1,6 +1,5 @@
 import redis from "redis";
-import logger from "../../utils/logger.js"; // pastikan path logger benar
-import logger from '../../utils/logger.js';
+import { logger } from '../../utils/logger.js';
 
 export class CacheService {
   constructor() {

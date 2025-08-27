@@ -2,12 +2,11 @@ import { nanoid } from 'nanoid';
 import { InvariantError } from '../../exceptions/InvariantError.js';
 import { NotFoundError } from '../../exceptions/NotFoundError.js';
 import { mapDBToModel } from '../../utils/index.js';
-import logger from '../../utils/logger.js';
+import { logger } from '../../utils/logger.js';
 
 export class RoomsService {
-  constructor(pool, cacheService) {
+  constructor(pool) {
     this._pool = pool;
-    this._pool = cacheService;
   }
 
   async addRoom({ userId, roomType, pricePerNightNum, capacityNum, totalRoomsNum, description }) {
@@ -53,7 +52,6 @@ export class RoomsService {
       }
 
       await client.query('COMMIT');
-      await this._cacheService.delete('rooms:all');
 
       logger.info(`[addRoom] Room added successfully: ${roomId}`);
       return { id: roomId };
@@ -90,15 +88,6 @@ export class RoomsService {
       }
 
       const whereClause = conditions.length ? `WHERE ${conditions.join(' AND ')}` : '';
-      const cacheKey = `rooms:${JSON.stringify({ roomType, minPrice, maxPrice, capacity, page, limit })}`;
-
-      try {
-        const cacheResult = await this._cacheService.get(cacheKey);
-        logger.info('[getRooms] Cache hit');
-        return { source: 'cache', ...JSON.parse(cacheResult) };
-      } catch {
-        logger.info('[getRooms] Cache miss, querying DB');
-      }
 
       const query = {
         text: `
@@ -129,11 +118,8 @@ export class RoomsService {
       const totalItems = parseInt(countResult.rows[0].count, 10);
       const totalPages = Math.ceil(totalItems / limit);
 
-      const responseData = { data: resultMap, page, limit, totalItems, totalPages };
-      await this._cacheService.set(cacheKey, JSON.stringify(responseData), 1800);
-
       logger.info('[getRooms] Data fetched from DB');
-      return { source: 'db', ...responseData };
+      return { data: resultMap, page, limit, totalItems, totalPages };
     } catch (error) {
       logger.error(`[getRooms] Error: ${error.message}`);
       throw new Error('Gagal mengambil daftar kamar');
@@ -142,17 +128,10 @@ export class RoomsService {
 
   async getRoomById({ roomId }) {
     try {
-      const cacheKey = `room:${roomId}`;
-
-      try {
-        const cacheResult = await this._cacheService.get(cacheKey);
-        logger.info(`[getRoomById] Cache hit roomId=${roomId}`);
-        return { source: "cache", ...JSON.parse(cacheResult) };
-      } catch {
-        logger.info(`[getRoomById] Cache miss roomId=${roomId}`);
-      }
-
-      const query = { text: `SELECT id, room_type, price_per_night, capacity, total_rooms, description, created_at, updated_at FROM rooms WHERE id = $1`, values: [roomId] };
+      const query = { 
+        text: `SELECT id, room_type, price_per_night, capacity, total_rooms, description, created_at, updated_at FROM rooms WHERE id = $1`, 
+        values: [roomId] 
+      };
       const result = await this._pool.query(query);
       const resultMap = result.rows.map(mapDBToModel.roomsTable);
 
@@ -162,7 +141,11 @@ export class RoomsService {
       }
 
       const room = resultMap[0];
-      const queryPic = { text: `SELECT id, room_id, path, created_at, updated_at FROM room_pictures WHERE room_id = $1 ORDER BY created_at ASC`, values: [roomId] };
+
+      const queryPic = { 
+        text: `SELECT id, room_id, path, created_at, updated_at FROM room_pictures WHERE room_id = $1 ORDER BY created_at ASC`, 
+        values: [roomId] 
+      };
       const resultPic = await this._pool.query(queryPic);
       const resultPicMap = resultPic.rows.map(mapDBToModel.roomPicturesTable);
 
@@ -172,10 +155,9 @@ export class RoomsService {
       }
 
       room.pictures = resultPicMap;
-      await this._cacheService.set(cacheKey, JSON.stringify(room), 1800);
 
       logger.info(`[getRoomById] Room fetched successfully roomId=${roomId}`);
-      return { source: "db", ...room };
+      return room;
     } catch (error) {
       logger.error(`[getRoomById] Error roomId=${roomId}: ${error.message}`);
       throw error;
@@ -208,8 +190,6 @@ export class RoomsService {
       }
 
       await client.query('COMMIT');
-      await this._cacheService.deletePrefix("rooms:");
-      await this._cacheService.delete(`room:${targetId}`);
 
       logger.info(`[editRoom] Room updated successfully roomId=${targetId}`);
       return { roomId: result.rows[0].id };
@@ -240,8 +220,6 @@ export class RoomsService {
       }
 
       await client.query('COMMIT');
-      await this._cacheService.deletePrefix("rooms:");
-      await this._cacheService.delete(`room:${roomId}`);
 
       logger.info(`[deleteRoom] Room deleted successfully roomId=${roomId}`);
       return { roomId: result.rows[0].id };

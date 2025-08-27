@@ -2,7 +2,7 @@ import { nanoid } from 'nanoid';
 import { InvariantError } from '../../exceptions/InvariantError.js';
 import { NotFoundError } from '../../exceptions/NotFoundError.js';
 import { AuthorizationError } from '../../exceptions/AuthorizationError.js';
-import logger from '../../utils/logger.js';
+import { logger } from '../../utils/logger.js';
 
 export class ReviewsService {
   constructor(pool, bookingsService) {

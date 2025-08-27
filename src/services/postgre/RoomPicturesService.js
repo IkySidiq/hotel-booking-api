@@ -1,7 +1,7 @@
 import { nanoid } from 'nanoid';
 import { InvariantError } from '../../exceptions/InvariantError.js';
 import { NotFoundError } from '../../exceptions/NotFoundError.js';
-import logger from '../../utils/logger.js';
+import { logger } from '../../utils/logger.js';
 
 export class RoomPicturesService {
   constructor(pool) {

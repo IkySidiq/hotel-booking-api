@@ -1,7 +1,6 @@
 import { nanoid } from 'nanoid';
 import { InvariantError } from '../../exceptions/InvariantError.js';
-import logger from '../../utils/logger.js';
-
+import { logger } from '../../utils/logger.js';
 
 export class AuthenticationsService {
   constructor(pool) {

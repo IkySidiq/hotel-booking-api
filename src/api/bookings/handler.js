@@ -120,7 +120,7 @@ export class BookingsHandler {
   async midtransNotificationHandler(request, h) {
     try {
       const { transaction_status: transactionStatus, order_id: orderId, fraud_status: fraudStatus } = request.payload;
-
+      console.log(transactionStatus, fraudStatus, orderId)
       // update status booking pakai service
       const result = await this._service.updateBookingStatus({ transactionStatus, orderId, fraudStatus });
 
@@ -192,6 +192,17 @@ export class BookingsHandler {
         status: 'error',
         message: err.message
       }).code(500);
+    }
+  }
+
+  async patchCancel(request) {
+    const { id: userId } = request.auth.credentials;
+    const { bookingId } = request.params;
+    
+    const id = await this._service.editCancel(userId, bookingId)
+
+    return {
+      id
     }
   }
 }

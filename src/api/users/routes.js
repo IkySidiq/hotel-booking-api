@@ -36,4 +36,12 @@ export const routes = (handler) => [
       auth: 'booking_hotel_jwt'
     }
   },
+  {
+    method: 'PATCH',
+    path: '/users/change-role',
+    handler: handler.changeRole,
+    options: {
+      auth: 'booking_hotel_jwt'
+    }
+  },
 ];

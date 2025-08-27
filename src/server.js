@@ -2,6 +2,7 @@ import Hapi from '@hapi/hapi';
 import Jwt from '@hapi/jwt';
 import Inert from '@hapi/inert';
 import path from 'path';
+import rateLimit from 'hapi-rate-limit';
 import { ClientError } from './exceptions/ClientError.js';
 import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
@@ -73,14 +74,14 @@ import { MidtransService } from './services/postgre/MidtransService.js';
 
 const init = async() => {
   const cacheService = new CacheService();
-  const usersService = new UsersService(pool);
+  const usersService = new UsersService(pool, cacheService);
   const authenticationsService = new AuthenticationsService(pool);
-  const roomsService = new RoomsService(pool, cacheService);
+  const roomsService = new RoomsService(pool);
   const roomPicturesService = new RoomPicturesService(pool);
   const roomAvailabilityService = new RoomsAvailabilityService(pool);
   const midtransService = new MidtransService(pool);
-  const transactionsService = new TransactionsService(pool);
-  const bookingsService = new BookingsService(pool, roomAvailabilityService, usersService, roomsService, midtransService, transactionsService);
+  const transactionsService = new TransactionsService(pool, cacheService);
+  const bookingsService = new BookingsService(pool, roomAvailabilityService, usersService, roomsService, midtransService, transactionsService, cacheService);
   const reviewsService = new ReviewsService(pool, bookingsService);
   const hotelProfileService = new HotelProfileService(pool);
   const storageService = new StorageService(path.resolve(__dirname, 'api/room-pictures/pictures'));
@@ -95,7 +96,18 @@ const init = async() => {
     },
   });
 
-  await server.register([Jwt, Inert]);
+  await server.register([
+    Jwt,
+    Inert,
+    {
+      plugin: rateLimit,
+      options: {
+        userLimit: 100,
+        userCache: { expiresIn: 60 * 1000 },
+        trustProxy: true
+      }
+    }
+  ]);
 
   server.auth.strategy('booking_hotel_jwt', 'jwt', {
     keys: process.env.ACCESS_TOKEN_KEY,

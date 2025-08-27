@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { nanoid } from 'nanoid';
-import logger from '../../utils/logger.js';
+import { logger } from '../../utils/logger.js';
 
 export class StorageService {
   constructor(baseFolder) {

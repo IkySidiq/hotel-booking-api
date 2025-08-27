@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import logger from '../../utils/logger.js';
+import { logger } from '../../utils/logger.js';
 import { NotFoundError } from '../../exceptions/NotFoundError.js';
 import { InvariantError } from '../../exceptions/InvariantError.js';
 import { nanoid } from 'nanoid';

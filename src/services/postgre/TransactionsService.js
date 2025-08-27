@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import { nanoid } from 'nanoid';
-import logger from '../../utils/logger.js';
+import { logger } from '../../utils/logger.js';
 
 export class TransactionsService {
   constructor(pool) {
