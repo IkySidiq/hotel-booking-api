@@ -1,5 +1,4 @@
 export const routes = (handler) => [
-  // Tambah kamar
   {
     method: 'POST',
     path: '/rooms',
@@ -8,8 +7,6 @@ export const routes = (handler) => [
       auth: 'booking_hotel_jwt',
     },
   },
-
-  // Ambil semua kamar (dengan filter & pagination)
   {
     method: 'GET',
     path: '/rooms',
@@ -18,8 +15,6 @@ export const routes = (handler) => [
       auth: 'booking_hotel_jwt',
     },
   },
-
-  // Ambil kamar berdasarkan ID
   {
     method: 'GET',
     path: '/rooms/{id}',
@@ -28,8 +23,6 @@ export const routes = (handler) => [
       auth: 'booking_hotel_jwt',
     },
   },
-
-  // Edit kamar
   {
     method: 'PUT',
     path: '/rooms/{id}',
@@ -38,8 +31,6 @@ export const routes = (handler) => [
       auth: 'booking_hotel_jwt',
     },
   },
-
-  // Hapus kamar (soft delete)
   {
     method: 'DELETE',
     path: '/rooms/{id}',

@@ -10,7 +10,7 @@ export const routes = (handler) => [
         multipart: true,
         output: 'stream',
         parse: true,
-        maxBytes: 10485760, // contoh 10MB max
+        maxBytes: 10485760,
       },
     },
   },
@@ -35,7 +35,7 @@ export const routes = (handler) => [
       path: '/rooms/{roomId}/pictures',
       handler: handler.deleteAllPicturesHandler,
       options: {
-        auth: 'booking_hotel_jwt', // kalau memang pakai autentikasi
+        auth: 'booking_hotel_jwt',
       },
   },
   {

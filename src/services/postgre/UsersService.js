@@ -4,10 +4,12 @@ import { InvariantError } from '../../exceptions/InvariantError.js';
 import { AuthenticationError } from '../../exceptions/AuthenticationError.js';
 import { AuthorizationError } from '../../exceptions/AuthorizationError.js';
 import { NotFoundError } from '../../exceptions/NotFoundError.js';
+import { logger } from '../../utils/logger.js';
 
 export class UsersService {
-  constructor(pool) {
+  constructor(pool, cacheService) {
     this._pool = pool;
+    this._cacheService = cacheService
   }
 
   async addUserService({ fullname, email, contactNumber, password }) {
@@ -19,7 +21,6 @@ export class UsersService {
     const client = await this._pool.connect();
     try {
       const passwordHash = await bcrypt.hash(password, 10);
-
       await client.query('BEGIN');
 
       const query = {
@@ -54,10 +55,10 @@ export class UsersService {
 
       await client.query('COMMIT');
 
-      return {
-        id: targetId,
-        logId: resultOfActiveLogQuery.rows[0].id,
-      };
+      // Hapus cache semua users karena ada data baru
+      await this._cacheService.deletePrefix('users:all');
+
+      return { id: targetId, logId: resultOfActiveLogQuery.rows[0].id };
     } catch (error) {
       await client.query('ROLLBACK');
       throw error;
@@ -67,14 +68,22 @@ export class UsersService {
   }
 
   async getAllUsers(page = 1, limit = 10) {
+    const cacheKey = `users:all:page=${page}&limit=${limit}`;
+    try {
+      const cached = await this._cacheService.get(cacheKey);
+      logger.info(`[getAllUsers] Cache hit for key: ${cacheKey}`);
+      return JSON.parse(cached);
+    } catch {
+      logger.info(`[getAllUsers] Cache miss for key: ${cacheKey}`);
+    }
+
     try {
       const offset = (page - 1) * limit;
       const conditions = ['is_active = true'];
       const values = [];
-
       const paramCount = values.length;
 
-      values.push(limit); 
+      values.push(limit);
       values.push(offset);
 
       const whereClause = conditions.length ? `WHERE ${conditions.join(' AND ')}` : '';
@@ -98,41 +107,48 @@ export class UsersService {
         text: `SELECT COUNT(*) FROM users ${whereClause}`,
         values: values.slice(0, paramCount),
       };
-
       const countResult = await this._pool.query(countQuery);
       const totalItems = parseInt(countResult.rows[0].count, 10);
       const totalPages = Math.ceil(totalItems / limit);
 
-      return {
-        data,
-        page,
-        limit,
-        totalItems,
-        totalPages,
-      };
+      const responseData = { data, page, limit, totalItems, totalPages };
+
+      // simpan ke cache
+      await this._cacheService.set(cacheKey, JSON.stringify(responseData), 1800); // 30 menit
+      logger.info(`[getAllUsers] Cache set for key: ${cacheKey}`);
+
+      return responseData;
     } catch (error) {
-      console.error('Database Error (getAllUsers):', error);
       throw new Error('Gagal mengambil data pengguna');
     }
   }
 
   async getUserbyId({ targetId }) {
+    const cacheKey = `users:id:${targetId}`;
+    try {
+      const cached = await this._cacheService.get(cacheKey);
+      logger.info(`[getUserbyId] Cache hit for key: ${cacheKey}`);
+      return JSON.parse(cached);
+    } catch {
+      logger.info(`[getUserbyId] Cache miss for key: ${cacheKey}`);
+    }
+
     try {
       const query = {
         text: `SELECT id, fullname, email, contact_number as "contactNumber", role, last_login, created_at, updated_at
-              FROM users WHERE id = $1`,
+               FROM users WHERE id = $1`,
         values: [targetId],
       };
 
       const result = await this._pool.query(query);
-
       if (!result.rows.length) {
         throw new NotFoundError('User tidak ditemukan');
       }
 
-      return result.rows[0]; 
+      const user = result.rows[0];
+      await this._cacheService.set(cacheKey, JSON.stringify(user), 1800);
+      return user;
     } catch (error) {
-      console.error('Database Error (getUserbyId()):', error);
       throw new Error('Gagal mengambil data pengguna');
     }
   }
@@ -142,26 +158,20 @@ export class UsersService {
     const createdAt = new Date().toISOString();
     const updatedAt = createdAt;
 
-
     const client = await this._pool.connect();
-    try{
+    try {
       const passwordHash = await bcrypt.hash(password, 10);
-
       await client.query('BEGIN');
-      
+
       const query = {
         text: 'UPDATE users SET fullname = $1, email = $2, contact_number = $3, password_hash = $4, updated_at = $5 WHERE id = $6 RETURNING id',
-        values: [ fullname, email, contactNumber, passwordHash, updatedAt, targetId]
+        values: [fullname, email, contactNumber, passwordHash, updatedAt, targetId],
       };
 
       const result = await client.query(query);
-
-      if (!result.rows.length) {
-        throw new InvariantError('Data tidak ditemukan. Gagal untuk mengedit');
-      }
+      if (!result.rows.length) throw new InvariantError('Data tidak ditemukan. Gagal untuk mengedit');
 
       const resultTargetId = result.rows[0].id;
-
       const activeLogsQuery = {
         text: `
           INSERT INTO active_logs (id, user_id, action, target_table, target_id, performed_at)
@@ -172,20 +182,17 @@ export class UsersService {
       };
 
       const resultOfLogQuery = await client.query(activeLogsQuery);
-
-      if (!resultOfLogQuery.rows.length) {
-        throw new InvariantError('Gagal mencatat log aktivitas');
-      }
+      if (!resultOfLogQuery.rows.length) throw new InvariantError('Gagal mencatat log aktivitas');
 
       await client.query('COMMIT');
 
-      return {
-        id: resultTargetId,
-        logId: resultOfLogQuery.rows[0].id
-      };
-    } catch(error) {
+      // Hapus cache user ini dan daftar semua users
+      await this._cacheService.delete(`users:id:${targetId}`);
+      await this._cacheService.deletePrefix('users:all');
+
+      return { id: resultTargetId, logId: resultOfLogQuery.rows[0].id };
+    } catch (error) {
       await client.query('ROLLBACK');
-      console.error('Database Error(editUser):', error);
       throw new Error('Gagal mengedit data pengguna');
     } finally {
       client.release();
@@ -195,27 +202,22 @@ export class UsersService {
   async deleteUser({ userId, targetId }) {
     const activeLogId = `log-${nanoid(16)}`;
     const now = new Date().toISOString();
-
     const client = await this._pool.connect();
     try {
       await client.query('BEGIN');
 
       const query = {
         text: `UPDATE users
-              SET is_active = FALSE, updated_at = $1
-              WHERE id = $2 AND is_active = TRUE
-              RETURNING id`,
+               SET is_active = FALSE, updated_at = $1
+               WHERE id = $2 AND is_active = TRUE
+               RETURNING id`,
         values: [now, targetId],
       };
 
       const result = await client.query(query);
-
-      if (!result.rows.length) {
-        throw new InvariantError('Data tidak ditemukan atau sudah dihapus');
-      }
+      if (!result.rows.length) throw new InvariantError('Data tidak ditemukan atau sudah dihapus');
 
       const resultTargetId = result.rows[0].id;
-
       const activeLogsQuery = {
         text: `
           INSERT INTO active_logs (id, user_id, action, target_table, target_id, performed_at)
@@ -226,19 +228,17 @@ export class UsersService {
       };
 
       const resultOfLogQuery = await client.query(activeLogsQuery);
-
-      if (!resultOfLogQuery.rows.length) {
-        throw new InvariantError('Gagal mencatat log aktivitas');
-      }
+      if (!resultOfLogQuery.rows.length) throw new InvariantError('Gagal mencatat log aktivitas');
 
       await client.query('COMMIT');
 
-      return {
-        id: resultTargetId,
-      };
+      // Hapus cache user ini dan daftar semua users
+      await this._cacheService.delete(`users:id:${targetId}`);
+      await this._cacheService.deletePrefix('users:all');
+
+      return { id: resultTargetId };
     } catch (error) {
       await client.query('ROLLBACK');
-      console.error('Database Error(deleteUser):', error);
       throw new Error('Gagal menghapus data pengguna');
     } finally {
       client.release();
@@ -246,53 +246,78 @@ export class UsersService {
   }
 
   async verifyUserCredential({ email, password }) {
-    const query = {
-      text: 'SELECT id, password_hash FROM users WHERE email = $1',
-      values: [email]
-    };
+    try {
+      const query = {
+        text: 'SELECT id, password_hash FROM users WHERE email = $1',
+        values: [email],
+      };
+      
+      const result = await this._pool.query(query);
+      if (!result.rows.length) {
+        logger.warn(`[verifyUserCredential] Invalid credentials email=${email}`);
+        throw new AuthenticationError('Kredensial yang anda berikan salah');
+      }
 
-    const result = await this._pool.query(query);
-    if (!result.rows.length) {
-      throw new AuthenticationError('Kredensial yang anda berikan salah');
+      const { id, password_hash: hashedPassword } = result.rows[0];
+      const match = await bcrypt.compare(password, hashedPassword);
+    
+      if (!match) {
+        logger.warn(`[verifyUserCredential] Invalid credentials email=${email}`);
+        throw new AuthenticationError('Kredensial yang anda berikan salah');
+      }
+
+      await this.updateLastLogin(id);
+      logger.info(`[verifyUserCredential] User logged in successfully id=${id} email=${email}`);
+      return id;
+    } catch (error) {
+      logger.error(`[verifyUserCredential] Error verifying credentials email=${email}: ${error.message}`);
+      throw error;
     }
-
-    const { id, password_hash: hashedPassword  } = result.rows[0];
-    const match = await bcrypt.compare(password, hashedPassword);
-
-    if (!match) {
-      throw new AuthenticationError('Kredensial yang anda berikan salah');
-    }
-
-    //* Update last_login
-    await this.updateLastLogin(id);
-
-    return id;
   }
 
   async updateLastLogin(userId) {
-    const now = new Date().toISOString();
-
-    const query = {
-      text: 'UPDATE users SET last_login = $1 WHERE id = $2',
-      values: [now, userId],
-    };
-    await this._pool.query(query);
+    try {
+      const now = new Date().toISOString();
+      const query = { text: 'UPDATE users SET last_login = $1 WHERE id = $2', values: [now, userId] };
+      await this._pool.query(query);
+      logger.info(`[updateLastLogin] Updated last login for userId=${userId}`);
+    } catch (error) {
+      logger.error(`[updateLastLogin] Error updating last login userId=${userId}: ${error.message}`);
+    }
   }
 
   async verifyUser({ userId }) {
+    try {
+      const query = { text: 'SELECT role FROM users WHERE id = $1', values: [userId] };
+      const result = await this._pool.query(query);
+
+      if (!result.rows.length) {
+        logger.warn(`[verifyUser] User not found id=${userId}`);
+        throw new NotFoundError('Data tidak ditemukan');
+      }
+
+      if (result.rows[0].role !== 'admin') {
+        logger.warn(`[verifyUser] Unauthorized access attempt userId=${userId}`);
+        throw new AuthorizationError('Anda tidak berhak mengakses resource ini');
+      }
+
+      logger.info(`[verifyUser] User authorized id=${userId}`);
+    } catch (error) {
+      logger.error(`[verifyUser] Error verifying userId=${userId}: ${error.message}`);
+      throw error;
+    }
+  }
+
+  async putRole(userId) {
     const query = {
-      text: 'SELECT role FROM users WHERE id = $1',
-      values: [userId]
-    };
-
-    const result = await this._pool.query(query);
-
-    if (!result.rows.length) {
-      throw new NotFoundError('Data tidak ditemukan');
+      text: `
+        UPDATE users SET role = $1 WHERE id = $2 RETURNING id
+      `,
+      values: ['admin', userId]
     }
 
-    if (result.rows[0].role !== 'admin') {
-      throw new AuthorizationError('Anda tidak berhak mengakses resource ini');
-    }
+    const result = await this._pool.query(query)
+
+    return result.rows[0].id;
   }
 }

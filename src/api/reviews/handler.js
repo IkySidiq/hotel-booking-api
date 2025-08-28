@@ -16,7 +16,6 @@ export class ReviewsHandler {
       const { roomId } = request.params;
       const userId = request.auth.credentials.id;
 
-      // Validasi payload
       this._validator.validateReviewPayload({ rating, comment });
 
       // Cek apakah user sudah pernah booking kamar ini yang statusnya selesai

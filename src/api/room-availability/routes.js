@@ -9,7 +9,7 @@ export const routes = (handler) => [
     path: '/rooms-availability/generate-availability',
     handler: handler.generateAvailabilityHandler,
     options: {
-      auth: false, // kalau testing/dev, bisa tanpa auth
+      auth: false, 
     },
   },
 ];
