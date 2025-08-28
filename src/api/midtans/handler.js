@@ -19,7 +19,6 @@ export class WebhookHandler {
       // 2. Update status booking berdasarkan notification
       await this._bookingService.updateBookingStatus(orderId, transactionStatus, fraudStatus);
 
-      // 3. Response 200 OK ke Midtrans
       return h.response('OK').code(200);
     } catch (err) {
       console.error(err);

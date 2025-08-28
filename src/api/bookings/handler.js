@@ -1,5 +1,5 @@
 import autoBind from 'auto-bind';
-import fs from 'fs';
+import { ProducerService } from '../../services/postgre/ProducerService.js';
 
 export class BookingsHandler {
   constructor(service, validator, userService, roomsService, midtransService, transactionRecordsService) {
@@ -121,7 +121,7 @@ export class BookingsHandler {
     try {
       const { transaction_status: transactionStatus, order_id: orderId, fraud_status: fraudStatus } = request.payload;
       console.log(transactionStatus, fraudStatus, orderId)
-      // update status booking pakai service
+
       const result = await this._service.updateBookingStatus({ transactionStatus, orderId, fraudStatus });
 
       return h.response({
@@ -170,22 +170,18 @@ export class BookingsHandler {
   async getBookingInvoiceHandler(request, h) {
     try {
       const { bookingId } = request.params;
-      const { id: userId } = request.auth.credentials
+      const { id: userId } = request.auth.credentials;
 
-      // Memanggil service untuk generate PDF
-      const filePath = await this._service.generateInvoice({ bookingId, userId });
+      // validasi booking dulu
+      await this._service.getBookingByIdAndUser({ bookingId, userId });
 
-      // Cek apakah file berhasil dibuat
-      if (!fs.existsSync(filePath)) {
-        return h.response({
-          status: 'fail',
-          message: 'Invoice gagal dibuat'
-        }).code(500);
-      }
+      // push ke queue RabbitMQ
+      await ProducerService.sendMessage('export:invoice', { bookingId, jobId: bookingId });
 
-      // Kirim file PDF sebagai download
-      return h.file(filePath, { filename: `${bookingId}.pdf` });
-
+      return h.response({
+        status: 'success',
+        message: `Invoice untuk booking ${bookingId} sedang diproses`,
+      });
     } catch (err) {
       console.error(err);
       return h.response({

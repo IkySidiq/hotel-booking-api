@@ -60,6 +60,8 @@ import { HotelProfileService } from './services/postgre/HotelProfileService.js';
 import { HotelProfileValidator } from './validators/hotel-profile/index.js';
 import { hotelProfile } from './api/hotel-profile/index.js';
 
+import { ProducerService } from './services/postgre/ProducerService.js';
+
 // Redis
 import { CacheService } from './services/postgre/CacheService.js';
 
@@ -173,7 +175,7 @@ const init = async() => {
         service: bookingsService,
         validator: BookingsValidator,
         usersService,
-        midtransService
+        midtransService,
       }
     },
     {

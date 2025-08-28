@@ -6,8 +6,6 @@ import { nanoid } from 'nanoid';
 import { InvariantError } from '../../exceptions/InvariantError.js';
 import { NotFoundError } from '../../exceptions/NotFoundError.js';
 import { mapDBToModel } from '../../utils/index.js';
-import { generateBookingInvoice } from '../../utils/invoiceGenerator.js';
-
 
 export class BookingsService {
   constructor(pool, roomAvailabilityService, usersService, roomsService, midtransService, transactionsRecordService, cacheService) {
@@ -17,8 +15,7 @@ export class BookingsService {
     this._roomsService = roomsService; 
     this._midtransService = midtransService;
     this._transactionsRecordService = transactionsRecordService;
-    this._cacheService = cacheService
-       console.log(Object.getOwnPropertyNames(Object.getPrototypeOf(this._cacheService)));
+    this._cacheService = cacheService;
   }
 
   async addBooking({ userId, roomId, guestName, totalGuests, checkInDate, checkOutDate, specialRequest }) {
@@ -679,7 +676,6 @@ export class BookingsService {
   }
 
   async editCancel(userId, bookingId) {
-    console.log('TEST', userId, bookingId)
     const query = {
       text: `
       UPDATE bookings SET status = $1 WHERE id = $2 AND user_id = $3 RETURNING id
@@ -690,5 +686,26 @@ export class BookingsService {
     const result = await this._pool.query(query)
 
     return result.rows[0].id;
+  }
+
+  async getBookingByIdAndUser({ bookingId, userId }) {
+    const query = {
+      text: `
+        SELECT *
+        FROM bookings
+        WHERE id = $1 AND user_id = $2
+      `,
+      values: [bookingId, userId],
+    };
+
+    const result = await this._pool.query(query);
+
+    const resultMap = result.rows.map(mapDBToModel.bookingTable);
+
+    if (!resultMap.length) {
+      throw new Error('Booking tidak ditemukan untuk user ini');
+    }
+
+    return result.rows[0]; // atau map sesuai kebutuhan
   }
 }

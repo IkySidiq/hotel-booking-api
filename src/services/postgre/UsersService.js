@@ -309,7 +309,6 @@ export class UsersService {
   }
 
   async putRole(userId) {
-    console.log('MGOK', userId)
     const query = {
       text: `
         UPDATE users SET role = $1 WHERE id = $2 RETURNING id

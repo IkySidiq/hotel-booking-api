@@ -13,7 +13,6 @@ export class UsersHandler{
   async postUserHandler(request, h) {
       const { fullname, email, contactNumber, password } = request.payload;
 
-      //* Validasi email pakai validator
       if (!validator.isEmail(email)) {
         return h.response({
           status: 'fail',
@@ -21,7 +20,6 @@ export class UsersHandler{
         }).code(400);
       }
 
-      //* Validasi contact number pakai validator
       if (!validator.isMobilePhone(contactNumber, 'any')) {
         return h.response({ 
           status: 'fail', 
@@ -29,7 +27,6 @@ export class UsersHandler{
         }).code(400);
       }
 
-      //* Validasi password pakai OWASP
       // const passwordResult = owasp.test(password);
       // if (!passwordResult.strong) {
       //   return h.response({

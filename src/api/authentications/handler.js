@@ -41,8 +41,8 @@ export class AuthenticationsHandler {
     this._validator.validatePutAuthenticationPayload(request.payload);
  
     const { refreshToken } = request.payload;
-    await this._authenticationsService.verifyRefreshToken(refreshToken); //* Untuk mengecek apakah token yang baru saja di payload ada juga di DB ada atau tidak
-    const { id } = this._tokenManager.verifyRefreshToken(refreshToken); //* Untuk mengecek apakah token di DB dan di client match atau tidak
+    await this._authenticationsService.verifyRefreshToken(refreshToken); 
+    const { id } = this._tokenManager.verifyRefreshToken(refreshToken); 
  
     const accessToken = this._tokenManager.generateAccessToken({ id });
     return {

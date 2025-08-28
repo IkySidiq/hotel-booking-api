@@ -13,15 +13,12 @@ export class RoomPicturesHandler {
     autoBind(this);
   }
 
-  // Upload foto kamar
   async postRoomPictureHandler(request, h) {
     try {
       const { id: userId } = request.auth.credentials;
 
-      // pastikan user valid
       await this._userService.verifyUser({ userId });
 
-      // ambil roomId, primaryFileName, dan array files dari payload
       const { id: roomId } = request.params;
       const { fotoSatu, fotoDua, fotoTiga } = request.payload;
       const filesArray = [fotoSatu, fotoDua, fotoTiga].filter(Boolean);
@@ -67,7 +64,6 @@ export class RoomPicturesHandler {
     }
   }
 
-  // Ambil semua foto kamar
   async getRoomPicturesHandler(request) {
       const { id: userId } = request.auth.credentials;
       await this._userService.verifyUser({ userId });
@@ -81,7 +77,6 @@ export class RoomPicturesHandler {
       };
   }
 
-  // Hapus foto kamar
   async deleteRoomPictureHandler(request) {
       const { id: userId } = request.auth.credentials;
       await this._userService.verifyUser({ userId });
@@ -125,7 +120,6 @@ export class RoomPicturesHandler {
     }
   }
 
-  // Set primary picture
   async setPrimaryPictureHandler(request) {
       const { id: userId } = request.auth.credentials;
       await this._userService.verifyUser({ userId });
