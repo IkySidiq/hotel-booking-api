@@ -35,27 +35,34 @@ Create a `.env` file in the root directory and fill in your own values:
 HOST=localhost
 PORT=5000
 
-# PostgreSQL (node-postgres) configuration
-PGUSER=your_postgres_user
+# PostgreSQL configuration
+# Create a PostgreSQL database named 'booking_hotel'
+# Replace with your actual PostgreSQL credentials
+PGUSER=your_postgres_username
 PGHOST=localhost
 PGPASSWORD=your_postgres_password
 PGDATABASE=booking_hotel
 PGPORT=5432
-DATABASE_URL=postgresql://your_postgres_user:your_postgres_password@localhost:5432/booking_hotel
+DATABASE_URL=postgresql://your_postgres_username:your_postgres_password@localhost:5432/booking_hotel
 
 # JWT Tokens
-ACCESS_TOKEN_KEY=your_access_token_secret
-REFRESH_TOKEN_KEY=your_refresh_token_secret
+# Generate secure random strings for these keys (recommended: 64+ characters)
+# You can use: node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
+ACCESS_TOKEN_KEY=your_secure_access_token_secret
+REFRESH_TOKEN_KEY=your_secure_refresh_token_secret
 ACCESS_TOKEN_AGE=1800
 
-# Midtrans Configuration
-MIDTRANS_SERVER_KEY=your_midtrans_server_key
-MIDTRANS_PROD_SERVER_KEY=your_midtrans_prod_server_key
+# Midtrans Payment Gateway Configuration
+# Get these keys from your Midtrans dashboard
+# Use sandbox keys for development, production keys for live environment
+MIDTRANS_SERVER_KEY=your_midtrans_sandbox_server_key
+MIDTRANS_PROD_SERVER_KEY=your_midtrans_production_server_key
 
 MIDTRANS_SANDBOX_URL=https://app.sandbox.midtrans.com/snap/v1/transactions
 MIDTRANS_PROD_URL=https://app.midtrans.com/snap/v1/transactions
 
 # Redis Configuration
+# Make sure Redis server is running on your machine
 REDIS_SERVER=localhost
 ```
 
